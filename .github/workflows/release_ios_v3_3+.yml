@@ -2,7 +2,6 @@ name: Build iOS 3.3+
 
 on:
   push:
-    branches: [ master ]
     tags:
       - '*'
 env:

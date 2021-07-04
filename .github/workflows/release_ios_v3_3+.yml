@@ -77,7 +77,6 @@ jobs:
 
     - name: Download and unzip Stable Godot extracted headers
       run: |
-        cd ios/
         FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS="https://github.com/godotengine/godot-ios-plugins/releases/download/${{env.CURRENT_GODOT_VERSION}}-stable/extracted_headers.zip"
         curl -LO $FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS
         unzip extracted_headers.zip
@@ -92,8 +91,8 @@ jobs:
     - name: Copy and unzip the Google Mobile Ads SDK on release binaries and iOS module folder
       run: |
         mkdir -p godot-${{env.CURRENT_GODOT_VERSION}}-stable/bin/release/
-        unzip googlemobileadssdkios.zip -d ios/plugin/admob/lib/
-        cd ios/plugin/admob/lib/
+        unzip googlemobileadssdkios.zip -d plugin/admob/lib/
+        cd plugin/admob/lib/
         cd */
         mv * ../
 
@@ -101,12 +100,11 @@ jobs:
       env:
         SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
       run: |
-        cd ios
         ./scripts/release_static_library.sh ${CURRENT_GODOT_VERSION:0:3}
 
     - name: Compress the binaries
       run: |
-        cd ios/bin/release 
+        cd bin/release 
         zip -r ../../../ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip admob
 
     - name: Upload artifact
@@ -123,14 +121,6 @@ jobs:
 
     - name: Download artifacts
       uses: actions/download-artifact@v2
-      
-    - name: Delete previous tag
-      uses: dev-drprasad/delete-tag-and-release@v0.1.2
-      with:
-        delete_release: true 
-        tag_name: ${{env.TAG_NAME}}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release and tag
       id: create_release

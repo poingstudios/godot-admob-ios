@@ -71,7 +71,6 @@ jobs:
 
     - name: Prepare 'bin/, lib/, godot' folders
       run: |
-        cd ios/
         rm -rf ./bin/ && mkdir ./bin/
         rm -rf ./plugin/admob/lib/ && mkdir ./plugin/admob/lib/
 

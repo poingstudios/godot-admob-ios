@@ -126,6 +126,6 @@ jobs:
     - name: Upload artifacts to release
       uses: AButler/upload-release-assets@v2.0
       with:
-        files: 'ios-template-*.zip/*;googlemobileadssdkios.zip/*'
+        files: '/home/runner/work/godot-admob-ios/godot-admob-ios/googlemobileadssdkios.zip*'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         release-tag: ${{env.TAG_NAME}}

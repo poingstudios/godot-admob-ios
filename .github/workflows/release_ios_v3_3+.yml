@@ -29,7 +29,6 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: googlemobileadssdkios.zip
-        asset_name: googlemobileadssdkios.zip
         tag: ${{ github.ref }}
         overwrite: true
 
@@ -126,6 +125,5 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
-        asset_name: ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
         tag: ${{ github.ref }}
         overwrite: true

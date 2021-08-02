@@ -18,6 +18,7 @@
 @interface RewardedInterstitial: NSObject <GADFullScreenContentDelegate> {
     GADRewardedInterstitialAd *rewardedInterstitialAd;
     bool initialized;
+    bool loaded;
     int instanceId;
     NSString *adUnitId;
     ViewController *rootController;
@@ -26,5 +27,6 @@
 - (instancetype)init: (int) instance_id;
 - (void)load_rewarded_interstitial: (NSString*) ad_unit_id;
 - (void)show_rewarded_interstitial;
+- (bool)get_is_rewarded_interstitial_loaded;
 
 @end

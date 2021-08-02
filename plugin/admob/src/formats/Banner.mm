@@ -18,6 +18,7 @@
     if ((self = [super init])) {
         initialized = true;
         instanceId = instance_id;
+        loaded = false;
         rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     }
     return self;
@@ -56,7 +57,7 @@
 }
 
 
-- (void) load_banner:(NSString*)ad_unit_id :(int)position :(NSString*)size {
+- (void) load_banner:(NSString*)ad_unit_id :(int)position :(NSString*)size : (bool) show_instantly {
     NSLog(@"Calling load_banner");
         
     if (!initialized || (!ad_unit_id.length)) {
@@ -79,20 +80,20 @@
     
     if ([size isEqualToString:@"BANNER"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        NSLog(@"Banner created");
+        NSLog(@"Banner will be created");
     } else if ([size isEqualToString:@"LARGE_BANNER"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeLargeBanner];
-        NSLog(@"Large banner created");
+        NSLog(@"Large banner will be created");
     } else if ([size isEqualToString:@"MEDIUM_RECTANGLE"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeMediumRectangle];
-        NSLog(@"Medium banner created");
+        NSLog(@"Medium banner will be created");
     } else if ([size isEqualToString:@"FULL_BANNER"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
-        NSLog(@"Full banner created");
+        NSLog(@"Full banner will be created");
     } else if ([size isEqualToString:@"LEADERBOARD"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeLeaderboard];
-        NSLog(@"Leaderboard banner created");
-    } else if ([size isEqualToString:@"LEADERBOARD"]) {
+        NSLog(@"Leaderboard will be banner created");
+    } else if ([size isEqualToString:@"ADAPTIVE"]) {
         CGRect frame = rootController.view.frame;
         // Here safe area is taken into account, hence the view frame is used after
         // the view has been laid out.
@@ -101,18 +102,26 @@
         }
         CGFloat viewWidth = frame.size.width;
         bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth);
-        NSLog(@"Adaptive banner created");
+        NSLog(@"Adaptive banner will be created");
     }
     else { //smart banner
         if (orientation == 0 || orientation == UIInterfaceOrientationPortrait) { //portrait
             bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
-            NSLog(@"Smart portait banner created");
+            NSLog(@"Smart portait banner will be created");
         }
         else { //landscape
             bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape];
-            NSLog(@"Smart landscape banner created");
+            NSLog(@"Smart landscape banner will be created");
         }
     }
+    
+    if (show_instantly){
+        [self show_banner];
+    }
+    else{
+        [self hide_banner];
+    }
+    
     bannerView.adUnitID = ad_unit_id;
 
     bannerView.delegate = self;
@@ -175,7 +184,36 @@
         bannerView = nil;
         Object *obj = ObjectDB::get_instance(instanceId);
         obj->call_deferred("_on_AdMob_banner_destroyed");
+        loaded = false;
     }
+}
+
+
+- (void)show_banner
+{
+    if (!initialized)
+        return;
+    
+    if (bannerView != nil)
+    {
+        [bannerView setHidden:NO];
+    }
+}
+
+- (void)hide_banner
+{
+    if (!initialized)
+        return;
+    
+    if (bannerView != nil)
+    {
+        [bannerView setHidden:YES];
+    }
+}
+
+
+- (bool) get_is_banner_loaded{
+    return loaded;
 }
 
 //LISTENERS
@@ -185,7 +223,7 @@
     [self addBannerViewToView];
     Object *obj = ObjectDB::get_instance(instanceId);
     obj->call_deferred("_on_AdMob_banner_loaded");
-
+    loaded = true;
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {

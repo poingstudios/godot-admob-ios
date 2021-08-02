@@ -58,15 +58,25 @@
         
         void load_banner(const String &ad_unit_id,
                          int gravity,
-                         const String &size);
+                         const String &size,
+                         bool show_instantly);
         
         void destroy_banner();
+        
+        void show_banner();
+        void hide_banner();
         
         float get_banner_width();
         float get_banner_height();
         float get_banner_width_in_pixels();
         float get_banner_height_in_pixels();
 
+        bool get_is_initialized();
+        bool get_is_banner_loaded();
+        bool get_is_interstitial_loaded();
+        bool get_is_rewarded_loaded();
+        bool get_is_rewarded_interstitial_loaded();
+        
         void load_interstitial(const String &ad_unit_id);
         void show_interstitial();
         

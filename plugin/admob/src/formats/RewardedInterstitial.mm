@@ -13,6 +13,7 @@
     if ((self = [super init])) {
         initialized = true;
         instanceId = instance_id;
+        loaded = false;
         rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     }
     return self;
@@ -22,7 +23,7 @@
 - (void) load_rewarded_interstitial:(NSString*) ad_unit_id {
     NSLog(@"Calling load_rewarded_interstitial");
     
-    if (!initialized) {
+    if (!initialized || loaded) {
         return;
     }
     else{
@@ -47,6 +48,7 @@
               NSLog(@"reward interstitial successfully loaded");
               Object *obj = ObjectDB::get_instance(self->instanceId);
               obj->call_deferred("_on_AdMob_rewarded_interstitial_ad_loaded");
+              self->loaded = true;
 
           }
         self->rewardedInterstitialAd = ad;
@@ -81,6 +83,9 @@
     }
 }
 
+- (bool) get_is_rewarded_interstitial_loaded{
+    return loaded;
+}
 
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
@@ -96,6 +101,7 @@
    Object *obj = ObjectDB::get_instance(instanceId);
    obj->call_deferred("_on_AdMob_rewarded_interstitial_ad_closed");
    OSIPhone::get_singleton()->on_focus_in();
+    self->loaded = false;
 }
 
 

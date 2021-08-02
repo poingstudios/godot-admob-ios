@@ -18,6 +18,7 @@
 @interface Banner: NSObject <GADBannerViewDelegate> {
     GADBannerView *bannerView;
     bool initialized;
+    bool loaded;
     int instanceId;
     int positionBanner;
     NSString *adUnitId;
@@ -25,11 +26,15 @@
 }
 
 - (instancetype)init: (int) instance_id;
-- (void)load_banner: (NSString*) ad_unit_id : (int) position : (NSString*) size;
+- (void)load_banner: (NSString*) ad_unit_id : (int) position : (NSString*) size : (bool) show_instantly;
 - (void)destroy_banner;
+- (void)show_banner;
+- (void)hide_banner;
+
 - (float) get_banner_width;
 - (float) get_banner_height;
 - (float) get_banner_width_in_pixels;
 - (float) get_banner_height_in_pixels;
+- (bool) get_is_banner_loaded;
 
 @end

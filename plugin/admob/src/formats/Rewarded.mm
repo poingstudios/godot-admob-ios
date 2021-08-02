@@ -13,6 +13,7 @@
     if ((self = [super init])) {
         initialized = true;
         instanceId = instance_id;
+        loaded = false;
         rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     }
     return self;
@@ -22,7 +23,7 @@
 - (void) load_rewarded:(NSString*) ad_unit_id {
     NSLog(@"Calling load_rewarded");
     
-    if (!initialized) {
+    if (!initialized || loaded) {
         return;
     }
     else{
@@ -47,7 +48,7 @@
               NSLog(@"reward successfully loaded");
               Object *obj = ObjectDB::get_instance(self->instanceId);
               obj->call_deferred("_on_AdMob_rewarded_ad_loaded");
-
+              self->loaded = true;
           }
         self->rewarded = ad;
         self->rewarded.fullScreenContentDelegate = self;
@@ -81,7 +82,9 @@
     }
 }
 
-
+- (bool) get_is_rewarded_loaded {
+    return loaded;
+}
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
     NSLog(@"rewardedAd:didFailToPresentWithError");
@@ -96,6 +99,7 @@
    Object *obj = ObjectDB::get_instance(instanceId);
    obj->call_deferred("_on_AdMob_rewarded_ad_closed");
    OSIPhone::get_singleton()->on_focus_in();
+    self->loaded = false;
 }
 
 

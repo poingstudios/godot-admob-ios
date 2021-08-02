@@ -18,6 +18,7 @@
 @interface Interstitial: NSObject<GADFullScreenContentDelegate> {
     GADInterstitialAd * interstitial;
     bool initialized;
+    bool loaded;
     int instanceId;
     NSString *adUnitId;
     ViewController *rootController;
@@ -27,5 +28,6 @@
 - (instancetype)init: (int) instance_id;
 - (void)load_interstitial: (NSString*)ad_unit_id;
 - (void)show_interstitial;
+- (bool)get_is_interstitial_loaded;
 
 @end

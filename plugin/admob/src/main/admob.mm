@@ -185,7 +185,6 @@ void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_a
         GADInitialize();
     }
 
-    initialized = true;
     bannerObj = [[Banner alloc] init :instance_id];
     interstitialObj = [[Interstitial alloc] init :instance_id];
     rewardedObj = [[Rewarded alloc] init :instance_id];
@@ -200,11 +199,18 @@ void AdMob::GADInitialize(){
         GADAdapterStatus * adapterStatus = states[@"GADMobileAds"];
         NSLog(@"%s : %ld", "GADMobileAds", adapterStatus.state);
         
+        if (adapterStatus.state == 0){
+            initialized = false;
+        }
+        else if (adapterStatus.state == 1){
+            initialized = true;
+        }
+        
         objectDB->call_deferred("_on_AdMob_initialization_complete", (int) adapterStatus.state, "GADMobileAds");
     }];
 }
 
-void AdMob::load_banner(const String &ad_unit_id, int position, const String &size) {
+void AdMob::load_banner(const String &ad_unit_id, int position, const String &size, bool show_instantly) {
     if (!initialized) {
         NSLog(@"AdMob Module not initialized");
         return;
@@ -212,7 +218,7 @@ void AdMob::load_banner(const String &ad_unit_id, int position, const String &si
     
     NSString *ad_unit_id_NSString = [NSString stringWithCString:ad_unit_id.utf8().get_data() encoding: NSUTF8StringEncoding];
     NSString *size_NSString       = [NSString stringWithCString:size.utf8().get_data() encoding: NSUTF8StringEncoding];
-    [bannerObj load_banner: ad_unit_id_NSString : position: size_NSString];
+    [bannerObj load_banner: ad_unit_id_NSString : position: size_NSString: show_instantly];
     
 }
 
@@ -220,6 +226,18 @@ void AdMob::destroy_banner() {
     if (!initialized) return;
     
     [bannerObj destroy_banner];
+}
+
+void AdMob::show_banner() {
+    if (!initialized) return;
+    
+    [bannerObj show_banner];
+}
+
+void AdMob::hide_banner() {
+    if (!initialized) return;
+    
+    [bannerObj hide_banner];
 }
 
 float AdMob::get_banner_width() {
@@ -253,6 +271,45 @@ float AdMob::get_banner_height_in_pixels() {
         return 0;
     }
     return [bannerObj get_banner_height_in_pixels];
+}
+
+bool AdMob::get_is_initialized() {
+    if (!initialized) {
+        NSLog(@"AdMob Module not initialized");
+    }
+    return initialized;
+}
+
+bool AdMob::get_is_banner_loaded() {
+    if (!initialized) {
+        NSLog(@"AdMob Module not initialized");
+        return false;
+    }
+    return [bannerObj get_is_banner_loaded];
+}
+
+bool AdMob::get_is_interstitial_loaded() {
+    if (!initialized) {
+        NSLog(@"AdMob Module not initialized");
+        return false;
+    }
+    return [interstitialObj get_is_interstitial_loaded];
+}
+
+bool AdMob::get_is_rewarded_loaded() {
+    if (!initialized) {
+        NSLog(@"AdMob Module not initialized");
+        return false;
+    }
+    return [rewardedObj get_is_rewarded_loaded];
+}
+
+bool AdMob::get_is_rewarded_interstitial_loaded() {
+    if (!initialized) {
+        NSLog(@"AdMob Module not initialized");
+        return false;
+    }
+    return [rewardedInterstitialObj get_is_rewarded_interstitial_loaded];
 }
 
 
@@ -311,18 +368,33 @@ void AdMob::show_rewarded_interstitial() {
 
 void AdMob::_bind_methods() {
     ClassDB::bind_method("initialize", &AdMob::initialize);
+
     ClassDB::bind_method("reset_consent_state", &AdMob::reset_consent_state);
     ClassDB::bind_method("request_user_consent", &AdMob::request_user_consent);
-    ClassDB::bind_method("load_banner", &AdMob::load_banner);
-    ClassDB::bind_method("destroy_banner", &AdMob::destroy_banner);
+
     ClassDB::bind_method("get_banner_width", &AdMob::get_banner_width);
     ClassDB::bind_method("get_banner_height", &AdMob::get_banner_height);
     ClassDB::bind_method("get_banner_width_in_pixels", &AdMob::get_banner_width_in_pixels);
     ClassDB::bind_method("get_banner_height_in_pixels", &AdMob::get_banner_height_in_pixels);
+
+    ClassDB::bind_method("get_is_initialized", &AdMob::get_is_initialized);
+    ClassDB::bind_method("get_is_banner_loaded", &AdMob::get_is_banner_loaded);
+    ClassDB::bind_method("get_is_interstitial_loaded", &AdMob::get_is_interstitial_loaded);
+    ClassDB::bind_method("get_is_rewarded_loaded", &AdMob::get_is_rewarded_loaded);
+    ClassDB::bind_method("get_is_rewarded_interstitial_loaded", &AdMob::get_is_rewarded_interstitial_loaded);
+
+    ClassDB::bind_method("load_banner", &AdMob::load_banner);
+    ClassDB::bind_method("destroy_banner", &AdMob::destroy_banner);
+
+    ClassDB::bind_method("show_banner", &AdMob::show_banner);
+    ClassDB::bind_method("hide_banner", &AdMob::hide_banner);
+
     ClassDB::bind_method("load_interstitial", &AdMob::load_interstitial);
     ClassDB::bind_method("show_interstitial", &AdMob::show_interstitial);
+
     ClassDB::bind_method("load_rewarded", &AdMob::load_rewarded);
     ClassDB::bind_method("show_rewarded", &AdMob::show_rewarded);
+
     ClassDB::bind_method("load_rewarded_interstitial", &AdMob::load_rewarded_interstitial);
     ClassDB::bind_method("show_rewarded_interstitial", &AdMob::show_rewarded_interstitial);
 }

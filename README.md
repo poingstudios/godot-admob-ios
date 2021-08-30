@@ -72,7 +72,7 @@
 - First of all you need to install the [AdMob Editor Plugin](https://github.com/Poing-Studios/Godot-AdMob-Editor-Plugin), you can download direcly from [Godot Assets](https://godotengine.org/asset-library/asset/933).
 
 ## iOS (v3.3+):
-- Tutorial: https://www.youtube.com/watch?v=pkTUVArtG7Y
+- Tutorial: https://youtu.be/MW4hUR0d9lc
 - Download the ```ios-template-v{{ your_godot_version }}.zip``` in the [releases tab](https://github.com/Poing-Studios/godot-admob-ios/releases/tag/iOS_v3.3%2B) we recommend you to use always the latest.
 - Download the [googlemobileadssdkios.zip](https://github.com/Poing-Studios/godot-admob-ios/releases/download/iOS_v3.3%2B/googlemobileadssdkios.zip) used to build the plugin.
 - Extract the content in ```ios-template-v{{ your_godot_version }}.zip``` into ```res://ios/plugins``` directory on your Godot project
@@ -88,7 +88,6 @@
 ![DelayAppMeasurement](https://developers.google.com/admob/images/delay_app_measurement_plist.png)
 
 ## Android (v3.2.2+):
-- Tutorial: https://www.youtube.com/watch?v=5J_RP2sCf7Y
 - https://github.com/Poing-Studios/godot-admob-android
 
 ## User Messaging Platform (UMP):

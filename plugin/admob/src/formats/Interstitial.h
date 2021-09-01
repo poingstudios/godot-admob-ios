@@ -12,6 +12,8 @@
 #import "view_controller.h"
 #include "os_iphone.h"
 #include "object.h"
+#include "../main/admob.h"
+
 
 @class Interstitial;
 
@@ -19,13 +21,12 @@
     GADInterstitialAd * interstitial;
     bool initialized;
     bool loaded;
-    int instanceId;
     NSString *adUnitId;
     ViewController *rootController;
 }
 
 
-- (instancetype)init: (int) instance_id;
+- (instancetype)init;
 - (void)load_interstitial: (NSString*)ad_unit_id;
 - (void)show_interstitial;
 - (bool)get_is_interstitial_loaded;

@@ -9,10 +9,9 @@
 
 @implementation RewardedInterstitial
 
-- (instancetype)init:(int) instance_id{
+- (instancetype)init{
     if ((self = [super init])) {
         initialized = true;
-        instanceId = instance_id;
         loaded = false;
         rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     }
@@ -37,17 +36,15 @@
                   request:request
         completionHandler:^(GADRewardedInterstitialAd *ad, NSError *error) {
           if (error) {
-            NSLog(@"Rewarded interstitial ad failed to load with error: %@", [error localizedDescription]);
-            NSLog(@"error while creating rewarded interstitial");
-            Object *obj = ObjectDB::get_instance(self->instanceId);
-            obj->call_deferred("_on_AdMob_rewarded_interstitial_ad_failed_to_show", (int) error.code);
+              NSLog(@"Rewarded interstitial ad failed to load with error: %@", [error localizedDescription]);
+              NSLog(@"error while creating rewarded interstitial");
+              AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_failed_to_load", (int) error.code);
 
-            return;
+              return;
           }
           else{
               NSLog(@"reward interstitial successfully loaded");
-              Object *obj = ObjectDB::get_instance(self->instanceId);
-              obj->call_deferred("_on_AdMob_rewarded_interstitial_ad_loaded");
+              AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_loaded");
               self->loaded = true;
 
           }
@@ -70,13 +67,13 @@
             NSString *rewardMessage = [NSString stringWithFormat:@"Reward received with currency %@ , amount %lf",
                                        rewardAd.type, [rewardAd.amount doubleValue]];
             NSLog(@"%@", rewardMessage);
-            Object *obj = ObjectDB::get_instance(self->instanceId);
-            obj->call_deferred("_on_AdMob_user_earned_rewarded", [rewardAd.type UTF8String], rewardAd.amount.doubleValue);
+            AdMob::get_singleton()->emit_signal("user_earned_rewarded", [rewardAd.type UTF8String], rewardAd.amount.doubleValue);
+
 
           }];
 
-        Object *obj = ObjectDB::get_instance(instanceId);
-        obj->call_deferred("_on_AdMob_rewarded_interstitial_ad_opened");
+        AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_opened");
+
         OSIPhone::get_singleton()->on_focus_out();
     } else {
         NSLog(@"reward interstitial ad wasn't ready");
@@ -90,18 +87,17 @@
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
     NSLog(@"rewardedAd:didFailToPresentWithError");
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_rewarded_interstitial_ad_failed_to_show", (int) error.code);
+    AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_failed_to_show", (int) error.code);
+
 }
 
 
 /// Tells the delegate that the ad dismissed full screen content.
 - (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-   NSLog(@"Ad did dismiss full screen content.");
-   Object *obj = ObjectDB::get_instance(instanceId);
-   obj->call_deferred("_on_AdMob_rewarded_interstitial_ad_closed");
-   OSIPhone::get_singleton()->on_focus_in();
-    self->loaded = false;
+    NSLog(@"Ad did dismiss full screen content.");
+    loaded = false;
+    AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_closed");
+    OSIPhone::get_singleton()->on_focus_in();
 }
 
 

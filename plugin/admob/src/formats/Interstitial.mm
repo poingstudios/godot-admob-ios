@@ -12,10 +12,9 @@
 - (void)dealloc {
 }
 
-- (instancetype)init: (int)instance_id{
+- (instancetype)init{
     if ((self = [super init])) {
         initialized = true;
-        instanceId = instance_id;
         loaded = false;
         rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     }
@@ -41,17 +40,16 @@
                                     request:request
                           completionHandler:^(GADInterstitialAd *ad, NSError *error) {
       if (error) {
-        NSLog(@"interstitial:didFailToReceiveAdWithError: %@", [error localizedDescription]);
-        Object *obj = ObjectDB::get_instance(self->instanceId);
-        obj->call_deferred("_on_AdMob_interstitial_failed_to_load", (int) error.code);
+          NSLog(@"interstitial:didFailToReceiveAdWithError: %@", [error localizedDescription]);
+          AdMob::get_singleton()->emit_signal("interstitial_failed_to_load", (int) error.code);
 
-        return;
+          return;
       }
       else{
           NSLog(@"interstitial created with the id");
           NSLog(@"interstitialDidReceiveAd");
-          Object *obj = ObjectDB::get_instance(self->instanceId);
-          obj->call_deferred("_on_AdMob_interstitial_loaded");
+          AdMob::get_singleton()->emit_signal("interstitial_loaded");
+          
           self->loaded = true;
       }
       self->interstitial = ad;
@@ -79,26 +77,23 @@
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
     NSLog(@"Ad did fail to present full screen content.");
-    Object *obj = ObjectDB::get_instance(self->instanceId);
-    obj->call_deferred("_on_AdMob_interstitial_failed_to_load", (int) error.code);
+    AdMob::get_singleton()->emit_signal("interstitial_failed_to_load", (int) error.code);
 
 }
 
 /// Tells the delegate that the ad presented full screen content.
 - (void)adDidPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
     NSLog(@"interstitialWillPresentScreen");
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_interstitial_opened");
+    AdMob::get_singleton()->emit_signal("interstitial_opened");
     OSIPhone::get_singleton()->on_focus_out();
 }
 
 /// Tells the delegate that the ad dismissed full screen content.
 - (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
     NSLog(@"Ad did dismiss full screen content.");
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_interstitial_closed");
-    OSIPhone::get_singleton()->on_focus_in();
     loaded = false;
+    AdMob::get_singleton()->emit_signal("interstitial_closed");
+    OSIPhone::get_singleton()->on_focus_in();
 }
 
 

@@ -7,6 +7,7 @@
 
 
 #include "core/object.h"
+#include "../main/admob.h"
 
 #import <GoogleMobileAds/GADBannerView.h>
 #import <GoogleMobileAds/GADExtras.h>
@@ -19,13 +20,12 @@
     GADBannerView *bannerView;
     bool initialized;
     bool loaded;
-    int instanceId;
     int positionBanner;
     NSString *adUnitId;
     ViewController *rootController;
 }
 
-- (instancetype)init: (int) instance_id;
+- (instancetype)init;
 - (void)load_banner: (NSString*) ad_unit_id : (int) position : (NSString*) size : (bool) show_instantly;
 - (void)destroy_banner;
 - (void)show_banner;

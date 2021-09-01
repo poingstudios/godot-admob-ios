@@ -39,7 +39,6 @@
         bool is_test_europe_user_consent;
         String self_max_ad_content_rating;
         static AdMob *instance;
-        Object *objectDB;
 
         banner bannerObj;
         interstitial interstitialObj;
@@ -53,8 +52,7 @@
         void initialize(bool is_for_child_directed_treatment,
                         const String &max_ad_content_rating,
                         bool is_real,
-                        bool is_test_europe_user_consent,
-                        int instance_id);
+                        bool is_test_europe_user_consent);
         
         void load_banner(const String &ad_unit_id,
                          int gravity,
@@ -91,13 +89,14 @@
 
         AdMob();
         ~AdMob();
+
+        static AdMob *get_singleton();
     private:
         const char* getDeviceId();
         void GADInitialize();
        
         void loadConsentForm(bool is_for_child_directed_treatment,
-                             bool is_real,
-                             int instance_id);
+                             bool is_real);
 
     };
 

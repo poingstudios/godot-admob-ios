@@ -28,7 +28,6 @@ AdMob::AdMob() {
     interstitialObj = NULL;
     rewardedObj = NULL;
     rewardedInterstitialObj = NULL;
-    objectDB = NULL;
     self_max_ad_content_rating = "";
     is_for_child_directed_treatment = false;
     is_test_europe_user_consent = false;
@@ -46,14 +45,19 @@ AdMob::~AdMob() {
     NSLog(@"deinitialize admob");
 }
 
-void AdMob::loadConsentForm(bool is_for_child_directed_treatment, bool is_real, int instance_id)
+AdMob *AdMob::get_singleton() {
+    return instance;
+};
+
+
+void AdMob::loadConsentForm(bool is_for_child_directed_treatment, bool is_real)
 {
     [UMPConsentForm
         loadWithCompletionHandler:^(UMPConsentForm *form, NSError *loadError)
         {
             if (loadError)
             {
-                objectDB->call_deferred("_on_AdMob_consent_form_load_failure", (int) loadError.code, loadError.domain);
+                emit_signal("consent_form_load_failure", (int) loadError.code, loadError.domain);
             }
             else
             {
@@ -65,10 +69,10 @@ void AdMob::loadConsentForm(bool is_for_child_directed_treatment, bool is_real, 
                         presentFromViewController:(ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController
                         completionHandler:^(NSError *_Nullable dismissError)
                         {
-                            objectDB->call_deferred("_on_AdMob_consent_form_dismissed");
+                            emit_signal("consent_form_dismissed");
                             if (UMPConsentInformation.sharedInstance.consentStatus == UMPConsentStatusObtained)
                             {
-                                objectDB->call_deferred("_on_AdMob_consent_status_changed", "User consent obtained. Personalization not defined.");
+                                emit_signal("consent_status_changed", "User consent obtained. Personalization not defined.");
                             }
                         }
                      ];
@@ -87,7 +91,7 @@ void AdMob::loadConsentForm(bool is_for_child_directed_treatment, bool is_real, 
                 {
                     consentStatusMsg = "User consent obtained. Personalization not defined.";
                 }
-                objectDB->call_deferred("_on_AdMob_consent_status_changed", consentStatusMsg);
+                emit_signal("consent_status_changed", consentStatusMsg);
             }
          }
     ];
@@ -119,31 +123,30 @@ void AdMob::request_user_consent()
         {
             if (error)
             {
-                objectDB->call_deferred("_on_AdMob_consent_info_update_failure", (int) error.code, error.domain);
+                emit_signal("consent_info_update_failure", (int) error.code, error.domain);
             }
             else
             {
                 UMPFormStatus formStatus = UMPConsentInformation.sharedInstance.formStatus;
                 if (formStatus == UMPFormStatusAvailable)
                 {
-                    objectDB->call_deferred("_on_AdMob_consent_info_update_success", "Consent Form Available");
+                    emit_signal("consent_info_update_success", "Consent Form Available");
                 }
                 else
                 {
-                    objectDB->call_deferred("_on_AdMob_consent_info_update_success", "Consent Form not Available");
+                    emit_signal("consent_info_update_success", "Consent Form not Available");
                 }
             }
         }
     ];
 }
 
-void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_ad_content_rating, bool is_real, bool is_test_europe_user_consent, int instance_id)
+void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_ad_content_rating, bool is_real, bool is_test_europe_user_consent)
 {
     if (instance != this || initialized)
     {
         return;
     }
-    objectDB = ObjectDB::get_instance(instance_id);
     self_max_ad_content_rating = max_ad_content_rating;
     this -> is_test_europe_user_consent = is_test_europe_user_consent;
     
@@ -185,10 +188,10 @@ void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_a
         GADInitialize();
     }
 
-    bannerObj = [[Banner alloc] init :instance_id];
-    interstitialObj = [[Interstitial alloc] init :instance_id];
-    rewardedObj = [[Rewarded alloc] init :instance_id];
-    rewardedInterstitialObj = [[RewardedInterstitial alloc] init :instance_id];
+    bannerObj = [[Banner alloc] init];
+    interstitialObj = [[Interstitial alloc] init];
+    rewardedObj = [[Rewarded alloc] init];
+    rewardedInterstitialObj = [[RewardedInterstitial alloc] init];
 
 }
 
@@ -206,7 +209,7 @@ void AdMob::GADInitialize(){
             initialized = true;
         }
         
-        objectDB->call_deferred("_on_AdMob_initialization_complete", (int) adapterStatus.state, "GADMobileAds");
+        emit_signal("initialization_complete", (int) adapterStatus.state, "GADMobileAds");
     }];
 }
 
@@ -367,6 +370,41 @@ void AdMob::show_rewarded_interstitial() {
 
 
 void AdMob::_bind_methods() {
+    ADD_SIGNAL(MethodInfo("initialization_complete", PropertyInfo(Variant::INT, "id"), PropertyInfo(Variant::STRING, "description")));
+    ADD_SIGNAL(MethodInfo("consent_form_dismissed"));
+    ADD_SIGNAL(MethodInfo("consent_status_changed", PropertyInfo(Variant::STRING, "description")));
+    ADD_SIGNAL(MethodInfo("consent_form_load_failure", PropertyInfo(Variant::INT, "id"), PropertyInfo(Variant::STRING, "description")));
+    ADD_SIGNAL(MethodInfo("consent_info_update_success", PropertyInfo(Variant::STRING, "description")));
+    ADD_SIGNAL(MethodInfo("consent_info_update_failure", PropertyInfo(Variant::INT, "id"), PropertyInfo(Variant::STRING, "description")));
+
+    ADD_SIGNAL(MethodInfo("banner_loaded"));
+    ADD_SIGNAL(MethodInfo("banner_failed_to_load", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("banner_opened"));
+    ADD_SIGNAL(MethodInfo("banner_clicked"));
+    ADD_SIGNAL(MethodInfo("banner_closed"));
+    ADD_SIGNAL(MethodInfo("banner_recorded_impression"));
+    ADD_SIGNAL(MethodInfo("banner_destroyed"));
+
+    ADD_SIGNAL(MethodInfo("interstitial_loaded"));
+    ADD_SIGNAL(MethodInfo("interstitial_closed"));
+    ADD_SIGNAL(MethodInfo("interstitial_failed_to_show", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("interstitial_opened"));
+    ADD_SIGNAL(MethodInfo("interstitial_failed_to_load", PropertyInfo(Variant::INT, "id")));
+
+    ADD_SIGNAL(MethodInfo("rewarded_ad_failed_to_load", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_loaded"));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_opened"));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_failed_to_show", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_closed"));
+
+    ADD_SIGNAL(MethodInfo("user_earned_rewarded", PropertyInfo(Variant::STRING, "description"), PropertyInfo(Variant::INT, "id")));
+
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_failed_to_load", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_loaded"));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_opened"));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_failed_to_show", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_closed", PropertyInfo(Variant::INT, "id")));
+    
     ClassDB::bind_method("initialize", &AdMob::initialize);
 
     ClassDB::bind_method("reset_consent_state", &AdMob::reset_consent_state);

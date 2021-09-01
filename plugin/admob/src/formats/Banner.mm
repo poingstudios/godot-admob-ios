@@ -7,17 +7,15 @@
 
 
 #import "Banner.h"
-
 @implementation Banner
 
 - (void)dealloc {
     bannerView.delegate = nil;
 }
 
-- (instancetype)init: (int)instance_id{
+- (instancetype)init{
     if ((self = [super init])) {
         initialized = true;
-        instanceId = instance_id;
         loaded = false;
         rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     }
@@ -182,8 +180,8 @@
         [bannerView setHidden:YES];
         [bannerView removeFromSuperview];
         bannerView = nil;
-        Object *obj = ObjectDB::get_instance(instanceId);
-        obj->call_deferred("_on_AdMob_banner_destroyed");
+        AdMob::get_singleton()->emit_signal("banner_destroyed");
+
         loaded = false;
     }
 }
@@ -221,38 +219,33 @@
 - (void)bannerViewDidReceiveAd:(GADBannerView *)bannerView {
     NSLog(@"bannerViewDidReceiveAd");
     [self addBannerViewToView];
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_banner_loaded");
+    AdMob::get_singleton()->emit_signal("banner_loaded");
     loaded = true;
 }
 
 - (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"bannerView:didFailToReceiveAdWithError: %@", [error localizedDescription]);
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_banner_failed_to_load", (int) error.code);
+    AdMob::get_singleton()->emit_signal("banner_failed_to_load", (int) error.code);
+
 }
 
 - (void)bannerViewDidRecordImpression:(GADBannerView *)bannerView {
   NSLog(@"bannerViewDidRecordImpression");
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_banner_recorded_impression");
+    AdMob::get_singleton()->emit_signal("banner_recorded_impression");
 }
 
 - (void)bannerViewWillPresentScreen:(GADBannerView *)bannerView {
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_banner_clicked");
+    AdMob::get_singleton()->emit_signal("banner_clicked");
 }
 
 - (void)bannerViewWillDismissScreen:(GADBannerView *)bannerView {
     NSLog(@"bannerViewWillDismissScreen");
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_banner_closed");
+    AdMob::get_singleton()->emit_signal("banner_closed");
 }
 
 - (void)bannerViewDidDismissScreen:(GADBannerView *)bannerView {
     NSLog(@"bannerViewDidDismissScreen");
-    Object *obj = ObjectDB::get_instance(instanceId);
-    obj->call_deferred("_on_AdMob_banner_opened");
+    AdMob::get_singleton()->emit_signal("banner_opened");
 }
 
 @end

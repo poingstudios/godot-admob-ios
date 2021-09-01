@@ -107,7 +107,16 @@ jobs:
       env:
         SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
       run: |
-        ./scripts/release_static_library.sh ${CURRENT_GODOT_VERSION:0:3}
+        VERSION_TO_BUILD=0
+
+        if [ ${CURRENT_GODOT_VERSION:0:1} -gt 3 ]
+        then
+            VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:3}
+        else
+            VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:1}.x
+        fi
+        
+        ./scripts/release_static_library.sh
 
     - name: Compress the binaries
       run: |

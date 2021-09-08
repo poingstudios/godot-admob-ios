@@ -38,7 +38,7 @@
           if (error) {
               NSLog(@"Rewarded ad failed to load with error: %@", [error localizedDescription]);
               NSLog(@"error while creating reward");
-              AdMob::get_singleton()->emit_signal("rewarded_ad_failed_to_show", (int) error.code);
+              AdMob::get_singleton()->emit_signal("rewarded_ad_failed_to_load", (int) error.code);
 
             return;
           }

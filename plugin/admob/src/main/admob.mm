@@ -403,7 +403,7 @@ void AdMob::_bind_methods() {
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_loaded"));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_opened"));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_failed_to_show", PropertyInfo(Variant::INT, "id")));
-    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_closed", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_closed"));
     
     ClassDB::bind_method("initialize", &AdMob::initialize);
 

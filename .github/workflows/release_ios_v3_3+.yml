@@ -88,6 +88,10 @@ jobs:
         curl -LO $FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS
         tar -xf godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz
         mv godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz godot
+        ls
+
+    - name: Generate headers
+      run: |
         ./scripts/generate_headers.sh || true
 
     - name: Download Google Mobile Ads SDK Artifact

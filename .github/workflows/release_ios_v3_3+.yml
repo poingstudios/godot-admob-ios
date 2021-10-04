@@ -84,10 +84,9 @@ jobs:
 
     - name: Download and unzip Stable Godot extracted headers
       run: |
-        FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS="https://downloads.tuxfamily.org/godotengine/${{env.CURRENT_GODOT_VERSION}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz"
+        FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS="https://github.com/godotengine/godot/releases/download/${{env.CURRENT_GODOT_VERSION}}-stable/godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz"
         curl -LO $FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS
         tar -xf godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz
-        mkdir godot
         mv godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz godot
         ./scripts/generate_headers.sh || true
 

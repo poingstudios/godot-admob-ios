@@ -84,11 +84,11 @@ jobs:
 
     - name: Download and unzip Stable Godot extracted headers
       run: |
-        FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS="https://github.com/godotengine/godot-ios-plugins/releases/download/${{env.CURRENT_GODOT_VERSION}}-stable/extracted_headers.zip"
+        FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS="https://downloads.tuxfamily.org/godotengine/${{env.CURRENT_GODOT_VERSION}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz"
         curl -LO $FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS
-        unzip extracted_headers.zip
-        mv extracted_headers/godot ./
-
+        tar -xf godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz
+        mv godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz godot
+        ./scripts/generate_headers.sh || true
 
     - name: Download Google Mobile Ads SDK Artifact
       uses: actions/download-artifact@v2
@@ -116,7 +116,7 @@ jobs:
             VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:1}.x
         fi
         
-        ./scripts/release_static_library.sh
+        ./scripts/release_static_library.sh ${VERSION_TO_BUILD}
 
     - name: Compress the binaries
       run: |

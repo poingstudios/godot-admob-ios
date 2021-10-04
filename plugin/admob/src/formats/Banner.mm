@@ -99,7 +99,7 @@
               frame = UIEdgeInsetsInsetRect(rootController.view.frame, rootController.view.safeAreaInsets);
         }
         CGFloat viewWidth = frame.size.width;
-        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth);
+        bannerView = [[GADBannerView alloc] initWithAdSize:GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)];
         NSLog(@"Adaptive banner will be created");
     }
     else { //smart banner

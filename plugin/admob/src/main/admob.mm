@@ -7,8 +7,6 @@
 
 
 #import <Foundation/Foundation.h>
-#import <AppTrackingTransparency/AppTrackingTransparency.h>
-#import <AdSupport/AdSupport.h>
 #import <AdSupport/ASIdentifierManager.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #include <CommonCrypto/CommonDigest.h>
@@ -179,14 +177,7 @@ void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_a
         NSLog(@"maxAdContentRating = GADMaxAdContentRatingMatureAudience");
     }
 
-    if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            GADInitialize();
-        }];
-    }
-    else{
-        GADInitialize();
-    }
+    GADInitialize();
 
     bannerObj = [[Banner alloc] init];
     interstitialObj = [[Interstitial alloc] init];

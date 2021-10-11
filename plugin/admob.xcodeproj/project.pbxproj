@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		248500F8C12E326E0ED11250 /* Pods_admob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570EE2D2740D36E082222C6C /* Pods_admob.framework */; };
 		5E2763192686B39C003BBE7D /* RewardedInterstitial.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E2763172686B39C003BBE7D /* RewardedInterstitial.mm */; };
 		5E4FE6E5262765580066D8AF /* admob_module.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FE6E3262765580066D8AF /* admob_module.mm */; };
 		5E4FE6E9262765660066D8AF /* admob.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FE6E7262765660066D8AF /* admob.mm */; };
@@ -29,14 +30,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		570EE2D2740D36E082222C6C /* Pods_admob.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_admob.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59E94083EF57F083F66E2935 /* Pods-admob.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-admob.release.xcconfig"; path = "Target Support Files/Pods-admob/Pods-admob.release.xcconfig"; sourceTree = "<group>"; };
 		5E2763172686B39C003BBE7D /* RewardedInterstitial.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RewardedInterstitial.mm; path = admob/src/formats/RewardedInterstitial.mm; sourceTree = "<group>"; };
 		5E2763182686B39C003BBE7D /* RewardedInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RewardedInterstitial.h; path = admob/src/formats/RewardedInterstitial.h; sourceTree = "<group>"; };
-		5E4FE6C8262764750066D8AF /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = admob/lib/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
-		5E4FE6CA262764750066D8AF /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = admob/lib/GoogleMobileAds.xcframework; sourceTree = "<group>"; };
-		5E4FE6CC262764750066D8AF /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = admob/lib/GoogleUtilities.xcframework; sourceTree = "<group>"; };
-		5E4FE6CE262764750066D8AF /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = admob/lib/nanopb.xcframework; sourceTree = "<group>"; };
-		5E4FE6D0262764750066D8AF /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = admob/lib/PromisesObjC.xcframework; sourceTree = "<group>"; };
-		5E4FE6D2262764750066D8AF /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = admob/lib/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
 		5E4FE6E3262765580066D8AF /* admob_module.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = admob_module.mm; path = admob/src/module/admob_module.mm; sourceTree = "<group>"; };
 		5E4FE6E4262765580066D8AF /* admob_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = admob_module.h; path = admob/src/module/admob_module.h; sourceTree = "<group>"; };
 		5E4FE6E7262765660066D8AF /* admob.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = admob.mm; path = admob/src/main/admob.mm; sourceTree = "<group>"; };
@@ -48,6 +45,7 @@
 		5E4FE6EF262765730066D8AF /* Rewarded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rewarded.h; path = admob/src/formats/Rewarded.h; sourceTree = "<group>"; };
 		5E4FE6F0262765730066D8AF /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Banner.h; path = admob/src/formats/Banner.h; sourceTree = "<group>"; };
 		5EDA216925B398A50076123B /* libadmob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libadmob.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8250BA33C73A9BC8E70286EF /* Pods-admob.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-admob.debug.xcconfig"; path = "Target Support Files/Pods-admob/Pods-admob.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,21 +53,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				248500F8C12E326E0ED11250 /* Pods_admob.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46C4A2C0D928992214E37B6F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8250BA33C73A9BC8E70286EF /* Pods-admob.debug.xcconfig */,
+				59E94083EF57F083F66E2935 /* Pods-admob.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5E49FACF25B3B17C0001A226 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5E4FE6C8262764750066D8AF /* GoogleAppMeasurement.xcframework */,
-				5E4FE6CA262764750066D8AF /* GoogleMobileAds.xcframework */,
-				5E4FE6CC262764750066D8AF /* GoogleUtilities.xcframework */,
-				5E4FE6CE262764750066D8AF /* nanopb.xcframework */,
-				5E4FE6D0262764750066D8AF /* PromisesObjC.xcframework */,
-				5E4FE6D2262764750066D8AF /* UserMessagingPlatform.xcframework */,
+				570EE2D2740D36E082222C6C /* Pods_admob.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,6 +94,7 @@
 				5E4FE6E3262765580066D8AF /* admob_module.mm */,
 				5EDA216A25B398A50076123B /* Products */,
 				5E49FACF25B3B17C0001A226 /* Frameworks */,
+				46C4A2C0D928992214E37B6F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +113,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EDA217225B398A50076123B /* Build configuration list for PBXNativeTarget "admob" */;
 			buildPhases = (
+				A108D3677AD578053199F25C /* [CP] Check Pods Manifest.lock */,
 				5EDA216525B398A50076123B /* Sources */,
 				5EDA216625B398A50076123B /* Frameworks */,
 				5EDA216725B398A50076123B /* Copy Files */,
@@ -152,6 +157,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A108D3677AD578053199F25C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-admob-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5EDA216525B398A50076123B /* Sources */ = {
@@ -284,6 +314,7 @@
 		};
 		5EDA217325B398A50076123B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8250BA33C73A9BC8E70286EF /* Pods-admob.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -333,6 +364,7 @@
 		};
 		5EDA217425B398A50076123B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E94083EF57F083F66E2935 /* Pods-admob.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

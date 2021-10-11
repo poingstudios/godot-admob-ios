@@ -40,3 +40,5 @@ local.properties
 
 
 *.tar.xz
+
+plugin/Pods/

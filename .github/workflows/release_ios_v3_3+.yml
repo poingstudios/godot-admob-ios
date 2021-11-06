@@ -14,6 +14,8 @@ jobs:
     runs-on: "ubuntu-latest"
     
     steps:
+    - uses: actions/checkout@v2
+    
     - name: Install Pod Google-Mobile-Ads-SDK
       run: |
         cd plugin

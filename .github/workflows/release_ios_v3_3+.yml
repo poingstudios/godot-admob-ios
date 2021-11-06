@@ -14,17 +14,27 @@ jobs:
     runs-on: "ubuntu-latest"
     
     steps:
-    - name: Download, copy and unzip the lastest Google Mobile Ads SDK on release binaries and iOS module folder
+    - name: Install Pod Google-Mobile-Ads-SDK
       run: |
-        curl -LO https://dl.google.com/googleadmobadssdk/googlemobileadssdkios.zip
+        cd plugin
+        pod install --repo-update
+        zip -r ../Pods.zip Pods
 
-    - name: Upload Google Mobile Ads SDK as Artifact
+    - name: Zip Pods to GoogleMobile-Ads-SDK
+      run: |
+        cd plugin/Pods/GoogleUserMessagingPlatform/Frameworks/Release
+        zip -r ../../../../../googlemobileadssdk.zip UserMessagingPlatform.xcframework
+        cd ../../../../../ 
+        cd plugin/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current
+        zip -r ../../../../../googlemobileadssdk.zip GoogleMobileAds.xcframework  
+
+    - name: Upload Pods as Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: googlemobileadssdkios.zip
-        path: googlemobileadssdkios.zip
+        name: Pods.zip
+        path: Pods.zip
 
-    - name: Upload binaries to release
+    - name: Upload Google Mobile Ads SDK to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -38,7 +48,7 @@ jobs:
     runs-on: "macos-latest"
     strategy:
       matrix:
-        GODOT_VERSIONS: [3.3, 3.3.1, 3.3.2, 3.3.3, 3.3.4]
+        GODOT_VERSIONS: [3.3, 3.3.1, 3.3.2, 3.3.3, 3.3.4, 3.4]
 
     steps:
     - uses: actions/checkout@v2
@@ -96,15 +106,12 @@ jobs:
     - name: Download Google Mobile Ads SDK Artifact
       uses: actions/download-artifact@v2
       with:
-        name: googlemobileadssdkios.zip
+        name: Pods.zip
 
     - name: Copy and unzip the Google Mobile Ads SDK on release binaries and iOS module folder
       run: |
         mkdir -p godot-${{env.CURRENT_GODOT_VERSION}}-stable/bin/release/
-        unzip googlemobileadssdkios.zip -d plugin/admob/lib/
-        cd plugin/admob/lib/
-        cd */
-        mv * ../
+        unzip Pods.zip -d plugin/admob/lib/
 
     - name: Compiles the Source Code
       env:

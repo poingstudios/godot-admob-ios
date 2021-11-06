@@ -113,7 +113,7 @@ jobs:
     - name: Copy and unzip the Google Mobile Ads SDK on release binaries and iOS module folder
       run: |
         mkdir -p godot-${{env.CURRENT_GODOT_VERSION}}-stable/bin/release/
-        unzip Pods.zip -d plugin/admob/lib/
+        unzip Pods.zip -d plugin/
 
     - name: Compiles the Source Code
       env:

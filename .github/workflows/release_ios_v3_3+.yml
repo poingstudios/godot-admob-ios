@@ -108,7 +108,7 @@ jobs:
     - name: Download Google Mobile Ads SDK Artifact
       uses: actions/download-artifact@v2
       with:
-        name: Pods.zip
+        name: Pods
 
     - name: Copy and unzip the Google Mobile Ads SDK on release binaries and iOS module folder
       run: |

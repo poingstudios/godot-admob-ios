@@ -25,15 +25,15 @@ jobs:
     - name: Zip Pods to GoogleMobile-Ads-SDK
       run: |
         cd plugin/Pods/GoogleUserMessagingPlatform/Frameworks/Release
-        zip -r ../../../../../googlemobileadssdk.zip UserMessagingPlatform.xcframework
+        zip -r ../../../../../googlemobileadssdkios.zip UserMessagingPlatform.xcframework
         cd ../../../../../ 
         cd plugin/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current
-        zip -r ../../../../../googlemobileadssdk.zip GoogleMobileAds.xcframework  
+        zip -r ../../../../../googlemobileadssdkios.zip GoogleMobileAds.xcframework  
 
     - name: Upload Pods as Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: Pods.zip
+        name: Pods
         path: Pods.zip
 
     - name: Upload Google Mobile Ads SDK to release

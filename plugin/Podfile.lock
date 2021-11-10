@@ -48,7 +48,7 @@ PODS:
   - PromisesObjC (2.0.0)
 
 DEPENDENCIES:
-  - Google-Mobile-Ads-SDK (= 8.12.0)
+  - Google-Mobile-Ads-SDK
 
 SPEC REPOS:
   trunk:
@@ -67,6 +67,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: 9702aa76a72d3c9ab7ce4f7f01f0866f78884ecd
+PODFILE CHECKSUM: ed63d486b03fda68a20334a961667960ab4507e4
 
 COCOAPODS: 1.11.2

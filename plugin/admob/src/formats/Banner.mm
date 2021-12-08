@@ -69,7 +69,7 @@
     NSLog(@"banner position = %i", positionBanner);
     
     
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
 
     if (bannerView != nil) {
         [self destroy_banner];
@@ -77,19 +77,19 @@
 
     
     if ([size isEqualToString:@"BANNER"]) {
-        bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeBanner];
         NSLog(@"Banner will be created");
     } else if ([size isEqualToString:@"LARGE_BANNER"]) {
-        bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeLargeBanner];
+        bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeLargeBanner];
         NSLog(@"Large banner will be created");
     } else if ([size isEqualToString:@"MEDIUM_RECTANGLE"]) {
-        bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeMediumRectangle];
+        bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeMediumRectangle];
         NSLog(@"Medium banner will be created");
     } else if ([size isEqualToString:@"FULL_BANNER"]) {
-        bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeFullBanner];
+        bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullBanner];
         NSLog(@"Full banner will be created");
     } else if ([size isEqualToString:@"LEADERBOARD"]) {
-        bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeLeaderboard];
+        bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeLeaderboard];
         NSLog(@"Leaderboard will be banner created");
     } else if ([size isEqualToString:@"ADAPTIVE"]) {
         CGRect frame = rootController.view.frame;
@@ -103,13 +103,15 @@
         NSLog(@"Adaptive banner will be created");
     }
     else { //smart banner
-        if (orientation == 0 || orientation == UIInterfaceOrientationPortrait) { //portrait
+        if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) { //portrait
             bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
             NSLog(@"Smart portait banner will be created");
+            NSLog(@"UIDeviceOrientation: Portrait");
         }
         else { //landscape
             bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape];
             NSLog(@"Smart landscape banner will be created");
+            NSLog(@"UIDeviceOrientation: Landscape");
         }
     }
     

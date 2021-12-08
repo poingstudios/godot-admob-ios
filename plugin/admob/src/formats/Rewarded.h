@@ -5,8 +5,6 @@
 //  Created by Gustavo Maciel on 24/01/21.
 //
 
-#import <GoogleMobileAds/GADRewardedAd.h>
-#import <GoogleMobileAds/GADExtras.h>
 #import "app_delegate.h"
 #import "view_controller.h"
 #include "os_iphone.h"

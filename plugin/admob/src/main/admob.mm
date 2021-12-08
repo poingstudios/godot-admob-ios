@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <AdSupport/ASIdentifierManager.h>
-#import <GoogleMobileAds/GoogleMobileAds.h>
 #include <CommonCrypto/CommonDigest.h>
 #include <UserMessagingPlatform/UserMessagingPlatform.h>
 
@@ -16,7 +15,7 @@
 #include "core/class_db.h"
 
 
-#import "admob.h"
+#include "admob.h"
    
 AdMob *AdMob::instance = NULL;
 
@@ -55,7 +54,7 @@ void AdMob::loadConsentForm(bool is_for_child_directed_treatment, bool is_real)
         {
             if (loadError)
             {
-                emit_signal("consent_form_load_failure", (int) loadError.code, loadError.domain);
+                emit_signal("consent_form_load_failure", (int) loadError.code, [loadError.localizedDescription UTF8String]);
             }
             else
             {
@@ -121,7 +120,7 @@ void AdMob::request_user_consent()
         {
             if (error)
             {
-                emit_signal("consent_info_update_failure", (int) error.code, error.domain);
+                emit_signal("consent_info_update_failure", (int) error.code, [error.localizedDescription UTF8String]);
             }
             else
             {
@@ -143,15 +142,18 @@ void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_a
 {
     if (instance != this || initialized)
     {
+        NSLog(@"AdMob Module already initialized");
         return;
     }
+    NSLog(@"AdMob Module will try to initialize now");
+
     self_max_ad_content_rating = max_ad_content_rating;
     this -> is_test_europe_user_consent = is_test_europe_user_consent;
     
     if (!is_real){
         #if TARGET_IPHONE_SIMULATOR
-            GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ kGADSimulatorID ];
-            NSLog(@"on Testing Simulator: %@", kGADSimulatorID);
+            GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ GADSimulatorID ];
+            NSLog(@"on Testing Simulator: %@", GADSimulatorID);
         #else
             GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @ [ [NSString stringWithCString: getDeviceId() encoding: NSUTF8StringEncoding] ];
             NSLog(@"on Testing Real Device: testDeviceIdentifiers: %@", [NSString stringWithCString: getDeviceId() encoding: NSUTF8StringEncoding]);
@@ -191,13 +193,14 @@ void AdMob::GADInitialize(){
     {
         NSDictionary<NSString *, GADAdapterStatus *>* states = [status adapterStatusesByClassName];
         GADAdapterStatus * adapterStatus = states[@"GADMobileAds"];
-        NSLog(@"%s : %ld", "GADMobileAds", adapterStatus.state);
-        
+        NSLog(@"%s : %s", "GADMobileAds", adapterStatus.state ? "True" : "False");
+
+        initialized = adapterStatus.state;
         if (adapterStatus.state == 0){
-            initialized = false;
+            NSLog(@"AdMob Module couldn't be initialized, check your configurations");
         }
         else if (adapterStatus.state == 1){
-            initialized = true;
+            NSLog(@"AdMob Module has been initialized");
         }
         
         emit_signal("initialization_complete", (int) adapterStatus.state, "GADMobileAds");

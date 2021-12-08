@@ -9,7 +9,6 @@
 #include "core/object.h"
 #include "../main/admob.h"
 
-@import GoogleMobileAds;
 #import "app_delegate.h"
 #import "view_controller.h"
 

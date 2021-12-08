@@ -8,6 +8,7 @@
 #ifndef admob_plugin_implementation_h
     #define admob_plugin_implementation_h
     #include "core/object.h"
+    @import GoogleMobileAds;
 
     #ifdef __OBJC__
         #include "../formats/Banner.h"

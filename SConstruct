@@ -73,6 +73,9 @@ else:
 env.Append(FRAMEWORKPATH=['#plugin/' + env['plugin'] + '/lib/GoogleMobileAds.xcframework/' + xcframework_directory])
 env.Append(FRAMEWORKPATH=['#plugin/' + env['plugin'] + '/lib/UserMessagingPlatform.xcframework/' + xcframework_directory])
 
+#env.Append(FRAMEWORKPATH=['#plugin/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/' + xcframework_directory])
+#env.Append(FRAMEWORKPATH=['#plugin/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
+
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())
 except (subprocess.CalledProcessError, OSError):

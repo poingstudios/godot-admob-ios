@@ -78,14 +78,9 @@
 - Extract the content in ```ios-template-v{{ your_godot_version }}.zip``` into ```res://ios/plugins``` directory on your Godot project
 - Extract the content in ```googlemobileadssdkios.zip``` into ```res://ios/plugins/admob/lib```, will be like this:
 - ![Folder Structure](https://i.imgur.com/Xdj8yqV.png)
+- Update the configuration in ```res://ios/plugins/admob.gdip```. Updating `GADApplicationIdentifier` is required.
 - Export the project enabling the `AdMob Plugin`:
 - ![Export Project](https://i.imgur.com/4Zm3sjp.png)
-- Into your Xcode Project: [Update your GAMENAME-Info.plist file](https://developers.google.com/admob/ios/quick-start#update_your_infoplist), on GADApplicationIdentifier key with a string value of your [AdMob app ID](https://support.google.com/admob/answer/7356431):
-![plist](https://i.imgur.com/1tcKXx5.png)
-- [Enable SKAdNetwork to track conversions](https://developers.google.com/admob/ios/ios14#skadnetwork):
-![SKAdNetwork](https://developers.google.com/admob/images/idfa/skadnetwork.png)
-- (Optional) If you are using UMP, you can add too the [Delay app measurement](https://developers.google.com/admob/ump/ios/quick-start#delay_app_measurement_optional)
-![DelayAppMeasurement](https://developers.google.com/admob/images/delay_app_measurement_plist.png)
 
 ## Android (v3.2.2+):
 - https://github.com/Poing-Studios/godot-admob-android

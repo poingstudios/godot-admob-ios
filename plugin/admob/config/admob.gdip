@@ -24,5 +24,22 @@ files=[]
 linker_flags=["-ObjC"]
 
 [plist]
-NSUserTrackingUsageDescription="This identifier will be used to deliver personalized ads to you."
+;Warning: You will need to update the [plist] section every time you reinstall/upgrade the plugin!
+
+;@ IMPORTANT @: Replace with your app id: https://support.google.com/admob/answer/7356431
 GADApplicationIdentifier="ca-app-pub-3940256099942544~1458002511"
+
+;OPTIONAL: If you are using User Messaging Platform (UMP), you can enable Delay app measurement: https://developers.google.com/admob/ump/ios/quick-start#delay_app_measurement_optional
+GADDelayAppMeasurementInit:boolean=false
+
+;OPTIONAL: Advanced users can modify these extra properties.
+NSUserTrackingUsageDescription="This identifier will be used to deliver personalized ads to you."
+
+SKAdNetworkItems:raw="
+<array>
+    <dict>
+        <key>SKAdNetworkIdentifier</key>
+        <string>cstr6suwn9.skadnetwork</string>
+    </dict>
+</array>
+"

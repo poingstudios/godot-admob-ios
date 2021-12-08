@@ -123,6 +123,10 @@ jobs:
 
     - name: Compress the binaries
       run: |
+        if [ 1 -eq "$(echo "${CURRENT_GODOT_VERSION:0:3} < 3.4" | bc)" ]
+        then
+            cp ./plugin/admob/config/3.3\<3.4/admob.gdip ./bin/release/admob
+        fi
         cd bin/release 
         zip -r ../../ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip admob
 

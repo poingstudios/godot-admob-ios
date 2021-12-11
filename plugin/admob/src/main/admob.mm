@@ -47,7 +47,7 @@ AdMob *AdMob::get_singleton() {
 };
 
 
-void AdMob::loadConsentForm(bool is_for_child_directed_treatment, bool is_real)
+void AdMob::loadConsentForm()
 {
     [UMPConsentForm
         loadWithCompletionHandler:^(UMPConsentForm *form, NSError *loadError)
@@ -95,6 +95,7 @@ void AdMob::loadConsentForm(bool is_for_child_directed_treatment, bool is_real)
 }
 
 void AdMob::reset_consent_state(){
+    NSLog(@"Reseting consent state");
     [UMPConsentInformation.sharedInstance reset];
 }
 
@@ -127,6 +128,7 @@ void AdMob::request_user_consent()
                 UMPFormStatus formStatus = UMPConsentInformation.sharedInstance.formStatus;
                 if (formStatus == UMPFormStatusAvailable)
                 {
+                    loadConsentForm();
                     emit_signal("consent_info_update_success", "Consent Form Available");
                 }
                 else

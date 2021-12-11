@@ -96,8 +96,7 @@
         const char* getDeviceId();
         void GADInitialize();
        
-        void loadConsentForm(bool is_for_child_directed_treatment,
-                             bool is_real);
+        void loadConsentForm();
 
     };
 

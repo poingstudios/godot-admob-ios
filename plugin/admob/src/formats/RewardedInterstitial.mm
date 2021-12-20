@@ -36,6 +36,9 @@
                   request:request
         completionHandler:^(GADRewardedInterstitialAd *ad, NSError *error) {
           if (error) {
+              self->rewardedInterstitialAd = nil;
+              self->rewardedInterstitialAd.fullScreenContentDelegate = nil;
+
               NSLog(@"Rewarded interstitial ad failed to load with error: %@", [error localizedDescription]);
               NSLog(@"error while creating rewarded interstitial");
               AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_failed_to_load", (int) error.code);
@@ -43,13 +46,15 @@
               return;
           }
           else{
+              self->rewardedInterstitialAd = ad;
+              self->rewardedInterstitialAd.fullScreenContentDelegate = self;
+
               NSLog(@"reward interstitial successfully loaded");
               AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_loaded");
+
               self->loaded = true;
 
           }
-        self->rewardedInterstitialAd = ad;
-        self->rewardedInterstitialAd.fullScreenContentDelegate = self;
         }
      ];
     

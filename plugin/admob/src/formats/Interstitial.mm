@@ -40,20 +40,24 @@
                                     request:request
                           completionHandler:^(GADInterstitialAd *ad, NSError *error) {
       if (error) {
+          self->interstitial = nil;
+          self->interstitial.fullScreenContentDelegate = nil;
+
           NSLog(@"interstitial:didFailToReceiveAdWithError: %@", [error localizedDescription]);
           AdMob::get_singleton()->emit_signal("interstitial_failed_to_load", (int) error.code);
 
           return;
       }
       else{
+          self->interstitial = ad;
+          self->interstitial.fullScreenContentDelegate = self;
+
           NSLog(@"interstitial created with the id");
           NSLog(@"interstitialDidReceiveAd");
           AdMob::get_singleton()->emit_signal("interstitial_loaded");
           
           self->loaded = true;
       }
-      self->interstitial = ad;
-      self->interstitial.fullScreenContentDelegate = self;
 
     }];
     

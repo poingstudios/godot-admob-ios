@@ -36,6 +36,9 @@
                   request:request
         completionHandler:^(GADRewardedAd *ad, NSError *error) {
           if (error) {
+              self->rewarded = nil;
+              self->rewarded.fullScreenContentDelegate = nil;
+
               NSLog(@"Rewarded ad failed to load with error: %@", [error localizedDescription]);
               NSLog(@"error while creating reward");
               AdMob::get_singleton()->emit_signal("rewarded_ad_failed_to_load", (int) error.code);
@@ -43,12 +46,14 @@
             return;
           }
           else{
+              self->rewarded = ad;
+              self->rewarded.fullScreenContentDelegate = self;
+
               NSLog(@"reward successfully loaded");
               AdMob::get_singleton()->emit_signal("rewarded_ad_loaded");
+              
               self->loaded = true;
           }
-        self->rewarded = ad;
-        self->rewarded.fullScreenContentDelegate = self;
         }
      ];
     

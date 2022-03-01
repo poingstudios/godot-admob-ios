@@ -20,7 +20,7 @@ jobs:
 
     - name: Download, copy and unzip the lastest Google Mobile Ads SDK on release binaries and iOS module folder
       run: |
-        curl -LO https://github.com/Poing-Studios/godot-admob-ios/releases/download/${{ github.event.inputs.godot_version }}/googlemobileadssdkios.zip
+        curl -LO https://github.com/Poing-Studios/godot-admob-ios/releases/download/${{ github.event.inputs.tag }}/googlemobileadssdkios.zip
 
     - name: Verify current inputs godot_version
       run: |

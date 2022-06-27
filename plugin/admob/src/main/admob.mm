@@ -209,7 +209,7 @@ void AdMob::GADInitialize(){
     }];
 }
 
-void AdMob::load_banner(const String &ad_unit_id, int position, const String &size, bool show_instantly) {
+void AdMob::load_banner(const String &ad_unit_id, int position, const String &size, bool show_instantly, bool respect_safe_area) {
     if (!initialized) {
         NSLog(@"AdMob Module not initialized");
         return;
@@ -217,7 +217,7 @@ void AdMob::load_banner(const String &ad_unit_id, int position, const String &si
     
     NSString *ad_unit_id_NSString = [NSString stringWithCString:ad_unit_id.utf8().get_data() encoding: NSUTF8StringEncoding];
     NSString *size_NSString       = [NSString stringWithCString:size.utf8().get_data() encoding: NSUTF8StringEncoding];
-    [bannerObj load_banner: ad_unit_id_NSString : position: size_NSString: show_instantly];
+    [bannerObj load_banner: ad_unit_id_NSString : position: size_NSString: show_instantly: respect_safe_area];
     
 }
 

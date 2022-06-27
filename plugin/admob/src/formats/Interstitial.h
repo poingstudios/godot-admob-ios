@@ -11,7 +11,7 @@
 #import "app_delegate.h"
 #import "view_controller.h"
 #include "os_iphone.h"
-#include "object.h"
+#include "core/object.h"
 #include "../main/admob.h"
 
 

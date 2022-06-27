@@ -58,7 +58,8 @@
         void load_banner(const String &ad_unit_id,
                          int gravity,
                          const String &size,
-                         bool show_instantly);
+                         bool show_instantly,
+                         bool respect_safe_area);
         
         void destroy_banner();
         

@@ -18,13 +18,14 @@
     GADBannerView *bannerView;
     bool initialized;
     bool loaded;
+    bool respectSafeArea;
     int positionBanner;
     NSString *adUnitId;
     ViewController *rootController;
 }
 
 - (instancetype)init;
-- (void)load_banner: (NSString*) ad_unit_id : (int) position : (NSString*) size : (bool) show_instantly;
+- (void)load_banner: (NSString*) ad_unit_id : (int) position : (NSString*) size : (bool) show_instantly : (bool) respect_safe_area;
 - (void)destroy_banner;
 - (void)show_banner;
 - (void)hide_banner;

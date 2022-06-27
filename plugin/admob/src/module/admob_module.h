@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "../main/admob.h"
-#import "engine.h"
 
 
 void register_admob_types();

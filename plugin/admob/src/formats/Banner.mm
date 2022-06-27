@@ -55,7 +55,7 @@
 }
 
 
-- (void) load_banner:(NSString*)ad_unit_id :(int)position :(NSString*)size : (bool) show_instantly {
+- (void) load_banner:(NSString*)ad_unit_id :(int)position :(NSString*)size : (bool) show_instantly : (bool) respect_safe_area {
     NSLog(@"Calling load_banner");
         
     if (!initialized || (!ad_unit_id.length)) {
@@ -64,7 +64,7 @@
     else{
         NSLog(@"banner will load with the banner id %@", ad_unit_id);
     }
-    
+    respectSafeArea = respect_safe_area;
     positionBanner = position;
     NSLog(@"banner position = %i", positionBanner);
     
@@ -153,7 +153,7 @@
             [NSLayoutConstraint constraintWithItem:bannerView
                                         attribute:NSLayoutAttributeBottom
                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:rootController.view.safeAreaLayoutGuide
+                                            toItem:respectSafeArea ? rootController.view.safeAreaLayoutGuide : rootController.view
                                         attribute:NSLayoutAttributeBottom
                                         multiplier:1
                                         constant:0]];
@@ -164,7 +164,7 @@
             [NSLayoutConstraint constraintWithItem:bannerView
                                         attribute:NSLayoutAttributeTop
                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:rootController.view.safeAreaLayoutGuide
+                                            toItem:respectSafeArea ? rootController.view.safeAreaLayoutGuide : rootController.view
                                         attribute:NSLayoutAttributeTop
                                         multiplier:1
                                         constant:0]];

@@ -3,11 +3,11 @@ This application makes use of the following third party libraries:
 
 ## Google-Mobile-Ads-SDK
 
-Copyright 2021 Google
+Copyright 2022 Google
 
 ## GoogleAppMeasurement
 
-Copyright 2021 Google
+Copyright 2022 Google
 
 ## GoogleUserMessagingPlatform
 

@@ -329,15 +329,6 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../godot",
-					"$(SRCROOT)/../godot/main",
-					"$(SRCROOT)/../godot/core",
-					"$(SRCROOT)/../godot/core/os",
-					"$(SRCROOT)/../godot/servers",
-					"$(SRCROOT)/../godot/platform",
-					"$(SRCROOT)/../godot/modules",
-					"$(SRCROOT)/../godot/scene",
-					"$(SRCROOT)/../godot/drivers",
-					"$(SRCROOT)/../godot/trirdparty",
 					"$(SRCROOT)/../godot/platform/iphone",
 				);
 				LIBRARY_SEARCH_PATHS = "";
@@ -379,15 +370,6 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../godot",
-					"$(SRCROOT)/../godot/main",
-					"$(SRCROOT)/../godot/core",
-					"$(SRCROOT)/../godot/core/os",
-					"$(SRCROOT)/../godot/servers",
-					"$(SRCROOT)/../godot/platform",
-					"$(SRCROOT)/../godot/modules",
-					"$(SRCROOT)/../godot/scene",
-					"$(SRCROOT)/../godot/drivers",
-					"$(SRCROOT)/../godot/trirdparty",
 					"$(SRCROOT)/../godot/platform/iphone",
 				);
 				LIBRARY_SEARCH_PATHS = "";

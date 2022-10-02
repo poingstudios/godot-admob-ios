@@ -86,7 +86,7 @@
 }
 
 /// Tells the delegate that the ad presented full screen content.
-- (void)adDidPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
+- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
     NSLog(@"interstitialWillPresentScreen");
     AdMob::get_singleton()->emit_signal("interstitial_opened");
     OSIPhone::get_singleton()->on_focus_out();

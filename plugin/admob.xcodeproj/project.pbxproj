@@ -255,6 +255,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				RESOURCES_TARGETED_DEVICE_FAMILY = iPhone;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -307,6 +308,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				RESOURCES_TARGETED_DEVICE_FAMILY = iPhone;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -318,16 +320,9 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/admob/lib/GoogleMobileAds.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/GoogleUtilities.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/GoogleAppMeasurement.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/nanopb.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/PromisesObjC.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/UserMessagingPlatform.xcframework\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(SRCROOT)/../godot",
 					"$(SRCROOT)/../godot/platform/iphone",
 				);
@@ -345,7 +340,7 @@
 					"-DUNIX_ENABLED",
 					"-DCOREAUDIO_ENABLED",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
@@ -359,16 +354,9 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/admob/lib/GoogleMobileAds.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/GoogleUtilities.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/GoogleAppMeasurement.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/nanopb.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/PromisesObjC.xcframework\"/**",
-					"\"$(SRCROOT)/admob/lib/UserMessagingPlatform.xcframework\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(SRCROOT)/../godot",
 					"$(SRCROOT)/../godot/platform/iphone",
 				);
@@ -377,7 +365,7 @@
 					"-fcxx-modules",
 					"-fmodules",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";

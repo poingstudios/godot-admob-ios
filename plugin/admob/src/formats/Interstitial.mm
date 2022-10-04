@@ -80,25 +80,36 @@
 
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
-    NSLog(@"Ad did fail to present full screen content.");
+    NSLog(@"interstitial didFailToPresentFullScreenContentWithError.");
     AdMob::get_singleton()->emit_signal("interstitial_failed_to_load", (int) error.code);
 
 }
 
 /// Tells the delegate that the ad presented full screen content.
 - (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    NSLog(@"interstitialWillPresentScreen");
+    NSLog(@"interstitial adWillPresentFullScreenContent");
     AdMob::get_singleton()->emit_signal("interstitial_opened");
     OSIPhone::get_singleton()->on_focus_out();
 }
 
 /// Tells the delegate that the ad dismissed full screen content.
 - (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
-    NSLog(@"Ad did dismiss full screen content.");
+    NSLog(@"interstitial adDidDismissFullScreenContent.");
     loaded = false;
     AdMob::get_singleton()->emit_signal("interstitial_closed");
     OSIPhone::get_singleton()->on_focus_in();
 }
+
+- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad{
+    NSLog(@"interstitial adDidRecordImpression.");
+    AdMob::get_singleton()->emit_signal("interstitial_recorded_impression");
+}
+
+- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad{
+    NSLog(@"interstitial clicked.");
+    AdMob::get_singleton()->emit_signal("interstitial_clicked");
+}
+
 
 
 @end

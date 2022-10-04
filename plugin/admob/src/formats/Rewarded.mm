@@ -104,6 +104,15 @@
     OSIPhone::get_singleton()->on_focus_in();
 }
 
+- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad{
+    NSLog(@"rewarded adDidRecordImpression.");
+    AdMob::get_singleton()->emit_signal("rewarded_ad_recorded_impression");
+}
+
+- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad{
+    NSLog(@"rewarded clicked.");
+    AdMob::get_singleton()->emit_signal("rewarded_ad_clicked");
+}
 
 
 @end

@@ -232,21 +232,22 @@
 }
 
 - (void)bannerViewDidRecordImpression:(GADBannerView *)bannerView {
-  NSLog(@"bannerViewDidRecordImpression");
+    NSLog(@"banner_recorded_impression bannerViewDidRecordImpression");
     AdMob::get_singleton()->emit_signal("banner_recorded_impression");
 }
 
-- (void)bannerViewWillPresentScreen:(GADBannerView *)bannerView {
+- (void)bannerViewDidRecordClick:(nonnull GADBannerView *)bannerView{
+    NSLog(@"banner_clicked bannerViewDidRecordClick");
     AdMob::get_singleton()->emit_signal("banner_clicked");
 }
 
 - (void)bannerViewWillDismissScreen:(GADBannerView *)bannerView {
-    NSLog(@"bannerViewWillDismissScreen");
+    NSLog(@"banner_closed bannerViewWillDismissScreen");
     AdMob::get_singleton()->emit_signal("banner_closed");
 }
 
 - (void)bannerViewDidDismissScreen:(GADBannerView *)bannerView {
-    NSLog(@"bannerViewDidDismissScreen");
+    NSLog(@"banner_opened bannerViewDidDismissScreen");
     AdMob::get_singleton()->emit_signal("banner_opened");
 }
 

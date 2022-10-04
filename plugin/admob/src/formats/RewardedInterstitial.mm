@@ -106,5 +106,16 @@
 }
 
 
+- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad{
+    NSLog(@"rewarded interstitial adDidRecordImpression.");
+    AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_recorded_impression");
+}
+
+
+- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad{
+    NSLog(@"rewarded interstitial clicked.");
+    AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_clicked");
+}
+
 
 @end

@@ -374,32 +374,38 @@ void AdMob::_bind_methods() {
     ADD_SIGNAL(MethodInfo("consent_info_update_failure", PropertyInfo(Variant::INT, "id"), PropertyInfo(Variant::STRING, "description")));
 
     ADD_SIGNAL(MethodInfo("banner_loaded"));
-    ADD_SIGNAL(MethodInfo("banner_failed_to_load", PropertyInfo(Variant::INT, "id")));
-    ADD_SIGNAL(MethodInfo("banner_opened"));
-    ADD_SIGNAL(MethodInfo("banner_clicked"));
     ADD_SIGNAL(MethodInfo("banner_closed"));
-    ADD_SIGNAL(MethodInfo("banner_recorded_impression"));
+    ADD_SIGNAL(MethodInfo("banner_opened"));
+    ADD_SIGNAL(MethodInfo("banner_failed_to_load", PropertyInfo(Variant::INT, "id")));
     ADD_SIGNAL(MethodInfo("banner_destroyed"));
+    ADD_SIGNAL(MethodInfo("banner_recorded_impression"));
+    ADD_SIGNAL(MethodInfo("banner_clicked"));
 
     ADD_SIGNAL(MethodInfo("interstitial_loaded"));
     ADD_SIGNAL(MethodInfo("interstitial_closed"));
     ADD_SIGNAL(MethodInfo("interstitial_failed_to_show", PropertyInfo(Variant::INT, "id")));
     ADD_SIGNAL(MethodInfo("interstitial_opened"));
     ADD_SIGNAL(MethodInfo("interstitial_failed_to_load", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("interstitial_recorded_impression"));
+    ADD_SIGNAL(MethodInfo("interstitial_clicked"));
 
-    ADD_SIGNAL(MethodInfo("rewarded_ad_failed_to_load", PropertyInfo(Variant::INT, "id")));
     ADD_SIGNAL(MethodInfo("rewarded_ad_loaded"));
-    ADD_SIGNAL(MethodInfo("rewarded_ad_opened"));
-    ADD_SIGNAL(MethodInfo("rewarded_ad_failed_to_show", PropertyInfo(Variant::INT, "id")));
     ADD_SIGNAL(MethodInfo("rewarded_ad_closed"));
-
-    ADD_SIGNAL(MethodInfo("user_earned_rewarded", PropertyInfo(Variant::STRING, "description"), PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_failed_to_show", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_opened"));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_failed_to_load", PropertyInfo(Variant::INT, "id")));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_recorded_impression"));
+    ADD_SIGNAL(MethodInfo("rewarded_ad_clicked"));
 
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_failed_to_load", PropertyInfo(Variant::INT, "id")));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_loaded"));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_opened"));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_failed_to_show", PropertyInfo(Variant::INT, "id")));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_closed"));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_recorded_impression"));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_clicked"));
+
+    ADD_SIGNAL(MethodInfo("user_earned_rewarded", PropertyInfo(Variant::STRING, "description"), PropertyInfo(Variant::INT, "id")));
     
     ClassDB::bind_method("initialize", &AdMob::initialize);
 

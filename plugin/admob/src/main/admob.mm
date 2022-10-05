@@ -402,7 +402,7 @@ void AdMob::_bind_methods() {
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_opened"));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_failed_to_show", PropertyInfo(Variant::INT, "id")));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_closed"));
-    ADD_SIGNAL(MethodInfo("rewarded_interstitial_recorded_impression"));
+    ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_recorded_impression"));
     ADD_SIGNAL(MethodInfo("rewarded_interstitial_ad_clicked"));
 
     ADD_SIGNAL(MethodInfo("user_earned_rewarded", PropertyInfo(Variant::STRING, "description"), PropertyInfo(Variant::INT, "id")));

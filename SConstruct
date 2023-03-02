@@ -91,11 +91,11 @@ env.Append(CCFLAGS=[
     # '-Wextra',
 ])
 
-env.Append(CCFLAGS=['-arch', env['arch'], "-isysroot", "$IPHONESDK", "-stdlib=libc++", '-isysroot', sdk_path])
+env.Append(CCFLAGS=['-arch', env['arch'], "-isysroot", "$IOS_SDK_PATH", "-stdlib=libc++", '-isysroot', sdk_path])
 env.Append(CCFLAGS=['-DPTRCALL_ENABLED'])
 env.Prepend(CXXFLAGS=[
     '-DNEED_LONG_INT', '-DLIBYUV_DISABLE_NEON', 
-    '-DIPHONE_ENABLED', '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED'
+    '-DIOS_ENABLED', '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED'
 ])
 env.Append(LINKFLAGS=["-arch", env['arch'], '-isysroot', sdk_path, '-F' + sdk_path])
 
@@ -103,6 +103,8 @@ if env['arch'] == 'armv7':
     env.Prepend(CXXFLAGS=['-fno-aligned-allocation'])
 
 if env['version'] == '3.x':
+    env.Prepend(CXXFLAGS=['-DVERSION_3_X'])
+
     env.Prepend(CFLAGS=['-std=gnu11'])
     env.Prepend(CXXFLAGS=['-DGLES_ENABLED', '-std=gnu++14'])
 
@@ -131,8 +133,10 @@ if env['version'] == '3.x':
         if env['arch'] != 'armv7':
             env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
 elif env['version'] == '4.0':
+    env.Prepend(CXXFLAGS=['-DVERSION_4_0'])
+
     env.Prepend(CFLAGS=['-std=gnu11'])
-    env.Prepend(CXXFLAGS=['-DVULKAN_ENABLED', '-std=gnu++17'])
+    env.Prepend(CXXFLAGS=['-std=gnu++17'])
 
     if env['target'] == 'debug':
         env.Prepend(CXXFLAGS=[
@@ -161,19 +165,26 @@ else:
     quit();
 
 # Adding header files
-env.Append(CPPPATH=[
-    '.', 
-    'godot', 
-    'godot/platform/iphone'
-])
+if env['version'] == '3.x':
+    env.Append(CPPPATH=[
+        '.', 
+        'godot', 
+        'godot/platform/iphone',
+    ])
+else:
+       env.Append(CPPPATH=[
+        '.', 
+        'godot', 
+        'godot/platform/ios',
+    ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 sources = Glob('plugin/' + env['plugin'] + '/src/main/*.mm')
 sources.append(Glob('plugin/' + env['plugin'] + '/src/formats/*.mm'))
 sources.append(Glob('plugin/' + env['plugin'] + '/src/module/*.mm'))
 
-# lib<plugin>.<arch>-<simulator|iphone>.<release|debug|release_debug>.a
-library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "iphone")
+# lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
+library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
 library_name = env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
 library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
 

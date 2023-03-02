@@ -11,8 +11,15 @@
 #include <CommonCrypto/CommonDigest.h>
 #include <UserMessagingPlatform/UserMessagingPlatform.h>
 
+#ifdef VERSION_4_0
+#include "core/config/project_settings.h"
+#include "core/object/class_db.h"
+#endif
+
+#ifdef VERSION_3_X
 #include "core/project_settings.h"
 #include "core/class_db.h"
+#endif
 
 
 #include "admob.h"

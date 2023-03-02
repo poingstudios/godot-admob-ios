@@ -9,8 +9,17 @@
 #import <GoogleMobileAds/GADExtras.h>
 #import "app_delegate.h"
 #import "view_controller.h"
+
+#ifdef VERSION_4_0
+#include "os_ios.h"
+#include "core/object/object.h"
+#endif
+
+#ifdef VERSION_3_X
 #include "os_iphone.h"
 #include "core/object.h"
+#endif
+
 #include "../main/admob.h"
 
 @class RewardedInterstitial;

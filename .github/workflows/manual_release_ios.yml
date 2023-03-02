@@ -69,7 +69,8 @@ jobs:
 
     - name: Generate headers
       run: |
-        ./scripts/generate_headers.sh || true
+        major_version=${{env.CURRENT_GODOT_VERSION%%.*}}.x
+        ./scripts/generate_headers.sh ${major_version} || true
 
     - name: Copy and unzip the Google Mobile Ads SDK on release binaries and iOS module folder
       run: |

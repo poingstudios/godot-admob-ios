@@ -7,7 +7,15 @@
 
 #ifndef admob_plugin_implementation_h
     #define admob_plugin_implementation_h
+
+    #ifdef VERSION_4_0
+    #include "core/object/object.h"
+    #endif
+
+    #ifdef VERSION_3_X
     #include "core/object.h"
+    #endif
+    
     @import GoogleMobileAds;
 
     #ifdef __OBJC__

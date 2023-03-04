@@ -79,7 +79,14 @@
 
         AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_opened");
 
+        #ifdef VERSION_4_0
+        OS_IOS::get_singleton()->on_focus_out();
+        #endif
+
+        #ifdef VERSION_3_X
         OSIPhone::get_singleton()->on_focus_out();
+        #endif
+
     } else {
         NSLog(@"reward interstitial ad wasn't ready");
     }
@@ -102,7 +109,14 @@
     NSLog(@"Ad did dismiss full screen content.");
     loaded = false;
     AdMob::get_singleton()->emit_signal("rewarded_interstitial_ad_closed");
+
+    #ifdef VERSION_4_0
+    OS_IOS::get_singleton()->on_focus_in();
+    #endif
+
+    #ifdef VERSION_3_X
     OSIPhone::get_singleton()->on_focus_in();
+    #endif
 }
 
 

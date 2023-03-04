@@ -75,22 +75,18 @@
         [self destroy_banner];
     }
 
-    
+    NSLog(@"%@ will be created", size);
+
     if ([size isEqualToString:@"BANNER"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeBanner];
-        NSLog(@"Banner will be created");
     } else if ([size isEqualToString:@"LARGE_BANNER"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeLargeBanner];
-        NSLog(@"Large banner will be created");
     } else if ([size isEqualToString:@"MEDIUM_RECTANGLE"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeMediumRectangle];
-        NSLog(@"Medium banner will be created");
     } else if ([size isEqualToString:@"FULL_BANNER"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullBanner];
-        NSLog(@"Full banner will be created");
     } else if ([size isEqualToString:@"LEADERBOARD"]) {
         bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeLeaderboard];
-        NSLog(@"Leaderboard will be banner created");
     } else if ([size isEqualToString:@"ADAPTIVE"]) {
         CGRect frame = rootController.view.frame;
         // Here safe area is taken into account, hence the view frame is used after
@@ -100,17 +96,14 @@
         }
         CGFloat viewWidth = frame.size.width;
         bannerView = [[GADBannerView alloc] initWithAdSize:GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)];
-        NSLog(@"Adaptive banner will be created");
     }
     else { //smart banner
         if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) { //portrait
             bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
-            NSLog(@"Smart portait banner will be created");
             NSLog(@"UIDeviceOrientation: Portrait");
         }
         else { //landscape
             bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape];
-            NSLog(@"Smart landscape banner will be created");
             NSLog(@"UIDeviceOrientation: Landscape");
         }
     }

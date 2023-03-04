@@ -89,7 +89,12 @@
 - (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
     NSLog(@"interstitial adWillPresentFullScreenContent");
     AdMob::get_singleton()->emit_signal("interstitial_opened");
+    #ifdef VERSION_4_0
+    OS_IOS::get_singleton()->on_focus_out();
+    #endif
+    #ifdef VERSION_3_X
     OSIPhone::get_singleton()->on_focus_out();
+    #endif
 }
 
 /// Tells the delegate that the ad dismissed full screen content.
@@ -97,7 +102,13 @@
     NSLog(@"interstitial adDidDismissFullScreenContent.");
     loaded = false;
     AdMob::get_singleton()->emit_signal("interstitial_closed");
+    #ifdef VERSION_4_0
+    OS_IOS::get_singleton()->on_focus_in();
+    #endif
+
+    #ifdef VERSION_3_X
     OSIPhone::get_singleton()->on_focus_in();
+    #endif
 }
 
 - (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad{

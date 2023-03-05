@@ -69,7 +69,13 @@ jobs:
 
     - name: Generate headers
       run: |
-        major_version=${{env.CURRENT_GODOT_VERSION%%.*}}.x
+        if [[ ${{env.CURRENT_GODOT_VERSION}} =~ ^3\..* ]]; then
+          major_version=$(echo ${{env.CURRENT_GODOT_VERSION}} | sed -E 's/^([0-9]+)\..*$/\1.x/g')
+        else
+          major_version=${{env.CURRENT_GODOT_VERSION}}
+        fi
+        
+        echo "Major version: $major_version"
         ./scripts/generate_headers.sh ${major_version} || true
 
     - name: Copy and unzip the Google Mobile Ads SDK on release binaries and iOS module folder

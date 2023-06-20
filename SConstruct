@@ -61,17 +61,19 @@ xcframework_directory = ''
 
 if env['simulator']:
     xcframework_directory = 'ios-arm64_x86_64-simulator'
+    ump_xcframework_directory = 'ios-arm64_x86_64-simulator'
     sdk_name = 'iphonesimulator'
     env.Append(CCFLAGS=['-mios-simulator-version-min=10.0'])
     env.Append(LINKFLAGS=["-mios-simulator-version-min=10.0"])
 else:
-    xcframework_directory = 'ios-arm64_armv7'
+    xcframework_directory = 'ios-arm64'
+    ump_xcframework_directory = 'ios-arm64_armv7'
     sdk_name = 'iphoneos'
     env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
     env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])
 
 env.Append(FRAMEWORKPATH=['#plugin/' + env['plugin'] + '/lib/GoogleMobileAds.xcframework/' + xcframework_directory])
-env.Append(FRAMEWORKPATH=['#plugin/' + env['plugin'] + '/lib/UserMessagingPlatform.xcframework/' + xcframework_directory])
+env.Append(FRAMEWORKPATH=['#plugin/' + env['plugin'] + '/lib/UserMessagingPlatform.xcframework/' + ump_xcframework_directory])
 
 #env.Append(FRAMEWORKPATH=['#plugin/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/' + xcframework_directory])
 #env.Append(FRAMEWORKPATH=['#plugin/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
@@ -184,8 +186,9 @@ else:
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 sources = Glob('plugin/' + env['plugin'] + '/src/main/*.mm')
-sources.append(Glob('plugin/' + env['plugin'] + '/src/formats/*.mm'))
+# sources.append(Glob('plugin/' + env['plugin'] + '/src/formats/*.mm'))
 sources.append(Glob('plugin/' + env['plugin'] + '/src/module/*.mm'))
+sources.append(Glob('plugin/' + env['plugin'] + '/converters/*.mm'))
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
 library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else ("iphone" if env['version'] == '3.x' else "ios"))

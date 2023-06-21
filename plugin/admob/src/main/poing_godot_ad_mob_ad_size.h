@@ -25,7 +25,7 @@
 
 #include "core/version.h"
 
-#if VERSION_4_0 == 4
+#if VERSION_4_0
 #include "core/object/class_db.h"
 #else
 #include "core/object.h"

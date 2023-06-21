@@ -44,7 +44,7 @@ PoingGodotAdMob *PoingGodotAdMob::get_singleton() {
 void PoingGodotAdMob::initialize() {
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus *_Nonnull status)
     {
-        Dictionary dictionary = [JavaObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];
+        Dictionary dictionary = [ObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];
         emit_signal("on_initialization_complete", dictionary);
     }];
 }
@@ -52,5 +52,5 @@ void PoingGodotAdMob::initialize() {
 void PoingGodotAdMob::_bind_methods() {
     ADD_SIGNAL(MethodInfo("on_initialization_complete", PropertyInfo(Variant::DICTIONARY, "initialization_status_dictionary")));
 
-	ClassDB::bind_method(D_METHOD("initialize"), &PoingGodotAdMob::initialize);
+    ClassDB::bind_method(D_METHOD("initialize"), &PoingGodotAdMob::initialize);
 };

@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		248500F8C12E326E0ED11250 /* Pods_admob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570EE2D2740D36E082222C6C /* Pods_admob.framework */; };
 		5E2763192686B39C003BBE7D /* RewardedInterstitial.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E2763172686B39C003BBE7D /* RewardedInterstitial.mm */; };
 		5E4FE6E5262765580066D8AF /* admob_module.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FE6E3262765580066D8AF /* admob_module.mm */; };
 		5E4FE6E9262765660066D8AF /* admob.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FE6E7262765660066D8AF /* admob.mm */; };
 		5E4FE6F1262765730066D8AF /* Banner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FE6EB262765730066D8AF /* Banner.mm */; };
 		5E4FE6F2262765730066D8AF /* Interstitial.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FE6EC262765730066D8AF /* Interstitial.mm */; };
 		5E4FE6F3262765730066D8AF /* Rewarded.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4FE6ED262765730066D8AF /* Rewarded.mm */; };
+		D7F91AFB23EB647721ECA0F4 /* libPods-admob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D0A9FF44D6AFA25F11678A7 /* libPods-admob.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +30,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		570EE2D2740D36E082222C6C /* Pods_admob.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_admob.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E94083EF57F083F66E2935 /* Pods-admob.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-admob.release.xcconfig"; path = "Target Support Files/Pods-admob/Pods-admob.release.xcconfig"; sourceTree = "<group>"; };
 		5E2763172686B39C003BBE7D /* RewardedInterstitial.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RewardedInterstitial.mm; path = admob/src/formats/RewardedInterstitial.mm; sourceTree = "<group>"; };
 		5E2763182686B39C003BBE7D /* RewardedInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RewardedInterstitial.h; path = admob/src/formats/RewardedInterstitial.h; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		5E4FE6F0262765730066D8AF /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Banner.h; path = admob/src/formats/Banner.h; sourceTree = "<group>"; };
 		5EDA216925B398A50076123B /* libadmob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libadmob.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8250BA33C73A9BC8E70286EF /* Pods-admob.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-admob.debug.xcconfig"; path = "Target Support Files/Pods-admob/Pods-admob.debug.xcconfig"; sourceTree = "<group>"; };
+		8D0A9FF44D6AFA25F11678A7 /* libPods-admob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-admob.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				248500F8C12E326E0ED11250 /* Pods_admob.framework in Frameworks */,
+				D7F91AFB23EB647721ECA0F4 /* libPods-admob.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +72,7 @@
 		5E49FACF25B3B17C0001A226 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				570EE2D2740D36E082222C6C /* Pods_admob.framework */,
+				8D0A9FF44D6AFA25F11678A7 /* libPods-admob.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

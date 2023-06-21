@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8ABD9D8E542991BA21F991400BBF2DCB"
-               BuildableName = "Pods_admob.framework"
+               BuildableName = "libPods-admob.a"
                BlueprintName = "Pods-admob"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

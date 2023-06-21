@@ -20,18 +20,35 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if VERSION_4_0
-#include "core/object/class_db.h"
-#else
-#include "core/object.h"
-#endif
+#import "ObjectToGodotDictionary.h"
 
-#import <Foundation/Foundation.h>
-#import <GoogleMobileAds/GoogleMobileAds.h>
+@implementation ObjectToGodotDictionary
 
-@interface JavaObjectToGodotDictionary : NSObject
++ (Dictionary)convertGADInitializationStatusToDictionary:(GADInitializationStatus *)status {
+    Dictionary dictionary;
+    
+    NSDictionary *adapterStatuses = [status adapterStatusesByClassName];
+    for (NSString *adapter in adapterStatuses) {
+        GADAdapterStatus *adapterStatus = adapterStatuses[adapter];
+        Dictionary adapterDictionary = [ObjectToGodotDictionary convertGADAdapterStatusToDictionary:adapterStatus];
+        dictionary[[adapter UTF8String]] = adapterDictionary;
+    }
+    
+    return dictionary;
+}
 
-+ (Dictionary)convertGADInitializationStatusToDictionary:(GADInitializationStatus *)status;
-+ (Dictionary)convertGADAdapterStatusToDictionary:(GADAdapterStatus *)adapterStatus;
++ (Dictionary)convertGADAdapterStatusToDictionary:(GADAdapterStatus *)adapterStatus {
+    Dictionary dictionary;
+    
+    NSString *description = adapterStatus.description;
+    NSTimeInterval latency = adapterStatus.latency;
+    GADAdapterInitializationState state = adapterStatus.state;
+
+    dictionary["description"] = [description UTF8String];
+    dictionary["latency"] = latency;
+    dictionary["initializationState"] = @(state);
+    
+    return dictionary;
+}
 
 @end

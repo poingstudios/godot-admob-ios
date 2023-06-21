@@ -72,11 +72,8 @@ else:
     env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
     env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])
 
-env.Append(FRAMEWORKPATH=['#plugin/' + env['plugin'] + '/lib/GoogleMobileAds.xcframework/' + xcframework_directory])
-env.Append(FRAMEWORKPATH=['#plugin/' + env['plugin'] + '/lib/UserMessagingPlatform.xcframework/' + ump_xcframework_directory])
-
-#env.Append(FRAMEWORKPATH=['#plugin/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework/' + xcframework_directory])
-#env.Append(FRAMEWORKPATH=['#plugin/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
+env.Append(FRAMEWORKPATH=['#plugin/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
+env.Append(FRAMEWORKPATH=['#plugin/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + ump_xcframework_directory])
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())
@@ -186,7 +183,6 @@ else:
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 sources = Glob('plugin/' + env['plugin'] + '/src/main/*.mm')
-# sources.append(Glob('plugin/' + env['plugin'] + '/src/formats/*.mm'))
 sources.append(Glob('plugin/' + env['plugin'] + '/src/module/*.mm'))
 sources.append(Glob('plugin/' + env['plugin'] + '/converters/*.mm'))
 

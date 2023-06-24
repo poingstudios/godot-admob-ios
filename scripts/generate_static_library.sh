@@ -4,11 +4,11 @@ set -e
 # Compile static libraries
 
 # ARM64 Device
-scons target=$2 arch=arm64 plugin=$1 version=$3
+scons target=$2 arch=arm64 plugin=$1
 # ARM7 Device
-scons target=$2 arch=armv7 plugin=$1 version=$3
+scons target=$2 arch=armv7 plugin=$1
 # x86_64 Simulator
-scons target=$2 arch=x86_64 simulator=yes plugin=$1 version=$3
+scons target=$2 arch=x86_64 simulator=yes plugin=$1
 
 # Creating a fat libraries for device and simulator
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a

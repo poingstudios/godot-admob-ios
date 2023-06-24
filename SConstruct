@@ -24,8 +24,7 @@ opts.Add(EnumVariable('arch', "Compilation Architecture", '', ['', 'arm64', 'arm
 opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
-opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'admob']))
-opts.Add(EnumVariable('version', 'Godot version to target', '', ['', '3.x', '4.0']))
+opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'Ads']))
 
 # Updates the environment with the option variables.
 opts.Update(env)
@@ -41,10 +40,6 @@ if env['arch'] == '':
 
 if env['plugin'] == '':
     print("No valid plugin selected.")
-    quit();
-
-if env['version'] == '':
-    print("No valid Godot version selected.")
     quit();
 
 # For the reference:
@@ -72,8 +67,9 @@ else:
     env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
     env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])
 
-env.Append(FRAMEWORKPATH=['#plugin/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
-env.Append(FRAMEWORKPATH=['#plugin/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + ump_xcframework_directory])
+#need to perform `cd PoingGodotAdMob && pod install --repo-update`
+env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
+env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + ump_xcframework_directory])
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())
@@ -101,93 +97,48 @@ env.Append(LINKFLAGS=["-arch", env['arch'], '-isysroot', sdk_path, '-F' + sdk_pa
 if env['arch'] == 'armv7':
     env.Prepend(CXXFLAGS=['-fno-aligned-allocation'])
 
-if env['version'] == '3.x':
-    env.Append(CCFLAGS=["$IPHONESDK"])
-    env.Prepend(CXXFLAGS=['-DIPHONE_ENABLED'])
-    env.Prepend(CXXFLAGS=['-DVERSION_3_X'])
+env.Append(CCFLAGS=["$IOS_SDK_PATH"])
+env.Prepend(CXXFLAGS=['-DIOS_ENABLED'])
+env.Prepend(CXXFLAGS=['-DVERSION_4_0'])
 
-    env.Prepend(CFLAGS=['-std=gnu11'])
-    env.Prepend(CXXFLAGS=['-DGLES_ENABLED', '-std=gnu++14'])
+env.Prepend(CFLAGS=['-std=gnu11'])
+env.Prepend(CXXFLAGS=['-std=gnu++17'])
 
-    if env['target'] == 'debug':
-        env.Prepend(CXXFLAGS=[
-            '-gdwarf-2', '-O0', 
-            '-DDEBUG_MEMORY_ALLOC', '-DDISABLE_FORCED_INLINE', 
-            '-D_DEBUG', '-DDEBUG=1', '-DDEBUG_ENABLED',
-            '-DPTRCALL_ENABLED',
-        ])
-    elif env['target'] == 'release_debug':
-        env.Prepend(CXXFLAGS=['-O2', '-ftree-vectorize',
-            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1', '-DDEBUG_ENABLED', 
-            '-DPTRCALL_ENABLED',
-        ])
-
-        if env['arch'] != 'armv7':
-            env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
-    else:
-        env.Prepend(CXXFLAGS=[
-            '-O2', '-ftree-vectorize',
-            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1', 
-            '-DPTRCALL_ENABLED',
-        ])
-
-        if env['arch'] != 'armv7':
-            env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
-elif env['version'] == '4.0':
-    env.Append(CCFLAGS=["$IOS_SDK_PATH"])
-    env.Prepend(CXXFLAGS=['-DIOS_ENABLED'])
-    env.Prepend(CXXFLAGS=['-DVERSION_4_0'])
-
-    env.Prepend(CFLAGS=['-std=gnu11'])
-    env.Prepend(CXXFLAGS=['-std=gnu++17'])
-
-    if env['target'] == 'debug':
-        env.Prepend(CXXFLAGS=[
-            '-gdwarf-2', '-O0', 
-            '-DDEBUG_MEMORY_ALLOC', '-DDISABLE_FORCED_INLINE', 
-            '-D_DEBUG', '-DDEBUG=1', '-DDEBUG_ENABLED', 
-        ])
-    elif env['target'] == 'release_debug':
-        env.Prepend(CXXFLAGS=[
-            '-O2', '-ftree-vectorize',
-            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1', '-DDEBUG_ENABLED',
-        ])
-
-        if env['arch'] != 'armv7':
-            env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
-    else:
-        env.Prepend(CXXFLAGS=[
-            '-O2', '-ftree-vectorize',
-            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1',
-        ])
-
-        if env['arch'] != 'armv7':
-            env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])            
-else:
-    print("No valid version to set flags for.")
-    quit();
-
-# Adding header files
-if env['version'] == '3.x':
-    env.Append(CPPPATH=[
-        '.', 
-        'godot', 
-        'godot/platform/iphone',
+if env['target'] == 'debug':
+    env.Prepend(CXXFLAGS=[
+        '-gdwarf-2', '-O0', 
+        '-DDEBUG_MEMORY_ALLOC', '-DDISABLE_FORCED_INLINE', 
+        '-D_DEBUG', '-DDEBUG=1', '-DDEBUG_ENABLED', 
     ])
-else:
-       env.Append(CPPPATH=[
-        '.', 
-        'godot', 
-        'godot/platform/ios',
+elif env['target'] == 'release_debug':
+    env.Prepend(CXXFLAGS=[
+        '-O2', '-ftree-vectorize',
+        '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1', '-DDEBUG_ENABLED',
     ])
+
+    if env['arch'] != 'armv7':
+        env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
+else:
+    env.Prepend(CXXFLAGS=[
+        '-O2', '-ftree-vectorize',
+        '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1',
+    ])
+
+    if env['arch'] != 'armv7':
+        env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])            
+
+env.Append(CPPPATH=[
+    '.', 
+    'godot', 
+    'godot/platform/ios',
+])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-sources = Glob('plugin/' + env['plugin'] + '/src/main/*.mm')
-sources.append(Glob('plugin/' + env['plugin'] + '/src/module/*.mm'))
-sources.append(Glob('plugin/' + env['plugin'] + '/converters/*.mm'))
+sources = Glob('PoingGodotAdMob/src/' + env['plugin'] + '/*.mm')
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
-library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else ("iphone" if env['version'] == '3.x' else "ios"))
+library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
+print(library_platform)
 library_name = env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
 library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
 

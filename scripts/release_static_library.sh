@@ -1,10 +1,10 @@
 #!/bin/bash
 
-PLUGIN="admob"
+PLUGIN="Ads"
 
 # Compile Plugin
-./scripts/generate_static_library.sh $PLUGIN release $1
-./scripts/generate_static_library.sh $PLUGIN release_debug $1
+./scripts/generate_static_library.sh $PLUGIN release
+./scripts/generate_static_library.sh $PLUGIN release_debug
 mv ./bin/${PLUGIN}.release_debug.a ./bin/${PLUGIN}.debug.a
 
 # Move to release folder

@@ -1,0 +1,947 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42A8FA47FA1D2790A9AC2D02 /* Pods_Meta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */; };
+		43D5D03591858E51492C1901 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E48B2E99CBC345B3A12BC2F0 /* Pods_Core.framework */; };
+		5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */; };
+		5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */; };
+		5E5BDE3F2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */; };
+		5E80AAD52A44A50C001C750F /* PoingGodotAdMob.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */; };
+		5E80AAD62A44A50C001C750F /* PoingGodotAdMob.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */; };
+		5E80AAE42A44A74A001C750F /* AdNetworkExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAE32A44A74A001C750F /* AdNetworkExtras.mm */; };
+		5E80AAE52A44A74A001C750F /* AdNetworkExtras.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAE22A44A74A001C750F /* AdNetworkExtras.h */; };
+		5E80AAF12A44A82F001C750F /* Meta.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAF02A44A82F001C750F /* Meta.mm */; };
+		5E80AAF22A44A82F001C750F /* Meta.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAEF2A44A82F001C750F /* Meta.h */; };
+		5E80AB002A44AA77001C750F /* VunglePoingExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */; };
+		5E80AB012A44AA77001C750F /* VunglePoingExtrasBuilder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */; };
+		65B436A9E921847608A00607 /* Pods_AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6CCD6874F968FBB77173A /* Pods_AdColony.framework */; };
+		B4100D0093767E47AE7EDF66 /* Pods_Ads.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */; };
+		E94F6850D1424BC5E5AA9537 /* Pods_Vungle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820D74903A68B058B729601C /* Pods_Vungle.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5E5BDE382A4686B20071BE86 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				5E5BDE3F2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AACE2A44A50C001C750F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				5E80AAD62A44A50C001C750F /* PoingGodotAdMob.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AADE2A44A74A001C750F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				5E80AAE52A44A74A001C750F /* AdNetworkExtras.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AAEB2A44A82E001C750F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				5E80AAF22A44A82F001C750F /* Meta.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AAFA2A44AA77001C750F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				5E80AB012A44AA77001C750F /* VunglePoingExtrasBuilder.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		118FE02AAC9135C5313B925D /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
+		2A16765B5C3914CEDD1EDC4C /* Pods-AdColony.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdColony.release.xcconfig"; path = "Target Support Files/Pods-AdColony/Pods-AdColony.release.xcconfig"; sourceTree = "<group>"; };
+		367408837303ED676A0CC0F2 /* Pods-Ads.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ads.debug.xcconfig"; path = "Target Support Files/Pods-Ads/Pods-Ads.debug.xcconfig"; sourceTree = "<group>"; };
+		4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5BDE162A4632300071BE86 /* PoingGodotAdMobModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobModule.h; sourceTree = "<group>"; };
+		5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobModule.mm; sourceTree = "<group>"; };
+		5E5BDE3A2A4686B20071BE86 /* libAdColony.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAdColony.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyModule.h; sourceTree = "<group>"; };
+		5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdColonyModule.mm; sourceTree = "<group>"; };
+		5E80AAD02A44A50C001C750F /* libAds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAds.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMob.h; sourceTree = "<group>"; };
+		5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMob.mm; sourceTree = "<group>"; };
+		5E80AAE02A44A74A001C750F /* libCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E80AAE22A44A74A001C750F /* AdNetworkExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdNetworkExtras.h; sourceTree = "<group>"; };
+		5E80AAE32A44A74A001C750F /* AdNetworkExtras.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AdNetworkExtras.mm; sourceTree = "<group>"; };
+		5E80AAED2A44A82E001C750F /* libMeta.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMeta.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E80AAEF2A44A82F001C750F /* Meta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Meta.h; sourceTree = "<group>"; };
+		5E80AAF02A44A82F001C750F /* Meta.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Meta.mm; sourceTree = "<group>"; };
+		5E80AAFC2A44AA77001C750F /* libVungle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVungle.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VunglePoingExtrasBuilder.h; sourceTree = "<group>"; };
+		5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VunglePoingExtrasBuilder.mm; sourceTree = "<group>"; };
+		5EF0001A9D03178452B810C6 /* Pods-Vungle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vungle.debug.xcconfig"; path = "Target Support Files/Pods-Vungle/Pods-Vungle.debug.xcconfig"; sourceTree = "<group>"; };
+		70F3474ACC0BF5ACEB420D5C /* Pods-Ads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ads.release.xcconfig"; path = "Target Support Files/Pods-Ads/Pods-Ads.release.xcconfig"; sourceTree = "<group>"; };
+		72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ads.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		820D74903A68B058B729601C /* Pods_Vungle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vungle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		839F5873F894717D209660C6 /* Pods-Meta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meta.release.xcconfig"; path = "Target Support Files/Pods-Meta/Pods-Meta.release.xcconfig"; sourceTree = "<group>"; };
+		C3B6CCD6874F968FBB77173A /* Pods_AdColony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdColony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C93196E8BCE5239E1C5857AD /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
+		D365F419D05D1140624DCBCD /* Pods-Vungle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vungle.release.xcconfig"; path = "Target Support Files/Pods-Vungle/Pods-Vungle.release.xcconfig"; sourceTree = "<group>"; };
+		D55264F153FE86E80D99AFED /* Pods-Meta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meta.debug.xcconfig"; path = "Target Support Files/Pods-Meta/Pods-Meta.debug.xcconfig"; sourceTree = "<group>"; };
+		DBA797FF5EC92A9E82BB1E81 /* Pods-AdColony.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdColony.debug.xcconfig"; path = "Target Support Files/Pods-AdColony/Pods-AdColony.debug.xcconfig"; sourceTree = "<group>"; };
+		E48B2E99CBC345B3A12BC2F0 /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E5BDE372A4686B20071BE86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65B436A9E921847608A00607 /* Pods_AdColony.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AACD2A44A50C001C750F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4100D0093767E47AE7EDF66 /* Pods_Ads.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AADD2A44A74A001C750F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43D5D03591858E51492C1901 /* Pods_Core.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AAEA2A44A82E001C750F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42A8FA47FA1D2790A9AC2D02 /* Pods_Meta.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AAF92A44AA77001C750F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E94F6850D1424BC5E5AA9537 /* Pods_Vungle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		548AE72BDC782EBFF5BA57B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */,
+				E48B2E99CBC345B3A12BC2F0 /* Pods_Core.framework */,
+				4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */,
+				820D74903A68B058B729601C /* Pods_Vungle.framework */,
+				C3B6CCD6874F968FBB77173A /* Pods_AdColony.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5BA9F87E99131221E0FE542B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				367408837303ED676A0CC0F2 /* Pods-Ads.debug.xcconfig */,
+				70F3474ACC0BF5ACEB420D5C /* Pods-Ads.release.xcconfig */,
+				118FE02AAC9135C5313B925D /* Pods-Core.debug.xcconfig */,
+				C93196E8BCE5239E1C5857AD /* Pods-Core.release.xcconfig */,
+				D55264F153FE86E80D99AFED /* Pods-Meta.debug.xcconfig */,
+				839F5873F894717D209660C6 /* Pods-Meta.release.xcconfig */,
+				5EF0001A9D03178452B810C6 /* Pods-Vungle.debug.xcconfig */,
+				D365F419D05D1140624DCBCD /* Pods-Vungle.release.xcconfig */,
+				DBA797FF5EC92A9E82BB1E81 /* Pods-AdColony.debug.xcconfig */,
+				2A16765B5C3914CEDD1EDC4C /* Pods-AdColony.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5E5BDE3B2A4686B20071BE86 /* AdColony */ = {
+			isa = PBXGroup;
+			children = (
+				5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */,
+				5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */,
+			);
+			path = AdColony;
+			sourceTree = "<group>";
+		};
+		5E80AAC72A44A50C001C750F = {
+			isa = PBXGroup;
+			children = (
+				5E80AAF72A44A84B001C750F /* src */,
+				5E80AAD12A44A50C001C750F /* Products */,
+				5BA9F87E99131221E0FE542B /* Pods */,
+				548AE72BDC782EBFF5BA57B2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5E80AAD12A44A50C001C750F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E80AAD02A44A50C001C750F /* libAds.a */,
+				5E80AAE02A44A74A001C750F /* libCore.a */,
+				5E80AAED2A44A82E001C750F /* libMeta.a */,
+				5E80AAFC2A44AA77001C750F /* libVungle.a */,
+				5E5BDE3A2A4686B20071BE86 /* libAdColony.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E80AAD22A44A50C001C750F /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */,
+				5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */,
+				5E5BDE162A4632300071BE86 /* PoingGodotAdMobModule.h */,
+				5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */,
+			);
+			path = Ads;
+			sourceTree = "<group>";
+		};
+		5E80AAE12A44A74A001C750F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5E80AAE22A44A74A001C750F /* AdNetworkExtras.h */,
+				5E80AAE32A44A74A001C750F /* AdNetworkExtras.mm */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5E80AAEE2A44A82F001C750F /* Meta */ = {
+			isa = PBXGroup;
+			children = (
+				5E80AAEF2A44A82F001C750F /* Meta.h */,
+				5E80AAF02A44A82F001C750F /* Meta.mm */,
+			);
+			path = Meta;
+			sourceTree = "<group>";
+		};
+		5E80AAF62A44A835001C750F /* Mediation */ = {
+			isa = PBXGroup;
+			children = (
+				5E5BDE3B2A4686B20071BE86 /* AdColony */,
+				5E80AAFD2A44AA77001C750F /* Vungle */,
+				5E80AAEE2A44A82F001C750F /* Meta */,
+			);
+			path = Mediation;
+			sourceTree = "<group>";
+		};
+		5E80AAF72A44A84B001C750F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5E80AAF62A44A835001C750F /* Mediation */,
+				5E80AAD22A44A50C001C750F /* Ads */,
+				5E80AAE12A44A74A001C750F /* Core */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		5E80AAFD2A44AA77001C750F /* Vungle */ = {
+			isa = PBXGroup;
+			children = (
+				5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */,
+				5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */,
+			);
+			path = Vungle;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E5BDE392A4686B20071BE86 /* AdColony */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E5BDE402A4686B20071BE86 /* Build configuration list for PBXNativeTarget "AdColony" */;
+			buildPhases = (
+				77305D60533466AC1D3C291C /* [CP] Check Pods Manifest.lock */,
+				5E5BDE362A4686B20071BE86 /* Sources */,
+				5E5BDE372A4686B20071BE86 /* Frameworks */,
+				5E5BDE382A4686B20071BE86 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdColony;
+			productName = AdColony;
+			productReference = 5E5BDE3A2A4686B20071BE86 /* libAdColony.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5E80AACF2A44A50C001C750F /* Ads */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E80AAD92A44A50C001C750F /* Build configuration list for PBXNativeTarget "Ads" */;
+			buildPhases = (
+				DB4D04EC121EA5EE0B20FBCA /* [CP] Check Pods Manifest.lock */,
+				5E80AACC2A44A50C001C750F /* Sources */,
+				5E80AACD2A44A50C001C750F /* Frameworks */,
+				5E80AACE2A44A50C001C750F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ads;
+			productName = PoingGodotAdMob;
+			productReference = 5E80AAD02A44A50C001C750F /* libAds.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5E80AADF2A44A74A001C750F /* Core */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E80AAE62A44A74A001C750F /* Build configuration list for PBXNativeTarget "Core" */;
+			buildPhases = (
+				C342CDA54250E29C2D660CA3 /* [CP] Check Pods Manifest.lock */,
+				5E80AADC2A44A74A001C750F /* Sources */,
+				5E80AADD2A44A74A001C750F /* Frameworks */,
+				5E80AADE2A44A74A001C750F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Core;
+			productName = Core;
+			productReference = 5E80AAE02A44A74A001C750F /* libCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5E80AAEC2A44A82E001C750F /* Meta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E80AAF32A44A82F001C750F /* Build configuration list for PBXNativeTarget "Meta" */;
+			buildPhases = (
+				4CFE71E1FDD81E7719866BB0 /* [CP] Check Pods Manifest.lock */,
+				5E80AAE92A44A82E001C750F /* Sources */,
+				5E80AAEA2A44A82E001C750F /* Frameworks */,
+				5E80AAEB2A44A82E001C750F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Meta;
+			productName = Meta;
+			productReference = 5E80AAED2A44A82E001C750F /* libMeta.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5E80AAFB2A44AA77001C750F /* Vungle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E80AB022A44AA77001C750F /* Build configuration list for PBXNativeTarget "Vungle" */;
+			buildPhases = (
+				37DB8ADFA2D527C78242DA1E /* [CP] Check Pods Manifest.lock */,
+				5E80AAF82A44AA77001C750F /* Sources */,
+				5E80AAF92A44AA77001C750F /* Frameworks */,
+				5E80AAFA2A44AA77001C750F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vungle;
+			productName = Vungle;
+			productReference = 5E80AAFC2A44AA77001C750F /* libVungle.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E80AAC82A44A50C001C750F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					5E5BDE392A4686B20071BE86 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					5E80AACF2A44A50C001C750F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					5E80AADF2A44A74A001C750F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					5E80AAEC2A44A82E001C750F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					5E80AAFB2A44AA77001C750F = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 5E80AACB2A44A50C001C750F /* Build configuration list for PBXProject "PoingGodotAdMob" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5E80AAC72A44A50C001C750F;
+			productRefGroup = 5E80AAD12A44A50C001C750F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E80AACF2A44A50C001C750F /* Ads */,
+				5E80AADF2A44A74A001C750F /* Core */,
+				5E80AAEC2A44A82E001C750F /* Meta */,
+				5E80AAFB2A44AA77001C750F /* Vungle */,
+				5E5BDE392A4686B20071BE86 /* AdColony */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37DB8ADFA2D527C78242DA1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vungle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CFE71E1FDD81E7719866BB0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		77305D60533466AC1D3C291C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AdColony-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C342CDA54250E29C2D660CA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Core-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB4D04EC121EA5EE0B20FBCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ads-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E5BDE362A4686B20071BE86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AACC2A44A50C001C750F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E80AAD52A44A50C001C750F /* PoingGodotAdMob.mm in Sources */,
+				5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AADC2A44A74A001C750F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E80AAE42A44A74A001C750F /* AdNetworkExtras.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AAE92A44A82E001C750F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E80AAF12A44A82F001C750F /* Meta.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E80AAF82A44AA77001C750F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E80AB002A44AA77001C750F /* VunglePoingExtrasBuilder.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5E5BDE412A4686B20071BE86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBA797FF5EC92A9E82BB1E81 /* Pods-AdColony.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../godot/platform/ios",
+					"$(SRCROOT)/../godot",
+				);
+				OTHER_CFLAGS = (
+					"-fcxx-modules",
+					"-g",
+					"-DDEBUG",
+					"-DDEBUG_ENABLED",
+					"-DDEBUG_MEMORY_ALLOC",
+					"-DDISABLE_FORCED_INLINE",
+					"-DTYPED_METHOD_BIND",
+					"-fmodules",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E5BDE422A4686B20071BE86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A16765B5C3914CEDD1EDC4C /* Pods-AdColony.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../godot/platform/ios",
+					"$(SRCROOT)/../godot",
+				);
+				OTHER_CFLAGS = (
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5E80AAD72A44A50C001C750F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5E80AAD82A44A50C001C750F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E80AADA2A44A50C001C750F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 367408837303ED676A0CC0F2 /* Pods-Ads.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"$(SRCROOT)/../godot/platform/ios",
+					"$(SRCROOT)/../godot",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				OTHER_CFLAGS = (
+					"-fcxx-modules",
+					"-g",
+					"-DDEBUG",
+					"-DDEBUG_ENABLED",
+					"-DDEBUG_MEMORY_ALLOC",
+					"-DDISABLE_FORCED_INLINE",
+					"-DTYPED_METHOD_BIND",
+					"-fmodules",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E80AADB2A44A50C001C750F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70F3474ACC0BF5ACEB420D5C /* Pods-Ads.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"$(SRCROOT)/../godot/platform/ios",
+					"$(SRCROOT)/../godot",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				OTHER_CFLAGS = (
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5E80AAE72A44A74A001C750F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 118FE02AAC9135C5313B925D /* Pods-Core.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E80AAE82A44A74A001C750F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C93196E8BCE5239E1C5857AD /* Pods-Core.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5E80AAF42A44A82F001C750F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D55264F153FE86E80D99AFED /* Pods-Meta.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E80AAF52A44A82F001C750F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 839F5873F894717D209660C6 /* Pods-Meta.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5E80AB032A44AA77001C750F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EF0001A9D03178452B810C6 /* Pods-Vungle.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E80AB042A44AA77001C750F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D365F419D05D1140624DCBCD /* Pods-Vungle.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				EXCLUDED_ARCHS = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E5BDE402A4686B20071BE86 /* Build configuration list for PBXNativeTarget "AdColony" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5BDE412A4686B20071BE86 /* Debug */,
+				5E5BDE422A4686B20071BE86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E80AACB2A44A50C001C750F /* Build configuration list for PBXProject "PoingGodotAdMob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E80AAD72A44A50C001C750F /* Debug */,
+				5E80AAD82A44A50C001C750F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E80AAD92A44A50C001C750F /* Build configuration list for PBXNativeTarget "Ads" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E80AADA2A44A50C001C750F /* Debug */,
+				5E80AADB2A44A50C001C750F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E80AAE62A44A74A001C750F /* Build configuration list for PBXNativeTarget "Core" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E80AAE72A44A74A001C750F /* Debug */,
+				5E80AAE82A44A74A001C750F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E80AAF32A44A82F001C750F /* Build configuration list for PBXNativeTarget "Meta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E80AAF42A44A82F001C750F /* Debug */,
+				5E80AAF52A44A82F001C750F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E80AB022A44AA77001C750F /* Build configuration list for PBXNativeTarget "Vungle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E80AB032A44AA77001C750F /* Debug */,
+				5E80AB042A44AA77001C750F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E80AAC82A44A50C001C750F /* Project object */;
+}

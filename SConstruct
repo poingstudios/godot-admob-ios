@@ -24,7 +24,7 @@ opts.Add(EnumVariable('arch', "Compilation Architecture", '', ['', 'arm64', 'arm
 opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
-opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'Ads']))
+opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'ads']))
 
 # Updates the environment with the option variables.
 opts.Update(env)

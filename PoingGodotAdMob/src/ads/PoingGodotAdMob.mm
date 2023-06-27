@@ -6,7 +6,7 @@
 //
 
 #import "PoingGodotAdMob.h"
-#import "AdNetworkExtras.h"
+#import "../core/AdNetworkExtras.h"
 #import <Foundation/Foundation.h>
 
 PoingGodotAdMob *PoingGodotAdMob::instance = NULL;

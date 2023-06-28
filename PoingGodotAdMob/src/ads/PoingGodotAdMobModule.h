@@ -8,7 +8,7 @@
 #ifndef PoingGodotAdMobModule_h
 #define PoingGodotAdMobModule_h
 
-void register_poing_godot_admob_types();
-void unregister_poing_godot_admob_types();
+void register_poing_godot_admob_ads_types();
+void unregister_poing_godot_admob_ads_types();
 
 #endif /* PoingGodotAdMobModule_h */

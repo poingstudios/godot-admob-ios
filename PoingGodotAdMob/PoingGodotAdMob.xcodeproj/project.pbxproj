@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42A8FA47FA1D2790A9AC2D02 /* Pods_Meta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */; };
 		43D5D03591858E51492C1901 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E48B2E99CBC345B3A12BC2F0 /* Pods_Core.framework */; };
+		5E08983D2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */; };
 		5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */; };
 		5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */; };
 		5E5BDE3F2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */; };
@@ -83,6 +84,9 @@
 		2A16765B5C3914CEDD1EDC4C /* Pods-AdColony.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdColony.release.xcconfig"; path = "Target Support Files/Pods-AdColony/Pods-AdColony.release.xcconfig"; sourceTree = "<group>"; };
 		367408837303ED676A0CC0F2 /* Pods-Ads.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ads.debug.xcconfig"; path = "Target Support Files/Pods-Ads/Pods-Ads.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyAppOptions.h; sourceTree = "<group>"; };
+		5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdColonyAppOptions.mm; sourceTree = "<group>"; };
+		5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-adcolony.gdip"; sourceTree = "<group>"; };
 		5E5BDE162A4632300071BE86 /* PoingGodotAdMobModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobModule.h; sourceTree = "<group>"; };
 		5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobModule.mm; sourceTree = "<group>"; };
 		5E5BDE3A2A4686B20071BE86 /* poing-godot-admob-adcolony.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "poing-godot-admob-adcolony.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,11 +191,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5E08983E2A4B959D0066A53A /* config */ = {
+			isa = PBXGroup;
+			children = (
+				5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
 		5E5BDE3B2A4686B20071BE86 /* adcolony */ = {
 			isa = PBXGroup;
 			children = (
+				5E08983E2A4B959D0066A53A /* config */,
 				5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */,
 				5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */,
+				5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */,
+				5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */,
 			);
 			path = adcolony;
 			sourceTree = "<group>";
@@ -545,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */,
+				5E08983D2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

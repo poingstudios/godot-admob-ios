@@ -14,12 +14,12 @@
 
 PoingGodotAdMob *poing_godot_admob;
 
-void register_poing_godot_admob_types() {
+void register_poing_godot_admob_ads_types() {
     poing_godot_admob = memnew(PoingGodotAdMob);
     Engine::get_singleton()->add_singleton(Engine::Singleton("PoingGodotAdMob", poing_godot_admob));
 }
 
-void unregister_poing_godot_admob_types() {
+void unregister_poing_godot_admob_ads_types() {
     if (poing_godot_admob) {
         memdelete(poing_godot_admob);
     }

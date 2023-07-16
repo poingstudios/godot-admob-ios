@@ -13,6 +13,7 @@
 		5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */; };
 		5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */; };
 		5E5BDE3F2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */; };
+		5E63D64F2A64636100BDC600 /* ObjectToGodotDictionary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E63D64E2A64636100BDC600 /* ObjectToGodotDictionary.mm */; };
 		5E80AAD52A44A50C001C750F /* PoingGodotAdMob.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */; };
 		5E80AAD62A44A50C001C750F /* PoingGodotAdMob.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */; };
 		5E80AAE42A44A74A001C750F /* AdNetworkExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAE32A44A74A001C750F /* AdNetworkExtras.mm */; };
@@ -93,6 +94,8 @@
 		5E5BDE3A2A4686B20071BE86 /* poing-godot-admob-adcolony.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "poing-godot-admob-adcolony.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyModule.h; sourceTree = "<group>"; };
 		5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdColonyModule.mm; sourceTree = "<group>"; };
+		5E63D64D2A64632D00BDC600 /* ObjectToGodotDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectToGodotDictionary.h; sourceTree = "<group>"; };
+		5E63D64E2A64636100BDC600 /* ObjectToGodotDictionary.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjectToGodotDictionary.mm; sourceTree = "<group>"; };
 		5E80AAD02A44A50C001C750F /* poing-godot-admob-ads.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "poing-godot-admob-ads.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMob.h; sourceTree = "<group>"; };
 		5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMob.mm; sourceTree = "<group>"; };
@@ -216,6 +219,15 @@
 			path = adcolony;
 			sourceTree = "<group>";
 		};
+		5E63D64C2A6461B300BDC600 /* converters */ = {
+			isa = PBXGroup;
+			children = (
+				5E63D64D2A64632D00BDC600 /* ObjectToGodotDictionary.h */,
+				5E63D64E2A64636100BDC600 /* ObjectToGodotDictionary.mm */,
+			);
+			path = converters;
+			sourceTree = "<group>";
+		};
 		5E80AAC72A44A50C001C750F = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +253,7 @@
 		5E80AAD22A44A50C001C750F /* ads */ = {
 			isa = PBXGroup;
 			children = (
+				5E63D64C2A6461B300BDC600 /* converters */,
 				5E9575682A46997400CE30AF /* config */,
 				5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */,
 				5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */,
@@ -575,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E80AAD52A44A50C001C750F /* PoingGodotAdMob.mm in Sources */,
+				5E63D64F2A64636100BDC600 /* ObjectToGodotDictionary.mm in Sources */,
 				5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

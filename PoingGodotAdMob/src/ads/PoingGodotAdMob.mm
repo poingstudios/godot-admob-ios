@@ -7,6 +7,7 @@
 
 #import "PoingGodotAdMob.h"
 #import "../core/AdNetworkExtras.h"
+#import "converters/ObjectToGodotDictionary.h"
 #import <Foundation/Foundation.h>
 
 PoingGodotAdMob *PoingGodotAdMob::instance = NULL;
@@ -30,8 +31,7 @@ PoingGodotAdMob *PoingGodotAdMob::get_singleton() {
 void PoingGodotAdMob::initialize() {
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus *_Nonnull status)
     {
-        Dictionary dictionary;
-//        Dictionary dictionary = [ObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];
+        Dictionary dictionary = [ObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];
         emit_signal("on_initialization_complete", dictionary);
     }];
 }

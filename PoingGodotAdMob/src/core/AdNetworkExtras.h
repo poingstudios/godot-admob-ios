@@ -6,8 +6,9 @@
 //
 #import <Foundation/Foundation.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#include "core/object/class_db.h"
 
 @protocol AdNetworkExtras <NSObject>
-- (id<GADAdNetworkExtras>)buildExtras:(NSDictionary<NSString *, NSString *> *)extras;
+- (id<GADAdNetworkExtras>)buildExtras:(Dictionary) extras;
 @end
 

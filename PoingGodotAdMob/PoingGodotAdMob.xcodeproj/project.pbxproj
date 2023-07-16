@@ -21,6 +21,7 @@
 		5E80AAF22A44A82F001C750F /* Meta.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAEF2A44A82F001C750F /* Meta.h */; };
 		5E80AB002A44AA77001C750F /* VunglePoingExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */; };
 		5E80AB012A44AA77001C750F /* VunglePoingExtrasBuilder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */; };
+		5EE75CB62A4C50080028DBB2 /* AdColonyExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */; };
 		65B436A9E921847608A00607 /* Pods_AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6CCD6874F968FBB77173A /* Pods_AdColony.framework */; };
 		B4100D0093767E47AE7EDF66 /* Pods_Ads.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */; };
 		E94F6850D1424BC5E5AA9537 /* Pods_Vungle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820D74903A68B058B729601C /* Pods_Vungle.framework */; };
@@ -105,6 +106,8 @@
 		5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VunglePoingExtrasBuilder.h; sourceTree = "<group>"; };
 		5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VunglePoingExtrasBuilder.mm; sourceTree = "<group>"; };
 		5E9575692A46998300CE30AF /* poing-godot-admob-ads.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-ads.gdip"; sourceTree = "<group>"; };
+		5EE75CB42A4C4FD40028DBB2 /* AdColonyExtrasBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdColonyExtrasBuilder.h; sourceTree = "<group>"; };
+		5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AdColonyExtrasBuilder.mm; sourceTree = "<group>"; };
 		5EF0001A9D03178452B810C6 /* Pods-Vungle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vungle.debug.xcconfig"; path = "Target Support Files/Pods-Vungle/Pods-Vungle.debug.xcconfig"; sourceTree = "<group>"; };
 		70F3474ACC0BF5ACEB420D5C /* Pods-Ads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ads.release.xcconfig"; path = "Target Support Files/Pods-Ads/Pods-Ads.release.xcconfig"; sourceTree = "<group>"; };
 		72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ads.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +210,8 @@
 				5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */,
 				5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */,
 				5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */,
+				5EE75CB42A4C4FD40028DBB2 /* AdColonyExtrasBuilder.h */,
+				5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */,
 			);
 			path = adcolony;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */,
+				5EE75CB62A4C50080028DBB2 /* AdColonyExtrasBuilder.mm in Sources */,
 				5E08983D2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

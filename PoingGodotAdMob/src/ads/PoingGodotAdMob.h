@@ -7,7 +7,6 @@
 #ifndef POING_GODOT_ADMOB_H
 #define POING_GODOT_ADMOB_H
 
-#import <Foundation/Foundation.h>
 #include "core/object/class_db.h"
 #include "core/version.h"
 @import GoogleMobileAds;
@@ -22,6 +21,7 @@ class PoingGodotAdMob : public Object {
 
 public:
     void initialize();
+    void test(Dictionary dictionary);
     static PoingGodotAdMob *get_singleton();
 
     PoingGodotAdMob();

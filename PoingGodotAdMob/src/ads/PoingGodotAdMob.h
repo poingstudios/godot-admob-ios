@@ -21,6 +21,8 @@ class PoingGodotAdMob : public Object {
 
 public:
     void initialize();
+    Dictionary get_initialization_status();
+
     void test(Dictionary dictionary);
     static PoingGodotAdMob *get_singleton();
 

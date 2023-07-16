@@ -21,8 +21,9 @@ class PoingGodotAdMob : public Object {
 
 public:
     void initialize();
+    void set_request_configuration(Dictionary requestConfigurationDictionary, PackedStringArray testDeviceIds);
     Dictionary get_initialization_status();
-
+    
     void test(Dictionary dictionary);
     static PoingGodotAdMob *get_singleton();
 

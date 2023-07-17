@@ -8,9 +8,7 @@
 #define POING_GODOT_ADMOB_H
 
 #include "core/object/class_db.h"
-#include "core/version.h"
 @import GoogleMobileAds;
-
 
 class PoingGodotAdMob : public Object {
 

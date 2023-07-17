@@ -42,32 +42,24 @@ void PoingGodotAdMob::set_request_configuration(Dictionary requestConfigurationD
     
     GADRequestConfiguration *requestConfiguration = [GADMobileAds sharedInstance].requestConfiguration;
 
-    NSLog(@"MaxAdContentRating: %@", [NSString stringWithUTF8String:maxAdContentRating.utf8().get_data()]);
     requestConfiguration.maxAdContentRating = [NSString stringWithUTF8String:maxAdContentRating.utf8().get_data()];
     if (tagForChildDirectedTreatment == 1) {
-        NSLog(@"tagForChildDirectedTreatment: true");
         [requestConfiguration tagForChildDirectedTreatment:true];
     } else if (tagForChildDirectedTreatment == 0) {
-        NSLog(@"tagForChildDirectedTreatment: false");
         [requestConfiguration tagForChildDirectedTreatment:false];
     }
     
     if (tagForUnderAgeOfConsent == 1){
-        NSLog(@"tagForUnderAgeOfConsent: true");
         [requestConfiguration tagForUnderAgeOfConsent: true];
     } else if (tagForUnderAgeOfConsent == 0){
-        NSLog(@"tagForUnderAgeOfConsent: false");
         [requestConfiguration tagForUnderAgeOfConsent:false];
     }
         
     NSMutableArray<NSString *> *testDeviceIdsArray = [NSMutableArray arrayWithCapacity:testDeviceIds.size()];
     for (String deviceId : testDeviceIds) {
-        NSLog(@"testDeviceIdsArray: %@", [NSString stringWithUTF8String:deviceId.utf8().get_data()]);
         [testDeviceIdsArray addObject:[NSString stringWithUTF8String:deviceId.utf8().get_data()]];
     }
-    NSLog(@"all ok 1");
     requestConfiguration.testDeviceIdentifiers = testDeviceIdsArray;
-    NSLog(@"all ok 2");
 }
 
 Dictionary PoingGodotAdMob::get_initialization_status() {

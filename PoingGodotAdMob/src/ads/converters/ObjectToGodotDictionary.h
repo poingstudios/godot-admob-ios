@@ -17,7 +17,8 @@
 @interface ObjectToGodotDictionary : NSObject
 
 + (Dictionary)convertGADInitializationStatusToDictionary:(GADInitializationStatus *)status;
-+ (Dictionary)convertGADAdapterStatusToDictionary:(GADAdapterStatus *)adapterStatus ;
++ (Dictionary)convertGADAdapterStatusToDictionary:(GADAdapterStatus *)adapterStatus;
++ (Dictionary)convertGADAdSizeToDictionary:(GADAdSize)adSize;
 
 @end
 

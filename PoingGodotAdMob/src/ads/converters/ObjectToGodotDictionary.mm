@@ -30,5 +30,13 @@
 
     return dictionary;
 }
++ (Dictionary)convertGADAdSizeToDictionary:(GADAdSize)adSize {
+    Dictionary dictionary;
+    
+    dictionary["width"] = adSize.size.width;
+    dictionary["height"] = adSize.size.height;
+     
+    return dictionary;
+}
 
 @end

@@ -22,7 +22,10 @@ class PoingGodotAdMobAdSize : public Object {
 
 public:
     Dictionary getCurrentOrientationAnchoredAdaptiveBannerAdSize(int width);
-    
+    Dictionary getPortraitAnchoredAdaptiveBannerAdSize(int width);
+    Dictionary getLandscapeAnchoredAdaptiveBannerAdSize(int width);
+    Dictionary getSmartBannerAdSize();
+
     static PoingGodotAdMobAdSize *get_singleton();
 
     PoingGodotAdMobAdSize();

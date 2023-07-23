@@ -29,6 +29,7 @@ PoingGodotAdMob *PoingGodotAdMob::get_singleton() {
 };
 
 void PoingGodotAdMob::initialize() {
+    GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ GADSimulatorID ];
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus *_Nonnull status)
     {
         Dictionary dictionary = [ObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];

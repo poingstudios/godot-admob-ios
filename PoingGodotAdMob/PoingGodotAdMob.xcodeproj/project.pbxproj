@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42A8FA47FA1D2790A9AC2D02 /* Pods_Meta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */; };
-		43D5D03591858E51492C1901 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E48B2E99CBC345B3A12BC2F0 /* Pods_Core.framework */; };
+		3DF454CB5A80D6C4313AC810 /* Pods_ads.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C7338744733ACDF9608C0F /* Pods_ads.framework */; };
+		46C7E77DD2ECA925F3952036 /* Pods_vungle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4ED341537F1C46ECD8226C4 /* Pods_vungle.framework */; };
 		5E08983D2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */; };
 		5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */; };
 		5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */; };
@@ -22,11 +22,15 @@
 		5E80AAF22A44A82F001C750F /* Meta.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAEF2A44A82F001C750F /* Meta.h */; };
 		5E80AB002A44AA77001C750F /* VunglePoingExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */; };
 		5E80AB012A44AA77001C750F /* VunglePoingExtrasBuilder.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */; };
+		5EA276132A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA276122A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm */; };
+		5EA276172A6739D200D5CF1E /* Banner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA276162A6739D200D5CF1E /* Banner.mm */; };
+		5EA2761A2A67461A00D5CF1E /* GodotDictionaryToObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA276192A67461A00D5CF1E /* GodotDictionaryToObject.mm */; };
 		5EB63E4E2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */; };
+		5EB759202A68860400523E88 /* DeviceOrientationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */; };
 		5EE75CB62A4C50080028DBB2 /* AdColonyExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */; };
-		65B436A9E921847608A00607 /* Pods_AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3B6CCD6874F968FBB77173A /* Pods_AdColony.framework */; };
-		B4100D0093767E47AE7EDF66 /* Pods_Ads.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */; };
-		E94F6850D1424BC5E5AA9537 /* Pods_Vungle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820D74903A68B058B729601C /* Pods_Vungle.framework */; };
+		D9C6EBA1B0831032019D81C7 /* Pods_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B8A51BD2C38CF1E7585C67 /* Pods_core.framework */; };
+		F6F2893BCD20C5B28234938B /* Pods_meta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D987DFBE4578E324D2F2E98E /* Pods_meta.framework */; };
+		FD5CD28B654F484A801214C2 /* Pods_adcolony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A95510670715B1760AA7A /* Pods_adcolony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,10 +87,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		118FE02AAC9135C5313B925D /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
-		2A16765B5C3914CEDD1EDC4C /* Pods-AdColony.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdColony.release.xcconfig"; path = "Target Support Files/Pods-AdColony/Pods-AdColony.release.xcconfig"; sourceTree = "<group>"; };
-		367408837303ED676A0CC0F2 /* Pods-Ads.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ads.debug.xcconfig"; path = "Target Support Files/Pods-Ads/Pods-Ads.debug.xcconfig"; sourceTree = "<group>"; };
-		4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		001FDF7CA428980BF8E6E60F /* Pods-meta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meta.release.xcconfig"; path = "Target Support Files/Pods-meta/Pods-meta.release.xcconfig"; sourceTree = "<group>"; };
+		0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ads.release.xcconfig"; path = "Target Support Files/Pods-ads/Pods-ads.release.xcconfig"; sourceTree = "<group>"; };
+		306A95510670715B1760AA7A /* Pods_adcolony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_adcolony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		423FD0383D3ACB01587A333D /* Pods-meta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meta.debug.xcconfig"; path = "Target Support Files/Pods-meta/Pods-meta.debug.xcconfig"; sourceTree = "<group>"; };
 		5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyAppOptions.h; sourceTree = "<group>"; };
 		5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdColonyAppOptions.mm; sourceTree = "<group>"; };
 		5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-adcolony.gdip"; sourceTree = "<group>"; };
@@ -110,21 +114,29 @@
 		5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VunglePoingExtrasBuilder.h; sourceTree = "<group>"; };
 		5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VunglePoingExtrasBuilder.mm; sourceTree = "<group>"; };
 		5E9575692A46998300CE30AF /* poing-godot-admob-ads.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-ads.gdip"; sourceTree = "<group>"; };
+		5EA276112A66FC5C00D5CF1E /* PoingGodotAdMobAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdView.h; sourceTree = "<group>"; };
+		5EA276122A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdView.mm; sourceTree = "<group>"; };
+		5EA276152A67396200D5CF1E /* Banner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
+		5EA276162A6739D200D5CF1E /* Banner.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Banner.mm; sourceTree = "<group>"; };
+		5EA276182A6745CD00D5CF1E /* GodotDictionaryToObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GodotDictionaryToObject.h; sourceTree = "<group>"; };
+		5EA276192A67461A00D5CF1E /* GodotDictionaryToObject.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GodotDictionaryToObject.mm; sourceTree = "<group>"; };
 		5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdSize.mm; sourceTree = "<group>"; };
 		5EB63E4F2A65DF1B00699D72 /* PoingGodotAdMobAdSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdSize.h; sourceTree = "<group>"; };
+		5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceOrientationHelper.mm; sourceTree = "<group>"; };
+		5EB759212A68865600523E88 /* DeviceOrientationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceOrientationHelper.h; sourceTree = "<group>"; };
 		5EE75CB42A4C4FD40028DBB2 /* AdColonyExtrasBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdColonyExtrasBuilder.h; sourceTree = "<group>"; };
 		5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AdColonyExtrasBuilder.mm; sourceTree = "<group>"; };
-		5EF0001A9D03178452B810C6 /* Pods-Vungle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vungle.debug.xcconfig"; path = "Target Support Files/Pods-Vungle/Pods-Vungle.debug.xcconfig"; sourceTree = "<group>"; };
-		70F3474ACC0BF5ACEB420D5C /* Pods-Ads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ads.release.xcconfig"; path = "Target Support Files/Pods-Ads/Pods-Ads.release.xcconfig"; sourceTree = "<group>"; };
-		72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ads.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		820D74903A68B058B729601C /* Pods_Vungle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vungle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		839F5873F894717D209660C6 /* Pods-Meta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meta.release.xcconfig"; path = "Target Support Files/Pods-Meta/Pods-Meta.release.xcconfig"; sourceTree = "<group>"; };
-		C3B6CCD6874F968FBB77173A /* Pods_AdColony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AdColony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C93196E8BCE5239E1C5857AD /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
-		D365F419D05D1140624DCBCD /* Pods-Vungle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vungle.release.xcconfig"; path = "Target Support Files/Pods-Vungle/Pods-Vungle.release.xcconfig"; sourceTree = "<group>"; };
-		D55264F153FE86E80D99AFED /* Pods-Meta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meta.debug.xcconfig"; path = "Target Support Files/Pods-Meta/Pods-Meta.debug.xcconfig"; sourceTree = "<group>"; };
-		DBA797FF5EC92A9E82BB1E81 /* Pods-AdColony.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdColony.debug.xcconfig"; path = "Target Support Files/Pods-AdColony/Pods-AdColony.debug.xcconfig"; sourceTree = "<group>"; };
-		E48B2E99CBC345B3A12BC2F0 /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61C7338744733ACDF9608C0F /* Pods_ads.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ads.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		742AFBC1FC03495C7FB2232F /* Pods-adcolony.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-adcolony.release.xcconfig"; path = "Target Support Files/Pods-adcolony/Pods-adcolony.release.xcconfig"; sourceTree = "<group>"; };
+		77E97A6160B9BA5A252D0C9F /* Pods-adcolony.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-adcolony.debug.xcconfig"; path = "Target Support Files/Pods-adcolony/Pods-adcolony.debug.xcconfig"; sourceTree = "<group>"; };
+		89172A20427D79238AD2E0B7 /* Pods-vungle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vungle.debug.xcconfig"; path = "Target Support Files/Pods-vungle/Pods-vungle.debug.xcconfig"; sourceTree = "<group>"; };
+		A8B8A51BD2C38CF1E7585C67 /* Pods_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4ED341537F1C46ECD8226C4 /* Pods_vungle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vungle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC51F69A18027C45E6DD8B0F /* Pods-ads.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ads.debug.xcconfig"; path = "Target Support Files/Pods-ads/Pods-ads.debug.xcconfig"; sourceTree = "<group>"; };
+		CE5E3845A23B1DF76DF83F92 /* Pods-vungle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vungle.release.xcconfig"; path = "Target Support Files/Pods-vungle/Pods-vungle.release.xcconfig"; sourceTree = "<group>"; };
+		D543E74DDF1339C060D0B774 /* Pods-core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.release.xcconfig"; path = "Target Support Files/Pods-core/Pods-core.release.xcconfig"; sourceTree = "<group>"; };
+		D987DFBE4578E324D2F2E98E /* Pods_meta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92044ABF829B272A03BAD3E /* Pods-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.debug.xcconfig"; path = "Target Support Files/Pods-core/Pods-core.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B436A9E921847608A00607 /* Pods_AdColony.framework in Frameworks */,
+				FD5CD28B654F484A801214C2 /* Pods_adcolony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4100D0093767E47AE7EDF66 /* Pods_Ads.framework in Frameworks */,
+				3DF454CB5A80D6C4313AC810 /* Pods_ads.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43D5D03591858E51492C1901 /* Pods_Core.framework in Frameworks */,
+				D9C6EBA1B0831032019D81C7 /* Pods_core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42A8FA47FA1D2790A9AC2D02 /* Pods_Meta.framework in Frameworks */,
+				F6F2893BCD20C5B28234938B /* Pods_meta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94F6850D1424BC5E5AA9537 /* Pods_Vungle.framework in Frameworks */,
+				46C7E77DD2ECA925F3952036 /* Pods_vungle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,11 +186,11 @@
 		548AE72BDC782EBFF5BA57B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				72A48F3202500B3D6AE3DCE2 /* Pods_Ads.framework */,
-				E48B2E99CBC345B3A12BC2F0 /* Pods_Core.framework */,
-				4AA3E39DB4C9AD01ABA9996A /* Pods_Meta.framework */,
-				820D74903A68B058B729601C /* Pods_Vungle.framework */,
-				C3B6CCD6874F968FBB77173A /* Pods_AdColony.framework */,
+				306A95510670715B1760AA7A /* Pods_adcolony.framework */,
+				61C7338744733ACDF9608C0F /* Pods_ads.framework */,
+				A8B8A51BD2C38CF1E7585C67 /* Pods_core.framework */,
+				D987DFBE4578E324D2F2E98E /* Pods_meta.framework */,
+				C4ED341537F1C46ECD8226C4 /* Pods_vungle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,16 +198,16 @@
 		5BA9F87E99131221E0FE542B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				367408837303ED676A0CC0F2 /* Pods-Ads.debug.xcconfig */,
-				70F3474ACC0BF5ACEB420D5C /* Pods-Ads.release.xcconfig */,
-				118FE02AAC9135C5313B925D /* Pods-Core.debug.xcconfig */,
-				C93196E8BCE5239E1C5857AD /* Pods-Core.release.xcconfig */,
-				D55264F153FE86E80D99AFED /* Pods-Meta.debug.xcconfig */,
-				839F5873F894717D209660C6 /* Pods-Meta.release.xcconfig */,
-				5EF0001A9D03178452B810C6 /* Pods-Vungle.debug.xcconfig */,
-				D365F419D05D1140624DCBCD /* Pods-Vungle.release.xcconfig */,
-				DBA797FF5EC92A9E82BB1E81 /* Pods-AdColony.debug.xcconfig */,
-				2A16765B5C3914CEDD1EDC4C /* Pods-AdColony.release.xcconfig */,
+				77E97A6160B9BA5A252D0C9F /* Pods-adcolony.debug.xcconfig */,
+				742AFBC1FC03495C7FB2232F /* Pods-adcolony.release.xcconfig */,
+				CC51F69A18027C45E6DD8B0F /* Pods-ads.debug.xcconfig */,
+				0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */,
+				F92044ABF829B272A03BAD3E /* Pods-core.debug.xcconfig */,
+				D543E74DDF1339C060D0B774 /* Pods-core.release.xcconfig */,
+				423FD0383D3ACB01587A333D /* Pods-meta.debug.xcconfig */,
+				001FDF7CA428980BF8E6E60F /* Pods-meta.release.xcconfig */,
+				89172A20427D79238AD2E0B7 /* Pods-vungle.debug.xcconfig */,
+				CE5E3845A23B1DF76DF83F92 /* Pods-vungle.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -227,6 +239,8 @@
 			children = (
 				5E63D64D2A64632D00BDC600 /* ObjectToGodotDictionary.h */,
 				5E63D64E2A64636100BDC600 /* ObjectToGodotDictionary.mm */,
+				5EA276182A6745CD00D5CF1E /* GodotDictionaryToObject.h */,
+				5EA276192A67461A00D5CF1E /* GodotDictionaryToObject.mm */,
 			);
 			path = converters;
 			sourceTree = "<group>";
@@ -256,6 +270,8 @@
 		5E80AAD22A44A50C001C750F /* ads */ = {
 			isa = PBXGroup;
 			children = (
+				5EB7591E2A6885EA00523E88 /* helpers */,
+				5EA276142A6738B700D5CF1E /* adformats */,
 				5E63D64C2A6461B300BDC600 /* converters */,
 				5E9575682A46997400CE30AF /* config */,
 				5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */,
@@ -264,6 +280,8 @@
 				5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */,
 				5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */,
 				5EB63E4F2A65DF1B00699D72 /* PoingGodotAdMobAdSize.h */,
+				5EA276112A66FC5C00D5CF1E /* PoingGodotAdMobAdView.h */,
+				5EA276122A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm */,
 			);
 			path = ads;
 			sourceTree = "<group>";
@@ -321,6 +339,24 @@
 				5E9575692A46998300CE30AF /* poing-godot-admob-ads.gdip */,
 			);
 			path = config;
+			sourceTree = "<group>";
+		};
+		5EA276142A6738B700D5CF1E /* adformats */ = {
+			isa = PBXGroup;
+			children = (
+				5EA276152A67396200D5CF1E /* Banner.h */,
+				5EA276162A6739D200D5CF1E /* Banner.mm */,
+			);
+			path = adformats;
+			sourceTree = "<group>";
+		};
+		5EB7591E2A6885EA00523E88 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */,
+				5EB759212A68865600523E88 /* DeviceOrientationHelper.h */,
+			);
+			path = helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,7 +516,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Vungle-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-vungle-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -502,7 +538,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Meta-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-meta-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -524,7 +560,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdColony-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-adcolony-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -546,7 +582,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Core-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-core-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -568,7 +604,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Ads-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ads-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -592,10 +628,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB759202A68860400523E88 /* DeviceOrientationHelper.mm in Sources */,
 				5E80AAD52A44A50C001C750F /* PoingGodotAdMob.mm in Sources */,
+				5EA2761A2A67461A00D5CF1E /* GodotDictionaryToObject.mm in Sources */,
+				5EA276172A6739D200D5CF1E /* Banner.mm in Sources */,
 				5E63D64F2A64636100BDC600 /* ObjectToGodotDictionary.mm in Sources */,
 				5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */,
 				5EB63E4E2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm in Sources */,
+				5EA276132A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,7 +668,7 @@
 /* Begin XCBuildConfiguration section */
 		5E5BDE412A4686B20071BE86 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBA797FF5EC92A9E82BB1E81 /* Pods-AdColony.debug.xcconfig */;
+			baseConfigurationReference = 77E97A6160B9BA5A252D0C9F /* Pods-adcolony.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -659,7 +699,7 @@
 		};
 		5E5BDE422A4686B20071BE86 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A16765B5C3914CEDD1EDC4C /* Pods-AdColony.release.xcconfig */;
+			baseConfigurationReference = 742AFBC1FC03495C7FB2232F /* Pods-adcolony.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -791,7 +831,7 @@
 		};
 		5E80AADA2A44A50C001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 367408837303ED676A0CC0F2 /* Pods-Ads.debug.xcconfig */;
+			baseConfigurationReference = CC51F69A18027C45E6DD8B0F /* Pods-ads.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -831,7 +871,7 @@
 		};
 		5E80AADB2A44A50C001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70F3474ACC0BF5ACEB420D5C /* Pods-Ads.release.xcconfig */;
+			baseConfigurationReference = 0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -862,7 +902,7 @@
 		};
 		5E80AAE72A44A74A001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 118FE02AAC9135C5313B925D /* Pods-Core.debug.xcconfig */;
+			baseConfigurationReference = F92044ABF829B272A03BAD3E /* Pods-core.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -877,7 +917,7 @@
 		};
 		5E80AAE82A44A74A001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C93196E8BCE5239E1C5857AD /* Pods-Core.release.xcconfig */;
+			baseConfigurationReference = D543E74DDF1339C060D0B774 /* Pods-core.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -892,7 +932,7 @@
 		};
 		5E80AAF42A44A82F001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D55264F153FE86E80D99AFED /* Pods-Meta.debug.xcconfig */;
+			baseConfigurationReference = 423FD0383D3ACB01587A333D /* Pods-meta.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -907,7 +947,7 @@
 		};
 		5E80AAF52A44A82F001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 839F5873F894717D209660C6 /* Pods-Meta.release.xcconfig */;
+			baseConfigurationReference = 001FDF7CA428980BF8E6E60F /* Pods-meta.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -922,7 +962,7 @@
 		};
 		5E80AB032A44AA77001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EF0001A9D03178452B810C6 /* Pods-Vungle.debug.xcconfig */;
+			baseConfigurationReference = 89172A20427D79238AD2E0B7 /* Pods-vungle.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -937,7 +977,7 @@
 		};
 		5E80AB042A44AA77001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D365F419D05D1140624DCBCD /* Pods-Vungle.release.xcconfig */;
+			baseConfigurationReference = CE5E3845A23B1DF76DF83F92 /* Pods-vungle.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;

@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "PoingGodotAdMobAdSize.h"
 #import "converters/ObjectToGodotDictionary.h"
+#import "helpers/DeviceOrientationHelper.h"
 
 PoingGodotAdMobAdSize *PoingGodotAdMobAdSize::instance = NULL;
 
@@ -41,8 +42,53 @@ Dictionary PoingGodotAdMobAdSize::getCurrentOrientationAnchoredAdaptiveBannerAdS
     return dictionary;
 }
 
+Dictionary PoingGodotAdMobAdSize::getPortraitAnchoredAdaptiveBannerAdSize(int width) {
+    NSLog(@"calling getCurrentOrientationAnchoredAdaptiveBannerAdSize");
+    int currentWidth = (width == FULL_WIDTH) ? getAdWidth() : width;
+    NSLog(@"currentWidth: %i", currentWidth);
+
+    GADAdSize adSize = GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth(currentWidth);
+    Dictionary dictionary = [ObjectToGodotDictionary convertGADAdSizeToDictionary:adSize];
+
+    return dictionary;
+}
+
+Dictionary PoingGodotAdMobAdSize::getLandscapeAnchoredAdaptiveBannerAdSize(int width) {
+    NSLog(@"calling getCurrentOrientationAnchoredAdaptiveBannerAdSize");
+    int currentWidth = (width == FULL_WIDTH) ? getAdWidth() : width;
+    NSLog(@"currentWidth: %i", currentWidth);
+
+    GADAdSize adSize = GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth(currentWidth);
+    Dictionary dictionary = [ObjectToGodotDictionary convertGADAdSizeToDictionary:adSize];
+
+    return dictionary;
+}
+Dictionary PoingGodotAdMobAdSize::getSmartBannerAdSize() {
+    NSLog(@"calling getCurrentOrientationAnchoredAdaptiveBannerAdSize");
+
+    GADAdSize adSize;
+
+    UIInterfaceOrientation orientation = [DeviceOrientationHelper getDeviceOrientation];
+
+    if (UIInterfaceOrientationIsPortrait(orientation)) { //portrait
+        adSize = kGADAdSizeSmartBannerPortrait;
+        NSLog(@"UIDeviceOrientation: Portrait");
+    }
+    else { //landscape
+        adSize = kGADAdSizeSmartBannerLandscape;
+        NSLog(@"UIDeviceOrientation: Landscape");
+    }
+
+    Dictionary dictionary = [ObjectToGodotDictionary convertGADAdSizeToDictionary:adSize];
+
+    return dictionary;
+}
+
 void PoingGodotAdMobAdSize::_bind_methods() {
     ClassDB::bind_method(D_METHOD("getCurrentOrientationAnchoredAdaptiveBannerAdSize"), &PoingGodotAdMobAdSize::getCurrentOrientationAnchoredAdaptiveBannerAdSize);
+    ClassDB::bind_method(D_METHOD("getPortraitAnchoredAdaptiveBannerAdSize"), &PoingGodotAdMobAdSize::getPortraitAnchoredAdaptiveBannerAdSize);
+    ClassDB::bind_method(D_METHOD("getLandscapeAnchoredAdaptiveBannerAdSize"), &PoingGodotAdMobAdSize::getLandscapeAnchoredAdaptiveBannerAdSize);
+    ClassDB::bind_method(D_METHOD("getSmartBannerAdSize"), &PoingGodotAdMobAdSize::getSmartBannerAdSize);
 };
 
 

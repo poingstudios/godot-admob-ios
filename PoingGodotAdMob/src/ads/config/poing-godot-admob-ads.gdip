@@ -352,5 +352,13 @@ SKAdNetworkItems:raw="
     <key>SKAdNetworkIdentifier</key>
     <string>a7xqa6mtl2.skadnetwork</string>
   </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>eh6m2bh4zr.skadnetwork</string>
+  </dict>
+  <dict>
+    <key>SKAdNetworkIdentifier</key>
+    <string>vutu7akeur.skadnetwork</string>
+  </dict>
 </array>
 "

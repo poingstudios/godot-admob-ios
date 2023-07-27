@@ -24,8 +24,6 @@
 #define PoingGodotAdMobAdView_h
 
 #include "core/object/class_db.h"
-#import <Foundation/Foundation.h>
-#import "view_controller.h"
 #import "adformats/Banner.h"
 #include <vector>
 

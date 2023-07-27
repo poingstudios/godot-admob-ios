@@ -25,23 +25,10 @@
 #import "../converters/GodotDictionaryToObject.h"
 #import "../converters/ObjectToGodotDictionary.h"
 
-enum class AdPosition {
-    Top,
-    Bottom,
-    Left,
-    Right,
-    TopLeft,
-    TopRight,
-    BottomLeft,
-    BottomRight,
-    Center,
-    Custom = -1 //NOT USED YET
-};
 
 @implementation Banner
 - (instancetype)initWithUID:(int)UID adViewDictionary:(Dictionary)adViewDictionary {
     if ((self = [super init])) {
-        self.rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
         self.UID = [NSNumber numberWithInt:UID];
         self.adPosition = [NSNumber numberWithInt:(int) adViewDictionary["ad_position"]];
 
@@ -53,7 +40,7 @@ enum class AdPosition {
         [self addBannerViewToView:self.bannerView];
 
         self.bannerView.adUnitID = [NSString stringWithUTF8String:adUnitId.utf8().get_data()];
-        self.bannerView.rootViewController = self.rootController;
+        self.bannerView.rootViewController = self;
 
         self.bannerView.delegate = self;
 
@@ -103,13 +90,13 @@ enum class AdPosition {
 
 - (void)addBannerViewToView:(GADBannerView *)bannerView {
     bannerView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.rootController.view addSubview:bannerView];
+    [AppDelegate.viewController.view addSubview:bannerView];
     //CENTER ON MIDDLE OF SCREEM
     [self updateBannerPositionForAdPosition:static_cast<AdPosition>([self.adPosition intValue])];
 }
 
 - (void)addConstraintForBannerView:(NSLayoutAttribute)attribute toView:(id)toView {
-    [self.rootController.view addConstraint:
+    [AppDelegate.viewController.view addConstraint:
      [NSLayoutConstraint constraintWithItem:self.bannerView
                                   attribute:attribute
                                   relatedBy:NSLayoutRelationEqual
@@ -121,65 +108,65 @@ enum class AdPosition {
 
 - (void)updateBannerPositionForAdPosition:(AdPosition)adPosition {
     NSLog(@"ADPOSITION: %i", adPosition);
-    [self.rootController.view removeConstraints:self.bannerView.constraints];
+    [AppDelegate.viewController.view removeConstraints:self.bannerView.constraints];
     
     switch (adPosition) {
         case AdPosition::Top:
-            [self addConstraintForBannerView:NSLayoutAttributeCenterX toView:self.rootController.view];
-            [self addConstraintForBannerView:NSLayoutAttributeTop toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeCenterX toView:AppDelegate.viewController.view];
+            [self addConstraintForBannerView:NSLayoutAttributeTop toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::Bottom:
-            [self addConstraintForBannerView:NSLayoutAttributeCenterX toView:self.rootController.view];
-            [self addConstraintForBannerView:NSLayoutAttributeBottom toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeCenterX toView:AppDelegate.viewController.view];
+            [self addConstraintForBannerView:NSLayoutAttributeBottom toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::Left:
-            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:self.rootController.view.safeAreaLayoutGuide];
-            [self addConstraintForBannerView:NSLayoutAttributeCenterY toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeCenterY toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::Right:
-            [self addConstraintForBannerView:NSLayoutAttributeRight toView:self.rootController.view.safeAreaLayoutGuide];
-            [self addConstraintForBannerView:NSLayoutAttributeCenterY toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeRight toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeCenterY toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::TopLeft:
-            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:self.rootController.view.safeAreaLayoutGuide];
-            [self addConstraintForBannerView:NSLayoutAttributeTop toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeTop toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::TopRight:
-            [self addConstraintForBannerView:NSLayoutAttributeRight toView:self.rootController.view.safeAreaLayoutGuide];
-            [self addConstraintForBannerView:NSLayoutAttributeTop toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeRight toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeTop toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::BottomLeft:
-            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:self.rootController.view.safeAreaLayoutGuide];
-            [self addConstraintForBannerView:NSLayoutAttributeBottom toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeBottom toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::BottomRight:
-            [self addConstraintForBannerView:NSLayoutAttributeRight toView:self.rootController.view.safeAreaLayoutGuide];
-            [self addConstraintForBannerView:NSLayoutAttributeBottom toView:self.rootController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeRight toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
+            [self addConstraintForBannerView:NSLayoutAttributeBottom toView:AppDelegate.viewController.view.safeAreaLayoutGuide];
             break;
             
         case AdPosition::Center:
-            [self addConstraintForBannerView:NSLayoutAttributeCenterX toView:self.rootController.view];
-            [self addConstraintForBannerView:NSLayoutAttributeCenterY toView:self.rootController.view];
+            [self addConstraintForBannerView:NSLayoutAttributeCenterX toView:AppDelegate.viewController.view];
+            [self addConstraintForBannerView:NSLayoutAttributeCenterY toView:AppDelegate.viewController.view];
             break;
             
         case AdPosition::Custom:
-            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:self.rootController.view.safeAreaLayoutGuide attributeConstant:0];
-            [self addConstraintForBannerView:NSLayoutAttributeTop toView:self.rootController.view.safeAreaLayoutGuide attributeConstant:0];
+            [self addConstraintForBannerView:NSLayoutAttributeLeft toView:AppDelegate.viewController.view.safeAreaLayoutGuide attributeConstant:0];
+            [self addConstraintForBannerView:NSLayoutAttributeTop toView:AppDelegate.viewController.view.safeAreaLayoutGuide attributeConstant:0];
             break;
     }
     
-    [self.rootController.view layoutIfNeeded];
+    [AppDelegate.viewController.view layoutIfNeeded];
 }
 
 - (void)addConstraintForBannerView:(NSLayoutAttribute)attribute toView:(id)toView attributeConstant:(CGFloat)constant {
-    [self.rootController.view addConstraint:
+    [AppDelegate.viewController.view addConstraint:
      [NSLayoutConstraint constraintWithItem:self.bannerView
                                   attribute:attribute
                                   relatedBy:NSLayoutRelationEqual
@@ -221,6 +208,23 @@ enum class AdPosition {
     NSLog(@"bannerViewDidDismissScreen");
     PoingGodotAdMobAdView::get_singleton()->emit_signal("on_ad_closed", [self.UID intValue]);
 }
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    NSLog(@"viewWillAppear");
+}
+- (void)viewDidAppear:(BOOL)animated{
+    NSLog(@"viewDidAppear");
+
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    NSLog(@"viewWillDisappear");
+
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    NSLog(@"viewDidDisappear");
+}
+
 
 @end
 

@@ -23,17 +23,19 @@
 #ifndef Banner_h
 #define Banner_h
 #import "../PoingGodotAdMobAdView.h"
+#import "view_controller.h"
 #import "app_delegate.h"
+
 
 @import GoogleMobileAds;
 
-@interface Banner : NSObject <GADBannerViewDelegate>
+@interface Banner : ViewController <GADBannerViewDelegate>
 
 @property (nonatomic, strong) GADBannerView *bannerView;
 @property (nonatomic, strong) NSNumber *UID;
 @property (nonatomic, strong) NSNumber *adPosition;
 @property (nonatomic) BOOL isHidden;
-@property (nonatomic, strong) ViewController *rootController;
+
 
 - (instancetype)initWithUID:(int)UID adViewDictionary:(Dictionary)adViewDictionary;
 - (void)loadAd;
@@ -46,5 +48,19 @@
 - (int)getHeightInPixels;
 
 @end
+
+
+enum class AdPosition {
+    Top,
+    Bottom,
+    Left,
+    Right,
+    TopLeft,
+    TopRight,
+    BottomLeft,
+    BottomRight,
+    Center,
+    Custom = -1 //NOT USED YET
+};
 
 #endif /* Banner_h */

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3DF454CB5A80D6C4313AC810 /* Pods_ads.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C7338744733ACDF9608C0F /* Pods_ads.framework */; };
 		46C7E77DD2ECA925F3952036 /* Pods_vungle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4ED341537F1C46ECD8226C4 /* Pods_vungle.framework */; };
+		5E027D892A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E027D882A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm */; };
 		5E08983D2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */; };
 		5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */; };
 		5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */; };
@@ -91,6 +92,8 @@
 		0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ads.release.xcconfig"; path = "Target Support Files/Pods-ads/Pods-ads.release.xcconfig"; sourceTree = "<group>"; };
 		306A95510670715B1760AA7A /* Pods_adcolony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_adcolony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		423FD0383D3ACB01587A333D /* Pods-meta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meta.debug.xcconfig"; path = "Target Support Files/Pods-meta/Pods-meta.debug.xcconfig"; sourceTree = "<group>"; };
+		5E027D872A74A75C001551B6 /* PoingGodotAdMobInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobInterstitialAd.h; sourceTree = "<group>"; };
+		5E027D882A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobInterstitialAd.mm; sourceTree = "<group>"; };
 		5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyAppOptions.h; sourceTree = "<group>"; };
 		5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdColonyAppOptions.mm; sourceTree = "<group>"; };
 		5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-adcolony.gdip"; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				5EB63E4F2A65DF1B00699D72 /* PoingGodotAdMobAdSize.h */,
 				5EA276112A66FC5C00D5CF1E /* PoingGodotAdMobAdView.h */,
 				5EA276122A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm */,
+				5E027D872A74A75C001551B6 /* PoingGodotAdMobInterstitialAd.h */,
+				5E027D882A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm */,
 			);
 			path = ads;
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E027D892A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm in Sources */,
 				5EB759202A68860400523E88 /* DeviceOrientationHelper.mm in Sources */,
 				5E80AAD52A44A50C001C750F /* PoingGodotAdMob.mm in Sources */,
 				5EA2761A2A67461A00D5CF1E /* GodotDictionaryToObject.mm in Sources */,

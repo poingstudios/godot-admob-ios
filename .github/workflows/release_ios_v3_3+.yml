@@ -117,14 +117,7 @@ jobs:
       env:
         SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
       run: |
-        VERSION_TO_BUILD=0
-
-        if [ ${CURRENT_GODOT_VERSION:0:1} -gt 3 ]
-        then
-            VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:3}
-        else
-            VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:1}.x
-        fi
+        VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:1}.x
         
         ./scripts/release_static_library.sh ${VERSION_TO_BUILD}
 

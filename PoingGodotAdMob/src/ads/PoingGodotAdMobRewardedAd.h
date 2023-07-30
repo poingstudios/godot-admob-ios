@@ -20,40 +20,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobAdView_h
-#define PoingGodotAdMobAdView_h
+#ifndef PoingGodotAdMobRewardedAd_h
+#define PoingGodotAdMobRewardedAd_h
 
+#include "core/object/class_db.h"
 #import "converters/GodotDictionaryToObject.h"
-#import "AdFormatController.h"
-#import "adformats/BannerAd.h"
+#import "adformats/RewardedAd.h"
+#include <vector>
 
-@class BannerAd;
+
+@class RewardedAd;
 
 @import GoogleMobileAds;
 
-class PoingGodotAdMobAdView : public AdFormatController<BannerAd> {
+class PoingGodotAdMobRewardedAd : public Object {
+    GDCLASS(PoingGodotAdMobRewardedAd, Object);
 
-    GDCLASS(PoingGodotAdMobAdView, Object);
-
-    static PoingGodotAdMobAdView *instance;
+    static PoingGodotAdMobRewardedAd *instance;
     static void _bind_methods();
 
 public:
-    int create(Dictionary adViewDictionary);
-    void load_ad(int uid, Dictionary adRequestDictionary, PackedStringArray keywords);
-    void destroy(int uid);
-    void hide(int uid);
+    std::vector<RewardedAd*> rewardedAds;
+
+    int create();
+    void load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid);
     void show(int uid);
-    int get_width(int uid);
-    int get_height(int uid);
-    int get_width_in_pixels(int uid);
-    int get_height_in_pixels(int uid);
+    void destroy(int uid);
 
-    static PoingGodotAdMobAdView *get_singleton();
+    static PoingGodotAdMobRewardedAd *get_singleton();
 
-    PoingGodotAdMobAdView();
-    ~PoingGodotAdMobAdView();
+    PoingGodotAdMobRewardedAd();
+    ~PoingGodotAdMobRewardedAd();
 };
 
-
-#endif /* PoingGodotAdMobAdView_h */
+#endif /* PoingGodotAdMobRewardedAd_h */

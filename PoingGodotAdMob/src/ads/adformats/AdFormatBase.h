@@ -20,40 +20,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobAdView_h
-#define PoingGodotAdMobAdView_h
+#ifndef AdFormatBase_h
+#define AdFormatBase_h
 
-#import "converters/GodotDictionaryToObject.h"
-#import "AdFormatController.h"
-#import "adformats/BannerAd.h"
-
-@class BannerAd;
+#import "../converters/GodotDictionaryToObject.h"
+#import "../converters/ObjectToGodotDictionary.h"
+#import "view_controller.h"
+#import "app_delegate.h"
 
 @import GoogleMobileAds;
 
-class PoingGodotAdMobAdView : public AdFormatController<BannerAd> {
+@interface AdFormatBase : ViewController 
 
-    GDCLASS(PoingGodotAdMobAdView, Object);
+@property (nonatomic, strong) NSNumber *UID;
 
-    static PoingGodotAdMobAdView *instance;
-    static void _bind_methods();
+@end
 
-public:
-    int create(Dictionary adViewDictionary);
-    void load_ad(int uid, Dictionary adRequestDictionary, PackedStringArray keywords);
-    void destroy(int uid);
-    void hide(int uid);
-    void show(int uid);
-    int get_width(int uid);
-    int get_height(int uid);
-    int get_width_in_pixels(int uid);
-    int get_height_in_pixels(int uid);
+@implementation AdFormatBase
 
-    static PoingGodotAdMobAdView *get_singleton();
-
-    PoingGodotAdMobAdView();
-    ~PoingGodotAdMobAdView();
-};
-
-
-#endif /* PoingGodotAdMobAdView_h */
+@end
+#endif /* AdFormatBase_h */

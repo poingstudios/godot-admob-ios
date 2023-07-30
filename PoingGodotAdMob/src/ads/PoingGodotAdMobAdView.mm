@@ -23,7 +23,6 @@
 #import "PoingGodotAdMobAdView.h"
 
 PoingGodotAdMobAdView *PoingGodotAdMobAdView::instance = NULL;
-std::vector<Banner*> banners;
 
 PoingGodotAdMobAdView::PoingGodotAdMobAdView() {
     ERR_FAIL_COND(instance != NULL);
@@ -45,94 +44,81 @@ PoingGodotAdMobAdView *PoingGodotAdMobAdView::get_singleton() {
 int PoingGodotAdMobAdView::create(Dictionary adViewDictionary) {
     NSLog(@"create banner");
 
-    Banner *banner = [[Banner alloc] initWithUID:(int)banners.size() adViewDictionary:adViewDictionary];
-    banners.push_back(banner);
+    BannerAd *bannerAd = [[BannerAd alloc] initWithUID:(int)adFormatVector.size() adViewDictionary:adViewDictionary];
+    adFormatVector.push_back(bannerAd);
 
-    return [banner.UID intValue];
+    return [bannerAd.UID intValue];
 }
 
 void PoingGodotAdMobAdView::load_ad(int uid, Dictionary adRequestDictionary, PackedStringArray keywords) {
     NSLog(@"load_ad banner");
     GADRequest *adRequest = [GodotDictionaryToObject convertDictionaryToGADRequest:adRequestDictionary withKeywords:keywords];
 
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            [banner loadAd:adRequest];
-        }
+    BannerAd* bannerAd = getAdFormat(uid);
+    if (bannerAd) {
+        [bannerAd loadAd:adRequest];
     }
 }
 
 void PoingGodotAdMobAdView::destroy(int uid) {
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            [banner destroy];
-            banners.at(uid) = nullptr;
-        }
+    BannerAd* ad = getAdFormat(uid);
+    if (ad) {
+        [ad destroy];
+        adFormatVector.at(uid) = nullptr;
     }
 }
 
 void PoingGodotAdMobAdView::hide(int uid) {
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            [banner hide];
-        }
+    BannerAd* bannerAd = getAdFormat(uid);
+    if (bannerAd) {
+        [bannerAd hide];
     }
 }
 
 void PoingGodotAdMobAdView::show(int uid) {
     NSLog(@"show banner");
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            [banner show];
-        }
+
+    BannerAd* bannerAd = getAdFormat(uid);
+    if (bannerAd) {
+        [bannerAd show];
     }
 }
 
 int PoingGodotAdMobAdView::get_width(int uid) {
     NSLog(@"get_width banner");
 
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            return [banner getWidth];
-        }
+    BannerAd* bannerAd = getAdFormat(uid);
+    if (bannerAd) {
+        return [bannerAd getWidth];
     }
     return -1;
 }
 
 int PoingGodotAdMobAdView::get_height(int uid) {
     NSLog(@"get_height banner");
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            return [banner getHeight];
-        }
+
+    BannerAd* bannerAd = getAdFormat(uid);
+    if (bannerAd) {
+        return [bannerAd getHeight];
     }
     return -1;
 }
 
 int PoingGodotAdMobAdView::get_width_in_pixels(int uid) {
     NSLog(@"get_width_in_pixels banner");
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            return [banner getWidthInPixels];
-        }
+
+    BannerAd* bannerAd = getAdFormat(uid);
+    if (bannerAd) {
+        return [bannerAd getWidthInPixels];
     }
     return -1;
 }
 
 int PoingGodotAdMobAdView::get_height_in_pixels(int uid) {
     NSLog(@"get_height_in_pixels banner");
-    if (is_vector_banner_valid(uid)){
-        Banner* banner = banners.at(uid);
-        if (banner) {
-            return [banner getHeightInPixels];
-        }
+    BannerAd* bannerAd = getAdFormat(uid);
+    if (bannerAd) {
+        return [bannerAd getHeightInPixels];
     }
     return -1;
 }
@@ -156,7 +142,3 @@ void PoingGodotAdMobAdView::_bind_methods() {
     ADD_SIGNAL(MethodInfo("on_ad_opened",           PropertyInfo(Variant::INT, "UID")));
 };
 
-
-bool PoingGodotAdMobAdView::is_vector_banner_valid(int uid){
-    return banners.size() > 0 && uid >= 0 && uid < banners.size() && banners.at(uid) != nullptr;
-}

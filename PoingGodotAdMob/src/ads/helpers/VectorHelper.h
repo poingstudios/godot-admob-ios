@@ -20,40 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobAdView_h
-#define PoingGodotAdMobAdView_h
+#ifndef VectorHelper_h
+#define VectorHelper_h
 
-#import "converters/GodotDictionaryToObject.h"
-#import "AdFormatController.h"
-#import "adformats/BannerAd.h"
+#include <vector>
 
-@class BannerAd;
-
-@import GoogleMobileAds;
-
-class PoingGodotAdMobAdView : public AdFormatController<BannerAd> {
-
-    GDCLASS(PoingGodotAdMobAdView, Object);
-
-    static PoingGodotAdMobAdView *instance;
-    static void _bind_methods();
-
+template<typename T>
+class VectorHelper {
 public:
-    int create(Dictionary adViewDictionary);
-    void load_ad(int uid, Dictionary adRequestDictionary, PackedStringArray keywords);
-    void destroy(int uid);
-    void hide(int uid);
-    void show(int uid);
-    int get_width(int uid);
-    int get_height(int uid);
-    int get_width_in_pixels(int uid);
-    int get_height_in_pixels(int uid);
-
-    static PoingGodotAdMobAdView *get_singleton();
-
-    PoingGodotAdMobAdView();
-    ~PoingGodotAdMobAdView();
+    static bool is_vector_valid(int uid, const std::vector<T*>& vec) {
+        return vec.size() > 0 && uid >= 0 && uid < vec.size() && vec.at(uid) != nullptr;
+    }
 };
 
 
-#endif /* PoingGodotAdMobAdView_h */
+#endif /* VectorHelper_h */

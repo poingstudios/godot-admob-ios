@@ -20,16 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import <Foundation/Foundation.h>
-
 #import "PoingGodotAdMobModule.h"
-#include "PoingGodotAdMob.h"
-#include "PoingGodotAdMobAdSize.h"
-#include "PoingGodotAdMobAdView.h"
-#include "PoingGodotAdMobInterstitialAd.h"
-
-#include "core/config/engine.h"
-#include "core/version.h"
 
 PoingGodotAdMob *poing_godot_admob;
 PoingGodotAdMobAdSize *poing_godot_admob_ad_size;

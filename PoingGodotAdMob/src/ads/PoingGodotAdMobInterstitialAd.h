@@ -23,25 +23,22 @@
 #ifndef PoingGodotAdMobInterstitialAd_h
 #define PoingGodotAdMobInterstitialAd_h
 
-#include "core/object/class_db.h"
 #import "converters/GodotDictionaryToObject.h"
-#import "adformats/InterstitialAd.h"
-#include <vector>
+#import "AdFormatController.h"
 
+#import "adformats/InterstitialAd.h"
 
 @class InterstitialAd;
 
 @import GoogleMobileAds;
 
-class PoingGodotAdMobInterstitialAd : public Object {
+class PoingGodotAdMobInterstitialAd : public AdFormatController<InterstitialAd> {
     GDCLASS(PoingGodotAdMobInterstitialAd, Object);
 
     static PoingGodotAdMobInterstitialAd *instance;
     static void _bind_methods();
 
 public:
-    std::vector<InterstitialAd*> interstitialAds;
-
     int create();
     void load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid);
     void show(int uid);
@@ -51,8 +48,6 @@ public:
 
     PoingGodotAdMobInterstitialAd();
     ~PoingGodotAdMobInterstitialAd();
-private:
-    bool is_vector_interstitial_valid(int uid);
 };
 
 #endif /* PoingGodotAdMobInterstitialAd_h */

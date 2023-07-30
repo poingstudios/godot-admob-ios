@@ -20,40 +20,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobAdView_h
-#define PoingGodotAdMobAdView_h
+#ifndef BannerAd_h
+#define BannerAd_h
 
-#import "converters/GodotDictionaryToObject.h"
-#import "AdFormatController.h"
-#import "adformats/BannerAd.h"
+#import "../PoingGodotAdMobAdView.h"
+#import "AdFormatBase.h"
 
-@class BannerAd;
+@interface BannerAd : AdFormatBase <GADBannerViewDelegate>
 
-@import GoogleMobileAds;
+@property (nonatomic, strong) GADBannerView *bannerView;
+@property (nonatomic, strong) NSNumber *adPosition;
+@property (nonatomic) BOOL isHidden;
 
-class PoingGodotAdMobAdView : public AdFormatController<BannerAd> {
+- (instancetype)initWithUID:(int)UID adViewDictionary:(Dictionary)adViewDictionary;
+- (void)loadAd:(GADRequest *)request;
+- (void)destroy;
+- (void)hide;
+- (void)show;
+- (int)getWidth;
+- (int)getHeight;
+- (int)getWidthInPixels;
+- (int)getHeightInPixels;
 
-    GDCLASS(PoingGodotAdMobAdView, Object);
+@end
 
-    static PoingGodotAdMobAdView *instance;
-    static void _bind_methods();
 
-public:
-    int create(Dictionary adViewDictionary);
-    void load_ad(int uid, Dictionary adRequestDictionary, PackedStringArray keywords);
-    void destroy(int uid);
-    void hide(int uid);
-    void show(int uid);
-    int get_width(int uid);
-    int get_height(int uid);
-    int get_width_in_pixels(int uid);
-    int get_height_in_pixels(int uid);
-
-    static PoingGodotAdMobAdView *get_singleton();
-
-    PoingGodotAdMobAdView();
-    ~PoingGodotAdMobAdView();
+enum class AdPosition {
+    Top,
+    Bottom,
+    Left,
+    Right,
+    TopLeft,
+    TopRight,
+    BottomLeft,
+    BottomRight,
+    Center,
+    Custom = -1 //NOT USED YET
 };
 
-
-#endif /* PoingGodotAdMobAdView_h */
+#endif /* BannerAd_h */

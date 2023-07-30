@@ -23,7 +23,11 @@
 #ifndef POING_GODOT_ADMOB_H
 #define POING_GODOT_ADMOB_H
 
+#import <Foundation/Foundation.h>
 #include "core/object/class_db.h"
+#import "../core/AdNetworkExtras.h"
+#import "converters/ObjectToGodotDictionary.h"
+
 @import GoogleMobileAds;
 
 class PoingGodotAdMob : public Object {

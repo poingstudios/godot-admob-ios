@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import "Banner.h"
+#import "BannerAd.h"
 
 
-@implementation Banner
+@implementation BannerAd
 - (instancetype)initWithUID:(int)UID adViewDictionary:(Dictionary)adViewDictionary {
     if ((self = [super init])) {
         self.UID = [NSNumber numberWithInt:UID];
@@ -202,23 +202,6 @@
     NSLog(@"bannerViewDidDismissScreen");
     PoingGodotAdMobAdView::get_singleton()->emit_signal("on_ad_closed", [self.UID intValue]);
 }
-
-
-- (void)viewWillAppear:(BOOL)animated{
-    NSLog(@"viewWillAppear");
-}
-- (void)viewDidAppear:(BOOL)animated{
-    NSLog(@"viewDidAppear");
-
-}
-- (void)viewWillDisappear:(BOOL)animated{
-    NSLog(@"viewWillDisappear");
-
-}
-- (void)viewDidDisappear:(BOOL)animated{
-    NSLog(@"viewDidDisappear");
-}
-
 
 @end
 

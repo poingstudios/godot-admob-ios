@@ -21,9 +21,6 @@
 // SOFTWARE.
 
 #import "PoingGodotAdMob.h"
-#import "../core/AdNetworkExtras.h"
-#import "converters/ObjectToGodotDictionary.h"
-#import <Foundation/Foundation.h>
 
 PoingGodotAdMob *PoingGodotAdMob::instance = NULL;
 

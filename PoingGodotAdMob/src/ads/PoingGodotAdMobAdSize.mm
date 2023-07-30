@@ -20,10 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import <Foundation/Foundation.h>
 #import "PoingGodotAdMobAdSize.h"
-#import "converters/ObjectToGodotDictionary.h"
-#import "helpers/DeviceOrientationHelper.h"
 
 PoingGodotAdMobAdSize *PoingGodotAdMobAdSize::instance = NULL;
 

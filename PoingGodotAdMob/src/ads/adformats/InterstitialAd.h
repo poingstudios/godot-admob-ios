@@ -23,19 +23,13 @@
 #ifndef InterstitialAd_h
 #define InterstitialAd_h
 
-#import "../converters/GodotDictionaryToObject.h"
-#import "../converters/ObjectToGodotDictionary.h"
 #import "../PoingGodotAdMobInterstitialAd.h"
-#import "view_controller.h"
-#import "app_delegate.h"
 #import "os_ios.h"
+#import "AdFormatBase.h"
 
-@import GoogleMobileAds;
-
-@interface InterstitialAd : ViewController <GADFullScreenContentDelegate>
+@interface InterstitialAd : AdFormatBase <GADFullScreenContentDelegate>
 
 @property(nonatomic, strong) GADInterstitialAd *interstitial;
-@property (nonatomic, strong) NSNumber *UID;
 
 - (instancetype)initWithUID:(int)UID;
 - (void)load:(GADRequest *)request withAdUnitId:(NSString*) adUnitId;

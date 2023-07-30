@@ -43,8 +43,8 @@ PoingGodotAdMobInterstitialAd *PoingGodotAdMobInterstitialAd::get_singleton() {
 int PoingGodotAdMobInterstitialAd::create() {
     NSLog(@"create interstitialAd");
     
-    int uid = (int)interstitialAds.size();
-    interstitialAds.push_back(nullptr);
+    int uid = (int)adFormatVector.size();
+    adFormatVector.push_back(nullptr);
 
     return uid;
 }
@@ -58,21 +58,18 @@ void PoingGodotAdMobInterstitialAd::load(String adUnitId, Dictionary adRequestDi
 }
 
 void PoingGodotAdMobInterstitialAd::destroy(int uid) {
-    if (is_vector_interstitial_valid(uid)){
-        InterstitialAd* interstitialAd = interstitialAds.at(uid);
-        if (interstitialAd) {
-            interstitialAds.at(uid) = nullptr; //just set to null in order to try to clean up memory
-        }
+    InterstitialAd* interstitialAd = getAdFormat(uid);
+
+    if (interstitialAd) {
+        adFormatVector.at(uid) = nullptr; //just set to null in order to try to clean up memory
     }
 }
 
 void PoingGodotAdMobInterstitialAd::show(int uid) {
     NSLog(@"show interstitialAd");
-    if (is_vector_interstitial_valid(uid)){
-        InterstitialAd* interstitialAd = interstitialAds.at(uid);
-        if (interstitialAd) {
-            [interstitialAd show];
-        }
+    InterstitialAd* interstitialAd = getAdFormat(uid);
+    if (interstitialAd) {
+        [interstitialAd show];
     }
 }
 
@@ -92,8 +89,3 @@ void PoingGodotAdMobInterstitialAd::_bind_methods() {
     ADD_SIGNAL(MethodInfo("on_interstitial_ad_impression",                          PropertyInfo(Variant::INT, "UID")));
     ADD_SIGNAL(MethodInfo("on_interstitial_ad_showed_full_screen_content",          PropertyInfo(Variant::INT, "UID")));
 };
-
-
-bool PoingGodotAdMobInterstitialAd::is_vector_interstitial_valid(int uid){
-    return interstitialAds.size() > 0 && uid >= 0 && uid < interstitialAds.size() && interstitialAds.at(uid) != nullptr;
-}

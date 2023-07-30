@@ -20,49 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef Banner_h
-#define Banner_h
-#import "../converters/GodotDictionaryToObject.h"
-#import "../converters/ObjectToGodotDictionary.h"
-#import "../PoingGodotAdMobAdView.h"
-#import "view_controller.h"
-#import "app_delegate.h"
+#ifndef RewardedAd_h
+#define RewardedAd_h
 
+#import "../PoingGodotAdMobRewardedAd.h"
+#import "os_ios.h"
+#import "AdFormatBase.h"
 
-@import GoogleMobileAds;
+@interface RewardedAd : AdFormatBase <GADFullScreenContentDelegate>
 
-@interface Banner : ViewController <GADBannerViewDelegate>
+@property(nonatomic, strong) GADRewardedAd *rewarded;
 
-@property (nonatomic, strong) GADBannerView *bannerView;
-@property (nonatomic, strong) NSNumber *UID;
-@property (nonatomic, strong) NSNumber *adPosition;
-@property (nonatomic) BOOL isHidden;
-
-
-- (instancetype)initWithUID:(int)UID adViewDictionary:(Dictionary)adViewDictionary;
-- (void)loadAd:(GADRequest *)request;
-- (void)destroy;
-- (void)hide;
+- (instancetype)initWithUID:(int)UID;
+- (void)load:(GADRequest *)request withAdUnitId:(NSString*) adUnitId;
 - (void)show;
-- (int)getWidth;
-- (int)getHeight;
-- (int)getWidthInPixels;
-- (int)getHeightInPixels;
+- (void)setServerSideVerificationOptions:(Dictionary)serverSideVerificationOptionsDictionary;
 
 @end
 
-
-enum class AdPosition {
-    Top,
-    Bottom,
-    Left,
-    Right,
-    TopLeft,
-    TopRight,
-    BottomLeft,
-    BottomRight,
-    Center,
-    Custom = -1 //NOT USED YET
-};
-
-#endif /* Banner_h */
+#endif /* RewardedAd_h */

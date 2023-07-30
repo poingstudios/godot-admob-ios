@@ -82,7 +82,6 @@
 }
 
 + (NSDictionary *)convertDictionaryToNSDictionary:(Dictionary)extrasParameters{
-    NSLog(@"convertDictionaryToNSDictionary: %i", extrasParameters.size());
     NSMutableDictionary *nsDictionary = [NSMutableDictionary dictionary];
 
     Array keys = extrasParameters.keys();
@@ -92,8 +91,6 @@
         String value = extrasParameters[key];
         NSString *nsKey = [NSString stringWithUTF8String:key.utf8().get_data()];
         NSString *nsValue = [NSString stringWithUTF8String:value.utf8().get_data()];
-        NSLog(@"nsKey: %@", nsKey);
-        NSLog(@"nsValue: %@", nsValue);
 
         [nsDictionary setValue:nsValue forKey:nsKey];
     }

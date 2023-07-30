@@ -22,6 +22,8 @@
 
 #ifndef Banner_h
 #define Banner_h
+#import "../converters/GodotDictionaryToObject.h"
+#import "../converters/ObjectToGodotDictionary.h"
 #import "../PoingGodotAdMobAdView.h"
 #import "view_controller.h"
 #import "app_delegate.h"
@@ -38,7 +40,7 @@
 
 
 - (instancetype)initWithUID:(int)UID adViewDictionary:(Dictionary)adViewDictionary;
-- (void)loadAd;
+- (void)loadAd:(GADRequest *)request;
 - (void)destroy;
 - (void)hide;
 - (void)show;

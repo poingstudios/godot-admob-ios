@@ -20,10 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import <Foundation/Foundation.h>
 #import "Banner.h"
-#import "../converters/GodotDictionaryToObject.h"
-#import "../converters/ObjectToGodotDictionary.h"
 
 
 @implementation Banner
@@ -43,14 +40,11 @@
         self.bannerView.rootViewController = self;
 
         self.bannerView.delegate = self;
-
-        NSLog(@"loadRequest");
     }
     return self;
 }
 
-- (void)loadAd {
-    GADRequest *request = [GADRequest request];
+- (void)loadAd:(GADRequest *)request {
     [self.bannerView loadRequest:request];
 }
 

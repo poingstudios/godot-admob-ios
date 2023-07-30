@@ -21,7 +21,6 @@
 // SOFTWARE.
 
 #import "PoingGodotAdMobAdView.h"
-#import "converters/GodotDictionaryToObject.h"
 
 PoingGodotAdMobAdView *PoingGodotAdMobAdView::instance = NULL;
 std::vector<Banner*> banners;
@@ -59,7 +58,7 @@ void PoingGodotAdMobAdView::load_ad(int uid, Dictionary adRequestDictionary, Pac
     if (is_vector_banner_valid(uid)){
         Banner* banner = banners.at(uid);
         if (banner) {
-            [banner loadAd];
+            [banner loadAd:adRequest];
         }
     }
 }

@@ -872,6 +872,10 @@
 					"-DUNIX_ENABLED",
 					"-DCOREAUDIO_ENABLED",
 				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DIOS_ENABLED",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -902,6 +906,10 @@
 				OTHER_CFLAGS = (
 					"-fcxx-modules",
 					"-fmodules",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DIOS_ENABLED",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

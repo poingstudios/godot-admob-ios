@@ -28,6 +28,7 @@
 #import "../PoingGodotAdMobInterstitialAd.h"
 #import "view_controller.h"
 #import "app_delegate.h"
+#import "os_ios.h"
 
 @import GoogleMobileAds;
 

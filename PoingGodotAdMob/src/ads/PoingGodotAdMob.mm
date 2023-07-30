@@ -59,17 +59,9 @@ void PoingGodotAdMob::set_request_configuration(Dictionary requestConfigurationD
     GADRequestConfiguration *requestConfiguration = [GADMobileAds sharedInstance].requestConfiguration;
 
     requestConfiguration.maxAdContentRating = [NSString stringWithUTF8String:maxAdContentRating.utf8().get_data()];
-    if (tagForChildDirectedTreatment == 1) {
-        [requestConfiguration tagForChildDirectedTreatment:true];
-    } else if (tagForChildDirectedTreatment == 0) {
-        [requestConfiguration tagForChildDirectedTreatment:false];
-    }
+    requestConfiguration.tagForChildDirectedTreatment = [NSNumber numberWithInt:tagForChildDirectedTreatment];
     
-    if (tagForUnderAgeOfConsent == 1){
-        [requestConfiguration tagForUnderAgeOfConsent: true];
-    } else if (tagForUnderAgeOfConsent == 0){
-        [requestConfiguration tagForUnderAgeOfConsent:false];
-    }
+    requestConfiguration.tagForUnderAgeOfConsent = [NSNumber numberWithInt:tagForUnderAgeOfConsent];
         
     NSMutableArray<NSString *> *testDeviceIdsArray = [NSMutableArray arrayWithCapacity:testDeviceIds.size()];
     for (String deviceId : testDeviceIds) {

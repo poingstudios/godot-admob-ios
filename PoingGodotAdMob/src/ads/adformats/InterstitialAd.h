@@ -20,39 +20,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobInterstitialAd_h
-#define PoingGodotAdMobInterstitialAd_h
+#ifndef InterstitialAd_h
+#define InterstitialAd_h
 
-#include "core/object/class_db.h"
-#import "converters/GodotDictionaryToObject.h"
-#import "adformats/InterstitialAd.h"
-#include <vector>
-
-
-@class InterstitialAd;
+#import "../converters/GodotDictionaryToObject.h"
+#import "../converters/ObjectToGodotDictionary.h"
+#import "../PoingGodotAdMobInterstitialAd.h"
+#import "view_controller.h"
+#import "app_delegate.h"
 
 @import GoogleMobileAds;
 
-class PoingGodotAdMobInterstitialAd : public Object {
-    GDCLASS(PoingGodotAdMobInterstitialAd, Object);
+@interface InterstitialAd : ViewController <GADFullScreenContentDelegate>
 
-    static PoingGodotAdMobInterstitialAd *instance;
-    static void _bind_methods();
+@property(nonatomic, strong) GADInterstitialAd *interstitial;
+@property (nonatomic, strong) NSNumber *UID;
 
-public:
-    std::vector<InterstitialAd*> interstitialAds;
+- (instancetype)initWithUID:(int)UID;
+- (void)load:(GADRequest *)request withAdUnitId:(NSString*) adUnitId;
+- (void)show;
 
-    int create();
-    void load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid);
-    void show(int uid);
-    void destroy(int uid);
+@end
 
-    static PoingGodotAdMobInterstitialAd *get_singleton();
-
-    PoingGodotAdMobInterstitialAd();
-    ~PoingGodotAdMobInterstitialAd();
-private:
-    bool is_vector_interstitial_valid(int uid);
-};
-
-#endif /* PoingGodotAdMobInterstitialAd_h */
+#endif /* InterstitialAd_h */

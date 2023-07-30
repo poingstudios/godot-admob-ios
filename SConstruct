@@ -135,6 +135,11 @@ env.Append(CPPPATH=[
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 sources = Glob('PoingGodotAdMob/src/' + env['plugin'] + '/*.mm')
+sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/adformats/*.mm'))
+sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/config/*.mm'))
+sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/helpers/*.mm'))
+sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/converters/*.mm'))
+
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
 library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")

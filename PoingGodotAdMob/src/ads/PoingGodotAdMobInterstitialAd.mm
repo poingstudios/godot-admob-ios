@@ -21,3 +21,79 @@
 // SOFTWARE.
 
 #import "PoingGodotAdMobInterstitialAd.h"
+
+PoingGodotAdMobInterstitialAd *PoingGodotAdMobInterstitialAd::instance = NULL;
+
+PoingGodotAdMobInterstitialAd::PoingGodotAdMobInterstitialAd() {
+    ERR_FAIL_COND(instance != NULL);
+
+    instance = this;
+}
+
+PoingGodotAdMobInterstitialAd::~PoingGodotAdMobInterstitialAd() {
+    if (instance == this) {
+        instance = NULL;
+    }
+}
+
+PoingGodotAdMobInterstitialAd *PoingGodotAdMobInterstitialAd::get_singleton() {
+    return instance;
+};
+
+int PoingGodotAdMobInterstitialAd::create() {
+    NSLog(@"create interstitialAd");
+    
+    int uid = (int)interstitialAds.size();
+    interstitialAds.push_back(nullptr);
+
+    return uid;
+}
+
+void PoingGodotAdMobInterstitialAd::load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid) {
+    NSLog(@"load_ad interstitialAd");
+    GADRequest *adRequest = [GodotDictionaryToObject convertDictionaryToGADRequest:adRequestDictionary withKeywords:keywords];
+
+    InterstitialAd *interstitialAd = [[InterstitialAd alloc] initWithUID:uid];
+    [interstitialAd load:adRequest withAdUnitId:[NSString stringWithUTF8String:adUnitId.utf8().get_data()]];
+}
+
+void PoingGodotAdMobInterstitialAd::destroy(int uid) {
+    if (is_vector_interstitial_valid(uid)){
+        InterstitialAd* interstitialAd = interstitialAds.at(uid);
+        if (interstitialAd) {
+            interstitialAds.at(uid) = nullptr; //just set to null in order to try to clean up memory
+        }
+    }
+}
+
+void PoingGodotAdMobInterstitialAd::show(int uid) {
+    NSLog(@"show interstitialAd");
+    if (is_vector_interstitial_valid(uid)){
+        InterstitialAd* interstitialAd = interstitialAds.at(uid);
+        if (interstitialAd) {
+            [interstitialAd show];
+        }
+    }
+}
+
+
+void PoingGodotAdMobInterstitialAd::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("create"),    &PoingGodotAdMobInterstitialAd::create);
+    ClassDB::bind_method(D_METHOD("load"),      &PoingGodotAdMobInterstitialAd::load);
+    ClassDB::bind_method(D_METHOD("show"),      &PoingGodotAdMobInterstitialAd::show);
+    ClassDB::bind_method(D_METHOD("destroy"),   &PoingGodotAdMobInterstitialAd::destroy);
+    
+    ADD_SIGNAL(MethodInfo("on_interstitial_ad_failed_to_load",                      PropertyInfo(Variant::INT, "UID"), PropertyInfo(Variant::DICTIONARY, "loadAdErrorDictionary")));
+    ADD_SIGNAL(MethodInfo("on_interstitial_ad_loaded",                              PropertyInfo(Variant::INT, "UID")));
+
+    ADD_SIGNAL(MethodInfo("on_interstitial_ad_clicked",                             PropertyInfo(Variant::INT, "UID")));
+    ADD_SIGNAL(MethodInfo("on_interstitial_ad_dismissed_full_screen_content",       PropertyInfo(Variant::INT, "UID")));
+    ADD_SIGNAL(MethodInfo("on_interstitial_ad_failed_to_show_full_screen_content",  PropertyInfo(Variant::INT, "UID"), PropertyInfo(Variant::DICTIONARY, "adErrorDictionary")));
+    ADD_SIGNAL(MethodInfo("on_interstitial_ad_impression",                          PropertyInfo(Variant::INT, "UID")));
+    ADD_SIGNAL(MethodInfo("on_interstitial_ad_showed_full_screen_content",          PropertyInfo(Variant::INT, "UID")));
+};
+
+
+bool PoingGodotAdMobInterstitialAd::is_vector_interstitial_valid(int uid){
+    return interstitialAds.size() > 0 && uid >= 0 && uid < interstitialAds.size() && interstitialAds.at(uid) != nullptr;
+}

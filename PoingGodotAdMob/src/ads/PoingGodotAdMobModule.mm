@@ -26,6 +26,7 @@
 #include "PoingGodotAdMob.h"
 #include "PoingGodotAdMobAdSize.h"
 #include "PoingGodotAdMobAdView.h"
+#include "PoingGodotAdMobInterstitialAd.h"
 
 #include "core/config/engine.h"
 #include "core/version.h"
@@ -33,6 +34,7 @@
 PoingGodotAdMob *poing_godot_admob;
 PoingGodotAdMobAdSize *poing_godot_admob_ad_size;
 PoingGodotAdMobAdView *poing_godot_admob_ad_view;
+PoingGodotAdMobInterstitialAd *poing_godot_admob_interstitial_ad;
 
 void register_poing_godot_admob_ads_types() {
     poing_godot_admob = memnew(PoingGodotAdMob);
@@ -40,9 +42,12 @@ void register_poing_godot_admob_ads_types() {
     
     poing_godot_admob_ad_size = memnew(PoingGodotAdMobAdSize);
     Engine::get_singleton()->add_singleton(Engine::Singleton("PoingGodotAdMobAdSize", poing_godot_admob_ad_size));
-
+    
     poing_godot_admob_ad_view = memnew(PoingGodotAdMobAdView);
     Engine::get_singleton()->add_singleton(Engine::Singleton("PoingGodotAdMobAdView", poing_godot_admob_ad_view));
+    
+    poing_godot_admob_interstitial_ad = memnew(PoingGodotAdMobInterstitialAd);
+    Engine::get_singleton()->add_singleton(Engine::Singleton("PoingGodotAdMobInterstitialAd", poing_godot_admob_interstitial_ad));
 }
 
 void unregister_poing_godot_admob_ads_types() {
@@ -54,5 +59,8 @@ void unregister_poing_godot_admob_ads_types() {
     }
     if (poing_godot_admob_ad_view) {
         memdelete(poing_godot_admob_ad_view);
+    }
+    if (poing_godot_admob_interstitial_ad) {
+        memdelete(poing_godot_admob_interstitial_ad);
     }
 }

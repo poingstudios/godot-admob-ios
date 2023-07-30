@@ -125,5 +125,14 @@
     return dictionary;
 }
 
++ (Dictionary)convertGADAdRewardToDictionary:(GADAdReward *)adReward {
+    Dictionary dictionary;
+
+    dictionary["amount"] = [adReward.amount intValue];
+    dictionary["type"] = adReward.type.UTF8String;
+
+    return dictionary;
+}
+
 
 @end

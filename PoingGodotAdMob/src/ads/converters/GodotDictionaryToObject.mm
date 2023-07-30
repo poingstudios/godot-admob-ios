@@ -98,4 +98,25 @@
     return nsDictionary;
     
 }
+
++ (GADServerSideVerificationOptions *)convertDictionaryToGADServerSideVerificationOptions:(Dictionary)serverSideVerificationOptionsDictionary {
+    GADServerSideVerificationOptions *options = [[GADServerSideVerificationOptions alloc] init];
+
+    String custom_data = serverSideVerificationOptionsDictionary["custom_data"];
+    String user_id = serverSideVerificationOptionsDictionary["user_id"];
+
+    NSString *customData = [NSString stringWithUTF8String:custom_data.utf8().get_data()];
+    NSString *userId = [NSString stringWithUTF8String:user_id.utf8().get_data()];
+
+    if (customData && ![customData isEqualToString:@""]) {
+        options.customRewardString = customData;
+    }
+
+    if (userId && ![userId isEqualToString:@""]) {
+        options.userIdentifier = userId;
+    }
+
+    return options;
+}
+
 @end

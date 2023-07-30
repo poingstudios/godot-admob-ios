@@ -34,6 +34,7 @@
 + (GADAdSize)convertDictionaryToGADAdSize:(Dictionary)adSizeDictionary;
 + (GADRequest *)convertDictionaryToGADRequest:(Dictionary)adRequestDictionary withKeywords:(PackedStringArray)keywords;
 + (NSDictionary *)convertDictionaryToNSDictionary:(Dictionary)extrasParameters;
++ (GADServerSideVerificationOptions *)convertDictionaryToGADServerSideVerificationOptions:(Dictionary)serverSideVerificationOptionsDictionary;
 
 @end
 

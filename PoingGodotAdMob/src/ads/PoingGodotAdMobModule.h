@@ -27,6 +27,7 @@
 #include "PoingGodotAdMobAdSize.h"
 #include "PoingGodotAdMobAdView.h"
 #include "PoingGodotAdMobInterstitialAd.h"
+#include "PoingGodotAdMobRewardedAd.h"
 
 void register_poing_godot_admob_ads_types();
 void unregister_poing_godot_admob_ads_types();

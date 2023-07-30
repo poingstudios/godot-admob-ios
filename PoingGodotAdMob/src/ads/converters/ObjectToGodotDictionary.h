@@ -40,6 +40,7 @@
 + (Dictionary)convertLoadedAdapterResponseInfoToDictionary:(GADAdNetworkResponseInfo *)loadedAdapterResponseInfo;
 + (Dictionary)convertAdapterResponsesToDictionary:(NSArray<GADAdNetworkResponseInfo *> *)adapterResponses;
 + (Dictionary)convertBundleNSDictionaryToDictionary:(NSDictionary *)bundleNSDictionary;
++ (Dictionary)convertGADAdRewardToDictionary:(GADAdReward *)adReward;
 
 @end
 

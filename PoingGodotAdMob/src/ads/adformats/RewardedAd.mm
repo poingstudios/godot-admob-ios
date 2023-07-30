@@ -21,3 +21,83 @@
 // SOFTWARE.
 
 #import "RewardedAd.h"
+
+@implementation RewardedAd
+- (instancetype)initWithUID:(int)UID{
+    if ((self = [super init])) {
+        self.UID = [NSNumber numberWithInt:UID];
+    }
+    return self;
+}
+
+- (void)load:(GADRequest *)request withAdUnitId:(NSString*) adUnitId{
+    [GADRewardedAd loadWithAdUnitID:adUnitId
+                                request:request
+                      completionHandler:^(GADRewardedAd *ad, NSError *error) {
+        if (error) {
+            NSLog(@"Rewarded ad failed to load with error: %@", [error localizedDescription]);
+            PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_failed_to_load",
+                                                                        [self.UID intValue],
+                                                                        [ObjectToGodotDictionary convertNSErrorToDictionaryAsLoadAdError:error]);
+            return;
+        }
+        self.rewarded = ad;
+        self.rewarded.fullScreenContentDelegate = self;
+        
+        PoingGodotAdMobRewardedAd::get_singleton()->adFormatVector.at([self.UID intValue]) = self;
+        NSLog(@"success to load RewardedAd");
+        PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_loaded", [self.UID intValue]);
+  }];
+}
+
+- (void)show {
+    if (self.rewarded){
+         [self.rewarded presentFromRootViewController:[AppDelegate viewController]
+                               userDidEarnRewardHandler:^{
+             GADAdReward *reward = self.rewarded.adReward;
+             PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_user_earned_reward",
+                                                                     [self.UID intValue],
+                                                                     [ObjectToGodotDictionary convertGADAdRewardToDictionary:reward]);
+         }];
+    }
+    else{
+        NSLog(@"RewardedAd wasn't ready");
+    }
+}
+
+- (void)setServerSideVerificationOptions:(GADServerSideVerificationOptions *)options{
+    if (self.rewarded){
+        NSLog(@"RewardedAd setServerSideVerificationOptions");
+        self.rewarded.serverSideVerificationOptions = options;
+    }
+}
+
+
+- (void)adDidRecordImpression:(nonnull id<GADFullScreenPresentingAd>)ad {
+    NSLog(@"RewardedAd adDidRecordImpression.");
+    PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_mpression", [self.UID intValue]);
+}
+- (void)adDidRecordClick:(nonnull id<GADFullScreenPresentingAd>)ad{
+    NSLog(@"RewardedAd adDidRecordClick.");
+    PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_clicked", [self.UID intValue]);
+}
+- (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad
+didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
+    NSLog(@"RewardedAd did fail to present full screen content.");
+    PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_failed_to_show_full_screen_content",
+                                                                [self.UID intValue],
+                                                                [ObjectToGodotDictionary convertNSErrorToDictionaryAsAdError:error]);
+}
+- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
+    NSLog(@"RewardedAd will present full screen content.");
+    PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_showed_full_screen_content",
+                                                                [self.UID intValue]);
+    OS_IOS::get_singleton()->on_focus_out();
+}
+- (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
+    NSLog(@"RewardedAd did dismiss full screen content.");
+    PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_dismissed_full_screen_content", [self.UID intValue]);
+    OS_IOS::get_singleton()->on_focus_in();
+}
+
+@end

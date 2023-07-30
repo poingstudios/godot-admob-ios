@@ -34,7 +34,7 @@
 - (instancetype)initWithUID:(int)UID;
 - (void)load:(GADRequest *)request withAdUnitId:(NSString*) adUnitId;
 - (void)show;
-- (void)setServerSideVerificationOptions:(Dictionary)serverSideVerificationOptionsDictionary;
+- (void)setServerSideVerificationOptions:(GADServerSideVerificationOptions *)options;
 
 @end
 

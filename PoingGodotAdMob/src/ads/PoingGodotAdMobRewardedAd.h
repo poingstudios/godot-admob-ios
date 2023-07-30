@@ -23,17 +23,17 @@
 #ifndef PoingGodotAdMobRewardedAd_h
 #define PoingGodotAdMobRewardedAd_h
 
-#include "core/object/class_db.h"
 #import "converters/GodotDictionaryToObject.h"
+#import "AdFormatController.h"
+
 #import "adformats/RewardedAd.h"
-#include <vector>
 
 
 @class RewardedAd;
 
 @import GoogleMobileAds;
 
-class PoingGodotAdMobRewardedAd : public Object {
+class PoingGodotAdMobRewardedAd : public AdFormatController<RewardedAd> {
     GDCLASS(PoingGodotAdMobRewardedAd, Object);
 
     static PoingGodotAdMobRewardedAd *instance;
@@ -46,6 +46,7 @@ public:
     void load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid);
     void show(int uid);
     void destroy(int uid);
+    void set_server_side_verification_options(int uid, Dictionary serverSideVerificationOptionsDictionary);
 
     static PoingGodotAdMobRewardedAd *get_singleton();
 

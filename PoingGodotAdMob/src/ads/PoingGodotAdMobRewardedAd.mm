@@ -21,3 +21,86 @@
 // SOFTWARE.
 
 #import "PoingGodotAdMobRewardedAd.h"
+
+
+PoingGodotAdMobRewardedAd *PoingGodotAdMobRewardedAd::instance = NULL;
+
+PoingGodotAdMobRewardedAd::PoingGodotAdMobRewardedAd() {
+    ERR_FAIL_COND(instance != NULL);
+
+    instance = this;
+}
+
+PoingGodotAdMobRewardedAd::~PoingGodotAdMobRewardedAd() {
+    if (instance == this) {
+        instance = NULL;
+    }
+}
+
+PoingGodotAdMobRewardedAd *PoingGodotAdMobRewardedAd::get_singleton() {
+    return instance;
+};
+
+int PoingGodotAdMobRewardedAd::create() {
+    NSLog(@"create RewardedAd");
+    
+    int uid = (int)adFormatVector.size();
+    adFormatVector.push_back(nullptr);
+
+    return uid;
+}
+
+void PoingGodotAdMobRewardedAd::load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid) {
+    NSLog(@"load_ad RewardedAd");
+    GADRequest *adRequest = [GodotDictionaryToObject convertDictionaryToGADRequest:adRequestDictionary withKeywords:keywords];
+
+    RewardedAd *ad = [[RewardedAd alloc] initWithUID:uid];
+    [ad load:adRequest withAdUnitId:[NSString stringWithUTF8String:adUnitId.utf8().get_data()]];
+}
+
+void PoingGodotAdMobRewardedAd::destroy(int uid) {
+    RewardedAd* ad = getAdFormat(uid);
+
+    if (ad) {
+        adFormatVector.at(uid) = nullptr; //just set to null in order to try to clean up memory
+    }
+}
+
+void PoingGodotAdMobRewardedAd::show(int uid) {
+    NSLog(@"show RewardedAd");
+    RewardedAd* ad = getAdFormat(uid);
+    if (ad) {
+        [ad show];
+    }
+}
+
+
+void PoingGodotAdMobRewardedAd::set_server_side_verification_options(int uid, Dictionary serverSideVerificationOptionsDictionary) {
+    NSLog(@"set_server_side_verification_options");
+
+    RewardedAd* ad = getAdFormat(uid);
+    if (ad) {
+        GADServerSideVerificationOptions *serverSideVerificationOptions = [GodotDictionaryToObject convertDictionaryToGADServerSideVerificationOptions:serverSideVerificationOptionsDictionary];
+        [ad setServerSideVerificationOptions:serverSideVerificationOptions];
+    }
+}
+
+
+void PoingGodotAdMobRewardedAd::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("create"),    &PoingGodotAdMobRewardedAd::create);
+    ClassDB::bind_method(D_METHOD("load"),      &PoingGodotAdMobRewardedAd::load);
+    ClassDB::bind_method(D_METHOD("show"),      &PoingGodotAdMobRewardedAd::show);
+    ClassDB::bind_method(D_METHOD("destroy"),   &PoingGodotAdMobRewardedAd::destroy);
+    ClassDB::bind_method(D_METHOD("set_server_side_verification_options"),   &PoingGodotAdMobRewardedAd::set_server_side_verification_options);
+
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_failed_to_load",                      PropertyInfo(Variant::INT, "UID"), PropertyInfo(Variant::DICTIONARY, "loadAdErrorDictionary")));
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_loaded",                              PropertyInfo(Variant::INT, "UID")));
+
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_clicked",                             PropertyInfo(Variant::INT, "UID")));
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_dismissed_full_screen_content",       PropertyInfo(Variant::INT, "UID")));
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_failed_to_show_full_screen_content",  PropertyInfo(Variant::INT, "UID"), PropertyInfo(Variant::DICTIONARY, "adErrorDictionary")));
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_impression",                          PropertyInfo(Variant::INT, "UID")));
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_showed_full_screen_content",          PropertyInfo(Variant::INT, "UID")));
+
+    ADD_SIGNAL(MethodInfo("on_rewarded_ad_user_earned_reward",          PropertyInfo(Variant::INT, "UID"), PropertyInfo(Variant::DICTIONARY, "rewardedItemDictionary")));
+};

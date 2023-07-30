@@ -40,8 +40,6 @@ class PoingGodotAdMobRewardedAd : public AdFormatController<RewardedAd> {
     static void _bind_methods();
 
 public:
-    std::vector<RewardedAd*> rewardedAds;
-
     int create();
     void load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid);
     void show(int uid);

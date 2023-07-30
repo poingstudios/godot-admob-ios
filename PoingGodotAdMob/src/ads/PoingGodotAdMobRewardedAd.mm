@@ -22,7 +22,6 @@
 
 #import "PoingGodotAdMobRewardedAd.h"
 
-
 PoingGodotAdMobRewardedAd *PoingGodotAdMobRewardedAd::instance = NULL;
 
 PoingGodotAdMobRewardedAd::PoingGodotAdMobRewardedAd() {

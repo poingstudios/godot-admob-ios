@@ -134,7 +134,7 @@ if env['version'] == '3.x':
 
         if env['arch'] != 'armv7':
             env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
-elif env['version'] == '4.0':
+elif env['version'] == '4.x':
     env.Append(CCFLAGS=["$IOS_SDK_PATH"])
     env.Prepend(CXXFLAGS=['-DIOS_ENABLED'])
     env.Prepend(CXXFLAGS=['-DVERSION_4_0'])

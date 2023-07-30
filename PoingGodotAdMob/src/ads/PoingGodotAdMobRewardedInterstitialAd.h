@@ -20,17 +20,36 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobModule_h
-#define PoingGodotAdMobModule_h
+#ifndef PoingGodotAdMobRewardedInterstitialAd_h
+#define PoingGodotAdMobRewardedInterstitialAd_h
 
-#include "PoingGodotAdMob.h"
-#include "PoingGodotAdMobAdSize.h"
-#include "PoingGodotAdMobAdView.h"
-#include "PoingGodotAdMobInterstitialAd.h"
-#include "PoingGodotAdMobRewardedAd.h"
-#include "PoingGodotAdMobRewardedInterstitialAd.h"
+#import "converters/GodotDictionaryToObject.h"
+#import "AdFormatController.h"
 
-void register_poing_godot_admob_ads_types();
-void unregister_poing_godot_admob_ads_types();
+#import "adformats/RewardedInterstitialAd.h"
 
-#endif /* PoingGodotAdMobModule_h */
+@class RewardedInterstitialAd;
+
+@import GoogleMobileAds;
+
+class PoingGodotAdMobRewardedInterstitialAd : public AdFormatController<RewardedInterstitialAd> {
+    GDCLASS(PoingGodotAdMobRewardedInterstitialAd, Object);
+
+    static PoingGodotAdMobRewardedInterstitialAd *instance;
+    static void _bind_methods();
+
+public:
+    int create();
+    void load(String adUnitId, Dictionary adRequestDictionary, PackedStringArray keywords, int uid);
+    void show(int uid);
+    void destroy(int uid);
+    void set_server_side_verification_options(int uid, Dictionary serverSideVerificationOptionsDictionary);
+
+    static PoingGodotAdMobRewardedInterstitialAd *get_singleton();
+
+    PoingGodotAdMobRewardedInterstitialAd();
+    ~PoingGodotAdMobRewardedInterstitialAd();
+};
+
+
+#endif /* PoingGodotAdMobRewardedInterstitialAd_h */

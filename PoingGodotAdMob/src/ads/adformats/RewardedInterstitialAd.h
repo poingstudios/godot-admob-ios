@@ -20,17 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobModule_h
-#define PoingGodotAdMobModule_h
+#ifndef RewardedInterstitialAd_h
+#define RewardedInterstitialAd_h
 
-#include "PoingGodotAdMob.h"
-#include "PoingGodotAdMobAdSize.h"
-#include "PoingGodotAdMobAdView.h"
-#include "PoingGodotAdMobInterstitialAd.h"
-#include "PoingGodotAdMobRewardedAd.h"
-#include "PoingGodotAdMobRewardedInterstitialAd.h"
+#import "../PoingGodotAdMobRewardedInterstitialAd.h"
+#import "os_ios.h"
+#import "AdFormatBase.h"
 
-void register_poing_godot_admob_ads_types();
-void unregister_poing_godot_admob_ads_types();
+@interface RewardedInterstitialAd : AdFormatBase <GADFullScreenContentDelegate>
 
-#endif /* PoingGodotAdMobModule_h */
+@property(nonatomic, strong) GADRewardedInterstitialAd *rewarded;
+
+- (instancetype)initWithUID:(int)UID;
+- (void)load:(GADRequest *)request withAdUnitId:(NSString*) adUnitId;
+- (void)show;
+- (void)setServerSideVerificationOptions:(GADServerSideVerificationOptions *)options;
+
+@end
+
+#endif /* RewardedInterstitialAd_h */

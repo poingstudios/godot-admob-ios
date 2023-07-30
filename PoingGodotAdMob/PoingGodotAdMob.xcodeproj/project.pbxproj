@@ -29,6 +29,8 @@
 		5EA2761A2A67461A00D5CF1E /* GodotDictionaryToObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA276192A67461A00D5CF1E /* GodotDictionaryToObject.mm */; };
 		5EA595992A76B08400968B18 /* PoingGodotAdMobRewardedAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA595982A76B08400968B18 /* PoingGodotAdMobRewardedAd.mm */; };
 		5EA5959C2A76B10000968B18 /* RewardedAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5959B2A76B10000968B18 /* RewardedAd.mm */; };
+		5EB13DE52A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DE42A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm */; };
+		5EB13DE82A77003500054CFC /* RewardedInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DE72A77003500054CFC /* RewardedInterstitialAd.mm */; };
 		5EB63E4E2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */; };
 		5EB759202A68860400523E88 /* DeviceOrientationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */; };
 		5EE75CB62A4C50080028DBB2 /* AdColonyExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */; };
@@ -135,6 +137,10 @@
 		5EA5959D2A76B39E00968B18 /* VectorHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorHelper.h; sourceTree = "<group>"; };
 		5EA5959E2A76C0BA00968B18 /* AdFormatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdFormatController.h; sourceTree = "<group>"; };
 		5EA5959F2A76C56500968B18 /* AdFormatBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdFormatBase.h; sourceTree = "<group>"; };
+		5EB13DE32A76FF6300054CFC /* PoingGodotAdMobRewardedInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobRewardedInterstitialAd.h; sourceTree = "<group>"; };
+		5EB13DE42A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobRewardedInterstitialAd.mm; sourceTree = "<group>"; };
+		5EB13DE62A77002B00054CFC /* RewardedInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewardedInterstitialAd.h; sourceTree = "<group>"; };
+		5EB13DE72A77003500054CFC /* RewardedInterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RewardedInterstitialAd.mm; sourceTree = "<group>"; };
 		5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdSize.mm; sourceTree = "<group>"; };
 		5EB63E4F2A65DF1B00699D72 /* PoingGodotAdMobAdSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdSize.h; sourceTree = "<group>"; };
 		5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceOrientationHelper.mm; sourceTree = "<group>"; };
@@ -289,6 +295,7 @@
 				5EA276142A6738B700D5CF1E /* adformats */,
 				5E63D64C2A6461B300BDC600 /* converters */,
 				5E9575682A46997400CE30AF /* config */,
+				5EA5959E2A76C0BA00968B18 /* AdFormatController.h */,
 				5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */,
 				5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */,
 				5E5BDE162A4632300071BE86 /* PoingGodotAdMobModule.h */,
@@ -301,7 +308,8 @@
 				5E027D882A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm */,
 				5EA595972A76B06D00968B18 /* PoingGodotAdMobRewardedAd.h */,
 				5EA595982A76B08400968B18 /* PoingGodotAdMobRewardedAd.mm */,
-				5EA5959E2A76C0BA00968B18 /* AdFormatController.h */,
+				5EB13DE32A76FF6300054CFC /* PoingGodotAdMobRewardedInterstitialAd.h */,
+				5EB13DE42A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm */,
 			);
 			path = ads;
 			sourceTree = "<group>";
@@ -364,13 +372,15 @@
 		5EA276142A6738B700D5CF1E /* adformats */ = {
 			isa = PBXGroup;
 			children = (
+				5EA5959F2A76C56500968B18 /* AdFormatBase.h */,
 				5EA276152A67396200D5CF1E /* BannerAd.h */,
 				5EA276162A6739D200D5CF1E /* BannerAd.mm */,
 				5E38B5D92A7546D100E35218 /* InterstitialAd.h */,
 				5E38B5DA2A7546EF00E35218 /* InterstitialAd.mm */,
 				5EA5959A2A76B0F200968B18 /* RewardedAd.h */,
 				5EA5959B2A76B10000968B18 /* RewardedAd.mm */,
-				5EA5959F2A76C56500968B18 /* AdFormatBase.h */,
+				5EB13DE62A77002B00054CFC /* RewardedInterstitialAd.h */,
+				5EB13DE72A77003500054CFC /* RewardedInterstitialAd.mm */,
 			);
 			path = adformats;
 			sourceTree = "<group>";
@@ -654,6 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EB13DE82A77003500054CFC /* RewardedInterstitialAd.mm in Sources */,
 				5E027D892A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm in Sources */,
 				5E38B5DB2A7546EF00E35218 /* InterstitialAd.mm in Sources */,
 				5EA5959C2A76B10000968B18 /* RewardedAd.mm in Sources */,
@@ -663,6 +674,7 @@
 				5EA276172A6739D200D5CF1E /* BannerAd.mm in Sources */,
 				5E63D64F2A64636100BDC600 /* ObjectToGodotDictionary.mm in Sources */,
 				5EA595992A76B08400968B18 /* PoingGodotAdMobRewardedAd.mm in Sources */,
+				5EB13DE52A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm in Sources */,
 				5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */,
 				5EB63E4E2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm in Sources */,
 				5EA276132A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm in Sources */,

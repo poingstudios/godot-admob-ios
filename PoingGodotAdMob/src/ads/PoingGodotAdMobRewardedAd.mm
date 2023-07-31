@@ -43,8 +43,8 @@ PoingGodotAdMobRewardedAd *PoingGodotAdMobRewardedAd::get_singleton() {
 int PoingGodotAdMobRewardedAd::create() {
     NSLog(@"create RewardedAd");
     
-    int uid = (int)adFormatVector.size();
-    adFormatVector.push_back(nullptr);
+    int uid = (int)objectVector.size();
+    objectVector.push_back(nullptr);
 
     return uid;
 }
@@ -58,16 +58,16 @@ void PoingGodotAdMobRewardedAd::load(String adUnitId, Dictionary adRequestDictio
 }
 
 void PoingGodotAdMobRewardedAd::destroy(int uid) {
-    RewardedAd* ad = getAdFormat(uid);
+    RewardedAd* ad = getObject(uid);
 
     if (ad) {
-        adFormatVector.at(uid) = nullptr; //just set to null in order to try to clean up memory
+        objectVector.at(uid) = nullptr; //just set to null in order to try to clean up memory
     }
 }
 
 void PoingGodotAdMobRewardedAd::show(int uid) {
     NSLog(@"show RewardedAd");
-    RewardedAd* ad = getAdFormat(uid);
+    RewardedAd* ad = getObject(uid);
     if (ad) {
         [ad show];
     }
@@ -77,7 +77,7 @@ void PoingGodotAdMobRewardedAd::show(int uid) {
 void PoingGodotAdMobRewardedAd::set_server_side_verification_options(int uid, Dictionary serverSideVerificationOptionsDictionary) {
     NSLog(@"set_server_side_verification_options");
 
-    RewardedAd* ad = getAdFormat(uid);
+    RewardedAd* ad = getObject(uid);
     if (ad) {
         GADServerSideVerificationOptions *serverSideVerificationOptions = [GodotDictionaryToObject convertDictionaryToGADServerSideVerificationOptions:serverSideVerificationOptionsDictionary];
         [ad setServerSideVerificationOptions:serverSideVerificationOptions];

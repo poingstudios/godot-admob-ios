@@ -43,8 +43,8 @@ PoingGodotAdMobInterstitialAd *PoingGodotAdMobInterstitialAd::get_singleton() {
 int PoingGodotAdMobInterstitialAd::create() {
     NSLog(@"create interstitialAd");
     
-    int uid = (int)adFormatVector.size();
-    adFormatVector.push_back(nullptr);
+    int uid = (int)objectVector.size();
+    objectVector.push_back(nullptr);
 
     return uid;
 }
@@ -58,16 +58,16 @@ void PoingGodotAdMobInterstitialAd::load(String adUnitId, Dictionary adRequestDi
 }
 
 void PoingGodotAdMobInterstitialAd::destroy(int uid) {
-    InterstitialAd* interstitialAd = getAdFormat(uid);
+    InterstitialAd* interstitialAd = getObject(uid);
 
     if (interstitialAd) {
-        adFormatVector.at(uid) = nullptr; //just set to null in order to try to clean up memory
+        objectVector.at(uid) = nullptr; //just set to null in order to try to clean up memory
     }
 }
 
 void PoingGodotAdMobInterstitialAd::show(int uid) {
     NSLog(@"show interstitialAd");
-    InterstitialAd* interstitialAd = getAdFormat(uid);
+    InterstitialAd* interstitialAd = getObject(uid);
     if (interstitialAd) {
         [interstitialAd show];
     }

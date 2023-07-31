@@ -44,7 +44,7 @@
         self.rewarded = ad;
         self.rewarded.fullScreenContentDelegate = self;
         
-        PoingGodotAdMobRewardedAd::get_singleton()->adFormatVector.at([self.UID intValue]) = self;
+        PoingGodotAdMobRewardedAd::get_singleton()->objectVector.at([self.UID intValue]) = self;
         NSLog(@"success to load RewardedAd");
         PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_loaded", [self.UID intValue]);
   }];

@@ -20,26 +20,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef AdFormatController_h
-#define AdFormatController_h
+#ifndef ObjectController_h
+#define ObjectController_h
 
 #include "core/object/class_db.h"
 #include <vector>
 #import "helpers/VectorHelper.h"
 
 template<typename T>
-class AdFormatController : public Object{
+class ObjectController : public Object{
 public:
-    std::vector<T*> adFormatVector;
+    std::vector<T*> objectVector;
 protected:
 
-    T* getAdFormat(int uid) {
-        if (VectorHelper<T>::is_vector_valid(uid, adFormatVector)) {
-            return adFormatVector.at(uid);
+    T* getObject(int uid) {
+        if (VectorHelper<T>::is_vector_valid(uid, objectVector)) {
+            return objectVector.at(uid);
         }
         return nullptr;
     }
 };
 
 
-#endif /* AdFormatController_h */
+#endif /* ObjectController_h */

@@ -44,7 +44,7 @@
         self.interstitial = ad;
         self.interstitial.fullScreenContentDelegate = self;
         
-        PoingGodotAdMobInterstitialAd::get_singleton()->adFormatVector.at([self.UID intValue]) = self;
+        PoingGodotAdMobInterstitialAd::get_singleton()->objectVector.at([self.UID intValue]) = self;
         NSLog(@"success to load interstitial");
         PoingGodotAdMobInterstitialAd::get_singleton()->emit_signal("on_interstitial_ad_loaded", [self.UID intValue]);
   }];

@@ -44,7 +44,7 @@
         self.rewarded = ad;
         self.rewarded.fullScreenContentDelegate = self;
         
-        PoingGodotAdMobRewardedInterstitialAd::get_singleton()->adFormatVector.at([self.UID intValue]) = self;
+        PoingGodotAdMobRewardedInterstitialAd::get_singleton()->objectVector.at([self.UID intValue]) = self;
         NSLog(@"success to load RewardedInterstitialAd");
         PoingGodotAdMobRewardedInterstitialAd::get_singleton()->emit_signal("on_rewarded_interstitial_ad_loaded", [self.UID intValue]);
   }];

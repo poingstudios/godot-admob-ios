@@ -44,8 +44,8 @@ PoingGodotAdMobAdView *PoingGodotAdMobAdView::get_singleton() {
 int PoingGodotAdMobAdView::create(Dictionary adViewDictionary) {
     NSLog(@"create banner");
 
-    BannerAd *bannerAd = [[BannerAd alloc] initWithUID:(int)adFormatVector.size() adViewDictionary:adViewDictionary];
-    adFormatVector.push_back(bannerAd);
+    BannerAd *bannerAd = [[BannerAd alloc] initWithUID:(int)objectVector.size() adViewDictionary:adViewDictionary];
+    objectVector.push_back(bannerAd);
 
     return [bannerAd.UID intValue];
 }
@@ -54,22 +54,22 @@ void PoingGodotAdMobAdView::load_ad(int uid, Dictionary adRequestDictionary, Pac
     NSLog(@"load_ad banner");
     GADRequest *adRequest = [GodotDictionaryToObject convertDictionaryToGADRequest:adRequestDictionary withKeywords:keywords];
 
-    BannerAd* bannerAd = getAdFormat(uid);
+    BannerAd* bannerAd = getObject(uid);
     if (bannerAd) {
         [bannerAd loadAd:adRequest];
     }
 }
 
 void PoingGodotAdMobAdView::destroy(int uid) {
-    BannerAd* ad = getAdFormat(uid);
+    BannerAd* ad = getObject(uid);
     if (ad) {
         [ad destroy];
-        adFormatVector.at(uid) = nullptr;
+        objectVector.at(uid) = nullptr;
     }
 }
 
 void PoingGodotAdMobAdView::hide(int uid) {
-    BannerAd* bannerAd = getAdFormat(uid);
+    BannerAd* bannerAd = getObject(uid);
     if (bannerAd) {
         [bannerAd hide];
     }
@@ -78,7 +78,7 @@ void PoingGodotAdMobAdView::hide(int uid) {
 void PoingGodotAdMobAdView::show(int uid) {
     NSLog(@"show banner");
 
-    BannerAd* bannerAd = getAdFormat(uid);
+    BannerAd* bannerAd = getObject(uid);
     if (bannerAd) {
         [bannerAd show];
     }
@@ -87,7 +87,7 @@ void PoingGodotAdMobAdView::show(int uid) {
 int PoingGodotAdMobAdView::get_width(int uid) {
     NSLog(@"get_width banner");
 
-    BannerAd* bannerAd = getAdFormat(uid);
+    BannerAd* bannerAd = getObject(uid);
     if (bannerAd) {
         return [bannerAd getWidth];
     }
@@ -97,7 +97,7 @@ int PoingGodotAdMobAdView::get_width(int uid) {
 int PoingGodotAdMobAdView::get_height(int uid) {
     NSLog(@"get_height banner");
 
-    BannerAd* bannerAd = getAdFormat(uid);
+    BannerAd* bannerAd = getObject(uid);
     if (bannerAd) {
         return [bannerAd getHeight];
     }
@@ -107,7 +107,7 @@ int PoingGodotAdMobAdView::get_height(int uid) {
 int PoingGodotAdMobAdView::get_width_in_pixels(int uid) {
     NSLog(@"get_width_in_pixels banner");
 
-    BannerAd* bannerAd = getAdFormat(uid);
+    BannerAd* bannerAd = getObject(uid);
     if (bannerAd) {
         return [bannerAd getWidthInPixels];
     }
@@ -116,7 +116,7 @@ int PoingGodotAdMobAdView::get_width_in_pixels(int uid) {
 
 int PoingGodotAdMobAdView::get_height_in_pixels(int uid) {
     NSLog(@"get_height_in_pixels banner");
-    BannerAd* bannerAd = getAdFormat(uid);
+    BannerAd* bannerAd = getObject(uid);
     if (bannerAd) {
         return [bannerAd getHeightInPixels];
     }

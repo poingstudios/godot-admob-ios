@@ -136,7 +136,7 @@
 		5EA5959A2A76B0F200968B18 /* RewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RewardedAd.h; sourceTree = "<group>"; };
 		5EA5959B2A76B10000968B18 /* RewardedAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RewardedAd.mm; sourceTree = "<group>"; };
 		5EA5959D2A76B39E00968B18 /* VectorHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorHelper.h; sourceTree = "<group>"; };
-		5EA5959E2A76C0BA00968B18 /* AdFormatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdFormatController.h; sourceTree = "<group>"; };
+		5EA5959E2A76C0BA00968B18 /* ObjectController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectController.h; sourceTree = "<group>"; };
 		5EA5959F2A76C56500968B18 /* AdFormatBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdFormatBase.h; sourceTree = "<group>"; };
 		5EB13DE32A76FF6300054CFC /* PoingGodotAdMobRewardedInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobRewardedInterstitialAd.h; sourceTree = "<group>"; };
 		5EB13DE42A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobRewardedInterstitialAd.mm; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 				5EA276142A6738B700D5CF1E /* adformats */,
 				5E63D64C2A6461B300BDC600 /* converters */,
 				5E9575682A46997400CE30AF /* config */,
-				5EA5959E2A76C0BA00968B18 /* AdFormatController.h */,
+				5EA5959E2A76C0BA00968B18 /* ObjectController.h */,
 				5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */,
 				5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */,
 				5E5BDE162A4632300071BE86 /* PoingGodotAdMobModule.h */,

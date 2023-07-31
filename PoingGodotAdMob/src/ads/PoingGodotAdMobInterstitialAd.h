@@ -24,7 +24,7 @@
 #define PoingGodotAdMobInterstitialAd_h
 
 #import "converters/GodotDictionaryToObject.h"
-#import "AdFormatController.h"
+#import "ObjectController.h"
 
 #import "adformats/InterstitialAd.h"
 
@@ -32,7 +32,7 @@
 
 @import GoogleMobileAds;
 
-class PoingGodotAdMobInterstitialAd : public AdFormatController<InterstitialAd> {
+class PoingGodotAdMobInterstitialAd : public ObjectController<InterstitialAd> {
     GDCLASS(PoingGodotAdMobInterstitialAd, Object);
 
     static PoingGodotAdMobInterstitialAd *instance;

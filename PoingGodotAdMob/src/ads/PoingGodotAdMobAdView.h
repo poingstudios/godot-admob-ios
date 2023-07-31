@@ -24,14 +24,14 @@
 #define PoingGodotAdMobAdView_h
 
 #import "converters/GodotDictionaryToObject.h"
-#import "AdFormatController.h"
+#import "ObjectController.h"
 #import "adformats/BannerAd.h"
 
 @class BannerAd;
 
 @import GoogleMobileAds;
 
-class PoingGodotAdMobAdView : public AdFormatController<BannerAd> {
+class PoingGodotAdMobAdView : public ObjectController<BannerAd> {
 
     GDCLASS(PoingGodotAdMobAdView, Object);
 

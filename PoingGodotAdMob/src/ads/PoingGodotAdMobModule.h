@@ -29,6 +29,7 @@
 #include "PoingGodotAdMobInterstitialAd.h"
 #include "PoingGodotAdMobRewardedAd.h"
 #include "PoingGodotAdMobRewardedInterstitialAd.h"
+#include "PoingGodotAdMobConsentInformation.h"
 
 void register_poing_godot_admob_ads_types();
 void unregister_poing_godot_admob_ads_types();

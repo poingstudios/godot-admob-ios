@@ -134,5 +134,14 @@
     return dictionary;
 }
 
++ (Dictionary)convertNSErrorToDictionaryAsFormError:(NSError *)nsError{
+    Dictionary dictionary;
+    
+    dictionary["error_code"] = (int) nsError.code;
+    dictionary["message"] = [nsError.localizedDescription UTF8String];
+
+    return dictionary;
+}
+
 
 @end

@@ -119,4 +119,40 @@
     return options;
 }
 
++ (UMPRequestParameters *)convertDictionaryToUMPRequestParameters:(Dictionary)umpRequestParametersDictionary {
+    UMPRequestParameters *parameters = [[UMPRequestParameters alloc] init];
+
+    bool tagForUnderAgeOfConsent = umpRequestParametersDictionary["tag_for_under_age_of_consent"];
+    parameters.tagForUnderAgeOfConsent = tagForUnderAgeOfConsent;
+
+    Dictionary consentDebugSettingsDictionary = umpRequestParametersDictionary["consent_debug_settings"];
+
+    if (!consentDebugSettingsDictionary.is_empty()) {
+        parameters.debugSettings = [GodotDictionaryToObject convertDictionaryToUMPDebugSettings:consentDebugSettingsDictionary];
+    }
+    
+    return parameters;
+}
+
++ (UMPDebugSettings *)convertDictionaryToUMPDebugSettings:(Dictionary)umpDebugSettingsDictionary {
+    UMPDebugSettings *debugSettings = [[UMPDebugSettings alloc] init];
+    
+    int debugGeographyValue = umpDebugSettingsDictionary["debug_geography"];
+    debugSettings.geography = (UMPDebugGeography) debugGeographyValue;
+
+    Dictionary testDeviceHashedIds = umpDebugSettingsDictionary["test_device_hashed_ids"];
+    Array testDeviceIds = testDeviceHashedIds.values();
+
+    NSMutableArray<NSString *> *convertedArray = [NSMutableArray array];
+    for (int i = 0; i < testDeviceIds.size(); i++) {
+        String item = testDeviceIds[i];
+        [convertedArray addObject:[NSString stringWithUTF8String:item.utf8().get_data()]];
+    }
+    
+    debugSettings.testDeviceIdentifiers = convertedArray;
+    NSLog(@"finish");
+
+    return debugSettings;
+}
+
 @end

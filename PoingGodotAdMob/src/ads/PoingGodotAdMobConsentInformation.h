@@ -20,25 +20,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef GodotDictionaryToObject_h
-#define GodotDictionaryToObject_h
+#ifndef PoingGodotAdMobConsentInformation_h
+#define PoingGodotAdMobConsentInformation_h
 
-#import <Foundation/Foundation.h>
-#include "core/object/class_db.h"
-#include <UserMessagingPlatform/UMPRequestParameters.h>
-@import GoogleMobileAds;
+#include <UserMessagingPlatform/UMPConsentInformation.h>
+#import "converters/GodotDictionaryToObject.h"
+#import "converters/ObjectToGodotDictionary.h"
 
-@class GADInitializationStatus;
+class PoingGodotAdMobConsentInformation : public Object {
+    GDCLASS(PoingGodotAdMobConsentInformation, Object);
 
-@interface GodotDictionaryToObject : NSObject
+    static PoingGodotAdMobConsentInformation *instance;
+    static void _bind_methods();
 
-+ (GADAdSize)convertDictionaryToGADAdSize:(Dictionary)adSizeDictionary;
-+ (GADRequest *)convertDictionaryToGADRequest:(Dictionary)adRequestDictionary withKeywords:(PackedStringArray)keywords;
-+ (NSDictionary *)convertDictionaryToNSDictionary:(Dictionary)extrasParameters;
-+ (GADServerSideVerificationOptions *)convertDictionaryToGADServerSideVerificationOptions:(Dictionary)serverSideVerificationOptionsDictionary;
-+ (UMPRequestParameters *)convertDictionaryToUMPRequestParameters:(Dictionary)serverSideVerificationOptionsDictionary;
-+ (UMPDebugSettings *)convertDictionaryToUMPDebugSettings:(Dictionary)umpDebugSettingsDictionary;
+public:
+    int get_consent_status();
+    bool get_is_consent_form_available();
+    void update(Dictionary consentRequestParametersDictionary);
+    void reset();
 
-@end
+    static PoingGodotAdMobConsentInformation *get_singleton();
 
-#endif /* GodotDictionaryToObject_h */
+    PoingGodotAdMobConsentInformation();
+    ~PoingGodotAdMobConsentInformation();
+};
+
+
+#endif /* PoingGodotAdMobConsentInformation_h */

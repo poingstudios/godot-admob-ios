@@ -20,20 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef AdFormatBase_h
-#define AdFormatBase_h
+#import "AdFormatBase.h"
 
-#import "../converters/GodotDictionaryToObject.h"
-#import "../converters/ObjectToGodotDictionary.h"
-#import "view_controller.h"
-#import "app_delegate.h"
-
-@import GoogleMobileAds;
-
-@interface AdFormatBase : ViewController 
-
-@property (nonatomic, strong) NSNumber *UID;
+@implementation AdFormatBase
 
 @end
-
-#endif /* AdFormatBase_h */

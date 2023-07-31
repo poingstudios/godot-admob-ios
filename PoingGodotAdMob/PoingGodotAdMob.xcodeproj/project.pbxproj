@@ -32,6 +32,7 @@
 		5EB13DE52A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DE42A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm */; };
 		5EB13DE82A77003500054CFC /* RewardedInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DE72A77003500054CFC /* RewardedInterstitialAd.mm */; };
 		5EB13DEB2A7706AE00054CFC /* PoingGodotAdMobConsentInformation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DEA2A7706AE00054CFC /* PoingGodotAdMobConsentInformation.mm */; };
+		5EB13DED2A773ACC00054CFC /* AdFormatBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DEC2A773ACC00054CFC /* AdFormatBase.mm */; };
 		5EB63E4E2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */; };
 		5EB759202A68860400523E88 /* DeviceOrientationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */; };
 		5EE75CB62A4C50080028DBB2 /* AdColonyExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */; };
@@ -144,6 +145,7 @@
 		5EB13DE72A77003500054CFC /* RewardedInterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RewardedInterstitialAd.mm; sourceTree = "<group>"; };
 		5EB13DE92A7706A300054CFC /* PoingGodotAdMobConsentInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobConsentInformation.h; sourceTree = "<group>"; };
 		5EB13DEA2A7706AE00054CFC /* PoingGodotAdMobConsentInformation.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobConsentInformation.mm; sourceTree = "<group>"; };
+		5EB13DEC2A773ACC00054CFC /* AdFormatBase.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AdFormatBase.mm; sourceTree = "<group>"; };
 		5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdSize.mm; sourceTree = "<group>"; };
 		5EB63E4F2A65DF1B00699D72 /* PoingGodotAdMobAdSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdSize.h; sourceTree = "<group>"; };
 		5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceOrientationHelper.mm; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA5959F2A76C56500968B18 /* AdFormatBase.h */,
+				5EB13DEC2A773ACC00054CFC /* AdFormatBase.mm */,
 				5EA276152A67396200D5CF1E /* BannerAd.h */,
 				5EA276162A6739D200D5CF1E /* BannerAd.mm */,
 				5E38B5D92A7546D100E35218 /* InterstitialAd.h */,
@@ -671,6 +674,7 @@
 			files = (
 				5EB13DE82A77003500054CFC /* RewardedInterstitialAd.mm in Sources */,
 				5E027D892A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm in Sources */,
+				5EB13DED2A773ACC00054CFC /* AdFormatBase.mm in Sources */,
 				5E38B5DB2A7546EF00E35218 /* InterstitialAd.mm in Sources */,
 				5EA5959C2A76B10000968B18 /* RewardedAd.mm in Sources */,
 				5EB759202A68860400523E88 /* DeviceOrientationHelper.mm in Sources */,

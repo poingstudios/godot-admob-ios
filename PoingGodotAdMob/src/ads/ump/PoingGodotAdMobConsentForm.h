@@ -20,19 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobModule_h
-#define PoingGodotAdMobModule_h
+#ifndef PoingGodotAdMobConsentForm_h
+#define PoingGodotAdMobConsentForm_h
 
-#include "PoingGodotAdMob.h"
-#include "PoingGodotAdMobAdSize.h"
-#include "PoingGodotAdMobAdView.h"
-#include "PoingGodotAdMobInterstitialAd.h"
-#include "PoingGodotAdMobRewardedAd.h"
-#include "PoingGodotAdMobRewardedInterstitialAd.h"
-#include "PoingGodotAdMobConsentInformation.h"
-#include "PoingGodotAdMobUserMessagingPlatform.h"
+#import "../PoingGodotAdMobUserMessagingPlatform.h"
+#import "view_controller.h"
+#import "app_delegate.h"
 
-void register_poing_godot_admob_ads_types();
-void unregister_poing_godot_admob_ads_types();
+@interface PoingGodotAdMobConsentForm : NSObject
 
-#endif /* PoingGodotAdMobModule_h */
+@property(nonatomic, strong) UMPConsentForm *umpConsentForm;
+@property (nonatomic, strong) NSNumber *UID;
+
+- (instancetype)initWithUID:(int)UID umpConsentForm:(UMPConsentForm* )umpConsentForm;
+- (void)show;
+
+@end
+
+#endif /* PoingGodotAdMobConsentForm_h */

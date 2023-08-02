@@ -20,19 +20,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobModule_h
-#define PoingGodotAdMobModule_h
+#ifndef PoingGodotAdMobUserMessagingPlatform_h
+#define PoingGodotAdMobUserMessagingPlatform_h
 
-#include "PoingGodotAdMob.h"
-#include "PoingGodotAdMobAdSize.h"
-#include "PoingGodotAdMobAdView.h"
-#include "PoingGodotAdMobInterstitialAd.h"
-#include "PoingGodotAdMobRewardedAd.h"
-#include "PoingGodotAdMobRewardedInterstitialAd.h"
-#include "PoingGodotAdMobConsentInformation.h"
-#include "PoingGodotAdMobUserMessagingPlatform.h"
+#include <UserMessagingPlatform/UMPConsentForm.h>
+#import "converters/GodotDictionaryToObject.h"
+#import "converters/ObjectToGodotDictionary.h"
+#include "ObjectController.h"
+#import "ump/PoingGodotAdMobConsentForm.h"
 
-void register_poing_godot_admob_ads_types();
-void unregister_poing_godot_admob_ads_types();
+@class PoingGodotAdMobConsentForm;
 
-#endif /* PoingGodotAdMobModule_h */
+class PoingGodotAdMobUserMessagingPlatform : public ObjectController<PoingGodotAdMobConsentForm> {
+    GDCLASS(PoingGodotAdMobUserMessagingPlatform, Object);
+
+    static PoingGodotAdMobUserMessagingPlatform *instance;
+    static void _bind_methods();
+
+public:
+    void load_consent_form();
+    void show(int uid);
+
+    static PoingGodotAdMobUserMessagingPlatform *get_singleton();
+
+    PoingGodotAdMobUserMessagingPlatform();
+    ~PoingGodotAdMobUserMessagingPlatform();
+};
+
+#endif /* PoingGodotAdMobUserMessagingPlatform_h */

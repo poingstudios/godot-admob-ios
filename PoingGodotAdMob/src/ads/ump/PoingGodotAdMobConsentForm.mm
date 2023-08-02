@@ -20,19 +20,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PoingGodotAdMobModule_h
-#define PoingGodotAdMobModule_h
+#import "PoingGodotAdMobConsentForm.h"
 
-#include "PoingGodotAdMob.h"
-#include "PoingGodotAdMobAdSize.h"
-#include "PoingGodotAdMobAdView.h"
-#include "PoingGodotAdMobInterstitialAd.h"
-#include "PoingGodotAdMobRewardedAd.h"
-#include "PoingGodotAdMobRewardedInterstitialAd.h"
-#include "PoingGodotAdMobConsentInformation.h"
-#include "PoingGodotAdMobUserMessagingPlatform.h"
+@implementation PoingGodotAdMobConsentForm
+- (instancetype)initWithUID:(int)UID umpConsentForm:(UMPConsentForm* )umpConsentForm{
+    if ((self = [super init])) {
+        self.UID = [NSNumber numberWithInt:UID];
+        self.umpConsentForm = umpConsentForm;
+    }
+    return self;
+}
 
-void register_poing_godot_admob_ads_types();
-void unregister_poing_godot_admob_ads_types();
+- (void)show {
+    if (self.umpConsentForm){
+        [self.umpConsentForm presentFromViewController:AppDelegate.viewController completionHandler:^(NSError * _Nullable error) {
+            NSLog(@"show ump consent form");
+            Dictionary formErrorDictionary;
+            if (error){
+                NSLog(@"Error while Present UMP Consent Form");
+                formErrorDictionary = [ObjectToGodotDictionary convertNSErrorToDictionaryAsFormError:error];
+            }
+            NSLog(@"sending signal on_consent_form_dismissed %i", [self.UID intValue]);
 
-#endif /* PoingGodotAdMobModule_h */
+            PoingGodotAdMobUserMessagingPlatform::get_singleton()->emit_signal("on_consent_form_dismissed", [self.UID intValue], formErrorDictionary);
+        }];
+    }
+}
+
+
+@end

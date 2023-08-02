@@ -1,48 +1,30 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '14.3'
 
-target 'ads' do
-  # Comment the next line if you don't want to use dynamic frameworks
+def common_pods
   use_frameworks!
+  pod 'Google-Mobile-Ads-SDK', '10.9.0'
+end
 
-  # Pods for Ads
-  pod 'Google-Mobile-Ads-SDK', '10.8.0'
-
+target 'ads' do
+  common_pods
 end
 
 target 'core' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for Core
-  pod 'Google-Mobile-Ads-SDK', '10.8.0'
-
+  common_pods
 end
 
 target 'meta' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for Meta
-  pod 'Google-Mobile-Ads-SDK', '10.8.0'
-
+  common_pods
 end
 
 target 'vungle' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for Vungle
-  pod 'Google-Mobile-Ads-SDK', '10.8.0'
+  common_pods
   pod 'GoogleMobileAdsMediationVungle', '6.12.3'
 end
 
 
 target 'adcolony' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for AdColony
-  pod 'Google-Mobile-Ads-SDK', '10.8.0'
+  common_pods
   pod 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
 end

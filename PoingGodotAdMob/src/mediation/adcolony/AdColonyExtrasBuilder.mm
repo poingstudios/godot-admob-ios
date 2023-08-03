@@ -25,23 +25,21 @@
 
 @implementation AdColonyExtrasBuilder
 
-NSString *const ShowPrePopupKey = @"show_pre_popup";
-NSString *const ShowPostPopupKey = @"show_post_popup";
+String const SHOW_PRE_POPUP_KEY = "SHOW_PRE_POPUP_KEY";
+String const SHOW_POST_POPUP_KEY = "SHOW_POST_POPUP_KEY";
 
 - (id<GADAdNetworkExtras>)buildExtras:(Dictionary) extras {
     NSLog(@"ON AD COLONY BUILD EXTRAS");
     GADMAdapterAdColonyExtras *adColonyExtras = [[GADMAdapterAdColonyExtras alloc] init];
     
-    String StringShowPrePopupKey = extras[ShowPrePopupKey];
-    NSString *showPrePopup = [NSString stringWithUTF8String:StringShowPrePopupKey.utf8().get_data()];
-    if (showPrePopup) {
-        adColonyExtras.showPrePopup = showPrePopup.boolValue;
+    if (extras.has("SHOW_PRE_POPUP_KEY")) {
+        NSLog(@"showPrePopup");
+        adColonyExtras.showPrePopup = extras[SHOW_PRE_POPUP_KEY];
     }
 
-    String StringShowPostPopup = extras[ShowPostPopupKey];
-    NSString *showPostPopup = [NSString stringWithUTF8String:StringShowPostPopup.utf8().get_data()];
-    if (showPostPopup) {
-        adColonyExtras.showPostPopup = showPostPopup.boolValue;
+    if (extras.has("SHOW_POST_POPUP_KEY")) {
+        NSLog(@"showPostPopup");
+        adColonyExtras.showPostPopup = extras[SHOW_POST_POPUP_KEY];
     }
     NSLog(@"RETURN ADCOLONY EXTRAS");
 

@@ -40,6 +40,12 @@ public:
     void set_privacy_consent_string(const String &type, const String &consent_string);
     String get_privacy_consent_string(const String &type);
 
+    void set_user_id(const String &user_id);
+    String get_user_id();
+
+    void set_test_mode(bool enabled);
+    bool get_test_mode();
+
     static PoingGodotAdMobAdColonyAppOptions *get_singleton();
 
     PoingGodotAdMobAdColonyAppOptions();

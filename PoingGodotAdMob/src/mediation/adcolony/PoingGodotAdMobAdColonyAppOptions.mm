@@ -70,10 +70,34 @@ String PoingGodotAdMobAdColonyAppOptions::get_privacy_consent_string(const Strin
     return [[options getPrivacyConsentStringForType:GetType(type)] UTF8String];
 }
 
+void PoingGodotAdMobAdColonyAppOptions::set_user_id(const String &user_id) {
+    NSString *ns_user_id_string = [NSString stringWithCString:user_id.utf8().get_data() encoding: NSUTF8StringEncoding];
+
+    [options setUserID:ns_user_id_string];
+}
+
+String PoingGodotAdMobAdColonyAppOptions::get_user_id() {
+    return [[options userID] UTF8String];
+}
+
+void PoingGodotAdMobAdColonyAppOptions::set_test_mode(bool enabled) {
+    [options setTestMode:enabled];
+}
+
+bool PoingGodotAdMobAdColonyAppOptions::get_test_mode() {
+    return [options testMode];
+}
+
 void PoingGodotAdMobAdColonyAppOptions::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_privacy_framework_required"), &PoingGodotAdMobAdColonyAppOptions::set_privacy_framework_required);
     ClassDB::bind_method(D_METHOD("get_privacy_framework_required"), &PoingGodotAdMobAdColonyAppOptions::get_privacy_framework_required);
     
     ClassDB::bind_method(D_METHOD("set_privacy_consent_string"), &PoingGodotAdMobAdColonyAppOptions::set_privacy_consent_string);
     ClassDB::bind_method(D_METHOD("get_privacy_consent_string"), &PoingGodotAdMobAdColonyAppOptions::get_privacy_consent_string);
+    
+    ClassDB::bind_method(D_METHOD("set_user_id"), &PoingGodotAdMobAdColonyAppOptions::set_user_id);
+    ClassDB::bind_method(D_METHOD("get_user_id"), &PoingGodotAdMobAdColonyAppOptions::get_user_id);
+    
+    ClassDB::bind_method(D_METHOD("set_test_mode"), &PoingGodotAdMobAdColonyAppOptions::set_test_mode);
+    ClassDB::bind_method(D_METHOD("get_test_mode"), &PoingGodotAdMobAdColonyAppOptions::get_test_mode);
 };

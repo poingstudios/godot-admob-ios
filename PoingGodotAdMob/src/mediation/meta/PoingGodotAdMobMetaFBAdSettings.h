@@ -20,8 +20,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#ifndef PoingGodotAdMobMetaFBAdSettings_h
+#define PoingGodotAdMobMetaFBAdSettings_h
 
-@interface Meta : NSObject
+#include "core/object/class_db.h"
+#include "core/version.h"
 
-@end
+class PoingGodotAdMobMetaFBAdSettings : public Object {
+
+    GDCLASS(PoingGodotAdMobMetaFBAdSettings, Object);
+
+    static PoingGodotAdMobMetaFBAdSettings *instance;
+    static void _bind_methods();
+
+public:
+    void set_advertiser_tracking_enabled(bool tracking_required);
+
+    static PoingGodotAdMobMetaFBAdSettings *get_singleton();
+
+    PoingGodotAdMobMetaFBAdSettings();
+    ~PoingGodotAdMobMetaFBAdSettings();
+private:
+    static PoingGodotAdMobMetaFBAdSettings *options;
+};
+
+
+#endif /* PoingGodotAdMobMetaFBAdSettings_h */

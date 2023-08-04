@@ -20,8 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import "Meta.h"
+#ifndef PoingGodotMetaModule_h
+#define PoingGodotMetaModule_h
 
-@implementation Meta
+void register_poing_godot_admob_meta_types();
+void unregister_poing_godot_admob_meta_types();
 
-@end
+#endif /* PoingGodotAdMobModule_h */

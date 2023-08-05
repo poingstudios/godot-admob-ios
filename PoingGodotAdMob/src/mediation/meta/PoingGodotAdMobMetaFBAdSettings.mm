@@ -41,8 +41,14 @@ PoingGodotAdMobMetaFBAdSettings *PoingGodotAdMobMetaFBAdSettings::get_singleton(
 };
 
 void PoingGodotAdMobMetaFBAdSettings::set_advertiser_tracking_enabled(bool tracking_required) {
-    NSLog(@"PoingGodotAdMobMetaFBAdSettings::set_advertiser_tracking_enabled");
-    [FBAdSettings setAdvertiserTrackingEnabled:tracking_required];
+    NSOperatingSystemVersion iOS14Version = { .majorVersion = 14, .minorVersion = 0, .patchVersion = 0 };
+
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:iOS14Version]) {
+        NSLog(@"FBAdSettings set_advertiser_tracking_enabled, %@", tracking_required ? @"YES" : @"NO");
+        [FBAdSettings setAdvertiserTrackingEnabled:tracking_required];
+    } else {
+        NSLog(@"not executing set_advertiser_tracking_enabled because the iOS version is below 14");
+    }
 }
 
 void PoingGodotAdMobMetaFBAdSettings::_bind_methods() {

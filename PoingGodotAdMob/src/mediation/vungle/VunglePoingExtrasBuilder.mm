@@ -25,26 +25,37 @@
 
 @implementation VunglePoingExtrasBuilder
 
-NSString *const ALL_PLACEMENTS_KEY = @"ALL_PLACEMENTS_KEY";
-NSString *const USER_ID_KEY = @"USER_ID_KEY";
-NSString *const SOUND_ENABLED_KEY = @"SOUND_ENABLED_KEY";
+String const ALL_PLACEMENTS_KEY = "ALL_PLACEMENTS_KEY";
+String const USER_ID_KEY = "USER_ID_KEY";
+String const SOUND_ENABLED_KEY = "SOUND_ENABLED_KEY";
 
-- (id<GADAdNetworkExtras>)buildExtras:(NSDictionary<NSString *, NSString *> *)extras {
-    NSString *placements = extras[ALL_PLACEMENTS_KEY];
-    if (!placements) {
-        return nil;
-    }
+- (id<GADAdNetworkExtras>)buildExtras:(Dictionary) extras {
     VungleAdNetworkExtras *vungleExtras = [[VungleAdNetworkExtras alloc] init];
-    vungleExtras.allPlacements = [placements componentsSeparatedByString:@","];
-
-    NSString *soundEnabled = extras[SOUND_ENABLED_KEY];
-    if (soundEnabled) {
-        vungleExtras.muted = ![soundEnabled boolValue];
+    
+    if (extras.has(ALL_PLACEMENTS_KEY)){
+        NSLog(@"has ALL_PLACEMENTS_KEY");
+        String placementsString = extras[ALL_PLACEMENTS_KEY];
+        
+        NSString *placements = [NSString stringWithUTF8String:placementsString.utf8().get_data()];
+        
+        NSCharacterSet *charactersToRemove = [NSCharacterSet characterSetWithCharactersInString:@"\"'[] "];
+        placements = [[placements componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@""];
+        NSArray<NSString *> *placementsArray = [placements componentsSeparatedByString:@","];
+        vungleExtras.allPlacements = placementsArray;
     }
 
-    NSString *userId = extras[USER_ID_KEY];
-    if (userId) {
-        vungleExtras.userId = userId;
+    if (extras.has(SOUND_ENABLED_KEY)){
+        bool soundEnabled = extras[SOUND_ENABLED_KEY];
+        NSLog(@"Sound Enabled: %d", soundEnabled);
+        vungleExtras.muted = !soundEnabled;
+    }
+
+    if (extras.has(USER_ID_KEY)){
+        String userId = extras[USER_ID_KEY];
+        if (!userId.is_empty()) {
+            vungleExtras.userId = [NSString stringWithUTF8String:userId.utf8().get_data()];
+            NSLog(@"User ID: %@", vungleExtras.userId);
+        }
     }
 
     return vungleExtras;

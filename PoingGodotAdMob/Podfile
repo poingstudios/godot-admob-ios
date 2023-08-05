@@ -16,11 +16,12 @@ end
 
 target 'meta' do
   common_pods
+  pod 'GoogleMobileAdsMediationFacebook', '6.12.0.1'
 end
 
-target 'vungle' do
+target 'vungle' do  
   common_pods
-  pod 'GoogleMobileAdsMediationVungle', '6.12.3'
+  pod 'GoogleMobileAdsMediationVungle', '6.12.3.0'
 end
 
 

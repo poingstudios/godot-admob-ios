@@ -27,15 +27,15 @@
 #include "core/config/engine.h"
 #include "core/version.h"
 
-PoingGodotAdMobMetaFBAdSettings *poing_godot_admob_meta_app_options;
+PoingGodotAdMobMetaFBAdSettings *poing_godot_admob_meta_fb_ad_settings;
 
-void register_poing_godot_admob_adcolony_types() {
-    poing_godot_admob_meta_app_options = memnew(PoingGodotAdMobMetaFBAdSettings);
-    Engine::get_singleton()->add_singleton(Engine::Singleton("PoingGodotAdMobMetaFBAdSettings", poing_godot_admob_meta_app_options));
+void register_poing_godot_admob_meta_types() {
+    poing_godot_admob_meta_fb_ad_settings = memnew(PoingGodotAdMobMetaFBAdSettings);
+    Engine::get_singleton()->add_singleton(Engine::Singleton("PoingGodotAdMobMetaFBAdSettings", poing_godot_admob_meta_fb_ad_settings));
 }
 
-void unregister_poing_godot_admob_adcolony_types() {
-    if (poing_godot_admob_meta_app_options) {
-        memdelete(poing_godot_admob_meta_app_options);
+void unregister_poing_godot_admob_meta_types() {
+    if (poing_godot_admob_meta_fb_ad_settings) {
+        memdelete(poing_godot_admob_meta_fb_ad_settings);
     }
 }

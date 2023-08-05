@@ -25,6 +25,7 @@
 
 #include "core/object/class_db.h"
 #include "core/version.h"
+#import <FBAudienceNetwork/FBAudienceNetwork.h>
 
 class PoingGodotAdMobMetaFBAdSettings : public Object {
 
@@ -40,8 +41,6 @@ public:
 
     PoingGodotAdMobMetaFBAdSettings();
     ~PoingGodotAdMobMetaFBAdSettings();
-private:
-    static PoingGodotAdMobMetaFBAdSettings *options;
 };
 
 

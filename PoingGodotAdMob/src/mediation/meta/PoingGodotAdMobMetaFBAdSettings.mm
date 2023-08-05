@@ -21,3 +21,30 @@
 // SOFTWARE.
 
 #import "PoingGodotAdMobMetaFBAdSettings.h"
+
+PoingGodotAdMobMetaFBAdSettings *PoingGodotAdMobMetaFBAdSettings::instance = NULL;
+
+PoingGodotAdMobMetaFBAdSettings::PoingGodotAdMobMetaFBAdSettings() {
+    ERR_FAIL_COND(instance != NULL);
+    
+    instance = this;
+}
+
+PoingGodotAdMobMetaFBAdSettings::~PoingGodotAdMobMetaFBAdSettings() {
+    if (instance == this) {
+        instance = NULL;
+    }
+}
+
+PoingGodotAdMobMetaFBAdSettings *PoingGodotAdMobMetaFBAdSettings::get_singleton() {
+    return instance;
+};
+
+void PoingGodotAdMobMetaFBAdSettings::set_advertiser_tracking_enabled(bool tracking_required) {
+    NSLog(@"PoingGodotAdMobMetaFBAdSettings::set_advertiser_tracking_enabled");
+    [FBAdSettings setAdvertiserTrackingEnabled:tracking_required];
+}
+
+void PoingGodotAdMobMetaFBAdSettings::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("set_advertiser_tracking_enabled"), &PoingGodotAdMobMetaFBAdSettings::set_advertiser_tracking_enabled);
+}

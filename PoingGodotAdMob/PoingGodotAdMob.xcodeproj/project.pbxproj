@@ -1042,6 +1042,19 @@
 					"$(SRCROOT)/../godot/platform/ios",
 					"$(SRCROOT)/../godot",
 				);
+				OTHER_CFLAGS = (
+					"-fcxx-modules",
+					"-g",
+					"-DDEBUG",
+					"-DDEBUG_ENABLED",
+					"-DDEBUG_MEMORY_ALLOC",
+					"-DDISABLE_FORCED_INLINE",
+					"-DTYPED_METHOD_BIND",
+					"-fmodules",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1064,6 +1077,10 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/../godot/platform/ios",
 					"$(SRCROOT)/../godot",
+				);
+				OTHER_CFLAGS = (
+					"-fcxx-modules",
+					"-fmodules",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

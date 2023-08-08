@@ -29,6 +29,8 @@
 		5EA2761A2A67461A00D5CF1E /* GodotDictionaryToObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA276192A67461A00D5CF1E /* GodotDictionaryToObject.mm */; };
 		5EA595992A76B08400968B18 /* PoingGodotAdMobRewardedAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA595982A76B08400968B18 /* PoingGodotAdMobRewardedAd.mm */; };
 		5EA5959C2A76B10000968B18 /* RewardedAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5959B2A76B10000968B18 /* RewardedAd.mm */; };
+		5EAF24902A7EBB420050C77A /* PoingGodotAdMobVungleModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EAF248F2A7EBB420050C77A /* PoingGodotAdMobVungleModule.mm */; };
+		5EAF24932A7EBC3D0050C77A /* PoingGodotAdMobVungle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EAF24922A7EBC3D0050C77A /* PoingGodotAdMobVungle.mm */; };
 		5EAFBD212A7C96600045DAB8 /* PoingGodotAdMobMetaFBAdSettings.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFBD202A7C96600045DAB8 /* PoingGodotAdMobMetaFBAdSettings.mm */; };
 		5EB13DE52A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DE42A76FF7800054CFC /* PoingGodotAdMobRewardedInterstitialAd.mm */; };
 		5EB13DE82A77003500054CFC /* RewardedInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DE72A77003500054CFC /* RewardedInterstitialAd.mm */; };
@@ -142,6 +144,11 @@
 		5EA5959D2A76B39E00968B18 /* VectorHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorHelper.h; sourceTree = "<group>"; };
 		5EA5959E2A76C0BA00968B18 /* ObjectController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectController.h; sourceTree = "<group>"; };
 		5EA5959F2A76C56500968B18 /* AdFormatBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdFormatBase.h; sourceTree = "<group>"; };
+		5EAF248C2A7EBAC60050C77A /* PoingGodotAdMobVungleModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobVungleModule.h; sourceTree = "<group>"; };
+		5EAF248E2A7EBB040050C77A /* poing-godot-admob-vungle.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-vungle.gdip"; sourceTree = "<group>"; };
+		5EAF248F2A7EBB420050C77A /* PoingGodotAdMobVungleModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobVungleModule.mm; sourceTree = "<group>"; };
+		5EAF24912A7EBC350050C77A /* PoingGodotAdMobVungle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobVungle.h; sourceTree = "<group>"; };
+		5EAF24922A7EBC3D0050C77A /* PoingGodotAdMobVungle.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobVungle.mm; sourceTree = "<group>"; };
 		5EAFBD1E2A7C94EA0045DAB8 /* poing-godot-admob-meta.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-meta.gdip"; sourceTree = "<group>"; };
 		5EAFBD1F2A7C96540045DAB8 /* PoingGodotAdMobMetaFBAdSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobMetaFBAdSettings.h; sourceTree = "<group>"; };
 		5EAFBD202A7C96600045DAB8 /* PoingGodotAdMobMetaFBAdSettings.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobMetaFBAdSettings.mm; sourceTree = "<group>"; };
@@ -378,8 +385,13 @@
 		5E80AAFD2A44AA77001C750F /* vungle */ = {
 			isa = PBXGroup;
 			children = (
+				5EAF248D2A7EBAF20050C77A /* config */,
 				5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */,
 				5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */,
+				5EAF248C2A7EBAC60050C77A /* PoingGodotAdMobVungleModule.h */,
+				5EAF248F2A7EBB420050C77A /* PoingGodotAdMobVungleModule.mm */,
+				5EAF24912A7EBC350050C77A /* PoingGodotAdMobVungle.h */,
+				5EAF24922A7EBC3D0050C77A /* PoingGodotAdMobVungle.mm */,
 			);
 			path = vungle;
 			sourceTree = "<group>";
@@ -407,6 +419,14 @@
 				5EB13DE72A77003500054CFC /* RewardedInterstitialAd.mm */,
 			);
 			path = adformats;
+			sourceTree = "<group>";
+		};
+		5EAF248D2A7EBAF20050C77A /* config */ = {
+			isa = PBXGroup;
+			children = (
+				5EAF248E2A7EBB040050C77A /* poing-godot-admob-vungle.gdip */,
+			);
+			path = config;
 			sourceTree = "<group>";
 		};
 		5EAFBD1D2A7C94B30045DAB8 /* config */ = {
@@ -747,6 +767,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EAF24902A7EBB420050C77A /* PoingGodotAdMobVungleModule.mm in Sources */,
+				5EAF24932A7EBC3D0050C77A /* PoingGodotAdMobVungle.mm in Sources */,
 				5E80AB002A44AA77001C750F /* VunglePoingExtrasBuilder.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

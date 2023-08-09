@@ -7,7 +7,7 @@ end
 
 def common_pods
   use_frameworks!
-  eval(read_pod_from_file('src/ads/config/pods.txt'))
+  eval(read_pod_from_file('src/ads/config/ads-pods.txt'))
 end
 
 target 'ads' do
@@ -20,16 +20,16 @@ end
 
 target 'meta' do
   common_pods
-  eval(read_pod_from_file('src/mediation/meta/config/pods.txt'))
+  eval(read_pod_from_file('src/mediation/meta/config/meta-pods.txt'))
 end
 
 target 'vungle' do  
   common_pods
-  eval(read_pod_from_file('src/mediation/vungle/config/pods.txt'))
+  eval(read_pod_from_file('src/mediation/vungle/config/vungle-pods.txt'))
 end
 
 
 target 'adcolony' do
   common_pods
-  eval(read_pod_from_file('src/mediation/adcolony/config/pods.txt'))
+  eval(read_pod_from_file('src/mediation/adcolony/config/adcolony-pods.txt'))
 end

@@ -131,6 +131,10 @@
 		5E80AAFE2A44AA77001C750F /* VunglePoingExtrasBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VunglePoingExtrasBuilder.h; sourceTree = "<group>"; };
 		5E80AAFF2A44AA77001C750F /* VunglePoingExtrasBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VunglePoingExtrasBuilder.mm; sourceTree = "<group>"; };
 		5E9575692A46998300CE30AF /* poing-godot-admob-ads.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-ads.gdip"; sourceTree = "<group>"; };
+		5E9F24162A8320B900148BB2 /* pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = pods.txt; sourceTree = "<group>"; };
+		5E9F24172A8323C200148BB2 /* pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = pods.txt; sourceTree = "<group>"; };
+		5E9F24182A8323D300148BB2 /* pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = pods.txt; sourceTree = "<group>"; };
+		5E9F24192A8323E400148BB2 /* pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = pods.txt; sourceTree = "<group>"; };
 		5EA276112A66FC5C00D5CF1E /* PoingGodotAdMobAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdView.h; sourceTree = "<group>"; };
 		5EA276122A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdView.mm; sourceTree = "<group>"; };
 		5EA276152A67396200D5CF1E /* BannerAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerAd.h; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */,
+				5E9F24192A8323E400148BB2 /* pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				5E9575692A46998300CE30AF /* poing-godot-admob-ads.gdip */,
+				5E9F24162A8320B900148BB2 /* pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				5EAF248E2A7EBB040050C77A /* poing-godot-admob-vungle.gdip */,
+				5E9F24182A8323D300148BB2 /* pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -433,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				5EAFBD1E2A7C94EA0045DAB8 /* poing-godot-admob-meta.gdip */,
+				5E9F24172A8323C200148BB2 /* pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -1026,6 +1034,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"$(SRCROOT)/../godot/platform/ios",
+					"$(SRCROOT)/../godot",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1041,6 +1057,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"$(SRCROOT)/../godot/platform/ios",
+					"$(SRCROOT)/../godot",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

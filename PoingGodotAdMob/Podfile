@@ -1,9 +1,13 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '14.3'
 
+def read_pod_from_file(file_path)
+  File.read(file_path)
+end
+
 def common_pods
   use_frameworks!
-  pod 'Google-Mobile-Ads-SDK', '10.9.0'
+  eval(read_pod_from_file('src/ads/config/pods.txt'))
 end
 
 target 'ads' do
@@ -16,16 +20,16 @@ end
 
 target 'meta' do
   common_pods
-  pod 'GoogleMobileAdsMediationFacebook', '6.12.0.1'
+  eval(read_pod_from_file('src/mediation/meta/config/pods.txt'))
 end
 
 target 'vungle' do  
   common_pods
-  pod 'GoogleMobileAdsMediationVungle', '6.12.3.0'
+  eval(read_pod_from_file('src/mediation/vungle/config/pods.txt'))
 end
 
 
 target 'adcolony' do
   common_pods
-  pod 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
+  eval(read_pod_from_file('src/mediation/adcolony/config/pods.txt'))
 end

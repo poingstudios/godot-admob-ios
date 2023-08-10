@@ -10,7 +10,7 @@ linked=[]
 embedded=[]
 system=[]
 capabilities=[]
-files=[]
+files=["poing-godot-admob/libs/meta-pods.txt"]
 linker_flags=[]
 
 [plist]

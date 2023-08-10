@@ -148,6 +148,8 @@
 		5EA5959D2A76B39E00968B18 /* VectorHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorHelper.h; sourceTree = "<group>"; };
 		5EA5959E2A76C0BA00968B18 /* ObjectController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectController.h; sourceTree = "<group>"; };
 		5EA5959F2A76C56500968B18 /* AdFormatBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdFormatBase.h; sourceTree = "<group>"; };
+		5EAB71272A847D0D008CEBB8 /* update_pods.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = update_pods.rb; sourceTree = "<group>"; };
+		5EAB71282A847D0D008CEBB8 /* update_and_install.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = update_and_install.sh; sourceTree = "<group>"; };
 		5EAF248C2A7EBAC60050C77A /* PoingGodotAdMobVungleModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobVungleModule.h; sourceTree = "<group>"; };
 		5EAF248E2A7EBB040050C77A /* poing-godot-admob-vungle.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-vungle.gdip"; sourceTree = "<group>"; };
 		5EAF248F2A7EBB420050C77A /* PoingGodotAdMobVungleModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobVungleModule.mm; sourceTree = "<group>"; };
@@ -262,8 +264,8 @@
 		5E08983E2A4B959D0066A53A /* config */ = {
 			isa = PBXGroup;
 			children = (
+				5EAB712C2A847E1C008CEBB8 /* libs */,
 				5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */,
-				5E9F24192A8323E400148BB2 /* adcolony-pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -404,8 +406,9 @@
 		5E9575682A46997400CE30AF /* config */ = {
 			isa = PBXGroup;
 			children = (
+				5EAB71262A847CF1008CEBB8 /* scripts */,
+				5EAB71252A847CE6008CEBB8 /* libs */,
 				5E9575692A46998300CE30AF /* poing-godot-admob-ads.gdip */,
-				5E9F24162A8320B900148BB2 /* ads-pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -427,11 +430,52 @@
 			path = adformats;
 			sourceTree = "<group>";
 		};
+		5EAB71252A847CE6008CEBB8 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5E9F24162A8320B900148BB2 /* ads-pods.txt */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		5EAB71262A847CF1008CEBB8 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				5EAB71282A847D0D008CEBB8 /* update_and_install.sh */,
+				5EAB71272A847D0D008CEBB8 /* update_pods.rb */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		5EAB712A2A847E0E008CEBB8 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5E9F24172A8323C200148BB2 /* meta-pods.txt */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		5EAB712B2A847E16008CEBB8 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5E9F24182A8323D300148BB2 /* vungle-pods.txt */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		5EAB712C2A847E1C008CEBB8 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5E9F24192A8323E400148BB2 /* adcolony-pods.txt */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
 		5EAF248D2A7EBAF20050C77A /* config */ = {
 			isa = PBXGroup;
 			children = (
+				5EAB712B2A847E16008CEBB8 /* libs */,
 				5EAF248E2A7EBB040050C77A /* poing-godot-admob-vungle.gdip */,
-				5E9F24182A8323D300148BB2 /* vungle-pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -439,8 +483,8 @@
 		5EAFBD1D2A7C94B30045DAB8 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				5EAB712A2A847E0E008CEBB8 /* libs */,
 				5EAFBD1E2A7C94EA0045DAB8 /* poing-godot-admob-meta.gdip */,
-				5E9F24172A8323C200148BB2 /* meta-pods.txt */,
 			);
 			path = config;
 			sourceTree = "<group>";

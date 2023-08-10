@@ -10,7 +10,9 @@ linked=[]
 embedded=[]
 system=[]
 capabilities=[]
-files=[]
+files=["poing-godot-admob/libs/ads-pods.txt",
+       "poing-godot-admob/scripts/update_and_install.sh",
+       "poing-godot-admob/scripts/update_pods.rb"]
 linker_flags=[]
 
 [plist]
@@ -19,18 +21,14 @@ linker_flags=[]
 ;@ IMPORTANT @: Replace with your app id: https://support.google.com/admob/answer/7356431
 GADApplicationIdentifier:string_input="ca-app-pub-3940256099942544~1458002511"
 
-;OPTIONAL: If you are using User Messaging Platform (UMP), you can enable Delay app measurement: https://developers.google.com/admob/ump/ios/quick-start#delay_app_measurement_optional
-GADDelayAppMeasurementInit:boolean=false
-
-;OPTIONAL: Advanced users can modify these extra properties.
-NSUserTrackingUsageDescription="This identifier will be used to deliver personalized ads to you."
-
+;Warning: If you are not using mediation, you can use only 'cstr6suwn9.skadnetwork': https://developers.google.com/admob/ios/ios14#skadnetwork
 SKAdNetworkItems:raw="
 <array>
   <dict>
     <key>SKAdNetworkIdentifier</key>
     <string>cstr6suwn9.skadnetwork</string>
   </dict>
+  <!--
   <dict>
     <key>SKAdNetworkIdentifier</key>
     <string>4fzdc2evr5.skadnetwork</string>
@@ -360,5 +358,6 @@ SKAdNetworkItems:raw="
     <key>SKAdNetworkIdentifier</key>
     <string>vutu7akeur.skadnetwork</string>
   </dict>
+  -->
 </array>
 "

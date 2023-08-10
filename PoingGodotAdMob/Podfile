@@ -1,35 +1,24 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '14.3'
 
+def common_pods
+  use_frameworks!
+  eval(read_pod_from_file('src/ads/config/libs/ads-pods.txt'))
+end
+
 def read_pod_from_file(file_path)
   File.read(file_path)
 end
 
-def common_pods
-  use_frameworks!
-  eval(read_pod_from_file('src/ads/config/ads-pods.txt'))
+def add_pods_to_target(target_name, *pod_file_paths)
+  target target_name do
+    common_pods
+    pod_file_paths.each { |file_path| eval(read_pod_from_file(file_path)) }
+  end
 end
 
-target 'ads' do
-  common_pods
-end
-
-target 'core' do
-  common_pods
-end
-
-target 'meta' do
-  common_pods
-  eval(read_pod_from_file('src/mediation/meta/config/meta-pods.txt'))
-end
-
-target 'vungle' do  
-  common_pods
-  eval(read_pod_from_file('src/mediation/vungle/config/vungle-pods.txt'))
-end
-
-
-target 'adcolony' do
-  common_pods
-  eval(read_pod_from_file('src/mediation/adcolony/config/adcolony-pods.txt'))
-end
+add_pods_to_target('ads')
+add_pods_to_target('core')
+add_pods_to_target('meta',      'src/mediation/meta/config/libs/meta-pods.txt')
+add_pods_to_target('vungle',    'src/mediation/vungle/config/libs/vungle-pods.txt')
+add_pods_to_target('adcolony',  'src/mediation/adcolony/config/libs/adcolony-pods.txt')

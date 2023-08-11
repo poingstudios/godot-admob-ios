@@ -24,7 +24,7 @@ opts.Add(EnumVariable('arch', "Compilation Architecture", '', ['', 'arm64', 'arm
 opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
-opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'ads']))
+opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'ads', 'adcolony', 'meta', 'vungle']))
 
 # Updates the environment with the option variables.
 opts.Update(env)
@@ -56,20 +56,37 @@ xcframework_directory = ''
 
 if env['simulator']:
     xcframework_directory = 'ios-arm64_x86_64-simulator'
-    ump_xcframework_directory = 'ios-arm64_x86_64-simulator'
     sdk_name = 'iphonesimulator'
     env.Append(CCFLAGS=['-mios-simulator-version-min=10.0'])
     env.Append(LINKFLAGS=["-mios-simulator-version-min=10.0"])
 else:
     xcframework_directory = 'ios-arm64'
-    ump_xcframework_directory = 'ios-arm64_armv7'
     sdk_name = 'iphoneos'
     env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
     env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])
 
 #need to perform `cd PoingGodotAdMob && pod install --repo-update`
 env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
-env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + ump_xcframework_directory])
+
+if env['plugin'] == 'ads':
+    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
+elif env['plugin'] == 'adcolony':
+    if env['simulator']:
+        xcframework_directory_adcolony = 'ios-arm64_i386_x86_64-simulator'
+    else:
+        xcframework_directory_adcolony = 'ios-arm64_armv7'
+        
+    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/AdColony/AdColony.xcframework/' + xcframework_directory_adcolony])
+# elif env['plugin'] == 'meta':
+#     # Meta framework paths
+#     # Add the appropriate paths for the Meta plugin
+#     # Add other plugins' paths similarly
+# elif env['plugin'] == 'vungle':
+#     # Vungle framework paths
+#     # Add the appropriate paths for the Vungle plugin
+#     # Add other plugins' paths similarly
+
+
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())
@@ -134,17 +151,20 @@ env.Append(CPPPATH=[
 ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-sources = Glob('PoingGodotAdMob/src/' + env['plugin'] + '/*.mm')
-sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/adformats/*.mm'))
-sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/config/*.mm'))
-sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/helpers/*.mm'))
-sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/converters/*.mm'))
+if env['plugin'] == 'ads':
+    sources = Glob('PoingGodotAdMob/src/' + env['plugin'] + '/*.mm')
+    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/adformats/*.mm'))
+    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/helpers/*.mm'))
+    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/converters/*.mm'))
+    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/ump/*.mm'))
+else:
+    sources = Glob('PoingGodotAdMob/src/mediation/' + env['plugin'] + '/*.mm')
 
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
 library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
 print(library_platform)
-library_name = env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
+library_name = "poing-godot-admob-" + env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
 library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
 
 Default(library)

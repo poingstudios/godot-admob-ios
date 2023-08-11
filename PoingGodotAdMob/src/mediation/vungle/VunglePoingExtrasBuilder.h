@@ -24,7 +24,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "../../Core/AdNetworkExtras.h"
+#import "../../core/AdNetworkExtras.h"
 
 @interface VunglePoingExtrasBuilder : NSObject <AdNetworkExtras>
 

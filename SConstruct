@@ -73,10 +73,14 @@ if env['plugin'] == 'ads':
 elif env['plugin'] == 'adcolony':
     if env['simulator']:
         xcframework_directory_adcolony = 'ios-arm64_i386_x86_64-simulator'
+        GoogleMobileAdsMediationAdColony = 'ios-arm64_x86_64-simulator'
     else:
         xcframework_directory_adcolony = 'ios-arm64_armv7'
+        GoogleMobileAdsMediationAdColony = 'ios-arm64_armv7'
         
     env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/AdColony/AdColony.xcframework/' + xcframework_directory_adcolony])
+    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationAdColony/AdColonyAdapter-4.9.0.2/AdColonyAdapter.xcframework/' + xcframework_directory_adcolony])
+    
 # elif env['plugin'] == 'meta':
 #     # Meta framework paths
 #     # Add the appropriate paths for the Meta plugin

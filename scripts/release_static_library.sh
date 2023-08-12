@@ -12,15 +12,25 @@ do
     ./scripts/generate_static_library.sh $PLUGIN release_debug
     mv ./bin/poing-godot-admob-${PLUGIN}.release_debug.a ./bin/poing-godot-admob-${PLUGIN}.debug.a
 
+    # Set destination path based on PLUGIN value
+    DEST_PATH="./bin/release/${PLUGIN}/poing-godot-admob/"
+    
     # Move Plugin
-    mkdir -p ./bin/release/poing-godot-admob/bin
-    mv ./bin/poing-godot-admob-${PLUGIN}.{release,debug}.a ./bin/release/poing-godot-admob/bin
+    mkdir -p "$DEST_PATH/bin/"
+    mv ./bin/poing-godot-admob-${PLUGIN}.{release,debug}.a "$DEST_PATH/bin"
 
     CONFIG_DIR="./PoingGodotAdMob/src/mediation/${PLUGIN}/config"
     if [ "$PLUGIN" = "ads" ]; then
-        mkdir -p ./bin/release/poing-godot-admob/scripts
+        mkdir -p "$DEST_PATH/scripts"
         CONFIG_DIR="./PoingGodotAdMob/src/${PLUGIN}/config"
     fi
-    
-    cp -r "$CONFIG_DIR"/* ./bin/release/poing-godot-admob/
+
+    cp "$CONFIG_DIR"/*.gdip ./bin/release/${PLUGIN}
+
+    for item in "$CONFIG_DIR"/*
+    do
+        if [ ! -f "$item" ] || [ "${item##*.}" != "gdip" ]; then
+            cp -r "$item" "$DEST_PATH/"
+        fi
+    done
 done

@@ -1,4 +1,18 @@
 #!/bin/bash
+function run_pod_install() {
+    local directory="./PoingGodotAdMob"
+    
+    if [ -d "$directory" ]; then
+        pushd "$directory" > /dev/null
+        pod install --repo-update
+        popd > /dev/null
+    else
+        echo "Directory '$directory' not found."
+        exit 1
+    fi
+}
+
+run_pod_install
 
 PLUGINS=("ads" "adcolony" "meta" "vungle")
 

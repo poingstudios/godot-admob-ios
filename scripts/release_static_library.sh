@@ -19,19 +19,23 @@ PLUGINS=("ads" "adcolony" "meta" "vungle")
 # Clear release folder
 rm -rf ./bin/release
 
+# Create folders
+mkdir -p ./bin/release
+mkdir -p ./bin/static_libraries
+
 for PLUGIN in "${PLUGINS[@]}"
 do
     # Compile Plugin
     ./scripts/generate_static_library.sh $PLUGIN release
     ./scripts/generate_static_library.sh $PLUGIN release_debug
-    mv ./bin/poing-godot-admob-${PLUGIN}.release_debug.a ./bin/poing-godot-admob-${PLUGIN}.debug.a
+    mv ./bin/static_libraries/${PLUGIN}/poing-godot-admob-${PLUGIN}.release_debug.a ./bin/static_libraries/${PLUGIN}/poing-godot-admob-${PLUGIN}.debug.a
 
     # Set destination path based on PLUGIN value
     DEST_PATH="./bin/release/${PLUGIN}/poing-godot-admob/"
     
     # Move Plugin
     mkdir -p "$DEST_PATH/bin/"
-    mv ./bin/poing-godot-admob-${PLUGIN}.{release,debug}.a "$DEST_PATH/bin"
+    cp ./bin/static_libraries/${PLUGIN}/poing-godot-admob-${PLUGIN}.{release,debug}.a "$DEST_PATH/bin"
 
     CONFIG_DIR="./PoingGodotAdMob/src/mediation/${PLUGIN}/config"
     if [ "$PLUGIN" = "ads" ]; then

@@ -23,7 +23,7 @@ opts.Add(EnumVariable('target', "Compilation target", 'debug', ['debug', 'releas
 opts.Add(EnumVariable('arch', "Compilation Architecture", '', ['', 'arm64', 'armv7', 'x86_64']))
 opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
-opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/'))
+opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/static_libraries/'))
 opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'ads', 'adcolony', 'meta', 'vungle']))
 
 # Updates the environment with the option variables.
@@ -183,7 +183,7 @@ else:
 library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
 print(library_platform)
 library_name = "poing-godot-admob-" + env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
-library = env.StaticLibrary(target=env['target_path'] + library_name, source=sources)
+library = env.StaticLibrary(target=env['target_path'] + env['plugin'] + "/" + library_name, source=sources)
 
 Default(library)
 

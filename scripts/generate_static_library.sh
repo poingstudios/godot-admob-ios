@@ -13,7 +13,7 @@ scons target=$2 arch=x86_64 simulator=yes plugin=$1
 # Creating a fat libraries for device and simulator
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
 
-lipo -create "./bin/libpoing-godot-admob-$1.x86_64-simulator.$2.a" \
-    "./bin/libpoing-godot-admob-$1.armv7-ios.$2.a" \
-    "./bin/libpoing-godot-admob-$1.arm64-ios.$2.a" \
-    -output "./bin/poing-godot-admob-$1.$2.a"
+lipo -create "./bin/static_libraries/$1/libpoing-godot-admob-$1.x86_64-simulator.$2.a" \
+    "./bin/static_libraries/$1/libpoing-godot-admob-$1.armv7-ios.$2.a" \
+    "./bin/static_libraries/$1/libpoing-godot-admob-$1.arm64-ios.$2.a" \
+    -output "./bin/static_libraries/$1/poing-godot-admob-$1.$2.a"

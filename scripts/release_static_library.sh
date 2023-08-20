@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if [ $# -eq 0 ]; then
+    godot_version=""
+else
+    godot_version="-$1"
+fi
+
 function run_pod_install() {
     local directory="./PoingGodotAdMob"
     
@@ -16,12 +23,14 @@ run_pod_install
 
 PLUGINS=("ads" "adcolony" "meta" "vungle")
 
+dest_folder="./bin/release"
+
 # Clear release folder
-rm -rf ./bin/release
+rm -rf "$dest_folder"
 
 # Create folders
-mkdir -p ./bin/release
-mkdir -p ./bin/static_libraries
+mkdir -p "$dest_folder"
+mkdir -p "./bin/static_libraries"
 
 for PLUGIN in "${PLUGINS[@]}"
 do
@@ -31,7 +40,7 @@ do
     mv ./bin/static_libraries/${PLUGIN}/poing-godot-admob-${PLUGIN}.release_debug.a ./bin/static_libraries/${PLUGIN}/poing-godot-admob-${PLUGIN}.debug.a
 
     # Set destination path based on PLUGIN value
-    DEST_PATH="./bin/release/${PLUGIN}/poing-godot-admob/"
+    DEST_PATH="$dest_folder/${PLUGIN}/poing-godot-admob/"
     
     # Move Plugin
     mkdir -p "$DEST_PATH/bin/"
@@ -43,7 +52,7 @@ do
         CONFIG_DIR="./PoingGodotAdMob/src/${PLUGIN}/config"
     fi
 
-    cp "$CONFIG_DIR"/*.gdip ./bin/release/${PLUGIN}
+    cp "$CONFIG_DIR"/*.gdip "$dest_folder/${PLUGIN}"
 
     for item in "$CONFIG_DIR"/*
     do
@@ -52,3 +61,6 @@ do
         fi
     done
 done
+
+
+cd "./bin/release" && zip -r "poing-admob-ios$godot_version.zip" "./"

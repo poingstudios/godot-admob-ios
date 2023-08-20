@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]; then
     godot_version=""
 else
-    godot_version="-$1"
+    godot_version="-v$1"
 fi
 
 function run_pod_install() {

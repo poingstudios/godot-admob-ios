@@ -1,0 +1,86 @@
+name: Build iOS
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  ios-template:
+    name: Compiling for iOS
+    runs-on: "macos-latest"
+    strategy:
+      matrix:
+        GODOT_VERSIONS: [4.1, 4.1.1]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # Github Actions Matrix doesnt support x.0 values, it's replaced by ''
+    - name: Verify current matrix's GODOT_VERSIONS
+      run: |
+        CURRENT_GODOT_VERSION=${{matrix.GODOT_VERSIONS}}
+        if [ ${#CURRENT_GODOT_VERSION} -eq 1 ]; then CURRENT_GODOT_VERSION="${CURRENT_GODOT_VERSION}.0"; fi
+        echo "CURRENT_GODOT_VERSION=${CURRENT_GODOT_VERSION}" >> $GITHUB_ENV
+
+    # Upload cache on completion and check it out now
+    - name: Load .scons_cache directory
+      id: ios-template-cache
+      uses: actions/cache@v2
+      with:
+        path: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
+        key: ${{github.job}}-master-${{github.ref}}-${{github.sha}}
+        restore-keys: |
+          ${{github.job}}-master-${{github.ref}}-${{github.sha}}
+          ${{github.job}}-master-${{github.ref}}
+          ${{github.job}}-master
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        # Semantic version range syntax or exact version of a Python version
+        python-version: '3.x'
+        # Optional - x64 or x86 architecture, defaults to x64
+        architecture: 'x64'
+
+    - name: Configuring Python packages
+      run: |
+        python -c "import sys; print(sys.version)"
+        python -m pip install scons
+        python --version
+        scons --version
+
+    - name: Download and unzip Stable Godot extracted headers
+      run: |
+        FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS="https://github.com/godotengine/godot/releases/download/${{env.CURRENT_GODOT_VERSION}}-stable/godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz"
+        curl -LO $FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS
+        tar -xf godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz
+        mv godot-${{env.CURRENT_GODOT_VERSION}}-stable godot
+
+    - name: Generate headers
+      run: |
+        echo "Major version: $major_version"
+        ./scripts/generate_headers.sh || true
+
+    - name: Compiles the Source Code
+      env:
+        SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
+      run: |
+        ./scripts/release_static_library.sh 
+
+    - name: Compress the binaries
+      run: |
+        ./scripts/create_zip.sh ${{env.CURRENT_GODOT_VERSION}}
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        path: bin/release/ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
+
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: bin/release/ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
+        tag: ${{ github.ref }}
+        overwrite: true

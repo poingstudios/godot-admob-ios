@@ -5,5 +5,9 @@ else
     godot_version="-v$1"
 fi
 
+cd ./bin/release
 
-cd "./bin/release" && zip -r "poing-admob-ios$godot_version.zip" "./"
+file_name="poing-admob-ios$godot_version.zip"
+
+rm $file_name || true
+zip -r $file_name ./

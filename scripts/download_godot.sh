@@ -21,3 +21,4 @@ if [ -d "godot" ]; then
 fi
 
 mv "$GODOT_FOLDER" godot
+rm $DOWNLOAD_FILE

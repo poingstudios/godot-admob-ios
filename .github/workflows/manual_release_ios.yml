@@ -18,10 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Download, copy and unzip the lastest Google Mobile Ads SDK on release binaries and iOS module folder
-      run: |
-        curl -LO https://github.com/Poing-Studios/godot-admob-ios/releases/download/${{ github.event.inputs.tag }}/googlemobileadssdkios.zip
-
     - name: Verify current inputs godot_version
       run: |
         CURRENT_GODOT_VERSION=${{ github.event.inputs.godot_version }}
@@ -55,71 +51,34 @@ jobs:
         python --version
         scons --version
 
-    - name: Prepare 'bin/, lib/, godot' folders
-      run: |
-        rm -rf ./bin/ && mkdir ./bin/
-        rm -rf ./plugin/admob/lib/ && mkdir ./plugin/admob/lib/
-
     - name: Download and unzip Stable Godot extracted headers
       run: |
-        FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS="https://github.com/godotengine/godot/releases/download/${{env.CURRENT_GODOT_VERSION}}-stable/godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz"
-        curl -LO $FULL_PATHNAME_DOWNLOAD_GODOT_EXTRACTED_HEADERS
-        tar -xf godot-${{env.CURRENT_GODOT_VERSION}}-stable.tar.xz
-        mv godot-${{env.CURRENT_GODOT_VERSION}}-stable godot
+        ./scripts/download_godot.sh ${{env.CURRENT_GODOT_VERSION}}
 
     - name: Generate headers
       run: |
-        if [[ ${{env.CURRENT_GODOT_VERSION}} =~ ^3\..* ]]; then
-          major_version=$(echo ${{env.CURRENT_GODOT_VERSION}} | sed -E 's/^([0-9]+)\..*$/\1.x/g')
-        else
-          major_version=${{env.CURRENT_GODOT_VERSION}}
-        fi
-        
         echo "Major version: $major_version"
-        ./scripts/generate_headers.sh ${major_version} || true
-
-    - name: Copy and unzip the Google Mobile Ads SDK on release binaries and iOS module folder
-      run: |
-        mkdir -p godot-${{env.CURRENT_GODOT_VERSION}}-stable/bin/release/
-        unzip googlemobileadssdkios.zip -d plugin/admob/lib/
-        cd plugin/admob/lib/
-        cd */
-        mv * ../
+        ./scripts/generate_headers.sh || true
 
     - name: Compiles the Source Code
       env:
         SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
       run: |
-        VERSION_TO_BUILD=0
-
-        if [ ${CURRENT_GODOT_VERSION:0:1} -gt 3 ]
-        then
-            VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:3}
-        else
-            VERSION_TO_BUILD=${CURRENT_GODOT_VERSION:0:1}.x
-        fi
-        
-        ./scripts/release_static_library.sh ${VERSION_TO_BUILD}
+        ./scripts/release_static_library.sh 
 
     - name: Compress the binaries
       run: |
-        if [ 1 -eq "$(echo "${CURRENT_GODOT_VERSION:0:3} < 3.4" | bc)" ]
-        then
-            cp ./plugin/admob/config/3.3\<3.4/admob.gdip ./bin/release/admob
-        fi
-        cd bin/release 
-        zip -r ../../ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip admob
+        ./scripts/create_zip.sh ${{env.CURRENT_GODOT_VERSION}}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
-        path: ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
+        path: bin/release/ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
-        tag: ${{ github.event.inputs.tag }}
+        file: bin/release/ios-template-v${{env.CURRENT_GODOT_VERSION}}.zip
+        tag: ${{ github.ref }}
         overwrite: true

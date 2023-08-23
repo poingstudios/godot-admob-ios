@@ -9,5 +9,10 @@ cd ./bin/release
 
 file_name="poing-godot-admob-ios$godot_version.zip"
 
-rm $file_name || true
+
+if [ -e $file_name ]; then
+  echo "Deleting existing .zip folder..."
+  rm $file_name
+fi
+
 zip -r $file_name ./

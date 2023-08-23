@@ -74,11 +74,11 @@ The **purpose** of this plugin is to always keep **up to date with Godot**, supp
 - Go to `{{ ios_xcode_export_folder }}/{{your_project_name}}/ios/plugins/poing-godot-admob/scripts/` folder and open the terminal (must be inside this folder).
 - Run the commands: 
 ```bash
-chmod +x update_and_install.sh`
+chmod +x update_and_install.sh
 ./update_and_install.sh
 ```
 - This will create for your a `{{ your_project_name }}.xcworkspace` file on your `{{ ios_xcode_export_folder }}`, open this file.
-- Go to the Target of your Application and them `General -> Frameworks, Libraries, and Embedded Content`and add all `Pods` in section.
+- Go to the Target of your Application and them `General -> Frameworks, Libraries, and Embedded Content` and add all `Pods` in section.
 - Run the Game.
 - [If you are trying to run on Simulator and is not working read this](https://github.com/godotengine/godot/issues/44681#issuecomment-751399783).
 

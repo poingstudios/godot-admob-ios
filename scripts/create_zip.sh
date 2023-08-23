@@ -7,7 +7,7 @@ fi
 
 cd ./bin/release
 
-file_name="poing-admob-ios$godot_version.zip"
+file_name="poing-godot-admob-ios$godot_version.zip"
 
 rm $file_name || true
 zip -r $file_name ./

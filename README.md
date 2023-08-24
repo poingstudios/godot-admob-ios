@@ -14,7 +14,7 @@
     <img src="https://img.shields.io/github/v/tag/Poing-Studios/godot-admob-ios?label=Version">
   </a>
   <a href="https://github.com/Poing-Studios/godot-admob-ios/actions/workflows/release_ios.yml">
-    <img src="https://github.com/Poing-Studios/godot-admob-ios/actions/workflows/release_ios.yml/badge.svg?branch=1.1.0">
+    <img src="https://github.com/Poing-Studios/godot-admob-ios/actions/workflows/release_ios.yml/badge.svg">
   </a>
   <a href="https://github.com/Poing-Studios/godot-admob-ios/releases">
     <img src="https://img.shields.io/github/downloads/Poing-Studios/godot-admob-ios/total?style=social">

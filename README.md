@@ -32,7 +32,7 @@
 
 ## ❓ About 
 
-<img src="static/admob.webp" align="right"
+<img src="static/usage.webp" align="right"
      alt="Preview" width="auto" height="390">
 
 

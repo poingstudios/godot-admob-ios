@@ -24,15 +24,15 @@
 </p>
 
 <p align="center">
-  <a href="#about">About</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#documentation">Docs</a> •
+  <a href="#❓-about">About</a> •
+  <a href="#🙋‍♂️how-to-use">How to use</a> •
+  <a href="#📄documentation">Docs</a> •
   <a href="https://github.com/Poing-Studios/godot-admob-ios/releases">Downloads</a> 
 </p>
 
 ## ❓ About 
 
-<img src="static/admob.webp" align="right"
+<img src="static/usage.webp" align="right"
      alt="Preview" width="auto" height="390">
 
 
@@ -84,11 +84,12 @@ chmod +x update_and_install.sh
 
 
 ## 📎Useful links:
+- 🦾 Godot Plugin: https://github.com/Poing-Studios/godot-admob-plugin
 - 🤖 Android: https://github.com/Poing-Studios/godot-admob-android
 - ⏳ Plugin for Godot below v4.1: https://github.com/Poing-Studios/godot-admob-ios/tree/v2
 
 ## 📄Documentation
-For a complete documentation of this Plugin: [check here](docs).
+For a complete documentation of this Plugin: [check here](https://poing-studios.github.io/godot-admob-plugin/).
 
 Alternatively, you can check the docs of AdMob itself of [iOS](https://developers.google.com/admob/ios/quick-start).
 

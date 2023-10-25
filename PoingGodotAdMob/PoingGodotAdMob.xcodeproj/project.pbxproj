@@ -104,6 +104,7 @@
 		0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ads.release.xcconfig"; path = "Target Support Files/Pods-ads/Pods-ads.release.xcconfig"; sourceTree = "<group>"; };
 		306A95510670715B1760AA7A /* Pods_adcolony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_adcolony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		423FD0383D3ACB01587A333D /* Pods-meta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meta.debug.xcconfig"; path = "Target Support Files/Pods-meta/Pods-meta.debug.xcconfig"; sourceTree = "<group>"; };
+		5E01263E2AE8A13100E487EC /* PluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PluginConfiguration.h; sourceTree = "<group>"; };
 		5E027D872A74A75C001551B6 /* PoingGodotAdMobInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobInterstitialAd.h; sourceTree = "<group>"; };
 		5E027D882A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobInterstitialAd.mm; sourceTree = "<group>"; };
 		5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyAppOptions.h; sourceTree = "<group>"; };
@@ -504,6 +505,7 @@
 				5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */,
 				5EB759212A68865600523E88 /* DeviceOrientationHelper.h */,
 				5EA5959D2A76B39E00968B18 /* VectorHelper.h */,
+				5E01263E2AE8A13100E487EC /* PluginConfiguration.h */,
 			);
 			path = helpers;
 			sourceTree = "<group>";

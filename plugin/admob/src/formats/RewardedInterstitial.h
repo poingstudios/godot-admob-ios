@@ -21,6 +21,7 @@
 #endif
 
 #include "../main/admob.h"
+#include "version_constants.h"
 
 @class RewardedInterstitial;
 

@@ -8,6 +8,15 @@ jobs:
     runs-on: "ubuntu-latest"
     
     steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.ref_name }}
+
+    - name: Set plugin version on env
+      run: |
+        PLUGIN_VERSION=$(find . -name "*.h" -exec grep -H 'PLUGIN_VERSION = ' {} \; | awk -F'"' '{print $2}')
+        echo "PLUGIN_VERSION=v${PLUGIN_VERSION}" >> $GITHUB_ENV
+
     - name: Download, copy and unzip the lastest Google Mobile Ads SDK on release binaries and iOS module folder
       run: |
         curl -LO https://dl.google.com/googleadmobadssdk/googlemobileadssdkios.zip
@@ -21,9 +30,10 @@ jobs:
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
+        target_commit: ${{ github.ref_name }}
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: googlemobileadssdkios.zip
-        tag: ${{ github.ref }}
+        tag: ${{env.PLUGIN_VERSION}}
         overwrite: true
 
   ios-template:

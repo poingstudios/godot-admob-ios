@@ -20,29 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef GodotDictionaryToObject_h
-#define GodotDictionaryToObject_h
+#ifndef PluginConfiguration_h
+#define PluginConfiguration_h
 
-#import <Foundation/Foundation.h>
-#include "core/object/class_db.h"
-#include <UserMessagingPlatform/UMPRequestParameters.h>
-#import "../helpers/DeviceOrientationHelper.h"
-#import "../../core/AdNetworkExtras.h"
-#import "../helpers/PluginConfiguration.h"
+static NSString *const PLUGIN_VERSION = @"3.0.1";
 
-@import GoogleMobileAds;
-
-@class GADInitializationStatus;
-
-@interface GodotDictionaryToObject : NSObject
-
-+ (GADAdSize)convertDictionaryToGADAdSize:(Dictionary)adSizeDictionary;
-+ (GADRequest *)convertDictionaryToGADRequest:(Dictionary)adRequestDictionary withKeywords:(PackedStringArray)keywords;
-+ (NSDictionary *)convertDictionaryToNSDictionary:(Dictionary)extrasParameters;
-+ (GADServerSideVerificationOptions *)convertDictionaryToGADServerSideVerificationOptions:(Dictionary)serverSideVerificationOptionsDictionary;
-+ (UMPRequestParameters *)convertDictionaryToUMPRequestParameters:(Dictionary)serverSideVerificationOptionsDictionary;
-+ (UMPDebugSettings *)convertDictionaryToUMPDebugSettings:(Dictionary)umpDebugSettingsDictionary;
-
-@end
-
-#endif /* GodotDictionaryToObject_h */
+#endif /* PluginConfiguration_h */

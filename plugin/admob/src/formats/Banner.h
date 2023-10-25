@@ -15,6 +15,7 @@
 #endif
 
 #include "../main/admob.h"
+#include "version_constants.h"
 
 #import "app_delegate.h"
 #import "view_controller.h"

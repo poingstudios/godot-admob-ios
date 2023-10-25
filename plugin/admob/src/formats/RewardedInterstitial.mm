@@ -31,6 +31,7 @@
     }
         
     GADRequest *request = [GADRequest request];
+    request.requestAgent = [NSString stringWithFormat:@"poingstudiosgodot-%@", PLUGIN_VERSION];
     [GADRewardedInterstitialAd
          loadWithAdUnitID:ad_unit_id
                   request:request

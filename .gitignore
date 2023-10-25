@@ -41,4 +41,8 @@ local.properties
 
 *.tar.xz
 
+# v3 folder
+PoingGodotAdMob/ 
+
+# v2 folder
 plugin/Pods/

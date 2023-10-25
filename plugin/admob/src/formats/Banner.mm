@@ -121,6 +121,7 @@
     bannerView.rootViewController = rootController;
     
     GADRequest *request = [GADRequest request];
+    request.requestAgent = [NSString stringWithFormat:@"poingstudiosgodot-%@", PLUGIN_VERSION];
     [bannerView loadRequest:request];
 
     

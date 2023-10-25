@@ -13,7 +13,7 @@ linked=[
     "admob/lib/GoogleMobileAds.xcframework",
     "admob/lib/GoogleUtilities.xcframework",
     "admob/lib/UserMessagingPlatform.xcframework",
-    "admob/lib/PromisesObjC.xcframework"]
+    "admob/lib/FBLPromises.xcframework"]
     
 embedded=[]
 system=["JavaScriptCore.framework"]

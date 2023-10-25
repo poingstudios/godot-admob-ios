@@ -65,7 +65,7 @@ if env['simulator']:
     env.Append(CCFLAGS=['-mios-simulator-version-min=10.0'])
     env.Append(LINKFLAGS=["-mios-simulator-version-min=10.0"])
 else:
-    xcframework_directory = 'ios-arm64_armv7'
+    xcframework_directory = 'ios-arm64'
     sdk_name = 'iphoneos'
     env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
     env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])

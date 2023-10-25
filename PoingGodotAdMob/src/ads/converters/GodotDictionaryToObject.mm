@@ -21,8 +21,6 @@
 // SOFTWARE.
 
 #import "GodotDictionaryToObject.h"
-#import "../helpers/DeviceOrientationHelper.h"
-#import "../../core/AdNetworkExtras.h"
 
 @implementation GodotDictionaryToObject
 
@@ -44,6 +42,7 @@
 
 + (GADRequest *)convertDictionaryToGADRequest:(Dictionary)adRequestDictionary withKeywords:(PackedStringArray)keywords{
     GADRequest *request = [GADRequest request];
+    request.requestAgent = [NSString stringWithFormat:@"poingstudiosgodot-%@", PLUGIN_VERSION];
     
     Dictionary mediationExtras = adRequestDictionary["mediation_extras"];
 

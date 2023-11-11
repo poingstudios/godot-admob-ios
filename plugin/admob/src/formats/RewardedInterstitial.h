@@ -31,10 +31,11 @@
     bool initialized;
     bool loaded;
     NSString *adUnitId;
+    NSString *google_request_agent;
     ViewController *rootController;
 }
 
-- (instancetype)init;
+- (instancetype)initWithRequestAgent:(NSString*) google_request_agent;
 - (void)load_rewarded_interstitial: (NSString*) ad_unit_id;
 - (void)show_rewarded_interstitial;
 - (bool)get_is_rewarded_interstitial_loaded;

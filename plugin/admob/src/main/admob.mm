@@ -147,7 +147,7 @@ void AdMob::request_user_consent()
     ];
 }
 
-void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_ad_content_rating, bool is_real, bool is_test_europe_user_consent)
+void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_ad_content_rating, bool is_real, bool is_test_europe_user_consent, const String &google_request_agent)
 {
     if (instance != this || initialized)
     {
@@ -189,11 +189,12 @@ void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_a
     }
 
     GADInitialize();
+    NSString *requestAgentNSString = [NSString stringWithUTF8String:google_request_agent.utf8().get_data()];
 
-    bannerObj = [[Banner alloc] init];
-    interstitialObj = [[Interstitial alloc] init];
-    rewardedObj = [[Rewarded alloc] init];
-    rewardedInterstitialObj = [[RewardedInterstitial alloc] init];
+    bannerObj = [[Banner alloc] initWithRequestAgent:requestAgentNSString];
+    interstitialObj = [[Interstitial alloc] initWithRequestAgent:requestAgentNSString];
+    rewardedObj = [[Rewarded alloc] initWithRequestAgent:requestAgentNSString];
+    rewardedInterstitialObj = [[RewardedInterstitial alloc] initWithRequestAgent:requestAgentNSString];
 
 }
 

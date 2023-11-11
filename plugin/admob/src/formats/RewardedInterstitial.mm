@@ -9,10 +9,12 @@
 
 @implementation RewardedInterstitial
 
-- (instancetype)init{
+- (instancetype)initWithRequestAgent:(NSString*) p_google_request_agent{
     if ((self = [super init])) {
         initialized = true;
         loaded = false;
+        google_request_agent = p_google_request_agent;
+
         rootController = (ViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController;
     }
     return self;
@@ -31,7 +33,8 @@
     }
         
     GADRequest *request = [GADRequest request];
-    request.requestAgent = [NSString stringWithFormat:@"poingstudiosgodot-%@", PLUGIN_VERSION];
+    request.requestAgent = google_request_agent;
+    NSLog(@"Rewarded Interstitial request agent: %@", google_request_agent);
     [GADRewardedInterstitialAd
          loadWithAdUnitID:ad_unit_id
                   request:request

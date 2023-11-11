@@ -29,10 +29,11 @@
     bool respectSafeArea;
     int positionBanner;
     NSString *adUnitId;
+    NSString *google_request_agent;
     ViewController *rootController;
 }
 
-- (instancetype)init;
+- (instancetype)initWithRequestAgent:(NSString*) p_google_request_agent;
 - (void)load_banner: (NSString*) ad_unit_id : (int) position : (NSString*) size : (bool) show_instantly : (bool) respect_safe_area;
 - (void)destroy_banner;
 - (void)show_banner;

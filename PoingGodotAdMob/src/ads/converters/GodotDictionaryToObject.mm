@@ -42,8 +42,13 @@
 
 + (GADRequest *)convertDictionaryToGADRequest:(Dictionary)adRequestDictionary withKeywords:(PackedStringArray)keywords{
     GADRequest *request = [GADRequest request];
-    request.requestAgent = [NSString stringWithFormat:@"poingstudiosgodot-%@", PLUGIN_VERSION];
-    
+    String googleRequestAgent = adRequestDictionary["google_request_agent"];
+
+    NSString *requestAgentNSString = [NSString stringWithUTF8String:googleRequestAgent.utf8().get_data()];
+        
+    request.requestAgent = requestAgentNSString;
+    NSLog(@"requestAgentNSString: %@", requestAgentNSString);
+
     Dictionary mediationExtras = adRequestDictionary["mediation_extras"];
 
     for (int i = 0; i < mediationExtras.size(); i++) {
@@ -149,7 +154,6 @@
     }
     
     debugSettings.testDeviceIdentifiers = convertedArray;
-    NSLog(@"finish");
 
     return debugSettings;
 }

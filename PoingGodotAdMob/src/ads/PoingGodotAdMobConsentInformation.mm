@@ -41,7 +41,19 @@ PoingGodotAdMobConsentInformation *PoingGodotAdMobConsentInformation::get_single
 };
 
 int PoingGodotAdMobConsentInformation::get_consent_status() {
-    return static_cast<int>([UMPConsentInformation.sharedInstance consentStatus]);
+    UMPConsentStatus status = [UMPConsentInformation.sharedInstance consentStatus];
+    switch (status) {
+        case UMPConsentStatusUnknown:
+            return 0;
+        case UMPConsentStatusNotRequired:
+            return 1;
+        case UMPConsentStatusRequired:
+            return 2;
+        case UMPConsentStatusObtained:
+            return 3;
+        default:
+            return 0;
+    }
 }
 
 bool PoingGodotAdMobConsentInformation::get_is_consent_form_available() {

@@ -23,6 +23,6 @@
 #ifndef PluginConfiguration_h
 #define PluginConfiguration_h
 
-static NSString *const PLUGIN_VERSION = @"3.0.3";
+static NSString *const PLUGIN_VERSION = @"3.1.0";
 
 #endif /* PluginConfiguration_h */

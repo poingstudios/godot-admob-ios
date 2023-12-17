@@ -92,7 +92,12 @@ didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
     NSLog(@"RewardedAd will present full screen content.");
     PoingGodotAdMobRewardedAd::get_singleton()->emit_signal("on_rewarded_ad_showed_full_screen_content",
                                                                 [self.UID intValue]);
-    OS_IOS::get_singleton()->on_focus_out();
+
+    NSLog(@"pauseOnBackground %s", StaticVariablesHelper.pauseOnBackground ? "true" : "false");
+
+    if (StaticVariablesHelper.pauseOnBackground){
+        OS_IOS::get_singleton()->on_focus_out();
+    }
 }
 - (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
     NSLog(@"RewardedAd did dismiss full screen content.");

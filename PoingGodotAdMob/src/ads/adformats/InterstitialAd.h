@@ -23,6 +23,7 @@
 #ifndef InterstitialAd_h
 #define InterstitialAd_h
 
+#import "../helpers/StaticVariablesHelper.h"
 #import "../PoingGodotAdMobInterstitialAd.h"
 #import "os_ios.h"
 #import "AdFormatBase.h"

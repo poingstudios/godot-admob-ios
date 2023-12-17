@@ -20,34 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef POING_GODOT_ADMOB_H
-#define POING_GODOT_ADMOB_H
+#import "StaticVariablesHelper.h"
 
-#import <Foundation/Foundation.h>
-#include "core/object/class_db.h"
-#import "../core/AdNetworkExtras.h"
-#import "converters/ObjectToGodotDictionary.h"
-#import "helpers/StaticVariablesHelper.h"
+@implementation StaticVariablesHelper
 
-@import GoogleMobileAds;
+static BOOL _pauseOnBackground = NO;
 
-class PoingGodotAdMob : public Object {
++ (BOOL)pauseOnBackground {
+    return _pauseOnBackground;
+}
 
-    GDCLASS(PoingGodotAdMob, Object);
++ (void)setPauseOnBackground:(BOOL)pause {
+    _pauseOnBackground = pause;
+}
 
-    static PoingGodotAdMob *instance;
-    static void _bind_methods();
-
-public:
-    void initialize();
-    void set_request_configuration(Dictionary requestConfigurationDictionary, PackedStringArray testDeviceIds);
-    Dictionary get_initialization_status();
-    void set_ios_app_pause_on_background(bool pause);
-
-    static PoingGodotAdMob *get_singleton();
-
-    PoingGodotAdMob();
-    ~PoingGodotAdMob();
-};
-
-#endif
+@end

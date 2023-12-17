@@ -71,10 +71,15 @@ Dictionary PoingGodotAdMob::get_initialization_status() {
     return [ObjectToGodotDictionary convertGADInitializationStatusToDictionary: [GADMobileAds sharedInstance].initializationStatus];
 }
 
+void PoingGodotAdMob::set_ios_app_pause_on_background(bool pause) {
+    [StaticVariablesHelper setPauseOnBackground:pause];
+}
+
 void PoingGodotAdMob::_bind_methods() {
     ADD_SIGNAL(MethodInfo("on_initialization_complete", PropertyInfo(Variant::DICTIONARY, "initialization_status_dictionary")));
 
     ClassDB::bind_method(D_METHOD("initialize"), &PoingGodotAdMob::initialize);
     ClassDB::bind_method(D_METHOD("set_request_configuration"), &PoingGodotAdMob::set_request_configuration);
     ClassDB::bind_method(D_METHOD("get_initialization_status"), &PoingGodotAdMob::get_initialization_status);
+    ClassDB::bind_method(D_METHOD("set_ios_app_pause_on_background"), &PoingGodotAdMob::set_ios_app_pause_on_background);
 };

@@ -23,6 +23,7 @@
 #ifndef RewardedAd_h
 #define RewardedAd_h
 
+#import "../helpers/StaticVariablesHelper.h"
 #import "../PoingGodotAdMobRewardedAd.h"
 #import "os_ios.h"
 #import "AdFormatBase.h"

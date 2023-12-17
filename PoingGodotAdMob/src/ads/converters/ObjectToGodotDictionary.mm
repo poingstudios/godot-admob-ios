@@ -108,7 +108,7 @@
 
     for (int i = 0; i < adapterResponses.count; i++) {
         GADAdNetworkResponseInfo *responseInfo = [adapterResponses objectAtIndex:i];
-        dictionary[i] = [ObjectToGodotDictionary convertBundleNSDictionaryToDictionary:responseInfo.adUnitMapping];
+        dictionary[i] = [ObjectToGodotDictionary convertLoadedAdapterResponseInfoToDictionary:responseInfo];
     }
     
     return dictionary;

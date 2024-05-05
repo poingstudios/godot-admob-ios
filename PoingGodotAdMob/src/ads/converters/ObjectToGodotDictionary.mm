@@ -81,7 +81,7 @@
     dictionary["loaded_adapter_response_info"] = [ObjectToGodotDictionary convertLoadedAdapterResponseInfoToDictionary:responseInfo.loadedAdNetworkResponseInfo];
     dictionary["adapter_responses"] = [ObjectToGodotDictionary convertAdapterResponsesToDictionary:responseInfo.adNetworkInfoArray];
     dictionary["response_extras"] = [ObjectToGodotDictionary convertBundleNSDictionaryToDictionary:responseInfo.extrasDictionary];
-    dictionary["mediation_adapter_class_name"] = responseInfo.adNetworkClassName ? [responseInfo.adNetworkClassName UTF8String] : "";
+    dictionary["mediation_adapter_class_name"] = responseInfo.loadedAdNetworkResponseInfo.adNetworkClassName.UTF8String ? [responseInfo.loadedAdNetworkResponseInfo.adNetworkClassName UTF8String] : "";
     dictionary["response_id"] = responseInfo.responseIdentifier ? [responseInfo.responseIdentifier UTF8String] : "";
 
     return dictionary;

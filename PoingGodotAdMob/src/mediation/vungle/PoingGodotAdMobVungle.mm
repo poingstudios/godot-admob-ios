@@ -42,34 +42,18 @@ PoingGodotAdMobVungle *PoingGodotAdMobVungle::get_singleton() {
 
 void PoingGodotAdMobVungle::update_consent_status(int status, String consent_message_version) {
     NSString* consentMessageVersionNS = [NSString stringWithCString:consent_message_version.utf8().get_data() encoding: NSUTF8StringEncoding];
-        
-    switch (status) {
-        case 0:
-            [[VungleSDK sharedSDK] updateConsentStatus:VungleConsentAccepted consentMessageVersion:consentMessageVersionNS];
-            break;
-        case 1:
-            [[VungleSDK sharedSDK] updateConsentStatus:VungleConsentDenied consentMessageVersion:consentMessageVersionNS];
-            break;
-        default:
-            NSLog(@"status for Vungle update_consent_status not available");
-    }
+
+    [VunglePrivacySettings setGDPRStatus:status];
+    [VunglePrivacySettings setGDPRMessageVersion:consentMessageVersionNS];
+
     NSLog(@"set vungle consent status, message: %@ status: %i", consentMessageVersionNS, status);
 }
 
 void PoingGodotAdMobVungle::update_ccpa_status(int status) {
-    switch (status) {
-        case 0:
-            [[VungleSDK sharedSDK] updateCCPAStatus:VungleCCPAAccepted];
-            break;
-        case 1:
-            [[VungleSDK sharedSDK] updateCCPAStatus:VungleCCPADenied];
-            break;
-        default:
-            NSLog(@"status for Vungle update_ccpa_status not available");
-    }
+    [VunglePrivacySettings setCCPAStatus:status];
+
     NSLog(@"set vungle ccpa status status: %i", status);
 }
-
 
 
 void PoingGodotAdMobVungle::_bind_methods() {

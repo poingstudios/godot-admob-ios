@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 #include "core/object/class_db.h"
 #include "core/version.h"
-#import <VungleSDK/VungleSDK.h>
+#import <VungleAdsSDK/VungleAdsSDK.h>
 
 class PoingGodotAdMobVungle : public Object {
 

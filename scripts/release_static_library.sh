@@ -14,7 +14,7 @@ function run_pod_install() {
 
 run_pod_install
 
-PLUGINS=("ads" "adcolony" "meta" "vungle")
+PLUGINS=("ads" "meta" "vungle")
 
 dest_folder="./bin/release"
 

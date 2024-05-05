@@ -24,7 +24,7 @@ opts.Add(EnumVariable('arch', "Compilation Architecture", '', ['', 'arm64', 'arm
 opts.Add(BoolVariable('simulator', "Compilation platform", 'no'))
 opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'bin/static_libraries/'))
-opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'ads', 'adcolony', 'meta', 'vungle']))
+opts.Add(EnumVariable('plugin', 'Plugin to build', '', ['', 'ads', 'meta', 'vungle']))
 
 # Updates the environment with the option variables.
 opts.Update(env)
@@ -70,41 +70,12 @@ env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/Google-Mobile-Ads-SDK/Framework
 
 if env['plugin'] == 'ads':
     env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
-elif env['plugin'] == 'adcolony':
-    if env['simulator']:
-        xcframework_directory_adcolony = 'ios-arm64_i386_x86_64-simulator'
-        xcframework_directory_adcolony_adapter = 'ios-arm64_x86_64-simulator'
-    else:
-        xcframework_directory_adcolony = 'ios-arm64_armv7'
-        xcframework_directory_adcolony_adapter = 'ios-arm64_armv7'
-        
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/AdColony/AdColony.xcframework/' + xcframework_directory_adcolony])
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationAdColony/AdColonyAdapter-4.9.0.2/AdColonyAdapter.xcframework/' + xcframework_directory_adcolony_adapter])
-    
 elif env['plugin'] == 'meta':
-    if env['simulator']:
-        xcframework_directory_meta = 'ios-arm64_x86_64-simulator'
-        xcframework_directory_meta_adapter = 'ios-arm64_x86_64-simulator'
-    else:
-        xcframework_directory_meta = 'ios-arm64_armv7'
-        xcframework_directory_meta_adapter = 'ios-arm64_armv7'
-        
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/' + xcframework_directory_meta])
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.12.0.1/MetaAdapter.xcframework/' + xcframework_directory_meta_adapter])
+    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.15.0.0/MetaAdapter.xcframework/' + xcframework_directory])
 elif env['plugin'] == 'vungle':
-    if env['simulator']:
-        xcframework_directory_adcolony = 'ios-arm64_i386_x86_64-simulator'
-        xcframework_directory_adcolony_adapter = 'ios-x86_64-simulator'
-    else:
-        xcframework_directory_adcolony = 'ios-arm64_armv7'
-        xcframework_directory_adcolony_adapter = 'ios-arm64_armv7'
-        
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/VungleSDK-iOS/VungleSDK.xcframework/' + xcframework_directory_adcolony])
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationVungle/VungleAdapter-6.12.3.0/VungleAdapter.xcframework/' + xcframework_directory_adcolony_adapter])
-
-
-
-
+    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/VungleAds/static/VungleAdsSDK.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationVungle/LiftoffMonetizeAdapter-7.3.0.0/LiftoffMonetizeAdapter.xcframework/' + xcframework_directory])
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())

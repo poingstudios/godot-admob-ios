@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 #import "VunglePoingExtrasBuilder.h"
-#import <VungleAdapter/VungleAdNetworkExtras.h>
+#import <LiftoffMonetizeAdapter/VungleAdNetworkExtras.h>
 
 @implementation VunglePoingExtrasBuilder
 
@@ -32,24 +32,6 @@ String const SOUND_ENABLED_KEY = "SOUND_ENABLED_KEY";
 - (id<GADAdNetworkExtras>)buildExtras:(Dictionary) extras {
     VungleAdNetworkExtras *vungleExtras = [[VungleAdNetworkExtras alloc] init];
     
-    if (extras.has(ALL_PLACEMENTS_KEY)){
-        NSLog(@"has ALL_PLACEMENTS_KEY");
-        String placementsString = extras[ALL_PLACEMENTS_KEY];
-        
-        NSString *placements = [NSString stringWithUTF8String:placementsString.utf8().get_data()];
-        
-        NSCharacterSet *charactersToRemove = [NSCharacterSet characterSetWithCharactersInString:@"\"'[] "];
-        placements = [[placements componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@""];
-        NSArray<NSString *> *placementsArray = [placements componentsSeparatedByString:@","];
-        vungleExtras.allPlacements = placementsArray;
-    }
-
-    if (extras.has(SOUND_ENABLED_KEY)){
-        bool soundEnabled = extras[SOUND_ENABLED_KEY];
-        NSLog(@"Sound Enabled: %d", soundEnabled);
-        vungleExtras.muted = !soundEnabled;
-    }
-
     if (extras.has(USER_ID_KEY)){
         String userId = extras[USER_ID_KEY];
         if (!userId.is_empty()) {

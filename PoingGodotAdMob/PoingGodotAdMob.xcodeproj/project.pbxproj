@@ -10,12 +10,9 @@
 		3DF454CB5A80D6C4313AC810 /* Pods_ads.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61C7338744733ACDF9608C0F /* Pods_ads.framework */; };
 		46C7E77DD2ECA925F3952036 /* Pods_vungle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4ED341537F1C46ECD8226C4 /* Pods_vungle.framework */; };
 		5E027D892A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E027D882A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm */; };
-		5E08983D2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */; };
 		5E38B5DB2A7546EF00E35218 /* InterstitialAd.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E38B5DA2A7546EF00E35218 /* InterstitialAd.mm */; };
 		5E4BF4A62B2F361A00E6C2AA /* StaticVariablesHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E4BF4A52B2F361A00E6C2AA /* StaticVariablesHelper.mm */; };
 		5E5BDE182A4632770071BE86 /* PoingGodotAdMobModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */; };
-		5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */; };
-		5E5BDE3F2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */; };
 		5E63D64F2A64636100BDC600 /* ObjectToGodotDictionary.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E63D64E2A64636100BDC600 /* ObjectToGodotDictionary.mm */; };
 		5E80AAD52A44A50C001C750F /* PoingGodotAdMob.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E80AAD42A44A50C001C750F /* PoingGodotAdMob.mm */; };
 		5E80AAD62A44A50C001C750F /* PoingGodotAdMob.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5E80AAD32A44A50C001C750F /* PoingGodotAdMob.h */; };
@@ -41,23 +38,11 @@
 		5EB13DF42A773CA000054CFC /* PoingGodotAdMobConsentForm.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB13DF32A773CA000054CFC /* PoingGodotAdMobConsentForm.mm */; };
 		5EB63E4E2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB63E4D2A65DF0700699D72 /* PoingGodotAdMobAdSize.mm */; };
 		5EB759202A68860400523E88 /* DeviceOrientationHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */; };
-		5EE75CB62A4C50080028DBB2 /* AdColonyExtrasBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */; };
 		D9C6EBA1B0831032019D81C7 /* Pods_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B8A51BD2C38CF1E7585C67 /* Pods_core.framework */; };
 		F6F2893BCD20C5B28234938B /* Pods_meta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D987DFBE4578E324D2F2E98E /* Pods_meta.framework */; };
-		FD5CD28B654F484A801214C2 /* Pods_adcolony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A95510670715B1760AA7A /* Pods_adcolony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5E5BDE382A4686B20071BE86 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-				5E5BDE3F2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5E80AACE2A44A50C001C750F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,23 +88,16 @@
 /* Begin PBXFileReference section */
 		001FDF7CA428980BF8E6E60F /* Pods-meta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meta.release.xcconfig"; path = "Target Support Files/Pods-meta/Pods-meta.release.xcconfig"; sourceTree = "<group>"; };
 		0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ads.release.xcconfig"; path = "Target Support Files/Pods-ads/Pods-ads.release.xcconfig"; sourceTree = "<group>"; };
-		306A95510670715B1760AA7A /* Pods_adcolony.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_adcolony.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		423FD0383D3ACB01587A333D /* Pods-meta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meta.debug.xcconfig"; path = "Target Support Files/Pods-meta/Pods-meta.debug.xcconfig"; sourceTree = "<group>"; };
 		5E01263E2AE8A13100E487EC /* PluginConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PluginConfiguration.h; sourceTree = "<group>"; };
 		5E027D872A74A75C001551B6 /* PoingGodotAdMobInterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobInterstitialAd.h; sourceTree = "<group>"; };
 		5E027D882A74A770001551B6 /* PoingGodotAdMobInterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobInterstitialAd.mm; sourceTree = "<group>"; };
-		5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyAppOptions.h; sourceTree = "<group>"; };
-		5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdColonyAppOptions.mm; sourceTree = "<group>"; };
-		5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */ = {isa = PBXFileReference; lastKnownFileType = text; path = "poing-godot-admob-adcolony.gdip"; sourceTree = "<group>"; };
 		5E38B5D92A7546D100E35218 /* InterstitialAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialAd.h; sourceTree = "<group>"; };
 		5E38B5DA2A7546EF00E35218 /* InterstitialAd.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InterstitialAd.mm; sourceTree = "<group>"; };
 		5E4BF4A42B2F360900E6C2AA /* StaticVariablesHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaticVariablesHelper.h; sourceTree = "<group>"; };
 		5E4BF4A52B2F361A00E6C2AA /* StaticVariablesHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = StaticVariablesHelper.mm; sourceTree = "<group>"; };
 		5E5BDE162A4632300071BE86 /* PoingGodotAdMobModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobModule.h; sourceTree = "<group>"; };
 		5E5BDE172A4632770071BE86 /* PoingGodotAdMobModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobModule.mm; sourceTree = "<group>"; };
-		5E5BDE3A2A4686B20071BE86 /* poing-godot-admob-adcolony.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "poing-godot-admob-adcolony.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdColonyModule.h; sourceTree = "<group>"; };
-		5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdColonyModule.mm; sourceTree = "<group>"; };
 		5E63D64D2A64632D00BDC600 /* ObjectToGodotDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectToGodotDictionary.h; sourceTree = "<group>"; };
 		5E63D64E2A64636100BDC600 /* ObjectToGodotDictionary.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjectToGodotDictionary.mm; sourceTree = "<group>"; };
 		5E80AAD02A44A50C001C750F /* poing-godot-admob-ads.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "poing-godot-admob-ads.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +116,6 @@
 		5E9F24162A8320B900148BB2 /* ads-pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ads-pods.txt"; sourceTree = "<group>"; };
 		5E9F24172A8323C200148BB2 /* meta-pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "meta-pods.txt"; sourceTree = "<group>"; };
 		5E9F24182A8323D300148BB2 /* vungle-pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "vungle-pods.txt"; sourceTree = "<group>"; };
-		5E9F24192A8323E400148BB2 /* adcolony-pods.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "adcolony-pods.txt"; sourceTree = "<group>"; };
 		5EA276112A66FC5C00D5CF1E /* PoingGodotAdMobAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdView.h; sourceTree = "<group>"; };
 		5EA276122A66FC6A00D5CF1E /* PoingGodotAdMobAdView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PoingGodotAdMobAdView.mm; sourceTree = "<group>"; };
 		5EA276152A67396200D5CF1E /* BannerAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerAd.h; sourceTree = "<group>"; };
@@ -177,11 +154,7 @@
 		5EB63E4F2A65DF1B00699D72 /* PoingGodotAdMobAdSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PoingGodotAdMobAdSize.h; sourceTree = "<group>"; };
 		5EB7591F2A68860400523E88 /* DeviceOrientationHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DeviceOrientationHelper.mm; sourceTree = "<group>"; };
 		5EB759212A68865600523E88 /* DeviceOrientationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceOrientationHelper.h; sourceTree = "<group>"; };
-		5EE75CB42A4C4FD40028DBB2 /* AdColonyExtrasBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdColonyExtrasBuilder.h; sourceTree = "<group>"; };
-		5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AdColonyExtrasBuilder.mm; sourceTree = "<group>"; };
 		61C7338744733ACDF9608C0F /* Pods_ads.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ads.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		742AFBC1FC03495C7FB2232F /* Pods-adcolony.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-adcolony.release.xcconfig"; path = "Target Support Files/Pods-adcolony/Pods-adcolony.release.xcconfig"; sourceTree = "<group>"; };
-		77E97A6160B9BA5A252D0C9F /* Pods-adcolony.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-adcolony.debug.xcconfig"; path = "Target Support Files/Pods-adcolony/Pods-adcolony.debug.xcconfig"; sourceTree = "<group>"; };
 		89172A20427D79238AD2E0B7 /* Pods-vungle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vungle.debug.xcconfig"; path = "Target Support Files/Pods-vungle/Pods-vungle.debug.xcconfig"; sourceTree = "<group>"; };
 		A8B8A51BD2C38CF1E7585C67 /* Pods_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4ED341537F1C46ECD8226C4 /* Pods_vungle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vungle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,14 +166,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5E5BDE372A4686B20071BE86 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FD5CD28B654F484A801214C2 /* Pods_adcolony.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5E80AACD2A44A50C001C750F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,7 +204,6 @@
 		548AE72BDC782EBFF5BA57B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				306A95510670715B1760AA7A /* Pods_adcolony.framework */,
 				61C7338744733ACDF9608C0F /* Pods_ads.framework */,
 				A8B8A51BD2C38CF1E7585C67 /* Pods_core.framework */,
 				D987DFBE4578E324D2F2E98E /* Pods_meta.framework */,
@@ -251,8 +215,6 @@
 		5BA9F87E99131221E0FE542B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				77E97A6160B9BA5A252D0C9F /* Pods-adcolony.debug.xcconfig */,
-				742AFBC1FC03495C7FB2232F /* Pods-adcolony.release.xcconfig */,
 				CC51F69A18027C45E6DD8B0F /* Pods-ads.debug.xcconfig */,
 				0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */,
 				F92044ABF829B272A03BAD3E /* Pods-core.debug.xcconfig */,
@@ -263,29 +225,6 @@
 				CE5E3845A23B1DF76DF83F92 /* Pods-vungle.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		5E08983E2A4B959D0066A53A /* config */ = {
-			isa = PBXGroup;
-			children = (
-				5EAB712C2A847E1C008CEBB8 /* libs */,
-				5E08983F2A4B95B50066A53A /* poing-godot-admob-adcolony.gdip */,
-			);
-			path = config;
-			sourceTree = "<group>";
-		};
-		5E5BDE3B2A4686B20071BE86 /* adcolony */ = {
-			isa = PBXGroup;
-			children = (
-				5E08983E2A4B959D0066A53A /* config */,
-				5E5BDE3C2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.h */,
-				5E5BDE3D2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm */,
-				5E08983B2A4B91C80066A53A /* PoingGodotAdMobAdColonyAppOptions.h */,
-				5E08983C2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm */,
-				5EE75CB42A4C4FD40028DBB2 /* AdColonyExtrasBuilder.h */,
-				5EE75CB52A4C50080028DBB2 /* AdColonyExtrasBuilder.mm */,
-			);
-			path = adcolony;
 			sourceTree = "<group>";
 		};
 		5E63D64C2A6461B300BDC600 /* converters */ = {
@@ -316,7 +255,6 @@
 				5E80AAE02A44A74A001C750F /* poing-godot-admob-core.a */,
 				5E80AAED2A44A82E001C750F /* poing-godot-admob-meta.a */,
 				5E80AAFC2A44AA77001C750F /* poing-godot-admob-vungle.a */,
-				5E5BDE3A2A4686B20071BE86 /* poing-godot-admob-adcolony.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -376,7 +314,6 @@
 		5E80AAF62A44A835001C750F /* mediation */ = {
 			isa = PBXGroup;
 			children = (
-				5E5BDE3B2A4686B20071BE86 /* adcolony */,
 				5E80AAFD2A44AA77001C750F /* vungle */,
 				5E80AAEE2A44A82F001C750F /* meta */,
 			);
@@ -467,14 +404,6 @@
 			path = libs;
 			sourceTree = "<group>";
 		};
-		5EAB712C2A847E1C008CEBB8 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				5E9F24192A8323E400148BB2 /* adcolony-pods.txt */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
 		5EAF248D2A7EBAF20050C77A /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,24 +447,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5E5BDE392A4686B20071BE86 /* adcolony */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5E5BDE402A4686B20071BE86 /* Build configuration list for PBXNativeTarget "adcolony" */;
-			buildPhases = (
-				77305D60533466AC1D3C291C /* [CP] Check Pods Manifest.lock */,
-				5E5BDE362A4686B20071BE86 /* Sources */,
-				5E5BDE372A4686B20071BE86 /* Frameworks */,
-				5E5BDE382A4686B20071BE86 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = adcolony;
-			productName = AdColony;
-			productReference = 5E5BDE3A2A4686B20071BE86 /* poing-godot-admob-adcolony.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		5E80AACF2A44A50C001C750F /* ads */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E80AAD92A44A50C001C750F /* Build configuration list for PBXNativeTarget "ads" */;
@@ -617,9 +528,6 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					5E5BDE392A4686B20071BE86 = {
-						CreatedOnToolsVersion = 14.2;
-					};
 					5E80AACF2A44A50C001C750F = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -651,7 +559,6 @@
 				5E80AADF2A44A74A001C750F /* core */,
 				5E80AAEC2A44A82E001C750F /* meta */,
 				5E80AAFB2A44AA77001C750F /* vungle */,
-				5E5BDE392A4686B20071BE86 /* adcolony */,
 			);
 		};
 /* End PBXProject section */
@@ -695,28 +602,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-meta-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		77305D60533466AC1D3C291C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-adcolony-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -770,16 +655,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5E5BDE362A4686B20071BE86 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E5BDE3E2A4686B20071BE86 /* PoingGodotAdMobAdColonyModule.mm in Sources */,
-				5EE75CB62A4C50080028DBB2 /* AdColonyExtrasBuilder.mm in Sources */,
-				5E08983D2A4B91E30066A53A /* PoingGodotAdMobAdColonyAppOptions.mm in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5E80AACC2A44A50C001C750F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -836,59 +711,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		5E5BDE412A4686B20071BE86 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77E97A6160B9BA5A252D0C9F /* Pods-adcolony.debug.xcconfig */;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				EXECUTABLE_PREFIX = "poing-godot-admob-";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
-				);
-				OTHER_CFLAGS = (
-					"-fcxx-modules",
-					"-g",
-					"-DDEBUG",
-					"-DDEBUG_ENABLED",
-					"-DDEBUG_MEMORY_ALLOC",
-					"-DDISABLE_FORCED_INLINE",
-					"-DTYPED_METHOD_BIND",
-					"-fmodules",
-					"-DIPHONE_ENABLED",
-					"-DUNIX_ENABLED",
-					"-DCOREAUDIO_ENABLED",
-				);
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		5E5BDE422A4686B20071BE86 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 742AFBC1FC03495C7FB2232F /* Pods-adcolony.release.xcconfig */;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				EXECUTABLE_PREFIX = "poing-godot-admob-";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
-				);
-				OTHER_CFLAGS = (
-					"-fcxx-modules",
-					"-fmodules",
-				);
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		5E80AAD72A44A50C001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1253,15 +1075,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5E5BDE402A4686B20071BE86 /* Build configuration list for PBXNativeTarget "adcolony" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5E5BDE412A4686B20071BE86 /* Debug */,
-				5E5BDE422A4686B20071BE86 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		5E80AACB2A44A50C001C750F /* Build configuration list for PBXProject "PoingGodotAdMob" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

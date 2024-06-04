@@ -55,16 +55,23 @@ void PoingGodotAdMob::set_request_configuration(Dictionary requestConfigurationD
     
     GADRequestConfiguration *requestConfiguration = [GADMobileAds sharedInstance].requestConfiguration;
 
-    requestConfiguration.maxAdContentRating = [NSString stringWithUTF8String:maxAdContentRating.utf8().get_data()];
-    requestConfiguration.tagForChildDirectedTreatment = [NSNumber numberWithInt:tagForChildDirectedTreatment];
+    if (!maxAdContentRating.is_empty())
+        requestConfiguration.maxAdContentRating = [NSString stringWithUTF8String:maxAdContentRating.utf8().get_data()];
+
+    if (tagForChildDirectedTreatment >= 0)
+        requestConfiguration.tagForChildDirectedTreatment = [NSNumber numberWithInt:tagForChildDirectedTreatment];
     
-    requestConfiguration.tagForUnderAgeOfConsent = [NSNumber numberWithInt:tagForUnderAgeOfConsent];
+    if (tagForUnderAgeOfConsent >= 0)
+        requestConfiguration.tagForUnderAgeOfConsent = [NSNumber numberWithInt:tagForUnderAgeOfConsent];
         
     NSMutableArray<NSString *> *testDeviceIdsArray = [NSMutableArray arrayWithCapacity:testDeviceIds.size()];
     for (String deviceId : testDeviceIds) {
         [testDeviceIdsArray addObject:[NSString stringWithUTF8String:deviceId.utf8().get_data()]];
     }
     requestConfiguration.testDeviceIdentifiers = testDeviceIdsArray;
+    NSLog(@"AdMob requestConfiguration: maxAdContentRating=%@, tagForChildDirectedTreatment=%@, tagForUnderAgeOfConsent=%@", 
+        requestConfiguration.maxAdContentRating, requestConfiguration.tagForChildDirectedTreatment, requestConfiguration.tagForUnderAgeOfConsent
+    );
 }
 
 Dictionary PoingGodotAdMob::get_initialization_status() {

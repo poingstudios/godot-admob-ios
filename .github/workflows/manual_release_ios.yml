@@ -27,7 +27,7 @@ jobs:
     # Upload cache on completion and check it out now
     - name: Load .scons_cache directory
       id: ios-template-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
         key: ${{github.job}}-master-${{github.ref}}-${{github.sha}}
@@ -71,7 +71,7 @@ jobs:
         ./scripts/create_zip.sh ${{env.CURRENT_GODOT_VERSION}}
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: bin/release/poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}.zip
 

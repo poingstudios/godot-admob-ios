@@ -71,7 +71,7 @@ jobs:
         ./scripts/create_zip.sh ${{env.CURRENT_GODOT_VERSION}}
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: bin/release/poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}.zip
 

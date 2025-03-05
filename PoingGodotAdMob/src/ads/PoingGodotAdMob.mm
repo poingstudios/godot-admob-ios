@@ -41,7 +41,8 @@ PoingGodotAdMob *PoingGodotAdMob::get_singleton() {
 };
 
 void PoingGodotAdMob::initialize() {
-    GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ GADSimulatorID ];
+    if (GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers == nil || [GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers count] == 0)
+        GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ GADSimulatorID ];
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus *_Nonnull status)
     {
         Dictionary dictionary = [ObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];
@@ -55,16 +56,25 @@ void PoingGodotAdMob::set_request_configuration(Dictionary requestConfigurationD
     
     GADRequestConfiguration *requestConfiguration = [GADMobileAds sharedInstance].requestConfiguration;
 
-    requestConfiguration.maxAdContentRating = [NSString stringWithUTF8String:maxAdContentRating.utf8().get_data()];
-    requestConfiguration.tagForChildDirectedTreatment = [NSNumber numberWithInt:tagForChildDirectedTreatment];
+    if (!maxAdContentRating.is_empty())
+        requestConfiguration.maxAdContentRating = [NSString stringWithUTF8String:maxAdContentRating.utf8().get_data()];
+
+    if (tagForChildDirectedTreatment >= 0)
+        requestConfiguration.tagForChildDirectedTreatment = [NSNumber numberWithInt:tagForChildDirectedTreatment];
     
-    requestConfiguration.tagForUnderAgeOfConsent = [NSNumber numberWithInt:tagForUnderAgeOfConsent];
+    if (tagForUnderAgeOfConsent >= 0)
+        requestConfiguration.tagForUnderAgeOfConsent = [NSNumber numberWithInt:tagForUnderAgeOfConsent];
         
-    NSMutableArray<NSString *> *testDeviceIdsArray = [NSMutableArray arrayWithCapacity:testDeviceIds.size()];
+    NSMutableArray<NSString *> *testDeviceIdsArray = [NSMutableArray arrayWithCapacity:testDeviceIds.size() + 1];
     for (String deviceId : testDeviceIds) {
         [testDeviceIdsArray addObject:[NSString stringWithUTF8String:deviceId.utf8().get_data()]];
     }
+    [testDeviceIdsArray addObject:GADSimulatorID];
+    
     requestConfiguration.testDeviceIdentifiers = testDeviceIdsArray;
+    NSLog(@"AdMob requestConfiguration: maxAdContentRating=%@, tagForChildDirectedTreatment=%@, tagForUnderAgeOfConsent=%@, testDeviceIds=%@", 
+        requestConfiguration.maxAdContentRating, requestConfiguration.tagForChildDirectedTreatment, requestConfiguration.tagForUnderAgeOfConsent, requestConfiguration.testDeviceIdentifiers
+    );
 }
 
 Dictionary PoingGodotAdMob::get_initialization_status() {

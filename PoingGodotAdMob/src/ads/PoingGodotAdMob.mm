@@ -42,7 +42,6 @@ PoingGodotAdMob *PoingGodotAdMob::get_singleton() {
 
 void PoingGodotAdMob::initialize() {
     if (GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers == nil || [GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers count] == 0)
-        GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ GADSimulatorID ];
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus *_Nonnull status)
     {
         Dictionary dictionary = [ObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];
@@ -69,7 +68,6 @@ void PoingGodotAdMob::set_request_configuration(Dictionary requestConfigurationD
     for (String deviceId : testDeviceIds) {
         [testDeviceIdsArray addObject:[NSString stringWithUTF8String:deviceId.utf8().get_data()]];
     }
-    [testDeviceIdsArray addObject:GADSimulatorID];
     
     requestConfiguration.testDeviceIdentifiers = testDeviceIdsArray;
     NSLog(@"AdMob requestConfiguration: maxAdContentRating=%@, tagForChildDirectedTreatment=%@, tagForUnderAgeOfConsent=%@, testDeviceIds=%@", 

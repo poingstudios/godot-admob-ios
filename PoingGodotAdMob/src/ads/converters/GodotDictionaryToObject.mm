@@ -28,13 +28,13 @@
     int width = (int) adSizeDictionary["width"];
     int height = (int) adSizeDictionary["height"];
     if (width == 0 && height == 0) { // as the size of smart banner is (0, 0)
-        UIInterfaceOrientation orientation = [DeviceOrientationHelper getDeviceOrientation];
-        
-        if (UIInterfaceOrientationIsPortrait(orientation)) {
-            return kGADAdSizeSmartBannerPortrait;
-        } else {
-            return kGADAdSizeSmartBannerLandscape;
+        CGRect screenBounds = [UIScreen mainScreen].bounds;
+        CGRect safeFrame = [UIApplication sharedApplication].keyWindow.safeAreaLayoutGuide.layoutFrame;
+        if (!CGSizeEqualToSize(safeFrame.size, CGSizeZero)) {
+          screenBounds = safeFrame;
         }
+        width = (int)CGRectGetWidth(screenBounds);
+        return GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width);
     } else {
         return GADAdSizeFromCGSize(CGSizeMake(width, height));
     }

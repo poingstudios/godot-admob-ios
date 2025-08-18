@@ -96,7 +96,7 @@ env.Append(CCFLAGS=['-arch', env['arch'], "-isysroot", "-stdlib=libc++", '-isysr
 env.Append(CCFLAGS=['-DPTRCALL_ENABLED'])
 env.Prepend(CXXFLAGS=[
     '-DNEED_LONG_INT', '-DLIBYUV_DISABLE_NEON', 
-    '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED'
+    '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED', "-DIOS_ENABLED", "-DAPPLE_EMBEDDED_ENABLED"
 ])
 env.Append(LINKFLAGS=["-arch", env['arch'], '-isysroot', sdk_path, '-F' + sdk_path])
 
@@ -104,7 +104,6 @@ if env['arch'] == 'armv7':
     env.Prepend(CXXFLAGS=['-fno-aligned-allocation'])
 
 env.Append(CCFLAGS=["$IOS_SDK_PATH"])
-env.Prepend(CXXFLAGS=['-DIOS_ENABLED'])
 env.Prepend(CXXFLAGS=['-DVERSION_4_0'])
 
 env.Prepend(CFLAGS=['-std=gnu11'])

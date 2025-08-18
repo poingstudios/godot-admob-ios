@@ -21,6 +21,8 @@
 // SOFTWARE.
 
 #import "PoingGodotAdMobModule.h"
+#include "core/config/engine.h"
+
 
 PoingGodotAdMob *poing_godot_admob;
 PoingGodotAdMobAdSize *poing_godot_admob_ad_size;

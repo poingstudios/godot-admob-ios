@@ -1,6 +1,6 @@
 PODS:
   - FBAudienceNetwork (6.20.0)
-  - Google-Mobile-Ads-SDK (12.6.0):
+  - Google-Mobile-Ads-SDK (12.9.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleMobileAdsMediationFacebook (6.20.0.0):
     - FBAudienceNetwork (= 6.20.0)
@@ -12,7 +12,7 @@ PODS:
   - VungleAds (7.5.1)
 
 DEPENDENCIES:
-  - Google-Mobile-Ads-SDK (= 12.6.0)
+  - Google-Mobile-Ads-SDK (= 12.9.0)
   - GoogleMobileAdsMediationFacebook (= 6.20.0.0)
   - GoogleMobileAdsMediationVungle (= 7.5.1.0)
 
@@ -27,7 +27,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FBAudienceNetwork: 51d3681e66c00ee36811c0d96e9fa39d5673eba8
-  Google-Mobile-Ads-SDK: 198db3cfaaafdacf4ebfa273944c844792d483d1
+  Google-Mobile-Ads-SDK: 36cce7d8dc1b615145d02491c8bf5640ef854e7c
   GoogleMobileAdsMediationFacebook: 9ca21f40f6873d557900cef231315ef21965b8c8
   GoogleMobileAdsMediationVungle: ac53b75b6b6cc1e1acf670e773522be909dcf18a
   GoogleUserMessagingPlatform: f8d0cdad3ca835406755d0a69aa634f00e76d576

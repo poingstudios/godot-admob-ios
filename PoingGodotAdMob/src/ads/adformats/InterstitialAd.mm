@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 #import "InterstitialAd.h"
+#import "os_ios.h"
 
 @implementation InterstitialAd
 - (instancetype)initWithUID:(int)UID{
@@ -52,7 +53,8 @@
 
 - (void)show {
     if (self.interstitial){
-        [self.interstitial presentFromRootViewController:[AppDelegate viewController]];
+        UIViewController *rootViewController = [[UIApplication sharedApplication] delegate].window.rootViewController;
+        [self.interstitial presentFromRootViewController:rootViewController];
     }
     else{
         NSLog(@"interstitial ad wasn't ready");

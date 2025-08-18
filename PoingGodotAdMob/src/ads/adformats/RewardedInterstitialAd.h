@@ -25,7 +25,6 @@
 
 #import "../helpers/StaticVariablesHelper.h"
 #import "../PoingGodotAdMobRewardedInterstitialAd.h"
-#import "os_ios.h"
 #import "AdFormatBase.h"
 
 @interface RewardedInterstitialAd : AdFormatBase <GADFullScreenContentDelegate>

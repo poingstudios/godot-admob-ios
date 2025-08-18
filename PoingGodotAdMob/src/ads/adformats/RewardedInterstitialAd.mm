@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 #import "RewardedInterstitialAd.h"
+#include "os_ios.h"
 
 @implementation RewardedInterstitialAd
 - (instancetype)initWithUID:(int)UID{
@@ -52,7 +53,8 @@
 
 - (void)show {
     if (self.rewarded){
-         [self.rewarded presentFromRootViewController:[AppDelegate viewController]
+        UIViewController *rootViewController = [[UIApplication sharedApplication] delegate].window.rootViewController;
+        [self.rewarded presentFromRootViewController:rootViewController
                                userDidEarnRewardHandler:^{
              GADAdReward *reward = self.rewarded.adReward;
              PoingGodotAdMobRewardedInterstitialAd::get_singleton()->emit_signal("on_rewarded_interstitial_ad_user_earned_reward",

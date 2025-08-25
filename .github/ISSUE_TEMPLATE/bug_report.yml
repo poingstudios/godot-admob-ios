@@ -6,19 +6,19 @@ body:
 - type: input
   attributes:
     label: Godot version
-    placeholder: '3.5.1'
+    placeholder: '4.4'
   validations:
     required: true
 - type: input
   attributes:
     label: Plugin version
-    placeholder: 'v2.0.0'
+    placeholder: 'v3.1.2'
   validations:
     required: true
 - type: input
   attributes:
     label: Phone information
-    placeholder: 'iPhone 14 with iOS 16.0.3'
+    placeholder: 'iPhone 16 with iOS 18.0.0'
   validations:
     required: true
 - type: textarea

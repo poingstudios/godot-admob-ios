@@ -41,7 +41,6 @@ PoingGodotAdMob *PoingGodotAdMob::get_singleton() {
 };
 
 void PoingGodotAdMob::initialize() {
-    if (GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers == nil || [GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers count] == 0)
     [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus *_Nonnull status)
     {
         Dictionary dictionary = [ObjectToGodotDictionary convertGADInitializationStatusToDictionary:status];

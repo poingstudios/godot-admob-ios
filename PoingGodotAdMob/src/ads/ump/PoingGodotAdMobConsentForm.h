@@ -24,8 +24,6 @@
 #define PoingGodotAdMobConsentForm_h
 
 #import "../PoingGodotAdMobUserMessagingPlatform.h"
-#import "view_controller.h"
-#import "app_delegate.h"
 
 @interface PoingGodotAdMobConsentForm : NSObject
 

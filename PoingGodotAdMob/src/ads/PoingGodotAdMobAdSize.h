@@ -26,7 +26,6 @@
 #import <Foundation/Foundation.h>
 
 #include "core/object/class_db.h"
-#import "view_controller.h"
 #import "converters/ObjectToGodotDictionary.h"
 #import "helpers/DeviceOrientationHelper.h"
 

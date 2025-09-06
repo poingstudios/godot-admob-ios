@@ -25,12 +25,10 @@
 
 #import "../converters/GodotDictionaryToObject.h"
 #import "../converters/ObjectToGodotDictionary.h"
-#import "view_controller.h"
-#import "app_delegate.h"
 
 @import GoogleMobileAds;
 
-@interface AdFormatBase : ViewController 
+@interface AdFormatBase : NSObject 
 
 @property (nonatomic, strong) NSNumber *UID;
 

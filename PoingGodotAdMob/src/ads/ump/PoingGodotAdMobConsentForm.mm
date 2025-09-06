@@ -33,7 +33,8 @@
 
 - (void)show {
     if (self.umpConsentForm){
-        [self.umpConsentForm presentFromViewController:AppDelegate.viewController completionHandler:^(NSError * _Nullable error) {
+        UIViewController *rootViewController = [[UIApplication sharedApplication] delegate].window.rootViewController;
+        [self.umpConsentForm presentFromViewController:rootViewController completionHandler:^(NSError * _Nullable error) {
             NSLog(@"show ump consent form");
             Dictionary formErrorDictionary;
             if (error){

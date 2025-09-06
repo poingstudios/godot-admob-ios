@@ -57,19 +57,19 @@ xcframework_directory = ''
 if env['simulator']:
     xcframework_directory = 'ios-arm64_x86_64-simulator'
     sdk_name = 'iphonesimulator'
-    env.Append(CCFLAGS=['-mios-simulator-version-min=10.0'])
-    env.Append(LINKFLAGS=["-mios-simulator-version-min=10.0"])
+    env.Append(CCFLAGS=['-mios-simulator-version-min=12.0'])
+    env.Append(LINKFLAGS=["-mios-simulator-version-min=12.0"])
 else:
     xcframework_directory = 'ios-arm64'
     sdk_name = 'iphoneos'
-    env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
-    env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])
+    env.Append(CCFLAGS=['-miphoneos-version-min=12.0'])
+    env.Append(LINKFLAGS=["-miphoneos-version-min=12.0"])
 
 #need to perform `cd PoingGodotAdMob && pod install --repo-update`
-env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
+env.Append(FRAMEWORKPATH=['PoingGodotAdMob/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
 
 if env['plugin'] == 'ads':
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=['PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
 elif env['plugin'] == 'meta':
     env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/' + xcframework_directory])
     env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.20.1.0/MetaAdapter.xcframework/' + xcframework_directory])
@@ -96,7 +96,7 @@ env.Append(CCFLAGS=['-arch', env['arch'], "-isysroot", "-stdlib=libc++", '-isysr
 env.Append(CCFLAGS=['-DPTRCALL_ENABLED'])
 env.Prepend(CXXFLAGS=[
     '-DNEED_LONG_INT', '-DLIBYUV_DISABLE_NEON', 
-    '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED'
+    '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED', "-DIOS_ENABLED", "-DAPPLE_EMBEDDED_ENABLED"
 ])
 env.Append(LINKFLAGS=["-arch", env['arch'], '-isysroot', sdk_path, '-F' + sdk_path])
 
@@ -104,7 +104,6 @@ if env['arch'] == 'armv7':
     env.Prepend(CXXFLAGS=['-fno-aligned-allocation'])
 
 env.Append(CCFLAGS=["$IOS_SDK_PATH"])
-env.Prepend(CXXFLAGS=['-DIOS_ENABLED'])
 env.Prepend(CXXFLAGS=['-DVERSION_4_0'])
 
 env.Prepend(CFLAGS=['-std=gnu11'])

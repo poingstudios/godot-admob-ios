@@ -8,12 +8,6 @@ export_presets.cfg
 data_*/
 *.pyc
 
-extracted_headers
-godot
-bin
-plugin/admob/lib
-
-
 .DS_Store
 
 *.idea
@@ -41,4 +35,10 @@ local.properties
 
 *.tar.xz
 
+# Project specific ignores
 plugin/Pods/
+
+extracted_headers
+godot
+bin
+plugin/admob/lib

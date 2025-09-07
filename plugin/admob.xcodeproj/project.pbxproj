@@ -339,6 +339,7 @@
 					"-DIPHONE_ENABLED",
 					"-DUNIX_ENABLED",
 					"-DCOREAUDIO_ENABLED",
+					"-DVERSION_3_X",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

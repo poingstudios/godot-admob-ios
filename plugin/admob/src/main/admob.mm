@@ -23,7 +23,8 @@
 
 
 #include "admob.h"
-   
+#include "version_constants.h"
+
 AdMob *AdMob::instance = NULL;
 
 AdMob::AdMob() {
@@ -40,6 +41,7 @@ AdMob::AdMob() {
     
     instance = this;
     NSLog(@"initialize admob");
+    NSLog(@"Poing AdMob Plugin version: %@", PLUGIN_VERSION);
 }
 
 AdMob::~AdMob() {

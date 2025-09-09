@@ -7,16 +7,11 @@ deinitialization="unregister_admob_types"
 
 [dependencies]
 linked=[
-    "admob/lib/nanopb.xcframework", 
-    "admob/lib/GoogleAppMeasurement.xcframework", 
-    "admob/lib/GoogleAppMeasurementIdentitySupport.xcframework",
     "admob/lib/GoogleMobileAds.xcframework",
-    "admob/lib/GoogleUtilities.xcframework",
-    "admob/lib/UserMessagingPlatform.xcframework",
-    "admob/lib/FBLPromises.xcframework"]
+    "admob/lib/UserMessagingPlatform.xcframework"]
     
 embedded=[]
-system=["JavaScriptCore.framework"]
+system=[]
 
 capabilities=[]
 

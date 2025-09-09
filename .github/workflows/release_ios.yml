@@ -64,7 +64,7 @@ jobs:
     # Upload cache on completion and check it out now
     - name: Load .scons_cache directory
       id: ios-template-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
         key: ${{github.job}}-master-${{github.ref}}-${{github.sha}}
@@ -74,7 +74,7 @@ jobs:
           ${{github.job}}-master
 
     - name: Set up Python 3.x
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v6
       with:
         # Semantic version range syntax or exact version of a Python version
         python-version: '3.x'
@@ -112,7 +112,7 @@ jobs:
         ./scripts/generate_headers.sh ${major_version} || true
 
     - name: Download Google Mobile Ads SDK Artifact
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v5
       with:
         name: googlemobileadssdkios.zip
 

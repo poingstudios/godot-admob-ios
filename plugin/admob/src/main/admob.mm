@@ -23,7 +23,8 @@
 
 
 #include "admob.h"
-   
+#include "version_constants.h"
+
 AdMob *AdMob::instance = NULL;
 
 AdMob::AdMob() {
@@ -40,6 +41,7 @@ AdMob::AdMob() {
     
     instance = this;
     NSLog(@"initialize admob");
+    NSLog(@"Poing AdMob Plugin version: %@", PLUGIN_VERSION);
 }
 
 AdMob::~AdMob() {
@@ -161,16 +163,21 @@ void AdMob::initialize(bool is_for_child_directed_treatment, const String &max_a
     
     if (!is_real){
         #if TARGET_IPHONE_SIMULATOR
-            GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @[ GADSimulatorID ];
-            NSLog(@"on Testing Simulator: %@", GADSimulatorID);
+            NSLog(@"on Testing Simulator: %@", @"Simulator are now testing devices by default");
         #else
             GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers = @ [ [NSString stringWithCString: getDeviceId() encoding: NSUTF8StringEncoding] ];
             NSLog(@"on Testing Real Device: testDeviceIdentifiers: %@", [NSString stringWithCString: getDeviceId() encoding: NSUTF8StringEncoding]);
         #endif
     }
     
-    [GADMobileAds.sharedInstance.requestConfiguration tagForChildDirectedTreatment:is_for_child_directed_treatment];
-
+    if (is_for_child_directed_treatment) {
+        GADMobileAds.sharedInstance.requestConfiguration.tagForChildDirectedTreatment = @YES;
+    } else {
+        GADMobileAds.sharedInstance.requestConfiguration.tagForChildDirectedTreatment = @NO;
+    }
+    
+    NSLog(@"tagForChildDirectedTreatment = %@", is_for_child_directed_treatment ? @"YES" : @"NO");
+    
     if (self_max_ad_content_rating == "G") {
         GADMobileAds.sharedInstance.requestConfiguration.maxAdContentRating = GADMaxAdContentRatingGeneral;
         NSLog(@"maxAdContentRating = GADMaxAdContentRatingGeneral");

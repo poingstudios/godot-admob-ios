@@ -82,6 +82,16 @@
 - Export the project enabling the `AdMob Plugin`:
 - ![Export Project](https://i.imgur.com/4Zm3sjp.png)
 
+### XCode
+On XCode, if you are facing some errors such as `Undefined symbol: __swift_FORCE_LOAD_$_swiftCompatibilityDynamicReplacements` do the following steps:
+
+- Create a Swift `New Empty File` as any name you want:
+- ![Empty File](https://i.imgur.com/TDz0DS0.png)
+- Create Bridging Header
+- ![Bridging Header](https://i.imgur.com/QTZBC62.png)
+
+This is required due Swift Google Mobile Ads SDK Code. [Read more here.](https://forums.swift.org/t/could-not-find-or-use-auto-linked-library-swiftcompatibility50/54351/13)
+
 ## Android (v3.2.2+):
 - https://github.com/Poing-Studios/godot-admob-android
 

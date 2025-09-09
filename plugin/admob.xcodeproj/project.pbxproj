@@ -44,6 +44,7 @@
 		5E4FE6EE262765730066D8AF /* Interstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Interstitial.h; path = admob/src/formats/Interstitial.h; sourceTree = "<group>"; };
 		5E4FE6EF262765730066D8AF /* Rewarded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rewarded.h; path = admob/src/formats/Rewarded.h; sourceTree = "<group>"; };
 		5E4FE6F0262765730066D8AF /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Banner.h; path = admob/src/formats/Banner.h; sourceTree = "<group>"; };
+		5EBB43D92E6F8075003397D0 /* version_constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = version_constants.h; path = admob/src/formats/version_constants.h; sourceTree = "<group>"; };
 		5EDA216925B398A50076123B /* libadmob.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libadmob.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8250BA33C73A9BC8E70286EF /* Pods-admob.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-admob.debug.xcconfig"; path = "Target Support Files/Pods-admob/Pods-admob.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +81,7 @@
 		5EDA216025B398A50076123B = {
 			isa = PBXGroup;
 			children = (
+				5EBB43D92E6F8075003397D0 /* version_constants.h */,
 				5E4FE6F0262765730066D8AF /* Banner.h */,
 				5E4FE6EB262765730066D8AF /* Banner.mm */,
 				5E4FE6EE262765730066D8AF /* Interstitial.h */,
@@ -339,6 +341,7 @@
 					"-DIPHONE_ENABLED",
 					"-DUNIX_ENABLED",
 					"-DCOREAUDIO_ENABLED",
+					"-DVERSION_3_X",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

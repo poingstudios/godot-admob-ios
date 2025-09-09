@@ -182,6 +182,8 @@ else:
         'godot/platform/ios',
     ])
 
+env.Append(CPPPATH = ['plugin/' + env['plugin'] + '/src/formats'])
+
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 sources = Glob('plugin/' + env['plugin'] + '/src/main/*.mm')
 sources.append(Glob('plugin/' + env['plugin'] + '/src/formats/*.mm'))

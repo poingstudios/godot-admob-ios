@@ -84,8 +84,7 @@
 /// Tells the delegate that the ad failed to present full screen content.
 - (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
     NSLog(@"interstitial didFailToPresentFullScreenContentWithError.");
-    AdMob::get_singleton()->emit_signal("interstitial_failed_to_load", (int) error.code);
-
+    AdMob::get_singleton()->emit_signal("interstitial_failed_to_show", (int) error.code);
 }
 
 /// Tells the delegate that the ad presented full screen content.

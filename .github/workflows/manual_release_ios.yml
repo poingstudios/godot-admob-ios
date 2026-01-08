@@ -16,7 +16,7 @@ jobs:
     runs-on: "macos-latest"
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v6
 
     - name: Verify current inputs godot_version
       run: |
@@ -27,7 +27,7 @@ jobs:
     # Upload cache on completion and check it out now
     - name: Load .scons_cache directory
       id: ios-template-cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
         key: ${{github.job}}-master-${{github.ref}}-${{github.sha}}
@@ -37,7 +37,7 @@ jobs:
           ${{github.job}}-master
 
     - name: Set up Python 3.x
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v6
       with:
         # Semantic version range syntax or exact version of a Python version
         python-version: '3.x'
@@ -71,7 +71,7 @@ jobs:
         ./scripts/create_zip.sh ${{env.CURRENT_GODOT_VERSION}}
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         path: bin/release/poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}.zip
 

@@ -5,7 +5,7 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-CURRENT_GODOT_VERSION="$1"
+CURRENT_GODOT_VERSION="${1%.0}"
 
 GODOT_FOLDER="godot-${CURRENT_GODOT_VERSION}-stable"
 DOWNLOAD_FILE="${GODOT_FOLDER}.tar.xz"

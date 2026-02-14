@@ -44,3 +44,4 @@ bin
 plugin/admob/lib
 
 .build/
+*.tmp

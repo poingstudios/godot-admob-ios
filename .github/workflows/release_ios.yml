@@ -75,23 +75,20 @@ jobs:
       env:
         SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
       run: |
-        ./scripts/release_static_library.sh 
-
-    - name: Compress the binaries
-      run: |
-        ./scripts/create_zip.sh ${{env.CURRENT_GODOT_VERSION}}
+        ./scripts/release_static_library.sh ${{env.CURRENT_GODOT_VERSION}}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v6
       with:
         name: poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}
-        path: bin/release/poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}.zip
+        path: bin/release/*.zip
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         target_commit: ${{ github.ref_name }}
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: bin/release/poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}.zip
+        file: bin/release/*.zip
+        file_glob: true
         tag: ${{env.PLUGIN_VERSION}}
         overwrite: true

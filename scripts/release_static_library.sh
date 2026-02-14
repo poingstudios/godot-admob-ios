@@ -5,6 +5,7 @@ set -e
 echo "Resolving SPM dependencies..."
 swift package resolve
 
+GODOT_VERSION="$1"
 PLUGINS=("ads" "meta" "vungle")
 
 dest_folder="./bin/release"
@@ -19,24 +20,26 @@ mkdir -p "./bin/xcframeworks"
 
 for PLUGIN in "${PLUGINS[@]}"
 do
+    echo "Building plugin: $PLUGIN"
     # Compile Plugin (produces xcframeworks)
     ./scripts/generate_static_library.sh $PLUGIN release
     ./scripts/generate_static_library.sh $PLUGIN release_debug
 
     # Rename release_debug → debug for Godot convention
-    mv "./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.release_debug.xcframework" \
-       "./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.debug.xcframework"
+    DEBUG_XCF="./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.debug.xcframework"
+    rm -rf "$DEBUG_XCF"
+    mv "./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.release_debug.xcframework" "$DEBUG_XCF"
 
     # Set destination path based on PLUGIN value
-    DEST_PATH="$dest_folder/${PLUGIN}/poing-godot-admob/"
+    PLUGIN_DEST="$dest_folder/${PLUGIN}/poing-godot-admob/"
     
     # Move Plugin xcframeworks
-    mkdir -p "$DEST_PATH/bin/"
-    cp -R "./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.release.xcframework" "$DEST_PATH/bin/"
-    cp -R "./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.debug.xcframework" "$DEST_PATH/bin/"
+    mkdir -p "$PLUGIN_DEST/bin/"
+    cp -R "./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.release.xcframework" "$PLUGIN_DEST/bin/"
+    cp -R "./bin/xcframeworks/${PLUGIN}/poing-godot-admob-${PLUGIN}.debug.xcframework" "$PLUGIN_DEST/bin/"
 
-    # Copy third-party SDK xcframeworks
-    ./scripts/copy_sdk_frameworks.sh "$PLUGIN" "$DEST_PATH"
+    # Copy third-party SDK xcframeworks (with thinning/stripping)
+    ./scripts/copy_sdk_frameworks.sh "$PLUGIN" "$dest_folder/${PLUGIN}/poing-godot-admob"
 
     CONFIG_DIR="./PoingGodotAdMob/src/mediation/${PLUGIN}/config"
     if [ "$PLUGIN" = "ads" ]; then
@@ -44,4 +47,23 @@ do
     fi
 
     cp "$CONFIG_DIR"/*.gdip "$dest_folder/${PLUGIN}"
+
+    # Create individual ZIP for this plugin
+    ./scripts/create_zip.sh "$PLUGIN" "$GODOT_VERSION"
 done
+
+# Create a final "full" ZIP containing all plugins
+if [ -n "$GODOT_VERSION" ]; then
+    GODOT_STR="-v$GODOT_VERSION"
+else
+    GODOT_STR=""
+fi
+
+FULL_ZIP_NAME="poing-godot-admob-ios$GODOT_STR.zip"
+echo "Creating full bundle ZIP: $FULL_ZIP_NAME"
+cd "$dest_folder"
+# Zip only the directories (ads, meta, vungle), excluding existing .zip files
+zip -r "$FULL_ZIP_NAME" ads/ meta/ vungle/
+cd ../..
+
+echo "Build and packaging complete."

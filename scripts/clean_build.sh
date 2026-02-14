@@ -9,5 +9,4 @@ CURRENT_GODOT_VERSION="$1"
 
 ./scripts/download_godot.sh ${CURRENT_GODOT_VERSION}
 ./scripts/generate_headers.sh || true
-./scripts/release_static_library.sh
-./scripts/create_zip.sh ${CURRENT_GODOT_VERSION}
+./scripts/release_static_library.sh ${CURRENT_GODOT_VERSION}

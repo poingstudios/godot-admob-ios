@@ -9,8 +9,8 @@
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -23,6 +23,6 @@
 #ifndef PluginConfiguration_h
 #define PluginConfiguration_h
 
-static NSString *const PLUGIN_VERSION = @"3.1.4";
+static NSString *const PLUGIN_VERSION = @"3.1.5";
 
 #endif /* PluginConfiguration_h */

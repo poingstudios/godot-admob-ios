@@ -65,17 +65,18 @@ else:
     env.Append(CCFLAGS=['-miphoneos-version-min=12.0'])
     env.Append(LINKFLAGS=["-miphoneos-version-min=12.0"])
 
-#need to perform `cd PoingGodotAdMob && pod install --repo-update`
-env.Append(FRAMEWORKPATH=['PoingGodotAdMob/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
+# SPM artifact paths (resolved via `swift package resolve`)
+spm_artifacts = '.build/artifacts'
+env.Append(FRAMEWORKPATH=[spm_artifacts + '/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/' + xcframework_directory])
 
 if env['plugin'] == 'ads':
-    env.Append(FRAMEWORKPATH=['PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/' + xcframework_directory])
 elif env['plugin'] == 'meta':
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/' + xcframework_directory])
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.20.1.0/MetaAdapter.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/googleads-mobile-ios-mediation-meta/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/googleads-mobile-ios-mediation-meta/MetaAdapter/MetaAdapter.xcframework/' + xcframework_directory])
 elif env['plugin'] == 'vungle':
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/VungleAds/static/VungleAdsSDK.xcframework/' + xcframework_directory])
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationVungle/LiftoffMonetizeAdapter-7.5.3.0/LiftoffMonetizeAdapter.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/vungleadssdk-swiftpackagemanager/VungleAdsSDK/VungleAdsSDK.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/googleads-mobile-ios-mediation-liftoffmonetize/LiftoffMonetizeAdapter/LiftoffMonetizeAdapter.xcframework/' + xcframework_directory])
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())

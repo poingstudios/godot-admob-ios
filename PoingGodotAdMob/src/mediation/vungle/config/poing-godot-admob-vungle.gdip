@@ -1,16 +1,18 @@
 [config]
 name="AdMob Vungle"
-binary="poing-godot-admob/bin/poing-godot-admob-vungle.a"
+binary="poing-godot-admob/bin/poing-godot-admob-vungle.xcframework"
 
 initialization="register_poing_godot_admob_vungle_types"
 deinitialization="unregister_poing_godot_admob_vungle_types"
 
 [dependencies]
-linked=[]
-embedded=[]
+linked=["poing-godot-admob/frameworks/LiftoffMonetizeAdapter.xcframework",
+        "poing-godot-admob/frameworks/VungleAdsSDK.xcframework"]
+embedded=["poing-godot-admob/frameworks/LiftoffMonetizeAdapter.xcframework",
+          "poing-godot-admob/frameworks/VungleAdsSDK.xcframework"]
 system=[]
 capabilities=[]
-files=["poing-godot-admob/libs/vungle-pods.txt"]
+files=[]
 linker_flags=[]
 
 [plist]

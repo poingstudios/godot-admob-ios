@@ -1,1 +1,0 @@
-pod 'GoogleMobileAdsMediationFacebook', '6.20.1.0'

@@ -1,19 +1,30 @@
 [config]
 name="AdMob"
-binary="poing-godot-admob/bin/poing-godot-admob-ads.a"
+binary="poing-godot-admob/bin/poing-godot-admob-ads.xcframework"
 
 initialization="register_poing_godot_admob_ads_types"
 deinitialization="unregister_poing_godot_admob_ads_types"
 
 [dependencies]
-linked=[]
-embedded=[]
-system=[]
+linked=["poing-godot-admob/frameworks/GoogleMobileAds.xcframework",
+        "poing-godot-admob/frameworks/UserMessagingPlatform.xcframework"]
+embedded=["poing-godot-admob/frameworks/GoogleMobileAds.xcframework",
+          "poing-godot-admob/frameworks/UserMessagingPlatform.xcframework"]
+system=["AdSupport.framework",
+        "AppTrackingTransparency.framework",
+        "StoreKit.framework",
+        "SystemConfiguration.framework",
+        "CoreTelephony.framework",
+        "WebKit.framework",
+        "CoreMedia.framework",
+        "CFNetwork.framework",
+        "CoreMotion.framework",
+        "MediaPlayer.framework",
+        "MessageUI.framework",
+        "Security.framework"]
 capabilities=[]
-files=["poing-godot-admob/libs/ads-pods.txt",
-       "poing-godot-admob/scripts/update_and_install.sh",
-       "poing-godot-admob/scripts/update_pods.rb"]
-linker_flags=[]
+files=[]
+linker_flags=["-ObjC"]
 
 [plist]
 ;Warning: You will need to update the [plist] section every time you reinstall/upgrade the plugin!

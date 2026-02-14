@@ -42,3 +42,5 @@ extracted_headers
 godot
 bin
 plugin/admob/lib
+
+.build/

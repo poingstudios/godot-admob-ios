@@ -77,7 +77,10 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v6
       with:
+        name: poing-godot-admob-ios-v${{ env.CURRENT_GODOT_VERSION }}
         path: bin/release/*.zip
+        if-no-files-found: error
+        retention-days: 1
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2

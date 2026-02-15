@@ -48,28 +48,58 @@ do
         CONFIG_DIR="./PoingGodotAdMob/src/${PLUGIN}/config"
     fi
     cp "$CONFIG_DIR"/*.gdip "$dest_folder/${PLUGIN}"
-
-    # 6. Create DECOUPLED ZIPs
-    # A. Tiny Plugin ZIP (< 1MB)
-    ./scripts/create_zip.sh plugin "$PLUGIN" "$GODOT_VERSION"
-    
-    # B. Large SDK ZIP (Only if needed - usually done once per SDK release)
-    ./scripts/create_zip.sh sdk "$PLUGIN"
 done
 
-# Optional: Create a "Full Bundle" ZIP for users who want everything in one go (Legacy support)
+# ---------------------------------------------------------
+# Final Packaging: Create the two main distribution ZIPs
+# ---------------------------------------------------------
 if [ -n "$GODOT_VERSION" ]; then
     GODOT_STR="-v$GODOT_VERSION"
 else
     GODOT_STR=""
 fi
 
-FULL_ZIP_NAME="poing-godot-admob-ios-full-bundle$GODOT_STR.zip"
-echo "Creating legacy full bundle ZIP: $FULL_ZIP_NAME"
-cd "$dest_folder"
-# We need to be careful zip doesn't include the .zips we just created
-echo "ads/ meta/ vungle/" | xargs zip -r "$FULL_ZIP_NAME"
+INTERNAL_ZIP="poing-godot-admob-ios-internal$GODOT_STR.zip"
+SDK_ZIP="poing-godot-admob-ios-external-dependencies.zip"
+
+echo "Creating distribution ZIPs..."
+
+# 1. Create Internal ZIP (binaries + .gdip)
+STAGING_INTERNAL="./bin/staging_internal"
+rm -rf "$STAGING_INTERNAL"
+mkdir -p "$STAGING_INTERNAL/poing-godot-admob/bin"
+
+for PLUGIN in "${PLUGINS[@]}"; do
+    cp "$dest_folder/$PLUGIN"/*.gdip "$STAGING_INTERNAL/"
+    cp -R "$dest_folder/$PLUGIN/poing-godot-admob/bin/"* "$STAGING_INTERNAL/poing-godot-admob/bin/"
+done
+
+cd "$STAGING_INTERNAL"
+zip -qr "../../bin/release/$INTERNAL_ZIP" .
 cd ../..
 
+# 2. Create SDK ZIP (frameworks)
+STAGING_SDK="./bin/staging_sdk"
+rm -rf "$STAGING_SDK"
+mkdir -p "$STAGING_SDK/poing-godot-admob/frameworks"
+
+for PLUGIN in "${PLUGINS[@]}"; do
+    if [ -d "$dest_folder/$PLUGIN/poing-godot-admob/frameworks" ]; then
+        cp -R "$dest_folder/$PLUGIN/poing-godot-admob/frameworks/"* "$STAGING_SDK/poing-godot-admob/frameworks/"
+    fi
+done
+
+cd "$STAGING_SDK"
+zip -qr "../../bin/release/$SDK_ZIP" .
+cd ../..
+
+# Cleanup
+rm -rf "$STAGING_INTERNAL" "$STAGING_SDK"
+for PLUGIN in "${PLUGINS[@]}"; do
+    rm -rf "$dest_folder/$PLUGIN"
+done
+
 echo "Build and packaging complete."
-echo "Artifacts are in ./bin/release/"
+echo "Final artifacts in ./bin/release/:"
+echo "  1. $INTERNAL_ZIP (Internal libs + .gdips)"
+echo "  2. $SDK_ZIP (External dependency frameworks)"

@@ -20,9 +20,43 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PluginConfiguration_h
-#define PluginConfiguration_h
+#import "WindowHelper.h"
 
-static NSString *const PLUGIN_VERSION = @"3.1.5";
+@implementation WindowHelper
 
-#endif /* PluginConfiguration_h */
++ (UIWindow *)getCurrentWindow {
+  UIWindow *window = nil;
+
+  if (@available(iOS 13.0, *)) {
+    for (UIScene *scene in [UIApplication sharedApplication].connectedScenes) {
+      if ([scene isKindOfClass:[UIWindowScene class]] &&
+          scene.activationState == UISceneActivationStateForegroundActive) {
+        UIWindowScene *windowScene = (UIWindowScene *)scene;
+        for (UIWindow *w in windowScene.windows) {
+          if (w.isKeyWindow) {
+            window = w;
+            break;
+          }
+        }
+      }
+      if (window != nil)
+        break;
+    }
+  }
+
+  if (window == nil) {
+    window = [UIApplication sharedApplication].keyWindow;
+  }
+
+  if (window == nil) {
+    window = [UIApplication sharedApplication].delegate.window;
+  }
+
+  return window;
+}
+
++ (UIViewController *)getCurrentRootViewController {
+  return [[self getCurrentWindow] rootViewController];
+}
+
+@end

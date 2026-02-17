@@ -20,9 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef PluginConfiguration_h
-#define PluginConfiguration_h
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-static NSString *const PLUGIN_VERSION = @"3.1.5";
+NS_ASSUME_NONNULL_BEGIN
 
-#endif /* PluginConfiguration_h */
+@interface WindowHelper : NSObject
+
++ (UIWindow *)getCurrentWindow;
++ (UIViewController *)getCurrentRootViewController;
+
+@end
+
+NS_ASSUME_NONNULL_END

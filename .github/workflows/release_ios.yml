@@ -3,9 +3,54 @@ name: Build iOS
 on: workflow_dispatch
 
 jobs:
-  ios-template:
-    name: Compiling for iOS
+  ios-external-dependencies:
+    name: Packaging External Dependencies
     runs-on: "macos-latest"
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        ref: ${{ github.ref_name }}
+
+    - name: Set plugin version on env
+      run: |
+        PLUGIN_VERSION=$(find . -name "*.h" -exec grep -H 'PLUGIN_VERSION = ' {} \; | awk -F'"' '{print $2}')
+        echo "PLUGIN_VERSION=v${PLUGIN_VERSION}" >> $GITHUB_ENV
+
+    - name: Cache SPM dependencies
+      uses: actions/cache@v5
+      with:
+        path: .build
+        key: spm-${{ hashFiles('Package.swift', 'Package.resolved') }}
+        restore-keys: |
+          spm-
+
+    - name: Packaging External Dependencies
+      run: |
+        ./scripts/build.sh 4.3.0 external
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v6
+
+      with:
+        name: poing-godot-admob-ios-external-dependencies
+        path: bin/release/*.zip
+        if-no-files-found: error
+        retention-days: 1
+
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        target_commit: ${{ github.ref_name }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: bin/release/*.zip
+        file_glob: true
+        tag: ${{env.PLUGIN_VERSION}}
+        overwrite: true
+
+  ios-template:
+    name: Compiling for iOS (Godot ${{matrix.GODOT_VERSIONS}})
+    runs-on: "macos-latest"
+    needs: ios-external-dependencies
     strategy:
       matrix:
         GODOT_VERSIONS: ["4.1.0", "4.1.1", "4.1.2", "4.1.3", "4.1.4", "4.2.0", "4.2.1", "4.2.2", "4.3.0", "4.4.0", "4.4.1", "4.5.0", "4.5.1", "4.6.0", "4.6.1"]
@@ -20,14 +65,12 @@ jobs:
         PLUGIN_VERSION=$(find . -name "*.h" -exec grep -H 'PLUGIN_VERSION = ' {} \; | awk -F'"' '{print $2}')
         echo "PLUGIN_VERSION=v${PLUGIN_VERSION}" >> $GITHUB_ENV
 
-    # Github Actions Matrix doesnt support x.0 values, it's replaced by ''
     - name: Verify current matrix's GODOT_VERSIONS
       run: |
         CURRENT_GODOT_VERSION=${{matrix.GODOT_VERSIONS}}
         if [ ${#CURRENT_GODOT_VERSION} -eq 1 ]; then CURRENT_GODOT_VERSION="${CURRENT_GODOT_VERSION}.0"; fi
         echo "CURRENT_GODOT_VERSION=${CURRENT_GODOT_VERSION}" >> $GITHUB_ENV
 
-    # Upload cache on completion and check it out now
     - name: Load .scons_cache directory
       id: ios-template-cache
       uses: actions/cache@v5
@@ -42,26 +85,13 @@ jobs:
     - name: Set up Python 3.x
       uses: actions/setup-python@v6
       with:
-        # Semantic version range syntax or exact version of a Python version
         python-version: '3.x'
-        # Optional - x64 or x86 architecture, defaults to x64
         architecture: 'x64'
 
     - name: Configuring Python packages
       run: |
-        python -c "import sys; print(sys.version)"
         python -m pip install scons
-        python --version
-        scons --version
 
-    - name: Download and unzip Stable Godot extracted headers
-      run: |
-        ./scripts/download_godot.sh ${{env.CURRENT_GODOT_VERSION}}
-
-    - name: Generate headers
-      run: |
-        echo "Major version: $major_version"
-        ./scripts/generate_headers.sh || true
 
     - name: Cache SPM dependencies
       uses: actions/cache@v5
@@ -75,10 +105,11 @@ jobs:
       env:
         SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
       run: |
-        ./scripts/release_static_library.sh ${{env.CURRENT_GODOT_VERSION}}
+        ./scripts/build.sh ${{env.CURRENT_GODOT_VERSION}} internal
 
     - name: Upload artifact
       uses: actions/upload-artifact@v6
+
       with:
         name: poing-godot-admob-ios-v${{ env.CURRENT_GODOT_VERSION }}
         path: bin/release/*.zip
@@ -94,3 +125,4 @@ jobs:
         file_glob: true
         tag: ${{env.PLUGIN_VERSION}}
         overwrite: true
+

@@ -63,7 +63,7 @@ The **purpose** of this plugin is to always keep **up to date with Godot**, supp
 
 
 ### 🧑‍💻Usage
-- Video tutorial: https://youtu.be/WpVGn7ZasKM.
+- Video tutorial: https://youtu.be/TB7WhP8mieo
 - Inside `poing-godot-admob-ios-v{{ your_godot_version }}.zip` you downloaded, you will face some folders like `'ads'`, `'meta'`, `'vungle'`. To AdMob works only `'ads'` is required, but if you want [Mediation](https://support.google.com/admob/answer/13420272?hl=en), you need the other folders.
 - Move the content inside the folder which you need into ```res://ios/plugins``` directory on your Godot project.
 - Update the configuration in ```res://ios/plugins/poing-godot-admob-ads.gdip```. The `GADApplicationIdentifier` is required to change when release your game.

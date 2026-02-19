@@ -126,6 +126,7 @@ if [ "$TARGET" == "all" ] || [ "$TARGET" == "internal" ]; then
 
         CONFIG_DIR=$(get_plugin_config_dir "$PLUGIN")
         cp "$CONFIG_DIR"/*.gdip "$STAGING_INTERNAL/"
+        cp "$CONFIG_DIR"/*.gd "$STAGING_INTERNAL/" 2>/dev/null || true
     done
 
     ./scripts/lib/create_zip.sh "plugin" "internal" "$GODOT_VERSION" || exit 1

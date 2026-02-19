@@ -125,7 +125,6 @@ if [ "$TARGET" == "all" ] || [ "$TARGET" == "internal" ]; then
 
         CONFIG_DIR=$(get_plugin_config_dir "$PLUGIN")
         cp "$CONFIG_DIR"/*.gdip "$STAGING_INTERNAL/"
-        cp "$CONFIG_DIR"/*.gd "$STAGING_INTERNAL/" 2>/dev/null || true
     done
 
     # Only create zip if staging is new or forced (we could optimize this further but the zip is fast compared to build)
@@ -147,6 +146,10 @@ if [ "$TARGET" == "all" ] || [ "$TARGET" == "external" ]; then
         mkdir -p "$STAGING_EXTERNAL/poing-godot-admob/frameworks"
 
         for PLUGIN in "${ALL_PLUGINS[@]}"; do
+            # Copy package configuration to the root of external zip
+            CONFIG_DIR=$(get_plugin_config_dir "$PLUGIN")
+            cp "$CONFIG_DIR"/*.gd "$STAGING_EXTERNAL/" 2>/dev/null || true
+
             TEMP_DIR="./bin/temp_sdk_$PLUGIN"
             rm -rf "$TEMP_DIR"
             mkdir -p "$TEMP_DIR"

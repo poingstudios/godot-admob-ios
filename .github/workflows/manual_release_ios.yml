@@ -18,6 +18,12 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
+    - name: Set plugin version on env
+      run: |
+        PACKAGE_FILE=$(find src/ads/config -name "*_package.gd" | head -n 1)
+        PLUGIN_VERSION=$(grep -hE "VERSION\s*:=\s*\"" $PACKAGE_FILE | sed -E 's/.*"([^"]+)".*/\1/')
+        echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
+
     - name: Verify current inputs godot_version
       run: |
         CURRENT_GODOT_VERSION=${{ github.event.inputs.godot_version }}
@@ -72,7 +78,7 @@ jobs:
       env:
         SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
       run: |
-        ./scripts/release_static_library.sh ${{env.CURRENT_GODOT_VERSION}}
+        ./scripts/build.sh ${{env.CURRENT_GODOT_VERSION}} internal
 
     - name: Upload artifact
       uses: actions/upload-artifact@v6
@@ -88,5 +94,5 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: bin/release/*.zip
         file_glob: true
-        tag: ${{ github.ref }}
+        tag: ${{ github.event.inputs.tag }}
         overwrite: true

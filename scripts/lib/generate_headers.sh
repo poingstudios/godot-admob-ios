@@ -34,7 +34,7 @@ if [ -f "../scripts/lib/timeout" ]; then
 fi
 
 log_info "Running SCons to generate headers..."
-$TIMEOUT_CMD scons platform=ios target=template_release
+$TIMEOUT_CMD scons -j $NUM_CORES platform=ios target=template_release
 
 # We don't check for exit code here because the process is intentionally 
 # interrupted by the timeout script once headers are likely generated.

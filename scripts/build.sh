@@ -82,15 +82,7 @@ fi
 log_info "Starting Build Process (Version: $GODOT_VERSION, Target: $TARGET, Clean: $CLEAN_BUILD)"
 
 if [ "$CLEAN_BUILD" = true ]; then
-    log_info "Cleaning project..."
-    rm -rf "$RELEASE_DIR"
-    rm -rf "$SPM_BUILD_DIR"
-    rm -f Package.resolved
-    find . -name ".sconsign.dblite" -delete
-    find . -name "*.os" -delete
-    find . -name "*.o" -delete
-    rm -rf godot-*
-    log_success "Clean complete."
+    ./scripts/clean.sh || exit 1
 fi
 
 ensure_dir "$RELEASE_DIR"
@@ -108,7 +100,10 @@ if [ "$TARGET" == "all" ] || [ "$TARGET" == "internal" ]; then
     ./scripts/lib/generate_headers.sh || exit 1
 
     STAGING_INTERNAL="./bin/release/internal"
-    rm -rf "$STAGING_INTERNAL"
+    
+    # Check if we can skip the loop and zipping if all plugins are already built and staged
+    # For simplicity, we just run the loop but rely on generate_static_library.sh's internal optimization
+    
     mkdir -p "$STAGING_INTERNAL/poing-godot-admob/bin"
 
     for PLUGIN in "${ALL_PLUGINS[@]}"; do
@@ -118,8 +113,12 @@ if [ "$TARGET" == "all" ] || [ "$TARGET" == "internal" ]; then
 
         XCF_DIR="./bin/xcframeworks/${PLUGIN}"
         DEBUG_XCF="$XCF_DIR/poing-godot-admob-${PLUGIN}.debug.xcframework"
-        rm -rf "$DEBUG_XCF"
-        mv "$XCF_DIR/poing-godot-admob-${PLUGIN}.release_debug.xcframework" "$DEBUG_XCF"
+        
+        # Only move if the debug_xcframework exists (it might have been skipped if up to date)
+        if [ -d "$XCF_DIR/poing-godot-admob-${PLUGIN}.release_debug.xcframework" ]; then
+            rm -rf "$DEBUG_XCF"
+            mv "$XCF_DIR/poing-godot-admob-${PLUGIN}.release_debug.xcframework" "$DEBUG_XCF"
+        fi
 
         cp -R "$XCF_DIR/poing-godot-admob-${PLUGIN}.release.xcframework" "$STAGING_INTERNAL/poing-godot-admob/bin/"
         cp -R "$XCF_DIR/poing-godot-admob-${PLUGIN}.debug.xcframework" "$STAGING_INTERNAL/poing-godot-admob/bin/"
@@ -129,6 +128,7 @@ if [ "$TARGET" == "all" ] || [ "$TARGET" == "internal" ]; then
         cp "$CONFIG_DIR"/*.gd "$STAGING_INTERNAL/" 2>/dev/null || true
     done
 
+    # Only create zip if staging is new or forced (we could optimize this further but the zip is fast compared to build)
     ./scripts/lib/create_zip.sh "plugin" "internal" "$GODOT_VERSION" || exit 1
     rm -rf "$STAGING_INTERNAL"
 fi
@@ -136,24 +136,30 @@ fi
 # --- EXTERNAL BUILD ---
 if [ "$TARGET" == "all" ] || [ "$TARGET" == "external" ]; then
     log_info "--- Building External Dependencies ---"
-    STAGING_EXTERNAL="./bin/release/external-dependencies"
-    rm -rf "$STAGING_EXTERNAL"
-    mkdir -p "$STAGING_EXTERNAL/poing-godot-admob/frameworks"
+    
+    # Optimization: Skip external build if zip already exists and Package.resolved hasn't changed
+    EXTERNAL_ZIP="./bin/release/poing-godot-admob-ios-sdk-external-dependencies.zip"
+    if [ -f "$EXTERNAL_ZIP" ] && [ -f "Package.resolved" ] && [ "Package.resolved" -ot "$EXTERNAL_ZIP" ]; then
+        log_success "External dependencies zip is already up to date. Skipping."
+    else
+        STAGING_EXTERNAL="./bin/release/external-dependencies"
+        rm -rf "$STAGING_EXTERNAL"
+        mkdir -p "$STAGING_EXTERNAL/poing-godot-admob/frameworks"
 
-    for PLUGIN in "${ALL_PLUGINS[@]}"; do
-        TEMP_DIR="./bin/temp_sdk_$PLUGIN"
-        rm -rf "$TEMP_DIR"
-        mkdir -p "$TEMP_DIR"
-        ./scripts/lib/copy_sdk_frameworks.sh "$PLUGIN" "$TEMP_DIR/poing-godot-admob" || exit 1
-        if [ -d "$TEMP_DIR/poing-godot-admob/frameworks" ]; then
-            cp -R "$TEMP_DIR/poing-godot-admob/frameworks/"* "$STAGING_EXTERNAL/poing-godot-admob/frameworks/"
-        fi
-        rm -rf "$TEMP_DIR"
-    done
+        for PLUGIN in "${ALL_PLUGINS[@]}"; do
+            TEMP_DIR="./bin/temp_sdk_$PLUGIN"
+            rm -rf "$TEMP_DIR"
+            mkdir -p "$TEMP_DIR"
+            ./scripts/lib/copy_sdk_frameworks.sh "$PLUGIN" "$TEMP_DIR/poing-godot-admob" || exit 1
+            if [ -d "$TEMP_DIR/poing-godot-admob/frameworks" ]; then
+                cp -R "$TEMP_DIR/poing-godot-admob/frameworks/"* "$STAGING_EXTERNAL/poing-godot-admob/frameworks/"
+            fi
+            rm -rf "$TEMP_DIR"
+        done
 
-    ./scripts/lib/create_zip.sh "sdk" "external-dependencies" || exit 1
-    rm -rf "$STAGING_EXTERNAL"
+        ./scripts/lib/create_zip.sh "sdk" "external-dependencies" || exit 1
+        rm -rf "$STAGING_EXTERNAL"
+    fi
 fi
 
 log_success "Build process completed successfully."
-ls -lh "$RELEASE_DIR"

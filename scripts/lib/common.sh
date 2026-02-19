@@ -45,3 +45,10 @@ ensure_dir() {
         mkdir -p "$1"
     fi
 }
+
+# CPU Cores for parallel build
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    NUM_CORES=$(sysctl -n hw.ncpu)
+else
+    NUM_CORES=$(nproc)
+fi

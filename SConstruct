@@ -140,19 +140,21 @@ env.Append(CPPPATH=[
 ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
+library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
+build_dir = "build/" + env['plugin'] + "/" + library_platform + "/" + env["target"]
+env.VariantDir(build_dir, "src", duplicate=0)
+
 if env['plugin'] == 'ads':
-    sources = Glob('src/' + env['plugin'] + '/*.mm')
-    sources.append(Glob('src/' + env['plugin'] + '/adformats/*.mm'))
-    sources.append(Glob('src/' + env['plugin'] + '/helpers/*.mm'))
-    sources.append(Glob('src/' + env['plugin'] + '/converters/*.mm'))
-    sources.append(Glob('src/' + env['plugin'] + '/ump/*.mm'))
+    sources = Glob(build_dir + '/' + env['plugin'] + '/*.mm')
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/adformats/*.mm'))
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/helpers/*.mm'))
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/converters/*.mm'))
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/ump/*.mm'))
 else:
-    sources = Glob('src/mediation/' + env['plugin'] + '/*.mm')
+    sources = Glob(build_dir + '/mediation/' + env['plugin'] + '/*.mm')
 
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
-library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
-print(library_platform)
 library_name = "poing-godot-admob-" + env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
 library = env.StaticLibrary(target=env['target_path'] + env['plugin'] + "/" + library_name, source=sources)
 

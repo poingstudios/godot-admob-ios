@@ -63,13 +63,24 @@ The **purpose** of this plugin is to always keep **up to date with Godot**, supp
 
 
 ### 🧑‍💻Usage
-- Video tutorial: https://youtu.be/WpVGn7ZasKM.
-- Inside `poing-godot-admob-ios-v{{ your_godot_version }}.zip` you downloaded, you will find folders like `'ads'`, `'meta'`, `'vungle'`. The `'ads'` folder is required for AdMob; others are for [Mediation](https://support.google.com/admob/answer/13420272?hl=en).
-- Move the folders you need into the `res://ios/plugins` directory of your Godot project.
-- Update the configuration in `res://ios/plugins/poing-godot-admob-ads.gdip`. The `GADApplicationIdentifier` must be changed to your App ID.
-- If using Mediation: In the `.gdip` file, under `SKAdNetworkItems`, uncomment the IDs for the networks you are using.
-- Export the project from Godot, enabling the `Ad Mob` plugin (and any mediation plugins) in the export options.
-- **That's it!** The plugin now uses `.xcframework` bundles that are automatically integrated by Godot. No manual Xcode steps or CocoaPods commands are required.
+- Video tutorial: https://youtu.be/TB7WhP8mieo
+- Inside `poing-godot-admob-ios-v{{ your_godot_version }}.zip` you downloaded, you will face some folders like `'ads'`, `'meta'`, `'vungle'`. To AdMob works only `'ads'` is required, but if you want [Mediation](https://support.google.com/admob/answer/13420272?hl=en), you need the other folders.
+- Move the content inside the folder which you need into ```res://ios/plugins``` directory on your Godot project.
+- Update the configuration in ```res://ios/plugins/poing-godot-admob-ads.gdip```. The `GADApplicationIdentifier` is required to change when release your game.
+- If you are using Mediation: On `SKAdNetworkItems` in `.gdip` file, you can remove the comments of the [Mediations Networks](https://developers.google.com/admob/ios/choose-networks) which you are using.
+- Export the project enabling the `Ad Mob`, if you have Mediation, also mark `Ad Mob Meta`, etc...
+
+### 💻Xcode preparation
+- Go to `{{ ios_xcode_export_folder }}/{{your_project_name}}/ios/plugins/poing-godot-admob/scripts/` folder and open the terminal (must be inside this folder).
+- Run the commands: 
+```bash
+chmod +x update_and_install.sh
+./update_and_install.sh
+```
+- This will create for your a `{{ your_project_name }}.xcworkspace` file on your `{{ ios_xcode_export_folder }}`, open this file.
+- Go to the Target of your Application and them `General -> Frameworks, Libraries, and Embedded Content` and add all `Pods` in section.
+- Run the Game.
+- [If you are trying to run on Simulator and is not working read this](https://github.com/godotengine/godot/issues/44681#issuecomment-751399783).
 
 
 ## 📎Useful links:

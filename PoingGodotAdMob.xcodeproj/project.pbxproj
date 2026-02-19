@@ -451,7 +451,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E80AAD92A44A50C001C750F /* Build configuration list for PBXNativeTarget "ads" */;
 			buildPhases = (
-				DB4D04EC121EA5EE0B20FBCA /* [CP] Check Pods Manifest.lock */,
 				5E80AACC2A44A50C001C750F /* Sources */,
 				5E80AACD2A44A50C001C750F /* Frameworks */,
 				5E80AACE2A44A50C001C750F /* CopyFiles */,
@@ -469,7 +468,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E80AAE62A44A74A001C750F /* Build configuration list for PBXNativeTarget "core" */;
 			buildPhases = (
-				C342CDA54250E29C2D660CA3 /* [CP] Check Pods Manifest.lock */,
 				5E80AADC2A44A74A001C750F /* Sources */,
 				5E80AADD2A44A74A001C750F /* Frameworks */,
 				5E80AADE2A44A74A001C750F /* CopyFiles */,
@@ -487,7 +485,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E80AAF32A44A82F001C750F /* Build configuration list for PBXNativeTarget "meta" */;
 			buildPhases = (
-				4CFE71E1FDD81E7719866BB0 /* [CP] Check Pods Manifest.lock */,
 				5E80AAE92A44A82E001C750F /* Sources */,
 				5E80AAEA2A44A82E001C750F /* Frameworks */,
 				5E80AAEB2A44A82E001C750F /* CopyFiles */,
@@ -505,7 +502,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E80AB022A44AA77001C750F /* Build configuration list for PBXNativeTarget "vungle" */;
 			buildPhases = (
-				37DB8ADFA2D527C78242DA1E /* [CP] Check Pods Manifest.lock */,
 				5E80AAF82A44AA77001C750F /* Sources */,
 				5E80AAF92A44AA77001C750F /* Frameworks */,
 				5E80AAFA2A44AA77001C750F /* CopyFiles */,
@@ -564,94 +560,6 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		37DB8ADFA2D527C78242DA1E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-vungle-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4CFE71E1FDD81E7719866BB0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-meta-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C342CDA54250E29C2D660CA3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-core-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB4D04EC121EA5EE0B20FBCA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ads-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -823,40 +731,40 @@
 		};
 		5E80AADA2A44A50C001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC51F69A18027C45E6DD8B0F /* Pods-ads.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/ios-arm64",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				OTHER_CFLAGS = (
-					"-fcxx-modules",
-					"-g",
-					"-DDEBUG",
-					"-DDEBUG_ENABLED",
-					"-DDEBUG_MEMORY_ALLOC",
-					"-DDISABLE_FORCED_INLINE",
-					"-DTYPED_METHOD_BIND",
-					"-fmodules",
+					"-DVERSION_4_0",
 					"-DIPHONE_ENABLED",
 					"-DUNIX_ENABLED",
 					"-DCOREAUDIO_ENABLED",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
 					"-DIOS_ENABLED",
 					"-DAPPLE_EMBEDDED_ENABLED",
+					"-DDEBUG_ENABLED",
+					"-fcxx-modules",
+					"-fmodules",
+					"-g",
+					"-DDEBUG",
+					"-DDEBUG_MEMORY_ALLOC",
+					"-DDISABLE_FORCED_INLINE",
+					"-DTYPED_METHOD_BIND",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -868,31 +776,34 @@
 		};
 		5E80AADB2A44A50C001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D0C9E5FF32E0DDCEDE2E41C /* Pods-ads.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/ios-arm64",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				OTHER_CFLAGS = (
+					"-DVERSION_4_0",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+					"-DIOS_ENABLED",
+					"-DAPPLE_EMBEDDED_ENABLED",
 					"-fcxx-modules",
 					"-fmodules",
 				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"$(OTHER_CFLAGS)",
-					"-DIOS_ENABLED",
-					"-DAPPLE_EMBEDDED_ENABLED",
-				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -904,7 +815,6 @@
 		};
 		5E80AAE72A44A74A001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F92044ABF829B272A03BAD3E /* Pods-core.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -912,12 +822,21 @@
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
+				OTHER_CFLAGS = (
+					"-DVERSION_4_0",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+					"-DIOS_ENABLED",
+					"-DAPPLE_EMBEDDED_ENABLED",
+					"-DDEBUG_ENABLED",
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -927,7 +846,6 @@
 		};
 		5E80AAE82A44A74A001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D543E74DDF1339C060D0B774 /* Pods-core.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
@@ -935,12 +853,20 @@
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
+				OTHER_CFLAGS = (
+					"-DVERSION_4_0",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+					"-DIOS_ENABLED",
+					"-DAPPLE_EMBEDDED_ENABLED",
+					"-fcxx-modules",
+					"-fmodules",
+				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -950,33 +876,39 @@
 		};
 		5E80AAF42A44A82F001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 423FD0383D3ACB01587A333D /* Pods-meta.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/googleads-mobile-ios-mediation-meta/MetaAdapter/MetaAdapter.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/googleads-mobile-ios-mediation-meta/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/ios-arm64",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
-					"-fcxx-modules",
-					"-g",
-					"-DDEBUG",
-					"-DDEBUG_ENABLED",
-					"-DDEBUG_MEMORY_ALLOC",
-					"-DDISABLE_FORCED_INLINE",
-					"-DTYPED_METHOD_BIND",
-					"-fmodules",
+					"-DVERSION_4_0",
 					"-DIPHONE_ENABLED",
 					"-DUNIX_ENABLED",
 					"-DCOREAUDIO_ENABLED",
+					"-DIOS_ENABLED",
+					"-DAPPLE_EMBEDDED_ENABLED",
+					"-DDEBUG_ENABLED",
+					"-fcxx-modules",
+					"-fmodules",
+					"-g",
+					"-DDEBUG",
+					"-DDEBUG_MEMORY_ALLOC",
+					"-DDISABLE_FORCED_INLINE",
+					"-DTYPED_METHOD_BIND",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -986,24 +918,33 @@
 		};
 		5E80AAF52A44A82F001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 001FDF7CA428980BF8E6E60F /* Pods-meta.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/googleads-mobile-ios-mediation-meta/MetaAdapter/MetaAdapter.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/googleads-mobile-ios-mediation-meta/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/ios-arm64",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
+					"-DVERSION_4_0",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+					"-DIOS_ENABLED",
+					"-DAPPLE_EMBEDDED_ENABLED",
 					"-fcxx-modules",
 					"-fmodules",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1013,33 +954,39 @@
 		};
 		5E80AB032A44AA77001C750F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89172A20427D79238AD2E0B7 /* Pods-vungle.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/vungleadssdk-swiftpackagemanager/VungleAdsSDK/VungleAdsSDK.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/googleads-mobile-ios-mediation-liftoffmonetize/LiftoffMonetizeAdapter/LiftoffMonetizeAdapter.xcframework/ios-arm64",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
-					"-fcxx-modules",
-					"-g",
-					"-DDEBUG",
-					"-DDEBUG_ENABLED",
-					"-DDEBUG_MEMORY_ALLOC",
-					"-DDISABLE_FORCED_INLINE",
-					"-DTYPED_METHOD_BIND",
-					"-fmodules",
+					"-DVERSION_4_0",
 					"-DIPHONE_ENABLED",
 					"-DUNIX_ENABLED",
 					"-DCOREAUDIO_ENABLED",
+					"-DIOS_ENABLED",
+					"-DAPPLE_EMBEDDED_ENABLED",
+					"-DDEBUG_ENABLED",
+					"-fcxx-modules",
+					"-fmodules",
+					"-g",
+					"-DDEBUG",
+					"-DDEBUG_MEMORY_ALLOC",
+					"-DDISABLE_FORCED_INLINE",
+					"-DTYPED_METHOD_BIND",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1049,24 +996,33 @@
 		};
 		5E80AB042A44AA77001C750F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE5E3845A23B1DF76DF83F92 /* Pods-vungle.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				EXCLUDED_ARCHS = "";
 				EXECUTABLE_PREFIX = "poing-godot-admob-";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/.build/artifacts/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/vungleadssdk-swiftpackagemanager/VungleAdsSDK/VungleAdsSDK.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/.build/artifacts/googleads-mobile-ios-mediation-liftoffmonetize/LiftoffMonetizeAdapter/LiftoffMonetizeAdapter.xcframework/ios-arm64",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
 					"$(SRCROOT)/godot/platform/ios",
 					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
+					"-DVERSION_4_0",
+					"-DIPHONE_ENABLED",
+					"-DUNIX_ENABLED",
+					"-DCOREAUDIO_ENABLED",
+					"-DIOS_ENABLED",
+					"-DAPPLE_EMBEDDED_ENABLED",
 					"-fcxx-modules",
 					"-fmodules",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

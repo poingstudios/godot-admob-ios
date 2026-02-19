@@ -835,8 +835,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				OTHER_CFLAGS = (
@@ -880,8 +880,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				OTHER_CFLAGS = (
@@ -915,8 +915,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -938,8 +938,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -961,8 +961,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
 					"-fcxx-modules",
@@ -997,8 +997,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
 					"-fcxx-modules",
@@ -1024,8 +1024,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
 					"-fcxx-modules",
@@ -1060,8 +1060,8 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"$(SRCROOT)/../godot/platform/ios",
-					"$(SRCROOT)/../godot",
+					"$(SRCROOT)/godot/platform/ios",
+					"$(SRCROOT)/godot",
 				);
 				OTHER_CFLAGS = (
 					"-fcxx-modules",

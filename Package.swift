@@ -22,7 +22,7 @@ let package = Package(
                 .product(name: "GoogleMobileAdsFacebookAdapter", package: "googleads-mobile-ios-mediation-meta"),
                 .product(name: "GoogleMobileAdsLiftoffMonetizeAdapter", package: "googleads-mobile-ios-mediation-liftoffmonetize"),
             ],
-            path: "PoingGodotAdMobDeps"
+            path: "scripts/spm"
         )
     ]
 )

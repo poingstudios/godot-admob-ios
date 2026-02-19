@@ -141,13 +141,13 @@ env.Append(CPPPATH=[
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 if env['plugin'] == 'ads':
-    sources = Glob('PoingGodotAdMob/src/' + env['plugin'] + '/*.mm')
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/adformats/*.mm'))
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/helpers/*.mm'))
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/converters/*.mm'))
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/ump/*.mm'))
+    sources = Glob('src/' + env['plugin'] + '/*.mm')
+    sources.append(Glob('src/' + env['plugin'] + '/adformats/*.mm'))
+    sources.append(Glob('src/' + env['plugin'] + '/helpers/*.mm'))
+    sources.append(Glob('src/' + env['plugin'] + '/converters/*.mm'))
+    sources.append(Glob('src/' + env['plugin'] + '/ump/*.mm'))
 else:
-    sources = Glob('PoingGodotAdMob/src/mediation/' + env['plugin'] + '/*.mm')
+    sources = Glob('src/mediation/' + env['plugin'] + '/*.mm')
 
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a

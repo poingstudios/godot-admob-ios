@@ -4,6 +4,11 @@ import PackageDescription
 let package = Package(
     name: "PoingGodotAdMobDeps",
     platforms: [.iOS(.v13)],
+    products: [
+        .library(
+            name: "PoingGodotAdMobDeps",
+            targets: ["PoingGodotAdMobDeps"]),
+    ],
     dependencies: [
         // Google Mobile Ads SDK
         .package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads.git", exact: "12.14.0"),
@@ -19,8 +24,8 @@ let package = Package(
             name: "PoingGodotAdMobDeps",
             dependencies: [
                 .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
-                .product(name: "GoogleMobileAdsFacebookAdapter", package: "googleads-mobile-ios-mediation-meta"),
-                .product(name: "GoogleMobileAdsLiftoffMonetizeAdapter", package: "googleads-mobile-ios-mediation-liftoffmonetize"),
+                .product(name: "MetaAdapterTarget", package: "googleads-mobile-ios-mediation-meta"),
+                .product(name: "LiftoffMonetizeAdapterTarget", package: "googleads-mobile-ios-mediation-liftoffmonetize"),
             ],
             path: "scripts/spm"
         )

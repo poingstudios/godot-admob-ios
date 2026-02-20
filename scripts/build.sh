@@ -23,14 +23,14 @@ show_help() {
     echo "  --help        Show this help message"
     echo ""
     echo "Arguments:"
-    echo "  [godot_version]  Optional. The Godot version (e.g., 4.3.0). Auto-detected if omitted."
+    echo "  [godot_version]  Optional. The Godot version (e.g., 4.6.1). Auto-detected if omitted."
     echo "  [target]         Optional. What to build: 'internal', 'external', or 'all' (default: all)"
     echo ""
     echo "Examples:"
     echo "  ./scripts/build.sh                   # Incremental build using detected version"
-    echo "  ./scripts/build.sh 4.3.0             # Incremental build for specific version"
+    echo "  ./scripts/build.sh 4.6.1             # Incremental build for specific version"
     echo "  ./scripts/build.sh --clean           # Clean build using detected version"
-    echo "  ./scripts/build.sh 4.3.0 internal    # Build only internal plugin logic"
+    echo "  ./scripts/build.sh 4.6.1 internal    # Build only internal plugin logic"
     echo "  ./scripts/build.sh external          # Build only external SDK dependencies"
 }
 

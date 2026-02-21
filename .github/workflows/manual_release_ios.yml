@@ -18,12 +18,6 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - name: Set plugin version on env
-      run: |
-        PACKAGE_FILE=$(find src/ads/config -name "*_package.gd" | head -n 1)
-        PLUGIN_VERSION=$(grep -hE "VERSION\s*:=\s*\"" $PACKAGE_FILE | sed -E 's/.*"([^"]+)".*/\1/')
-        echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
-
     - name: Verify current inputs godot_version
       run: |
         CURRENT_GODOT_VERSION=${{ github.event.inputs.godot_version }}

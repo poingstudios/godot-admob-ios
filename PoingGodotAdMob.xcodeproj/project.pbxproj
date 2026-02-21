@@ -694,7 +694,7 @@
 			);
 			mainGroup = 5E80AAC72A44A50C001C750F;
 			packageReferences = (
-				5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "../godot-admob-ios" */,
+				5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "." */,
 			);
 			productRefGroup = 5E80AAD12A44A50C001C750F /* Products */;
 			projectDirPath = "";
@@ -1211,31 +1211,31 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "../godot-admob-ios" */ = {
+		5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "." */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../godot-admob-ios";
+			relativePath = ".";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		5E52D3652F47A379006869F4 /* PoingGodotAdMobDeps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "../godot-admob-ios" */;
+			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "." */;
 			productName = PoingGodotAdMobDeps;
 		};
 		5E52D3672F47A38B006869F4 /* PoingGodotAdMobDeps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "../godot-admob-ios" */;
+			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "." */;
 			productName = PoingGodotAdMobDeps;
 		};
 		5E52D3692F47A38F006869F4 /* PoingGodotAdMobDeps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "../godot-admob-ios" */;
+			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "." */;
 			productName = PoingGodotAdMobDeps;
 		};
 		5E52D36B2F47A392006869F4 /* PoingGodotAdMobDeps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "../godot-admob-ios" */;
+			package = 5E1EFB7F2F4790BD00E6B348 /* XCLocalSwiftPackageReference "." */;
 			productName = PoingGodotAdMobDeps;
 		};
 /* End XCSwiftPackageProductDependency section */

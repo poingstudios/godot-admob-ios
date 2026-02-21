@@ -6,13 +6,16 @@ initialization="register_poing_godot_admob_ads_types"
 deinitialization="unregister_poing_godot_admob_ads_types"
 
 [dependencies]
-linked=["poing-godot-admob/frameworks/GoogleMobileAds.xcframework",
-        "poing-godot-admob/frameworks/UserMessagingPlatform.xcframework"]
+linked=[]
 embedded=[]
 system=["AppTrackingTransparency.framework"]
 capabilities=[]
 files=[]
 linker_flags=["-ObjC"]
+admob_packages=[
+  "https://github.com/googleads/swift-package-manager-google-mobile-ads.git@exact:12.14.0|GoogleMobileAds",
+	"https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git@exact:3.1.0|GoogleUserMessagingPlatform"
+]
 
 [plist]
 ;Warning: You will need to update the [plist] section every time you reinstall/upgrade the plugin!

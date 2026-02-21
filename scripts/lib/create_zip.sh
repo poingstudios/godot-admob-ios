@@ -34,12 +34,12 @@ if [ "$TYPE" == "plugin" ]; then
     else
         VER_STR=""
     fi
-    FILE_NAME="poing-godot-admob-ios-internal$VER_STR.zip"
+    FILE_NAME="poing-godot-admob-ios$VER_STR.zip"
     
     log_info "Creating Plugin ZIP: $FILE_NAME"
     rm -f "$RELEASE_DIR_ABS/$FILE_NAME"
     cd "$RELEASE_DIR_ABS/$NAME" || exit 1
-    zip -rq "$RELEASE_DIR_ABS/$FILE_NAME" ./*.gdip poing-godot-admob/bin/
+    zip -rq "$RELEASE_DIR_ABS/$FILE_NAME" ./*.gdip ./*.gd poing-godot-admob/bin/
     cd "$PROJECT_ROOT" || exit 1
 else
     FILE_NAME="poing-godot-admob-ios-sdk-$NAME.zip"

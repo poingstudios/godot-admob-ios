@@ -11,47 +11,43 @@ fi
 
 # Default values
 CLEAN_BUILD=false
-TARGET="all"
+GENERATE_SDK=false
 GODOT_VERSION=""
 
 # Help function
 show_help() {
-    echo "Usage: ./scripts/build.sh [options] [godot_version] [target]"
+    echo "Usage: ./scripts/build.sh [options] [godot_version]"
     echo ""
     echo "Options:"
     echo "  --clean       Perform a clean build (removes all artifacts first)"
+    echo "  --sdk         Generate the 'sdk-external-dependencies' zip"
     echo "  --help        Show this help message"
     echo ""
     echo "Arguments:"
     echo "  [godot_version]  Optional. The Godot version (e.g., 4.6.1). Auto-detected if omitted."
-    echo "  [target]         Optional. What to build: 'internal', 'external', or 'all' (default: all)"
     echo ""
     echo "Examples:"
     echo "  ./scripts/build.sh                   # Incremental build using detected version"
     echo "  ./scripts/build.sh 4.6.1             # Incremental build for specific version"
     echo "  ./scripts/build.sh --clean           # Clean build using detected version"
-    echo "  ./scripts/build.sh 4.6.1 internal    # Build only internal plugin logic"
-    echo "  ./scripts/build.sh external          # Build only external SDK dependencies"
+    echo "  ./scripts/build.sh --sdk             # Build plugin and generate SDK dependencies"
 }
 
 # Parse arguments
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         --clean) CLEAN_BUILD=true ;;
+        --sdk) GENERATE_SDK=true ;;
         --help) show_help; exit 0 ;;
         *) 
             if [ -z "$GODOT_VERSION" ]; then
                 # Check if it looks like a version number
                 if [[ "$1" =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]; then
                     GODOT_VERSION="$1"
-                elif [[ "$1" =~ ^(internal|external|all)$ ]]; then
-                    TARGET="$1"
                 else
                     log_error "Unknown argument: $1"
                     show_help; exit 1
                 fi
-            elif [[ "$1" =~ ^(internal|external|all)$ ]]; then
-                TARGET="$1"
             else
                 log_error "Unknown argument: $1"
                 show_help; exit 1
@@ -79,7 +75,7 @@ if [ -z "$GODOT_VERSION" ]; then
     fi
 fi
 
-log_info "Starting Build Process (Version: $GODOT_VERSION, Target: $TARGET, Clean: $CLEAN_BUILD)"
+log_info "Starting Build Process (Version: $GODOT_VERSION, SDK: $GENERATE_SDK, Clean: $CLEAN_BUILD)"
 
 if [ "$CLEAN_BUILD" = true ]; then
     ./scripts/clean.sh || exit 1
@@ -94,46 +90,45 @@ if [ ! -d "$SPM_BUILD_DIR" ]; then
 fi
 
 # --- INTERNAL BUILD ---
-if [ "$TARGET" == "all" ] || [ "$TARGET" == "internal" ]; then
-    log_info "--- Building Internal Plugin ---"
-    ./scripts/lib/download_godot.sh "$GODOT_VERSION" || exit 1
-    ./scripts/lib/generate_headers.sh || exit 1
+log_info "--- Building Internal Plugin ---"
+./scripts/lib/download_godot.sh "$GODOT_VERSION" || exit 1
+./scripts/lib/generate_headers.sh || exit 1
 
-    STAGING_INTERNAL="./bin/release/internal"
+STAGING_INTERNAL="./bin/release/internal"
+
+# Check if we can skip the loop and zipping if all plugins are already built and staged
+# For simplicity, we just run the loop but rely on generate_static_library.sh's internal optimization
+
+mkdir -p "$STAGING_INTERNAL/poing-godot-admob/bin"
+
+for PLUGIN in "${ALL_PLUGINS[@]}"; do
+    log_info "Processing $PLUGIN..."
+    ./scripts/lib/generate_static_library.sh "$PLUGIN" release || exit 1
+    ./scripts/lib/generate_static_library.sh "$PLUGIN" release_debug || exit 1
+
+    XCF_DIR="./bin/xcframeworks/${PLUGIN}"
+    DEBUG_XCF="$XCF_DIR/poing-godot-admob-${PLUGIN}.debug.xcframework"
     
-    # Check if we can skip the loop and zipping if all plugins are already built and staged
-    # For simplicity, we just run the loop but rely on generate_static_library.sh's internal optimization
-    
-    mkdir -p "$STAGING_INTERNAL/poing-godot-admob/bin"
+    # Only move if the debug_xcframework exists (it might have been skipped if up to date)
+    if [ -d "$XCF_DIR/poing-godot-admob-${PLUGIN}.release_debug.xcframework" ]; then
+        rm -rf "$DEBUG_XCF"
+        mv "$XCF_DIR/poing-godot-admob-${PLUGIN}.release_debug.xcframework" "$DEBUG_XCF"
+    fi
 
-    for PLUGIN in "${ALL_PLUGINS[@]}"; do
-        log_info "Processing $PLUGIN..."
-        ./scripts/lib/generate_static_library.sh "$PLUGIN" release || exit 1
-        ./scripts/lib/generate_static_library.sh "$PLUGIN" release_debug || exit 1
+    cp -R "$XCF_DIR/poing-godot-admob-${PLUGIN}.release.xcframework" "$STAGING_INTERNAL/poing-godot-admob/bin/"
+    cp -R "$XCF_DIR/poing-godot-admob-${PLUGIN}.debug.xcframework" "$STAGING_INTERNAL/poing-godot-admob/bin/"
 
-        XCF_DIR="./bin/xcframeworks/${PLUGIN}"
-        DEBUG_XCF="$XCF_DIR/poing-godot-admob-${PLUGIN}.debug.xcframework"
-        
-        # Only move if the debug_xcframework exists (it might have been skipped if up to date)
-        if [ -d "$XCF_DIR/poing-godot-admob-${PLUGIN}.release_debug.xcframework" ]; then
-            rm -rf "$DEBUG_XCF"
-            mv "$XCF_DIR/poing-godot-admob-${PLUGIN}.release_debug.xcframework" "$DEBUG_XCF"
-        fi
+    CONFIG_DIR=$(get_plugin_config_dir "$PLUGIN")
+    cp "$CONFIG_DIR"/*.gdip "$STAGING_INTERNAL/"
+    cp "$CONFIG_DIR"/*.gd "$STAGING_INTERNAL/" 2>/dev/null || true
+done
 
-        cp -R "$XCF_DIR/poing-godot-admob-${PLUGIN}.release.xcframework" "$STAGING_INTERNAL/poing-godot-admob/bin/"
-        cp -R "$XCF_DIR/poing-godot-admob-${PLUGIN}.debug.xcframework" "$STAGING_INTERNAL/poing-godot-admob/bin/"
-
-        CONFIG_DIR=$(get_plugin_config_dir "$PLUGIN")
-        cp "$CONFIG_DIR"/*.gdip "$STAGING_INTERNAL/"
-    done
-
-    # Only create zip if staging is new or forced (we could optimize this further but the zip is fast compared to build)
-    ./scripts/lib/create_zip.sh "plugin" "internal" "$GODOT_VERSION" || exit 1
-    rm -rf "$STAGING_INTERNAL"
-fi
+# Only create zip if staging is new or forced (we could optimize this further but the zip is fast compared to build)
+./scripts/lib/create_zip.sh "plugin" "internal" "$GODOT_VERSION" || exit 1
+rm -rf "$STAGING_INTERNAL"
 
 # --- EXTERNAL BUILD ---
-if [ "$TARGET" == "all" ] || [ "$TARGET" == "external" ]; then
+if [ "$GENERATE_SDK" = true ]; then
     log_info "--- Building External Dependencies ---"
     
     # Optimization: Skip external build if zip already exists and Package.resolved hasn't changed
@@ -146,10 +141,6 @@ if [ "$TARGET" == "all" ] || [ "$TARGET" == "external" ]; then
         mkdir -p "$STAGING_EXTERNAL/poing-godot-admob/frameworks"
 
         for PLUGIN in "${ALL_PLUGINS[@]}"; do
-            # Copy package configuration to the root of external zip
-            CONFIG_DIR=$(get_plugin_config_dir "$PLUGIN")
-            cp "$CONFIG_DIR"/*.gd "$STAGING_EXTERNAL/" 2>/dev/null || true
-
             TEMP_DIR="./bin/temp_sdk_$PLUGIN"
             rm -rf "$TEMP_DIR"
             mkdir -p "$TEMP_DIR"

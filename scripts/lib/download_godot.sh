@@ -30,6 +30,7 @@ if [ -d "godot" ]; then
         fi
     fi
     log_info "Godot version mismatch or .version file missing. Re-downloading..."
+    rm -rf "godot"
 fi
 
 

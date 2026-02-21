@@ -17,8 +17,9 @@ rm -rf build/
 log_info "Removed bin/ and build/"
 
 # Remove temporary extraction folders
+rm -rf godot/
 rm -rf godot-*
-log_info "Removed godot-*"
+log_info "Removed godot/ and godot-*"
 
 # Remove SPM artifacts (resolved via common.sh)
 rm -rf "$SPM_BUILD_DIR"

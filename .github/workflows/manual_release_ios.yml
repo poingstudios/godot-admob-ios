@@ -51,34 +51,33 @@ jobs:
         python --version
         scons --version
 
-    - name: Download and unzip Stable Godot extracted headers
-      run: |
-        ./scripts/download_godot.sh ${{env.CURRENT_GODOT_VERSION}}
-
-    - name: Generate headers
-      run: |
-        echo "Major version: $major_version"
-        ./scripts/generate_headers.sh || true
+    - name: Cache SPM dependencies
+      uses: actions/cache@v5
+      with:
+        path: .build
+        key: spm-${{ hashFiles('Package.swift', 'Package.resolved') }}
+        restore-keys: |
+          spm-
 
     - name: Compiles the Source Code
       env:
-        SCONS_CACHE: ${{github.workspace}}/godot-${{env.CURRENT_GODOT_VERSION}}-stable/.scons_cache/
+        SCONS_CACHE: ${{github.workspace}}/godot/.scons_cache/
       run: |
-        ./scripts/release_static_library.sh 
-
-    - name: Compress the binaries
-      run: |
-        ./scripts/create_zip.sh ${{env.CURRENT_GODOT_VERSION}}
+        ./scripts/build.sh ${{env.CURRENT_GODOT_VERSION}}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v6
       with:
-        path: bin/release/poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}.zip
+        name: poing-godot-admob-ios-v${{ env.CURRENT_GODOT_VERSION }}
+        path: bin/release/*.zip
+        if-no-files-found: error
+        retention-days: 1
 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: bin/release/poing-godot-admob-ios-v${{env.CURRENT_GODOT_VERSION}}.zip
-        tag: ${{ github.ref }}
+        file: bin/release/*.zip
+        file_glob: true
+        tag: ${{ github.event.inputs.tag }}
         overwrite: true

@@ -65,17 +65,18 @@ else:
     env.Append(CCFLAGS=['-miphoneos-version-min=12.0'])
     env.Append(LINKFLAGS=["-miphoneos-version-min=12.0"])
 
-#need to perform `cd PoingGodotAdMob && pod install --repo-update`
-env.Append(FRAMEWORKPATH=['PoingGodotAdMob/Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/' + xcframework_directory])
+# SPM artifact paths (resolved via `swift package resolve`)
+spm_artifacts = '.build/artifacts'
+env.Append(FRAMEWORKPATH=[spm_artifacts + '/swift-package-manager-google-mobile-ads/GoogleMobileAds/GoogleMobileAds.xcframework/' + xcframework_directory])
 
 if env['plugin'] == 'ads':
-    env.Append(FRAMEWORKPATH=['PoingGodotAdMob/Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/swift-package-manager-google-user-messaging-platform/UserMessagingPlatform/UserMessagingPlatform.xcframework/' + xcframework_directory])
 elif env['plugin'] == 'meta':
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/' + xcframework_directory])
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationFacebook/MetaAdapter-6.20.1.0/MetaAdapter.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/googleads-mobile-ios-mediation-meta/FBAudienceNetwork/Static/FBAudienceNetwork.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/googleads-mobile-ios-mediation-meta/MetaAdapter/MetaAdapter.xcframework/' + xcframework_directory])
 elif env['plugin'] == 'vungle':
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/VungleAds/static/VungleAdsSDK.xcframework/' + xcframework_directory])
-    env.Append(FRAMEWORKPATH=['#PoingGodotAdMob/Pods/GoogleMobileAdsMediationVungle/LiftoffMonetizeAdapter-7.5.3.0/LiftoffMonetizeAdapter.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/vungleadssdk-swiftpackagemanager/VungleAdsSDK/VungleAdsSDK.xcframework/' + xcframework_directory])
+    env.Append(FRAMEWORKPATH=[spm_artifacts + '/googleads-mobile-ios-mediation-liftoffmonetize/LiftoffMonetizeAdapter/LiftoffMonetizeAdapter.xcframework/' + xcframework_directory])
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())
@@ -139,19 +140,21 @@ env.Append(CPPPATH=[
 ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
+library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
+build_dir = "build/" + env['plugin'] + "/" + library_platform + "/" + env["target"]
+env.VariantDir(build_dir, "src", duplicate=0)
+
 if env['plugin'] == 'ads':
-    sources = Glob('PoingGodotAdMob/src/' + env['plugin'] + '/*.mm')
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/adformats/*.mm'))
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/helpers/*.mm'))
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/converters/*.mm'))
-    sources.append(Glob('PoingGodotAdMob/src/' + env['plugin'] + '/ump/*.mm'))
+    sources = Glob(build_dir + '/' + env['plugin'] + '/*.mm')
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/adformats/*.mm'))
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/helpers/*.mm'))
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/converters/*.mm'))
+    sources.append(Glob(build_dir + '/' + env['plugin'] + '/ump/*.mm'))
 else:
-    sources = Glob('PoingGodotAdMob/src/mediation/' + env['plugin'] + '/*.mm')
+    sources = Glob(build_dir + '/mediation/' + env['plugin'] + '/*.mm')
 
 
 # lib<plugin>.<arch>-<simulator|ios>.<release|debug|release_debug>.a
-library_platform = env["arch"] + "-" + ("simulator" if env["simulator"] else "ios")
-print(library_platform)
 library_name = "poing-godot-admob-" + env['plugin'] + "." + library_platform + "." + env["target"] + ".a"
 library = env.StaticLibrary(target=env['target_path'] + env['plugin'] + "/" + library_name, source=sources)
 

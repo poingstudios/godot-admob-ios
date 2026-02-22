@@ -59,15 +59,13 @@ The **purpose** of this plugin is to always keep **up to date with Godot**, supp
 ## 📦Installing:
 
 ### 📥Download
-- To get started, download the `poing-godot-admob-ios-v{{ your_godot_version }}.zip` file from the [releases tab](https://github.com/PoingStudios/godot-admob-ios/releases). We recommend checking the [supported Godot version](https://github.com/PoingStudios/godot-admob-versions/blob/master/versions.json) before proceeding. You can also use the [AdMob Plugin](https://github.com/PoingStudios/godot-admob-plugin) for this step by navigating to `Tools -> AdMob Download Manager -> iOS -> LatestVersion`.
+- To get started, download the `poing-godot-admob-ios-v{{ your_godot_version }}.zip` file from the [releases tab](https://github.com/PoingStudios/godot-admob-ios/releases). We recommend checking the [supported Godot version](https://github.com/PoingStudios/godot-admob-versions/blob/master/versions.json) before proceeding. You can also use the [AdMob Plugin](https://github.com/PoingStudios/godot-admob-plugin) for this step by navigating to `Tools -> AdMob Manager -> iOS -> Download & Install`.
 
 
 ### 🧑‍💻Usage
 - Video tutorial: https://youtu.be/TB7WhP8mieo
-- Inside `poing-godot-admob-ios-v{{ your_godot_version }}.zip` you downloaded, you will find folders like `'ads'`, `'meta'`, `'vungle'`. The `'ads'` folder is required for AdMob; others are for [Mediation](https://support.google.com/admob/answer/13420272?hl=en).
-- Move the folders you need into the `res://ios/plugins` directory of your Godot project.
+- Inside `poing-godot-admob-ios-v{{ your_godot_version }}.zip` you downloaded, extract everything into the `res://ios/plugins` directory of your Godot project.
 - Update the configuration in `res://ios/plugins/poing-godot-admob-ads.gdip`. The `GADApplicationIdentifier` must be changed to your App ID.
-- If using Mediation: In the `.gdip` file, under `SKAdNetworkItems`, uncomment the IDs for the networks you are using.
 - Export the project from Godot, enabling the `Ad Mob` plugin (and any mediation plugins) in the export options.
 - **That's it!** The plugin now uses `.xcframework` bundles that are automatically integrated by Godot. No manual Xcode steps or CocoaPods commands are required.
 

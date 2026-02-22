@@ -34,7 +34,16 @@ if [ -f "../scripts/lib/timeout" ]; then
 fi
 
 log_info "Running SCons to generate headers..."
-$TIMEOUT_CMD scons -j $NUM_CORES platform=ios target=template_release
+# Use -Wno-module-import-in-extern-c to avoid issues with Vulkan headers in Godot 4.3.0 on modern macOS/Clang
+SCONS_FLAGS=""
+if [ -f ".version" ]; then
+    GODOT_VERSION=$(cat .version)
+    log_info "Detected Godot version: $GODOT_VERSION"
+    if [ "$GODOT_VERSION" == "4.3" ]; then
+        SCONS_FLAGS="ccflags=\"-Wno-module-import-in-extern-c\""
+    fi
+fi
+$TIMEOUT_CMD scons -j $NUM_CORES platform=ios target=template_release $SCONS_FLAGS
 
 # We don't check for exit code here because the process is intentionally 
 # interrupted by the timeout script once headers are likely generated.

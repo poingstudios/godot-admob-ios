@@ -52,12 +52,3 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
     NUM_CORES=$(nproc)
 fi
-
-# Shared SCons cache arguments
-export SCONS_CACHE_ARGS=""
-if [ -n "$SCONS_CACHE" ] && [ -d "$SCONS_CACHE" ]; then
-    export SCONS_CACHE_ARGS="cache_path=$SCONS_CACHE"
-    # Unset the environment variable so Godot's Python script 
-    # doesn't see it and print the deprecation warning
-    unset SCONS_CACHE
-fi

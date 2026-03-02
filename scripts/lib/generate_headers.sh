@@ -44,9 +44,8 @@ if [ -f ".version" ]; then
     fi
 fi
 
-if [ -n "$SCONS_CACHE" ]; then
-    SCONS_FLAGS="$SCONS_FLAGS cache_path=\"$SCONS_CACHE\""
-fi
+# Append shared SCons cache arguments
+SCONS_FLAGS="$SCONS_FLAGS $SCONS_CACHE_ARGS"
 
 $TIMEOUT_CMD scons -j $NUM_CORES platform=ios target=template_release $SCONS_FLAGS
 

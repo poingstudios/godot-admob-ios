@@ -21,11 +21,8 @@ if [ -f "scripts/lib/timeout" ]; then
     TIMEOUT_CMD="scripts/lib/timeout"
 fi
 
-# Add cache_path if SCONS_CACHE is set
-SCONS_ARGS=""
-if [ -n "$SCONS_CACHE" ]; then
-    SCONS_ARGS="cache_path=\"$SCONS_CACHE\""
-fi
+# Use shared SCons cache arguments from common.sh
+SCONS_ARGS="$SCONS_CACHE_ARGS"
 
 # Compile static libraries
 # ARM64 Device

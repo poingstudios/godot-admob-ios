@@ -21,18 +21,24 @@ if [ -f "scripts/lib/timeout" ]; then
     TIMEOUT_CMD="scripts/lib/timeout"
 fi
 
+# Add cache_path if SCONS_CACHE is set
+SCONS_ARGS=""
+if [ -n "$SCONS_CACHE" ]; then
+    SCONS_ARGS="cache_path=\"$SCONS_CACHE\""
+fi
+
 # Compile static libraries
 # ARM64 Device
 log_info "Building arm64 device..."
-$TIMEOUT_CMD scons -j $NUM_CORES target=$TARGET arch=arm64 plugin=$PLUGIN || { log_error "Failed to build arm64 device"; exit 1; }
+$TIMEOUT_CMD scons -j $NUM_CORES target=$TARGET arch=arm64 plugin=$PLUGIN $SCONS_ARGS || { log_error "Failed to build arm64 device"; exit 1; }
 
 # ARM64 Simulator (Apple Silicon Macs)
 log_info "Building arm64 simulator..."
-$TIMEOUT_CMD scons -j $NUM_CORES target=$TARGET arch=arm64 simulator=yes plugin=$PLUGIN || { log_error "Failed to build arm64 simulator"; exit 1; }
+$TIMEOUT_CMD scons -j $NUM_CORES target=$TARGET arch=arm64 simulator=yes plugin=$PLUGIN $SCONS_ARGS || { log_error "Failed to build arm64 simulator"; exit 1; }
 
 # x86_64 Simulator (Intel Macs / Rosetta)
 log_info "Building x86_64 simulator..."
-$TIMEOUT_CMD scons -j $NUM_CORES target=$TARGET arch=x86_64 simulator=yes plugin=$PLUGIN || { log_error "Failed to build x86_64 simulator"; exit 1; }
+$TIMEOUT_CMD scons -j $NUM_CORES target=$TARGET arch=x86_64 simulator=yes plugin=$PLUGIN $SCONS_ARGS || { log_error "Failed to build x86_64 simulator"; exit 1; }
 
 XCF_OUT="./bin/xcframeworks/$PLUGIN/poing-godot-admob-$PLUGIN.$TARGET.xcframework"
 

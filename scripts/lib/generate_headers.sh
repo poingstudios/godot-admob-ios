@@ -43,6 +43,11 @@ if [ -f ".version" ]; then
         SCONS_FLAGS="ccflags=\"-Wno-module-import-in-extern-c\""
     fi
 fi
+
+if [ -n "$SCONS_CACHE" ]; then
+    SCONS_FLAGS="$SCONS_FLAGS cache_path=\"$SCONS_CACHE\""
+fi
+
 $TIMEOUT_CMD scons -j $NUM_CORES platform=ios target=template_release $SCONS_FLAGS
 
 # We don't check for exit code here because the process is intentionally 

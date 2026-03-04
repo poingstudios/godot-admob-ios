@@ -30,15 +30,21 @@ jobs:
       run: |
         LATEST=$(gh api repos/godotengine/godot/releases \
           --jq '[.[] | select(.tag_name | test("^4\\.[0-9]+(\\.[0-9]+)?-stable$")) | .tag_name][0]' \
-          | sed 's/-stable//')
+          | sed 's/-stable/')
           
         LATEST_PAD=$(echo "$LATEST" | awk -F. '{if(NF==2) print $0".0"; else print $0}')
 
         echo "Latest Godot version: $LATEST_PAD"
 
-        EXISTS=$(gh api "repos/${{ github.repository }}/releases/tags/${PLUGIN_VERSION}" \
-          --jq ".assets[].name" 2>/dev/null \
-          | grep -q "poing-godot-admob-ios-v${LATEST_PAD}.zip" && echo "true" || echo "false")
+        RELEASE_EXISTS=$(gh api "repos/${{ github.repository }}/releases/tags/${PLUGIN_VERSION}" > /dev/null 2>&1 && echo "true" || echo "false")
+
+        if [ "$RELEASE_EXISTS" = "true" ]; then
+          EXISTS=$(gh api "repos/${{ github.repository }}/releases/tags/${PLUGIN_VERSION}" \
+            --jq ".assets[].name" 2>/dev/null \
+            | grep -q "poing-godot-admob-ios-v${LATEST_PAD}.zip" && echo "true" || echo "false")
+        else
+          EXISTS="false"
+        fi
 
         if [ "$EXISTS" = "true" ]; then
           echo "should_build=false" >> $GITHUB_OUTPUT
@@ -46,6 +52,7 @@ jobs:
         else
           echo "should_build=true" >> $GITHUB_OUTPUT
           echo "godot_version=$LATEST_PAD" >> $GITHUB_OUTPUT
+
           echo "Need to build for $LATEST_PAD"
         fi
 

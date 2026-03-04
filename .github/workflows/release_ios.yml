@@ -3,8 +3,34 @@ name: Build iOS
 on: workflow_dispatch
 
 jobs:
+  check-release:
+    name: Check if release already exists
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        ref: ${{ github.ref_name }}
+
+    - name: Set plugin version on env
+      run: |
+        PACKAGE_FILE=$(find src/ads/config -name "*package.gd" | head -n 1)
+        PLUGIN_VERSION=$(grep -hE "VERSION\s*:=\s*\"" $PACKAGE_FILE | sed -E 's/.*"([^"]+)".*/\1/')
+        echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
+
+    - name: Fail if release already exists
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        if gh api "repos/${{ github.repository }}/releases/tags/${{ env.PLUGIN_VERSION }}" > /dev/null 2>&1; then
+          echo "::error::Release ${{ env.PLUGIN_VERSION }} already exists. Bump the version before releasing."
+          exit 1
+        fi
+        echo "No existing release found for ${{ env.PLUGIN_VERSION }}. Proceeding..."
+
   ios-template:
     name: Compiling for iOS (Godot ${{matrix.GODOT_VERSIONS}})
+    needs: check-release
     runs-on: "macos-latest"
     strategy:
       matrix:
@@ -78,4 +104,34 @@ jobs:
         file: bin/release/*.zip
         file_glob: true
         tag: ${{env.PLUGIN_VERSION}}
+        release_name: ${{env.PLUGIN_VERSION}}
+        body: ""
         overwrite: true
+
+  release-notes:
+    name: Update release notes
+    needs: ios-template
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        ref: ${{ github.ref_name }}
+        fetch-depth: 0
+
+    - name: Set plugin version on env
+      run: |
+        PACKAGE_FILE=$(find src/ads/config -name "*package.gd" | head -n 1)
+        PLUGIN_VERSION=$(grep -hE "VERSION\s*:=\s*\"" $PACKAGE_FILE | sed -E 's/.*"([^"]+)".*/\1/')
+        echo "PLUGIN_VERSION=${PLUGIN_VERSION}" >> $GITHUB_ENV
+
+    - name: Update release with proper title and notes
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{env.PLUGIN_VERSION}}
+        name: ${{env.PLUGIN_VERSION}}
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

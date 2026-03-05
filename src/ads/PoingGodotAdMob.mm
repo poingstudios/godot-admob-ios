@@ -82,6 +82,15 @@ void PoingGodotAdMob::set_ios_app_pause_on_background(bool pause) {
     [StaticVariablesHelper setPauseOnBackground:pause];
 }
 
+void PoingGodotAdMob::set_app_volume(float volume) {
+    float clampedVolume = CLAMP(volume, 0.0f, 1.0f);
+    [GADMobileAds sharedInstance].applicationVolume = (CGFloat)clampedVolume;
+}
+
+void PoingGodotAdMob::set_app_muted(bool muted) {
+    [GADMobileAds sharedInstance].applicationMuted = muted;
+}
+
 void PoingGodotAdMob::_bind_methods() {
     ADD_SIGNAL(MethodInfo("on_initialization_complete", PropertyInfo(Variant::DICTIONARY, "initialization_status_dictionary")));
 
@@ -89,4 +98,6 @@ void PoingGodotAdMob::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_request_configuration"), &PoingGodotAdMob::set_request_configuration);
     ClassDB::bind_method(D_METHOD("get_initialization_status"), &PoingGodotAdMob::get_initialization_status);
     ClassDB::bind_method(D_METHOD("set_ios_app_pause_on_background"), &PoingGodotAdMob::set_ios_app_pause_on_background);
+    ClassDB::bind_method(D_METHOD("set_app_volume"), &PoingGodotAdMob::set_app_volume);
+    ClassDB::bind_method(D_METHOD("set_app_muted"), &PoingGodotAdMob::set_app_muted);
 };

@@ -27,8 +27,6 @@ jobs:
     name: Build & Upload Artifact
     needs: detect-latest
     runs-on: "macos-latest"
-    permissions:
-      pull-requests: write
 
     steps:
     - uses: actions/checkout@v6
@@ -77,38 +75,3 @@ jobs:
         name: poing-godot-admob-ios-v${{ needs.detect-latest.outputs.godot_version }}-${{ github.event.pull_request.head.sha }}
         path: bin/release/*.zip
         retention-days: 14
-
-    - name: Comment PR with Artifact Link
-      uses: actions/github-script@v7
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          const artifactUrl = '${{ steps.artifact-upload-step.outputs.artifact-url }}';
-          const commitSha = '${{ github.event.pull_request.head.sha }}'.substring(0, 7);
-          const body = `✅ **Build Successful!** (Commit: \`${commitSha}\`)\n\nThe plugin has been compiled for iOS (Godot ${ '${{ needs.detect-latest.outputs.godot_version }}' }).\n\n📦 [Download Artifact ZIP](${artifactUrl})`;
-          
-          const { data: comments } = await github.rest.issues.listComments({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: context.issue.number,
-          });
-          
-          const botComment = comments.find(comment => 
-            comment.user.type === 'Bot' && comment.body.includes('Download Artifact ZIP')
-          );
-          
-          if (botComment) {
-            await github.rest.issues.updateComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: botComment.id,
-              body: body
-            });
-          } else {
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: body
-            });
-          }

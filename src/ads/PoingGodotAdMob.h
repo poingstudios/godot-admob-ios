@@ -43,6 +43,8 @@ public:
     void set_request_configuration(Dictionary requestConfigurationDictionary, PackedStringArray testDeviceIds);
     Dictionary get_initialization_status();
     void set_ios_app_pause_on_background(bool pause);
+    void set_app_volume(float volume);
+    void set_app_muted(bool muted);
 
     static PoingGodotAdMob *get_singleton();
 
